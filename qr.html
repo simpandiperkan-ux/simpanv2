@@ -5,7 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIMPAN - Data Kapal</title>
+<title>QR STIKER SIMPAN</title>
+
+<!-- QR CODE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -22,11 +25,10 @@ body{
 
     font-family:Arial, sans-serif;
 
-    /* BACKGROUND CUSTOM SIMPAN */
     background:
         linear-gradient(
-            rgba(255,255,255,0.08),
-            rgba(0,40,90,0.35)
+            rgba(255,255,255,0.15),
+            rgba(0,60,120,0.20)
         ),
         url('https://simpandiperkan-ux.github.io/simpanv2/background_simpan.png');
 
@@ -38,49 +40,20 @@ body{
 
     background-attachment:fixed;
 
-    padding:20px;
-
-    position:relative;
-
     min-height:100vh;
 
-}
-
-/* WATERMARK BODY */
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
-
-    background-repeat:repeat;
-
-    background-size:240px;
-
-    opacity:0.025;
-
-    z-index:-1;
+    padding:40px;
 
 }
 
-/* CARD */
-.card{
+/* CONTAINER */
+.container{
 
-    max-width:1000px;
+    width:850px;
 
     margin:auto;
 
-    background:rgba(255,255,255,0.95);
-
-    backdrop-filter:blur(10px);
+    background:white;
 
     border-radius:30px;
 
@@ -88,30 +61,14 @@ body::before{
 
     box-shadow:0 15px 40px rgba(0,0,0,0.30);
 
-    border:4px solid rgba(255,255,255,0.35);
-
-}
-
-/* HEADER */
-.header{
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.98),
-            rgba(225,240,255,0.96)
-        );
-
-    padding:35px;
+    border:8px solid #ffffff;
 
     position:relative;
 
-    overflow:hidden;
-
 }
 
-/* WATERMARK HEADER */
-.header::before{
+/* WATERMARK */
+.container::before{
 
     content:"";
 
@@ -131,20 +88,16 @@ body::before{
 
     opacity:0.04;
 
-    z-index:1;
+    pointer-events:none;
 
 }
 
-/* HEADER FLEX */
-.header-top{
+/* HEADER */
+.header{
 
-    display:flex;
+    padding:35px 30px;
 
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
+    text-align:center;
 
     position:relative;
 
@@ -152,8 +105,34 @@ body::before{
 
 }
 
+/* LOGO AREA */
+.logo-area{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+/* LOGO */
+.logo-kab{
+
+    width:110px;
+
+}
+
+.logo-simpan{
+
+    width:170px;
+
+}
+
 /* TITLE */
-.title-area{
+.title{
 
     text-align:center;
 
@@ -161,112 +140,169 @@ body::before{
 
 }
 
-.title-area h1{
+.title h1{
 
-    font-size:50px;
+    font-size:48px;
 
     color:#002b70;
 
-    margin-bottom:10px;
-
     font-weight:900;
 
-    text-shadow:0 2px 4px rgba(0,0,0,0.08);
+    margin-bottom:10px;
 
 }
 
-.title-area p{
+.title p{
 
-    font-size:20px;
+    font-size:22px;
 
-    color:#223;
-
-    font-weight:500;
+    color:#333;
 
 }
 
-/* LOGO */
-.logo-kabupaten{
+/* QR AREA */
+.qr-section{
 
-    width:95px;
+    text-align:center;
 
-    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+    padding:20px 40px;
 
-}
+    position:relative;
 
-.logo-simpan{
-
-    width:140px;
-
-    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+    z-index:2;
 
 }
 
-/* =========================
-NAVIGATION
-========================= */
+/* QR BOX */
+.qr-box{
 
-.nav-box{
+    width:520px;
 
-    padding:25px;
+    height:520px;
 
-    background:rgba(255,255,255,0.75);
+    margin:auto;
 
-    border-bottom:1px solid rgba(0,0,0,0.08);
+    background:white;
 
-}
+    border-radius:20px;
 
-/* SEARCH */
-.search-area{
+    padding:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+    border:8px solid #003b8f;
 
     display:flex;
 
-    gap:10px;
+    align-items:center;
 
-    margin-bottom:18px;
-
-}
-
-.search-area input{
-
-    flex:1;
-
-    padding:14px 18px;
-
-    border-radius:14px;
-
-    border:2px solid #cfe5ff;
-
-    font-size:16px;
-
-    outline:none;
+    justify-content:center;
 
 }
 
-.search-area input:focus{
+/* INFO */
+.info{
 
-    border-color:#0066cc;
+    text-align:center;
+
+    padding:25px 40px 10px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.id{
+
+    font-size:60px;
+
+    font-weight:900;
+
+    color:#000;
+
+    margin-bottom:15px;
+
+}
+
+.nama{
+
+    font-size:30px;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+}
+
+.kapal{
+
+    font-size:28px;
+
+    margin-bottom:30px;
+
+}
+
+/* SCAN */
+.scan{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    color:#000;
+
+    margin-bottom:15px;
+
+}
+
+/* DATE */
+.date{
+
+    font-size:22px;
+
+    color:#333;
+
+    margin-bottom:30px;
+
+}
+
+/* BUTTON AREA */
+.button-area{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:0 30px 30px;
+
+    position:relative;
+
+    z-index:2;
 
 }
 
 /* BUTTON */
-.search-area button,
-.nav-btn{
+.btn{
 
-    padding:14px 24px;
+    flex:1;
+
+    padding:18px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:18px;
 
     background:
         linear-gradient(
             135deg,
-            #0056b3,
-            #00a2ff
+            #0047ab,
+            #009dff
         );
 
     color:white;
+
+    font-size:18px;
 
     font-weight:bold;
 
@@ -274,187 +310,11 @@ NAVIGATION
 
     transition:0.3s;
 
-    font-size:15px;
-
 }
 
-.search-area button:hover,
-.nav-btn:hover{
+.btn:hover{
 
     transform:translateY(-2px);
-
-}
-
-/* NAVIGATION BUTTON */
-.nav-button-area{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-}
-
-.nav-btn{
-
-    flex:1;
-
-}
-
-/* CONTENT */
-.content{
-
-    padding:30px;
-
-}
-
-/* FOTO */
-.foto{
-
-    width:100%;
-
-    border-radius:25px;
-
-    margin-top:10px;
-
-    margin-bottom:10px;
-
-    border:5px solid white;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-
-    transition:0.3s;
-
-}
-
-.foto:hover{
-
-    transform:scale(1.01);
-
-}
-
-/* ITEM */
-.item{
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #f5faff
-        );
-
-    border-radius:22px;
-
-    padding:22px;
-
-    margin-bottom:18px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.07);
-
-    border-left:8px solid #0066cc;
-
-    transition:0.3s;
-
-}
-
-.item:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:0 10px 20px rgba(0,0,0,0.12);
-
-}
-
-/* LABEL */
-.label{
-
-    color:#0056b3;
-
-    font-weight:bold;
-
-    margin-bottom:10px;
-
-    font-size:15px;
-
-    text-transform:uppercase;
-
-    letter-spacing:0.5px;
-
-}
-
-/* VALUE */
-.value{
-
-    font-size:21px;
-
-    color:#222;
-
-    word-break:break-word;
-
-    line-height:1.6;
-
-}
-
-/* BUTTON */
-.btn-link{
-
-    display:inline-block;
-
-    padding:13px 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0056b3,
-            #00a2ff
-        );
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:14px;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    transition:0.3s;
-
-    box-shadow:0 5px 15px rgba(0,102,204,0.2);
-
-}
-
-.btn-link:hover{
-
-    transform:scale(1.05);
-
-}
-
-/* BADGE */
-.badge{
-
-    display:inline-block;
-
-    padding:10px 18px;
-
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00aa55,
-            #00cc66
-        );
-
-    color:white;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    box-shadow:0 4px 10px rgba(0,170,85,0.25);
 
 }
 
@@ -463,107 +323,129 @@ NAVIGATION
 
     text-align:center;
 
-    font-size:25px;
+    font-size:28px;
 
-    padding:80px;
+    padding:100px;
 
-    color:#0066cc;
-
-    font-weight:bold;
-
-}
-
-/* ERROR */
-.notfound{
-
-    text-align:center;
-
-    color:red;
-
-    font-size:26px;
-
-    padding:80px;
-
-    font-weight:bold;
-
-}
-
-/* FOOTER */
-.footer{
-
-    text-align:center;
-
-    padding:25px;
-
-    font-size:14px;
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #003b8f,
-            #005ecb
-        );
+    color:#0047ab;
 
     font-weight:bold;
 
 }
 
 /* RESPONSIVE */
-@media(max-width:768px){
+@media(max-width:900px){
 
-    .header-top{
+    body{
 
-        flex-direction:column;
+        padding:10px;
 
     }
 
-    .title-area h1{
+    .container{
+
+        width:100%;
+
+    }
+
+    .logo-area{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .title h1{
 
         font-size:32px;
 
     }
 
-    .title-area p{
+    .title p{
 
-        font-size:15px;
-
-    }
-
-    .logo-kabupaten{
-
-        width:75px;
+        font-size:16px;
 
     }
 
-    .logo-simpan{
+    .qr-box{
 
-        width:95px;
+        width:100%;
 
-    }
+        height:auto;
 
-    .value{
-
-        font-size:17px;
+        padding:15px;
 
     }
 
-    .content{
+    #qrcode img{
 
-        padding:18px;
+        width:100% !important;
+        height:auto !important;
 
     }
 
-    .search-area{
+    .id{
+
+        font-size:36px;
+
+    }
+
+    .nama{
+
+        font-size:22px;
+
+    }
+
+    .kapal{
+
+        font-size:20px;
+
+    }
+
+    .scan{
+
+        font-size:28px;
+
+    }
+
+    .date{
+
+        font-size:16px;
+
+    }
+
+    .button-area{
 
         flex-direction:column;
 
     }
 
-    .nav-button-area{
+}
 
-        flex-direction:column;
+@media print{
+
+    body{
+
+        background:white;
+
+        padding:0;
+
+    }
+
+    .button-area{
+
+        display:none;
+
+    }
+
+    .container{
+
+        width:100%;
+
+        border:none;
+
+        box-shadow:none;
 
     }
 
@@ -575,23 +457,22 @@ NAVIGATION
 
 <body>
 
-<div class="card">
+<div class="container" id="printArea">
 
-    <!-- HEADER -->
     <div class="header">
 
-        <div class="header-top">
+        <div class="logo-area">
 
             <!-- LOGO BATENG -->
             <img 
                 src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png"
-                class="logo-kabupaten"
+                class="logo-kab"
             >
 
             <!-- TITLE -->
-            <div class="title-area">
+            <div class="title">
 
-                <h1>DATA KAPAL SIMPAN</h1>
+                <h1>QR STIKER SIMPAN</h1>
 
                 <p>
                     Sistem Informasi Manajemen Pendataan Armada Nelayan
@@ -609,52 +490,46 @@ NAVIGATION
 
     </div>
 
-    <!-- NAVIGATION -->
-    <div class="nav-box">
+    <!-- QR -->
+    <div class="qr-section">
 
-        <!-- SEARCH -->
-        <div class="search-area">
+        <div class="qr-box">
 
-            <input 
-                type="text"
-                id="searchInput"
-                placeholder="Cari 4 digit ID SIMPAN..."
-            >
-
-            <button onclick="cariID()">
-                CARI
-            </button>
-
-        </div>
-
-        <!-- NAV BUTTON -->
-        <div class="nav-button-area">
-
-            <button onclick="prevData()" class="nav-btn">
-                ⬅ SEBELUMNYA
-            </button>
-
-            <button onclick="nextData()" class="nav-btn">
-                SELANJUTNYA ➡
-            </button>
+            <div id="qrcode"></div>
 
         </div>
 
     </div>
 
-    <!-- CONTENT -->
-    <div class="content" id="data">
+    <!-- INFO -->
+    <div class="info">
 
-        <div class="loading">
-            Memuat data kapal...
+        <div class="id" id="idSimpan">
+            MEMUAT...
         </div>
+
+        <div class="nama" id="namaNelayan"></div>
+
+        <div class="kapal" id="namaKapal"></div>
+
+        <div class="scan">
+            SCAN UNTUK VERIFIKASI
+        </div>
+
+        <div class="date" id="tanggalCetak"></div>
 
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer">
+    <!-- BUTTON -->
+    <div class="button-area">
 
-        © Dinas Perikanan Kabupaten Bangka Tengah
+        <button class="btn" onclick="window.print()">
+            🖨 CETAK QR
+        </button>
+
+        <button class="btn" onclick="downloadQR()">
+            📥 DOWNLOAD
+        </button>
 
     </div>
 
@@ -662,39 +537,21 @@ NAVIGATION
 
 <script>
 
-const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+const csvUrl =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
 const params = new URLSearchParams(window.location.search);
 
 const kapalId = params.get("id");
 
-const container = document.getElementById("data");
+/* TANGGAL */
+const now = new Date();
 
-let semuaData = [];
+document.getElementById("tanggalCetak").innerHTML =
+"Tanggal Cetak : " +
+now.toLocaleDateString("id-ID");
 
-let currentIndex = -1;
-
-/* CONVERT GOOGLE DRIVE IMAGE */
-function convertDriveImage(url){
-
-    if(!url) return url;
-
-    if(url.includes("drive.google.com")){
-
-        const match = url.match(/[-\w]{25,}/);
-
-        if(match){
-
-            return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
-
-        }
-
-    }
-
-    return url;
-
-}
-
+/* LOAD DATA */
 Papa.parse(csvUrl, {
 
     download:true,
@@ -707,14 +564,6 @@ Papa.parse(csvUrl, {
 
         const data = results.data;
 
-        semuaData = data;
-
-        currentIndex = data.findIndex(item =>
-
-            item["ID SIMPAN"]?.trim() === kapalId?.trim()
-
-        );
-
         const kapal = data.find(item =>
 
             item["ID SIMPAN"]?.trim() === kapalId?.trim()
@@ -723,128 +572,53 @@ Papa.parse(csvUrl, {
 
         if(kapal){
 
-            container.innerHTML = "";
+            // LINK QR
+            const qrLink =
+            "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
+            kapal["ID SIMPAN"];
 
-            // LOOP SEMUA DATA
-            for(const key in kapal){
+            // QR CODE
+            new QRCode(document.getElementById("qrcode"), {
 
-                // SEMBUNYIKAN KOLOM
-                if(
+                text:qrLink,
 
-                    key.toUpperCase().includes("NIK") ||
-                    key.toUpperCase() === "TIMESTAMP" ||
-                    key.toUpperCase() === "LINK HALAMAN KAPAL" ||
-                    key.toUpperCase() === "LINK QR"
+                width:450,
 
-                ) continue;
+                height:450,
 
-                let valueContent = kapal[key];
+                colorDark:"#000000",
 
-                // JIKA KOSONG
-                if(
-                    !valueContent ||
-                    valueContent.trim() === ""
-                ){
+                colorLight:"#ffffff",
 
-                    valueContent = "-";
+                correctLevel:QRCode.CorrectLevel.H
 
-                }
+            });
 
-                // FOTO + KARTU KUSUKA
-                if(
+            // DATA
+            document.getElementById("idSimpan").innerHTML =
+            kapal["ID SIMPAN"];
 
-                    key.toUpperCase().includes("FOTO") ||
-                    key.toUpperCase().includes("KARTU KUSUKA")
+            document.getElementById("namaNelayan").innerHTML =
+            "NAMA : " +
+            (kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-");
 
-                ){
-
-                    if(valueContent !== "-"){
-
-                        const imageUrl = convertDriveImage(kapal[key]);
-
-                        valueContent = `
-
-                            <a href="${kapal[key]}" target="_blank">
-
-                                <img 
-                                    src="${imageUrl}"
-                                    class="foto"
-                                >
-
-                            </a>
-
-                        `;
-
-                    }
-
-                }
-
-                // LINK DOKUMEN
-                else if(
-
-                    valueContent.startsWith("http://") ||
-                    valueContent.startsWith("https://")
-
-                ){
-
-                    valueContent = `
-
-                        <a 
-                            href="${kapal[key]}"
-                            target="_blank"
-                            class="btn-link"
-                        >
-                            Buka Dokumen
-                        </a>
-
-                    `;
-
-                }
-
-                // STATUS
-                if(
-                    key.toUpperCase().includes("STATUS")
-                ){
-
-                    valueContent = `
-
-                        <div class="badge">
-
-                            ${kapal[key]}
-
-                        </div>
-
-                    `;
-
-                }
-
-                const item = document.createElement("div");
-
-                item.className = "item";
-
-                item.innerHTML = `
-
-                    <div class="label">
-                        ${key}
-                    </div>
-
-                    <div class="value">
-                        ${valueContent}
-                    </div>
-
-                `;
-
-                container.appendChild(item);
-
-            }
+            document.getElementById("namaKapal").innerHTML =
+            "KAPAL : " +
+            (kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-");
 
         }else{
 
-            container.innerHTML = `
+            document.body.innerHTML = `
 
-                <div class="notfound">
+                <div style="
+                    text-align:center;
+                    padding:100px;
+                    font-size:35px;
+                    font-weight:bold;
+                    color:red;
+                ">
 
-                    Data kapal tidak ditemukan
+                    DATA TIDAK DITEMUKAN
 
                 </div>
 
@@ -852,113 +626,31 @@ Papa.parse(csvUrl, {
 
         }
 
-    },
-
-    error:function(error){
-
-        console.log(error);
-
-        container.innerHTML = `
-
-            <div class="notfound">
-
-                Gagal membaca Spreadsheet
-
-            </div>
-
-        `;
-
     }
 
 });
 
-/* =========================
-SEARCH ID
-========================= */
+/* DOWNLOAD */
+function downloadQR(){
 
-function cariID(){
+    html2canvas(document.querySelector("#printArea")).then(canvas => {
 
-    const keyword = document
-        .getElementById("searchInput")
-        .value
-        .trim();
+        const link = document.createElement("a");
 
-    if(!keyword){
+        link.download = kapalId + ".png";
 
-        alert("Masukkan ID");
+        link.href = canvas.toDataURL();
 
-        return;
-
-    }
-
-    // CARI 4 DIGIT BELAKANG
-    const found = semuaData.find(item => {
-
-        const id = item["ID SIMPAN"] || "";
-
-        return id.endsWith(keyword);
+        link.click();
 
     });
-
-    if(found){
-
-        window.location.href =
-            "kapal.html?id=" +
-            found["ID SIMPAN"];
-
-    }else{
-
-        alert("ID tidak ditemukan");
-
-    }
-
-}
-
-/* =========================
-SEBELUMNYA
-========================= */
-
-function prevData(){
-
-    if(currentIndex > 0){
-
-        const prevId =
-            semuaData[currentIndex - 1]["ID SIMPAN"];
-
-        window.location.href =
-            "kapal.html?id=" + prevId;
-
-    }else{
-
-        alert("Data pertama");
-
-    }
-
-}
-
-/* =========================
-SELANJUTNYA
-========================= */
-
-function nextData(){
-
-    if(currentIndex < semuaData.length - 1){
-
-        const nextId =
-            semuaData[currentIndex + 1]["ID SIMPAN"];
-
-        window.location.href =
-            "kapal.html?id=" + nextId;
-
-    }else{
-
-        alert("Data terakhir");
-
-    }
 
 }
 
 </script>
+
+<!-- HTML2CANVAS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 </body>
 </html>
