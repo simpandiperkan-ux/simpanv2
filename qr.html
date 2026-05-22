@@ -7,13 +7,13 @@
 
 <title>QR STIKER SIMPAN</title>
 
-<!-- QR CODE -->
+<!-- QRCode -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<!-- PAPAPARSE -->
+<!-- PapaParse -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<!-- HTML2CANVAS -->
+<!-- html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
@@ -28,15 +28,15 @@ body{
 
     font-family:Arial, sans-serif;
 
-    background:#dfeaf5;
+    background:#dbe7f2;
 
     padding:20px;
 
 }
 
-/* =========================
-UKURAN STIKER 8 x 13 cm
-========================= */
+/* ===============================
+STIKER 8 x 13 cm PRESISI
+================================= */
 
 .print-area{
 
@@ -48,13 +48,13 @@ UKURAN STIKER 8 x 13 cm
 
     background:#ffffff;
 
-    border:3px solid #000;
+    border:2px solid #000;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.18);
+    box-shadow:0 8px 20px rgba(0,0,0,0.18);
 
 }
 
@@ -72,9 +72,9 @@ UKURAN STIKER 8 x 13 cm
 
     background-repeat:repeat;
 
-    background-size:200px;
+    background-size:190px;
 
-    opacity:0.02;
+    opacity:0.018;
 
     z-index:1;
 
@@ -87,61 +87,67 @@ UKURAN STIKER 8 x 13 cm
 
     z-index:2;
 
-    padding:20px 25px 15px;
+    padding:18px 24px 12px;
 
 }
 
-/* HEADER */
+/* ===============================
+HEADER
+================================= */
+
 .header{
 
     text-align:center;
 
-    border-bottom:4px solid #0056b3;
+    border-bottom:3px solid #0056b3;
 
-    padding-bottom:20px;
+    padding-bottom:14px;
 
-    margin-bottom:20px;
+    margin-bottom:14px;
 
 }
 
 /* LOGO */
 .logo{
 
-    margin-bottom:12px;
+    margin-bottom:10px;
 
 }
 
 .logo img{
 
-    width:165px;
+    width:130px;
 
 }
 
 /* DINAS */
 .dinas{
 
-    text-align:center;
-
-    font-size:40px;
-
-    font-weight:900;
+    font-size:31px;
 
     line-height:1.15;
 
-    letter-spacing:0.5px;
+    font-weight:900;
 
     color:#000;
 
+    letter-spacing:0.4px;
+
 }
 
-/* QR AREA */
+/* ===============================
+QR AREA
+================================= */
+
 .qr-area{
 
-    border-top:2px solid #d9d9d9;
+    border-top:1px solid #d9d9d9;
 
-    border-bottom:2px solid #d9d9d9;
+    border-bottom:1px solid #d9d9d9;
 
-    padding:25px 0;
+    padding:18px 0;
+
+    margin-bottom:12px;
 
     display:flex;
 
@@ -151,24 +157,22 @@ UKURAN STIKER 8 x 13 cm
 
     align-items:center;
 
-    margin-bottom:20px;
-
 }
 
 /* QR BOX */
 .qr-box{
 
-    width:640px;
+    width:560px;
 
-    height:640px;
-
-    background:white;
+    height:560px;
 
     display:flex;
 
     align-items:center;
 
     justify-content:center;
+
+    background:white;
 
 }
 
@@ -184,91 +188,100 @@ UKURAN STIKER 8 x 13 cm
 /* LOGO MINI */
 .logo-mini{
 
-    text-align:center;
-
-    margin-top:18px;
+    margin-top:12px;
 
 }
 
 .logo-mini img{
 
-    width:90px;
+    width:70px;
 
-    opacity:0.92;
+    opacity:0.9;
 
 }
 
-/* ID */
+/* ===============================
+ID SIMPAN
+================================= */
+
 .id{
 
     text-align:center;
 
-    font-size:52px;
+    font-size:42px;
 
     font-weight:900;
-
-    margin:20px auto;
-
-    letter-spacing:1px;
 
     background:#003b8f;
 
     color:white;
 
-    padding:12px 28px;
+    padding:10px 24px;
 
-    border-radius:18px;
+    border-radius:14px;
 
     display:table;
 
-    box-shadow:0 5px 15px rgba(0,59,143,0.25);
+    margin:14px auto;
+
+    letter-spacing:1px;
+
+    box-shadow:0 4px 12px rgba(0,59,143,0.2);
 
 }
 
-/* INFO */
+/* ===============================
+INFO
+================================= */
+
 .info{
 
     text-align:center;
 
-    font-size:30px;
+    font-size:24px;
 
-    line-height:1.4;
+    line-height:1.35;
 
-    margin-bottom:28px;
+    margin-bottom:18px;
 
     color:#111;
 
 }
 
-/* SCAN */
+/* ===============================
+SCAN
+================================= */
+
 .scan{
 
     text-align:center;
 
-    font-size:38px;
+    font-size:30px;
 
     font-weight:900;
 
-    margin-bottom:18px;
-
-    letter-spacing:0.5px;
-
-    color:#000;
+    margin-bottom:10px;
 
 }
 
-/* DATE */
+/* ===============================
+DATE
+================================= */
+
 .date{
 
     text-align:center;
 
-    font-size:22px;
+    font-size:18px;
 
     color:#333;
 
 }
 
-/* FOOTER */
+/* ===============================
+FOOTER
+================================= */
+
 .footer{
 
     position:absolute;
@@ -279,35 +292,37 @@ UKURAN STIKER 8 x 13 cm
 
     width:100%;
 
-    height:4px;
+    height:3px;
 
     background:#000;
 
 }
 
-/* BUTTON AREA */
+/* ===============================
+BUTTON
+================================= */
+
 .button-area{
 
     width:800px;
 
-    margin:20px auto;
+    margin:18px auto;
 
     display:flex;
 
-    gap:15px;
+    gap:14px;
 
 }
 
-/* BUTTON */
 .btn{
 
     flex:1;
 
-    padding:18px;
+    padding:16px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:12px;
 
     background:
     linear-gradient(
@@ -318,15 +333,15 @@ UKURAN STIKER 8 x 13 cm
 
     color:white;
 
-    font-size:18px;
+    font-size:17px;
 
     font-weight:bold;
 
     cursor:pointer;
 
-    transition:0.3s;
+    transition:0.25s;
 
-    box-shadow:0 5px 15px rgba(0,80,180,0.25);
+    box-shadow:0 4px 12px rgba(0,80,180,0.22);
 
 }
 
@@ -336,7 +351,10 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
-/* RESPONSIVE */
+/* ===============================
+RESPONSIVE
+================================= */
+
 @media(max-width:850px){
 
     body{
@@ -361,30 +379,6 @@ UKURAN STIKER 8 x 13 cm
 
     }
 
-    .dinas{
-
-        font-size:26px;
-
-    }
-
-    .id{
-
-        font-size:36px;
-
-    }
-
-    .info{
-
-        font-size:22px;
-
-    }
-
-    .scan{
-
-        font-size:28px;
-
-    }
-
     .qr-box{
 
         width:100%;
@@ -403,7 +397,10 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
-/* PRINT */
+/* ===============================
+PRINT
+================================= */
+
 @media print{
 
     body{
@@ -440,7 +437,10 @@ UKURAN STIKER 8 x 13 cm
 
 <body>
 
-<!-- AREA CETAK -->
+<!-- ===============================
+AREA CETAK
+================================= -->
+
 <div class="print-area" id="printArea">
 
     <div class="content">
@@ -517,7 +517,10 @@ UKURAN STIKER 8 x 13 cm
 
 </div>
 
-<!-- BUTTON -->
+<!-- ===============================
+BUTTON
+================================= -->
+
 <div class="button-area">
 
     <button class="btn" onclick="window.print()">
@@ -536,21 +539,35 @@ UKURAN STIKER 8 x 13 cm
 
 <script>
 
+/* ===============================
+CSV GOOGLE SHEET
+================================= */
+
 const csvUrl =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+
+/* ===============================
+AMBIL PARAMETER URL
+================================= */
 
 const params = new URLSearchParams(window.location.search);
 
 const kapalId = params.get("id");
 
-/* TANGGAL */
+/* ===============================
+TANGGAL CETAK
+================================= */
+
 const now = new Date();
 
 document.getElementById("tanggalCetak").innerHTML =
 "Tanggal Cetak : " +
 now.toLocaleDateString("id-ID");
 
-/* LOAD DATA */
+/* ===============================
+LOAD CSV
+================================= */
+
 Papa.parse(csvUrl, {
 
     download:true,
@@ -571,7 +588,7 @@ Papa.parse(csvUrl, {
 
         if(kapal){
 
-            /* LINK QR */
+            /* LINK VERIFIKASI */
             const qrLink =
             "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
             kapal["ID SIMPAN"];
@@ -581,9 +598,9 @@ Papa.parse(csvUrl, {
 
                 text:qrLink,
 
-                width:620,
+                width:540,
 
-                height:620,
+                height:540,
 
                 colorDark:"#000000",
 
@@ -593,14 +610,16 @@ Papa.parse(csvUrl, {
 
             });
 
-            /* DATA */
+            /* ID */
             document.getElementById("idSimpan").innerHTML =
             kapal["ID SIMPAN"];
 
+            /* NAMA */
             document.getElementById("namaNelayan").innerHTML =
             "NAMA : " +
             (kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-");
 
+            /* KAPAL */
             document.getElementById("namaKapal").innerHTML =
             "KAPAL : " +
             (kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-");
@@ -609,17 +628,17 @@ Papa.parse(csvUrl, {
 
             document.body.innerHTML = `
 
-                <div style="
-                    text-align:center;
-                    padding:100px;
-                    font-size:40px;
-                    font-weight:bold;
-                    color:red;
-                ">
+            <div style="
+                text-align:center;
+                padding:100px;
+                font-size:40px;
+                font-weight:bold;
+                color:red;
+            ">
 
-                    DATA TIDAK DITEMUKAN
+                DATA TIDAK DITEMUKAN
 
-                </div>
+            </div>
 
             `;
 
@@ -629,7 +648,10 @@ Papa.parse(csvUrl, {
 
 });
 
-/* DOWNLOAD PNG */
+/* ===============================
+DOWNLOAD PNG
+================================= */
+
 function downloadQR(){
 
     html2canvas(document.querySelector("#printArea"),{
