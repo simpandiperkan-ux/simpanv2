@@ -13,6 +13,9 @@
 <!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
+<!-- HTML2CANVAS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
 
 *{
@@ -25,178 +28,123 @@ body{
 
     font-family:Arial, sans-serif;
 
-    background:
-        linear-gradient(
-            rgba(255,255,255,0.15),
-            rgba(0,60,120,0.20)
-        ),
-        url('https://simpandiperkan-ux.github.io/simpanv2/background_simpan.png');
+    background:#dfeaf5;
 
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    background-attachment:fixed;
-
-    min-height:100vh;
-
-    padding:40px;
+    padding:20px;
 
 }
 
-/* CONTAINER */
-.container{
+/* AREA CETAK */
+.print-area{
 
-    width:850px;
+    width:900px;
+
+    min-height:1400px;
 
     margin:auto;
 
-    background:white;
+    background:#ffffff;
 
-    border-radius:30px;
-
-    overflow:hidden;
-
-    box-shadow:0 15px 40px rgba(0,0,0,0.30);
-
-    border:8px solid #ffffff;
+    border:8px solid #000;
 
     position:relative;
+
+    overflow:hidden;
 
 }
 
 /* WATERMARK */
-.container::before{
+.print-area::before{
 
     content:"";
 
     position:absolute;
 
-    top:0;
-    left:0;
+    inset:0;
 
-    width:100%;
-    height:100%;
-
-    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+    background-image:
+    url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
 
     background-repeat:repeat;
 
-    background-size:180px;
+    background-size:220px;
 
     opacity:0.04;
 
-    pointer-events:none;
+    z-index:1;
 
 }
 
-/* HEADER */
-.header{
-
-    padding:35px 30px;
-
-    text-align:center;
+/* CONTENT */
+.content{
 
     position:relative;
 
     z-index:2;
 
-}
-
-/* LOGO AREA */
-.logo-area{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:20px;
+    padding:40px;
 
 }
 
 /* LOGO */
-.logo-kab{
-
-    width:110px;
-
-}
-
-.logo-simpan{
-
-    width:170px;
-
-}
-
-/* TITLE */
-.title{
+.logo{
 
     text-align:center;
 
-    flex:1;
+    margin-bottom:25px;
 
 }
 
-.title h1{
+.logo img{
 
-    font-size:48px;
+    width:150px;
 
-    color:#002b70;
+}
+
+/* DINAS */
+.dinas{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    line-height:1.3;
+
+    margin-bottom:40px;
+
+}
+
+/* QR */
+.qr-area{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:40px;
+
+}
+
+.qr-box{
+
+    padding:20px;
+
+    background:white;
+
+}
+
+/* ID */
+.id{
+
+    text-align:center;
+
+    font-size:46px;
 
     font-weight:900;
 
     margin-bottom:10px;
-
-}
-
-.title p{
-
-    font-size:22px;
-
-    color:#333;
-
-}
-
-/* QR AREA */
-.qr-section{
-
-    text-align:center;
-
-    padding:20px 40px;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-/* QR BOX */
-.qr-box{
-
-    width:520px;
-
-    height:520px;
-
-    margin:auto;
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
-
-    border:8px solid #003b8f;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
 
 }
 
@@ -205,84 +153,49 @@ body{
 
     text-align:center;
 
-    padding:25px 40px 10px;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.id{
-
-    font-size:60px;
-
-    font-weight:900;
-
-    color:#000;
-
-    margin-bottom:15px;
-
-}
-
-.nama{
-
-    font-size:30px;
-
-    margin-bottom:8px;
-
-    font-weight:bold;
-
-}
-
-.kapal{
-
     font-size:28px;
 
-    margin-bottom:30px;
+    line-height:1.4;
+
+    margin-bottom:40px;
 
 }
 
 /* SCAN */
 .scan{
 
-    font-size:42px;
+    text-align:center;
+
+    font-size:34px;
 
     font-weight:900;
 
-    color:#000;
-
-    margin-bottom:15px;
+    margin-bottom:20px;
 
 }
 
 /* DATE */
 .date{
 
+    text-align:center;
+
     font-size:22px;
-
-    color:#333;
-
-    margin-bottom:30px;
 
 }
 
-/* BUTTON AREA */
+/* BUTTON */
 .button-area{
+
+    width:900px;
+
+    margin:20px auto;
 
     display:flex;
 
     gap:15px;
 
-    padding:0 30px 30px;
-
-    position:relative;
-
-    z-index:2;
-
 }
 
-/* BUTTON */
 .btn{
 
     flex:1;
@@ -291,14 +204,14 @@ body{
 
     border:none;
 
-    border-radius:18px;
+    border-radius:12px;
 
     background:
-        linear-gradient(
-            135deg,
-            #0047ab,
-            #009dff
-        );
+    linear-gradient(
+        135deg,
+        #003b8f,
+        #0099ff
+    );
 
     color:white;
 
@@ -308,96 +221,40 @@ body{
 
     cursor:pointer;
 
-    transition:0.3s;
-
-}
-
-.btn:hover{
-
-    transform:translateY(-2px);
-
-}
-
-/* LOADING */
-.loading{
-
-    text-align:center;
-
-    font-size:28px;
-
-    padding:100px;
-
-    color:#0047ab;
-
-    font-weight:bold;
-
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:950px){
 
-    body{
-
-        padding:10px;
-
-    }
-
-    .container{
+    .print-area{
 
         width:100%;
 
+        min-height:auto;
+
     }
 
-    .logo-area{
+    .button-area{
+
+        width:100%;
 
         flex-direction:column;
 
-        gap:20px;
-
     }
 
-    .title h1{
+    .dinas{
 
-        font-size:32px;
-
-    }
-
-    .title p{
-
-        font-size:16px;
-
-    }
-
-    .qr-box{
-
-        width:100%;
-
-        height:auto;
-
-        padding:15px;
-
-    }
-
-    #qrcode img{
-
-        width:100% !important;
-        height:auto !important;
+        font-size:24px;
 
     }
 
     .id{
 
-        font-size:36px;
+        font-size:30px;
 
     }
 
-    .nama{
-
-        font-size:22px;
-
-    }
-
-    .kapal{
+    .info{
 
         font-size:20px;
 
@@ -405,19 +262,7 @@ body{
 
     .scan{
 
-        font-size:28px;
-
-    }
-
-    .date{
-
-        font-size:16px;
-
-    }
-
-    .button-area{
-
-        flex-direction:column;
+        font-size:26px;
 
     }
 
@@ -439,13 +284,11 @@ body{
 
     }
 
-    .container{
-
-        width:100%;
+    .print-area{
 
         border:none;
 
-        box-shadow:none;
+        width:100%;
 
     }
 
@@ -457,81 +300,81 @@ body{
 
 <body>
 
-<div class="container" id="printArea">
+<!-- AREA CETAK -->
+<div class="print-area" id="printArea">
 
-    <div class="header">
+    <div class="content">
 
-        <div class="logo-area">
+        <!-- LOGO -->
+        <div class="logo">
 
-            <!-- LOGO BATENG -->
-            <img 
-                src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png"
-                class="logo-kab"
-            >
+            <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png">
 
-            <!-- TITLE -->
-            <div class="title">
+        </div>
 
-                <h1>QR STIKER SIMPAN</h1>
+        <!-- DINAS -->
+        <div class="dinas">
 
-                <p>
-                    Sistem Informasi Manajemen Pendataan Armada Nelayan
-                </p>
+            DINAS PERIKANAN<br>
+            KABUPATEN BANGKA TENGAH
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-area">
+
+            <div class="qr-box">
+
+                <div id="qrcode"></div>
 
             </div>
 
-            <!-- LOGO SIMPAN -->
-            <img 
-                src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png"
-                class="logo-simpan"
-            >
-
         </div>
 
-    </div>
-
-    <!-- QR -->
-    <div class="qr-section">
-
-        <div class="qr-box">
-
-            <div id="qrcode"></div>
-
-        </div>
-
-    </div>
-
-    <!-- INFO -->
-    <div class="info">
-
+        <!-- ID -->
         <div class="id" id="idSimpan">
+
             MEMUAT...
+
         </div>
 
-        <div class="nama" id="namaNelayan"></div>
+        <!-- INFO -->
+        <div class="info">
 
-        <div class="kapal" id="namaKapal"></div>
+            <div id="namaNelayan"></div>
 
+            <div id="namaKapal"></div>
+
+        </div>
+
+        <!-- SCAN -->
         <div class="scan">
+
             SCAN UNTUK VERIFIKASI
+
         </div>
 
+        <!-- DATE -->
         <div class="date" id="tanggalCetak"></div>
 
     </div>
 
-    <!-- BUTTON -->
-    <div class="button-area">
+</div>
 
-        <button class="btn" onclick="window.print()">
-            🖨 CETAK QR
-        </button>
+<!-- BUTTON -->
+<div class="button-area">
 
-        <button class="btn" onclick="downloadQR()">
-            📥 DOWNLOAD
-        </button>
+    <button class="btn" onclick="window.print()">
 
-    </div>
+        🖨 CETAK QR
+
+    </button>
+
+    <button class="btn" onclick="downloadQR()">
+
+        📥 DOWNLOAD PNG
+
+    </button>
 
 </div>
 
@@ -551,7 +394,7 @@ document.getElementById("tanggalCetak").innerHTML =
 "Tanggal Cetak : " +
 now.toLocaleDateString("id-ID");
 
-/* LOAD DATA */
+/* LOAD CSV */
 Papa.parse(csvUrl, {
 
     download:true,
@@ -572,19 +415,19 @@ Papa.parse(csvUrl, {
 
         if(kapal){
 
-            // LINK QR
+            /* LINK QR */
             const qrLink =
             "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
             kapal["ID SIMPAN"];
 
-            // QR CODE
+            /* GENERATE QR */
             new QRCode(document.getElementById("qrcode"), {
 
                 text:qrLink,
 
-                width:450,
+                width:700,
 
-                height:450,
+                height:700,
 
                 colorDark:"#000000",
 
@@ -594,7 +437,7 @@ Papa.parse(csvUrl, {
 
             });
 
-            // DATA
+            /* DATA */
             document.getElementById("idSimpan").innerHTML =
             kapal["ID SIMPAN"];
 
@@ -613,7 +456,7 @@ Papa.parse(csvUrl, {
                 <div style="
                     text-align:center;
                     padding:100px;
-                    font-size:35px;
+                    font-size:40px;
                     font-weight:bold;
                     color:red;
                 ">
@@ -630,7 +473,7 @@ Papa.parse(csvUrl, {
 
 });
 
-/* DOWNLOAD */
+/* DOWNLOAD PNG */
 function downloadQR(){
 
     html2canvas(document.querySelector("#printArea")).then(canvas => {
@@ -639,7 +482,7 @@ function downloadQR(){
 
         link.download = kapalId + ".png";
 
-        link.href = canvas.toDataURL();
+        link.href = canvas.toDataURL("image/png");
 
         link.click();
 
@@ -648,9 +491,6 @@ function downloadQR(){
 }
 
 </script>
-
-<!-- HTML2CANVAS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 </body>
 </html>
