@@ -7,6 +7,8 @@
 
 <title>SIMPAN - Data Kapal</title>
 
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
 <style>
 
 *{
@@ -42,22 +44,16 @@ body{
 }
 
 .header h1{
-
     font-size:32px;
     margin-bottom:5px;
-
 }
 
 .header p{
-
     font-size:15px;
-
 }
 
 .content{
-
     padding:25px;
-
 }
 
 .item{
@@ -164,127 +160,106 @@ const kapalId = params.get("id");
 
 const container = document.getElementById("data");
 
-fetch(csvUrl)
+Papa.parse(csvUrl, {
 
-.then(response => response.text())
+    download: true,
 
-.then(csv => {
+    header: true,
 
-    // MEMECAH BARIS CSV
-    const lines = csv.trim().split("\n");
+    skipEmptyLines: true,
 
-    // MEMBACA HEADER
-    const headers = lines[0]
-        .split(",")
-        .map(h => h.replace(/"/g, "").trim());
+    complete: function(results) {
 
-    // MEMBACA DATA
-    const data = lines.slice(1).map(line => {
+        console.log(results.data);
 
-        const values = line
-            .split(",")
-            .map(v => v.replace(/"/g, "").trim());
+        const data = results.data;
 
-        let obj = {};
+        const kapal = data.find(item =>
 
-        headers.forEach((header, index) => {
+            item["ID SIMPAN"]?.trim() === kapalId?.trim()
 
-            obj[header] = values[index] || "";
+        );
 
-        });
+        if(kapal){
 
-        return obj;
+            container.innerHTML = "";
 
-    });
+            // FOTO
+            if(kapal["FOTO"]){
 
-    console.log(data);
+                const foto = document.createElement("img");
 
-    // CARI DATA BERDASARKAN ID SIMPAN
-    const kapal = data.find(item =>
+                foto.src = kapal["FOTO"];
 
-        item["ID SIMPAN"]?.trim() === kapalId?.trim()
+                foto.className = "foto";
 
-    );
+                container.appendChild(foto);
 
-    // JIKA DATA DITEMUKAN
-    if(kapal){
+            }
 
-        container.innerHTML = "";
+            // TAMPILKAN DATA
+            for(const key in kapal){
 
-        // FOTO KAPAL
-        if(kapal["FOTO"]){
+                // SEMBUNYIKAN NIK
+                if(key.toUpperCase() === "NIK") continue;
 
-            const foto = document.createElement("img");
+                // FOTO SUDAH DITAMPILKAN
+                if(key.toUpperCase() === "FOTO") continue;
 
-            foto.src = kapal["FOTO"];
+                // SKIP DATA KOSONG
+                if(kapal[key] === "") continue;
 
-            foto.className = "foto";
+                const item = document.createElement("div");
 
-            container.appendChild(foto);
+                item.className = "item";
 
-        }
+                item.innerHTML = `
 
-        // TAMPILKAN SEMUA DATA
-        for(const key in kapal){
+                    <div class="label">
+                        ${key}
+                    </div>
 
-            // SEMBUNYIKAN NIK
-            if(key.toUpperCase() === "NIK") continue;
+                    <div class="value">
+                        ${kapal[key]}
+                    </div>
 
-            // FOTO SUDAH DITAMPILKAN
-            if(key.toUpperCase() === "FOTO") continue;
+                `;
 
-            // SKIP KOLOM KOSONG
-            if(kapal[key] === "") continue;
+                container.appendChild(item);
 
-            const item = document.createElement("div");
+            }
 
-            item.className = "item";
+        }else{
 
-            item.innerHTML = `
+            container.innerHTML = `
 
-                <div class="label">
-                    ${key}
-                </div>
+                <div class="notfound">
 
-                <div class="value">
-                    ${kapal[key]}
+                    Data kapal tidak ditemukan
+
                 </div>
 
             `;
 
-            container.appendChild(item);
-
         }
 
-    }else{
+    },
+
+    error: function(error){
+
+        console.log(error);
 
         container.innerHTML = `
 
             <div class="notfound">
 
-                Data kapal tidak ditemukan
+                Gagal membaca Spreadsheet
 
             </div>
 
         `;
 
     }
-
-})
-
-.catch(error => {
-
-    console.log(error);
-
-    container.innerHTML = `
-
-        <div class="notfound">
-
-            Gagal memuat data Spreadsheet
-
-        </div>
-
-    `;
 
 });
 
