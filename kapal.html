@@ -36,7 +36,7 @@ body{
 
 }
 
-/* OVERLAY GELAP */
+/* OVERLAY */
 body::before{
 
     content:"";
@@ -55,12 +55,14 @@ body::before{
 
 }
 
+/* CARD */
 .card{
 
-    max-width:850px;
+    max-width:900px;
+
     margin:auto;
 
-    background:rgba(255,255,255,0.92);
+    background:rgba(255,255,255,0.95);
 
     backdrop-filter:blur(10px);
 
@@ -68,46 +70,115 @@ body::before{
 
     overflow:hidden;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
 
 }
 
+/* HEADER */
 .header{
 
-    background:linear-gradient(135deg,#0066cc,#0099ff);
+    background:white;
 
-    color:white;
+    padding:30px;
 
-    padding:35px;
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* WATERMARK */
+.header::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:180px;
+
+    opacity:0.04;
+
+    z-index:1;
+
+}
+
+/* HEADER FLEX */
+.header-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* TITLE */
+.title-area{
 
     text-align:center;
 
+    flex:1;
+
 }
 
-.header h1{
+.title-area h1{
 
-    font-size:38px;
+    font-size:42px;
+
+    color:#001b4d;
 
     margin-bottom:8px;
 
-    letter-spacing:2px;
+    font-weight:bold;
 
 }
 
-.header p{
+.title-area p{
 
-    font-size:15px;
+    font-size:18px;
 
-    opacity:0.95;
+    color:#334;
 
 }
 
+/* LOGO */
+.logo-kabupaten{
+
+    width:90px;
+
+}
+
+.logo-simpan{
+
+    width:120px;
+
+}
+
+/* CONTENT */
 .content{
 
     padding:25px;
 
 }
 
+/* ITEM */
 .item{
 
     background:white;
@@ -118,7 +189,7 @@ body::before{
 
     margin-bottom:15px;
 
-    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
 
     transition:0.3s;
 
@@ -130,6 +201,7 @@ body::before{
 
 }
 
+/* LABEL */
 .label{
 
     color:#0066cc;
@@ -144,16 +216,18 @@ body::before{
 
 }
 
+/* VALUE */
 .value{
 
     font-size:20px;
 
-    word-break:break-word;
-
     color:#222;
+
+    word-break:break-word;
 
 }
 
+/* FOTO */
 .foto{
 
     width:100%;
@@ -168,42 +242,7 @@ body::before{
 
 }
 
-.loading{
-
-    text-align:center;
-
-    font-size:24px;
-
-    padding:60px;
-
-    color:#0066cc;
-
-}
-
-.notfound{
-
-    text-align:center;
-
-    color:red;
-
-    font-size:24px;
-
-    padding:60px;
-
-}
-
-.footer{
-
-    text-align:center;
-
-    padding:20px;
-
-    font-size:13px;
-
-    color:#555;
-
-}
-
+/* BUTTON LINK */
 .btn-link{
 
     display:inline-block;
@@ -234,11 +273,12 @@ body::before{
 
 }
 
+/* BADGE */
 .badge{
 
     display:inline-block;
 
-    padding:8px 15px;
+    padding:8px 16px;
 
     border-radius:20px;
 
@@ -250,7 +290,85 @@ body::before{
 
     font-weight:bold;
 
-    margin-top:10px;
+}
+
+/* LOADING */
+.loading{
+
+    text-align:center;
+
+    font-size:24px;
+
+    padding:60px;
+
+    color:#0066cc;
+
+}
+
+/* NOT FOUND */
+.notfound{
+
+    text-align:center;
+
+    color:red;
+
+    font-size:24px;
+
+    padding:60px;
+
+}
+
+/* FOOTER */
+.footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    font-size:13px;
+
+    color:#555;
+
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .header-top{
+
+        flex-direction:column;
+
+    }
+
+    .title-area h1{
+
+        font-size:28px;
+
+    }
+
+    .title-area p{
+
+        font-size:14px;
+
+    }
+
+    .logo-kabupaten{
+
+        width:70px;
+
+    }
+
+    .logo-simpan{
+
+        width:90px;
+
+    }
+
+    .value{
+
+        font-size:17px;
+
+    }
 
 }
 
@@ -262,20 +380,39 @@ body::before{
 
 <div class="card">
 
+    <!-- HEADER -->
     <div class="header">
 
-        <h1>SIMPAN</h1>
+        <div class="header-top">
 
-        <p>
-            Sistem Informasi Manajemen Pendataan Armada Nelayan
-        </p>
+            <!-- LOGO KABUPATEN -->
+            <img 
+                src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png"
+                class="logo-kabupaten"
+            >
 
-        <div class="badge">
-            DATA TERVERIFIKASI
+            <!-- TITLE -->
+            <div class="title-area">
+
+                <h1>DATA KAPAL SIMPAN</h1>
+
+                <p>
+                    Sistem Informasi Manajemen Pendataan Armada Nelayan
+                </p>
+
+            </div>
+
+            <!-- LOGO SIMPAN -->
+            <img 
+                src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png"
+                class="logo-simpan"
+            >
+
         </div>
 
     </div>
 
+    <!-- CONTENT -->
     <div class="content" id="data">
 
         <div class="loading">
@@ -284,6 +421,7 @@ body::before{
 
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
 
         © Dinas Perikanan Kabupaten Bangka Tengah
@@ -316,19 +454,19 @@ Papa.parse(csvUrl, {
 
         console.log(data);
 
-        // CARI DATA BERDASARKAN ID SIMPAN
+        // CARI DATA
         const kapal = data.find(item =>
 
             item["ID SIMPAN"]?.trim() === kapalId?.trim()
 
         );
 
-        // JIKA DATA DITEMUKAN
+        // JIKA DATA ADA
         if(kapal){
 
             container.innerHTML = "";
 
-            // FOTO KAPAL
+            // FOTO
             if(kapal["FOTO"]){
 
                 const foto = document.createElement("img");
@@ -361,7 +499,7 @@ Papa.parse(csvUrl, {
 
                 let valueContent = kapal[key];
 
-                // CEK LINK
+                // LINK DOKUMEN
                 if(
 
                     valueContent.startsWith("http://") ||
@@ -383,7 +521,7 @@ Papa.parse(csvUrl, {
 
                 }
 
-                // STATUS KAPAL
+                // STATUS
                 if(
                     key.toUpperCase().includes("STATUS")
                 ){
