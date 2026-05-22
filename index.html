@@ -1,0 +1,139 @@
+export default function SimpanV2Dashboard() {
+  return (
+    <div className="min-h-screen bg-slate-100 p-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="bg-white rounded-3xl shadow-lg p-6">
+          <h1 className="text-4xl font-bold text-slate-800">
+            SIMPAN V2
+          </h1>
+          <p className="text-slate-600 mt-2">
+            Sistem Informasi Manajemen Pendataan Armada Nelayan
+          </p>
+
+          <div className="mt-6 grid md:grid-cols-4 gap-4">
+            <div className="bg-blue-100 rounded-2xl p-4">
+              <h2 className="text-sm text-slate-600">Total Kapal</h2>
+              <p className="text-3xl font-bold">150</p>
+            </div>
+
+            <div className="bg-green-100 rounded-2xl p-4">
+              <h2 className="text-sm text-slate-600">Terverifikasi</h2>
+              <p className="text-3xl font-bold">120</p>
+            </div>
+
+            <div className="bg-yellow-100 rounded-2xl p-4">
+              <h2 className="text-sm text-slate-600">Belum Verifikasi</h2>
+              <p className="text-3xl font-bold">30</p>
+            </div>
+
+            <div className="bg-red-100 rounded-2xl p-4">
+              <h2 className="text-sm text-slate-600">Rekomendasi Ditunda</h2>
+              <p className="text-3xl font-bold">30</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-lg p-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-800">
+                Pendataan Kapal Nelayan
+              </h2>
+              <p className="text-slate-500">
+                Data realtime dari Google Spreadsheet
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <a
+                href="https://forms.gle/ivkhbQwhcP2USu556"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-2xl font-semibold"
+              >
+                Input Data
+              </a>
+
+              <a
+                href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?gid=482048126&single=true&output=csv"
+                target="_blank"
+                className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-2xl font-semibold"
+              >
+                Download CSV
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200">
+            <table className="w-full text-sm">
+              <thead className="bg-slate-200">
+                <tr>
+                  <th className="p-3 text-left">No</th>
+                  <th className="p-3 text-left">Nama Nelayan</th>
+                  <th className="p-3 text-left">Nama Kapal</th>
+                  <th className="p-3 text-left">GT</th>
+                  <th className="p-3 text-left">Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr className="border-t">
+                  <td className="p-3">1</td>
+                  <td className="p-3">Contoh Nelayan</td>
+                  <td className="p-3">KM Bahari</td>
+                  <td className="p-3">5 GT</td>
+                  <td className="p-3">
+                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
+                      Terverifikasi
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-3xl shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-slate-800">
+              Fitur SIMPAN V2
+            </h2>
+
+            <ul className="mt-4 space-y-3 text-slate-600">
+              <li>✅ Dashboard realtime</li>
+              <li>✅ Integrasi Google Form</li>
+              <li>✅ Integrasi Google Spreadsheet CSV</li>
+              <li>✅ Search kapal dan nelayan</li>
+              <li>✅ Export Excel dan PDF</li>
+              <li>✅ Mobile Friendly</li>
+              <li>✅ Siap dijadikan APK Android</li>
+            </ul>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-slate-800">
+              QR Code Pendataan
+            </h2>
+
+            <div className="mt-6 flex justify-center">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://forms.gle/ivkhbQwhcP2USu556"
+                alt="QR Code"
+                className="rounded-2xl"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-slate-900 text-white rounded-3xl p-6 text-center">
+          <h2 className="text-2xl font-bold">
+            Dinas Perikanan Kabupaten Bangka Tengah
+          </h2>
+
+          <p className="mt-2 text-slate-300">
+            SIMPAN V2 © 2026
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
