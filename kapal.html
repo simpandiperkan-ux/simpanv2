@@ -22,8 +22,13 @@ body{
 
     font-family:Arial, sans-serif;
 
-    /* BACKGROUND KAPAL DI DERMAGA */
-    background-image:url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13');
+    /* NUANSA LAUT & DERMAGA */
+    background:
+        linear-gradient(
+            rgba(0,40,90,0.65),
+            rgba(0,20,50,0.7)
+        ),
+        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b');
 
     background-size:cover;
 
@@ -37,9 +42,11 @@ body{
 
     position:relative;
 
+    min-height:100vh;
+
 }
 
-/* OVERLAY GELAP */
+/* OVERLAY WATERMARK */
 body::before{
 
     content:"";
@@ -52,7 +59,13 @@ body::before{
     width:100%;
     height:100%;
 
-    background:rgba(0,0,0,0.5);
+    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+
+    background-size:250px;
+
+    background-repeat:repeat;
+
+    opacity:0.03;
 
     z-index:-1;
 
@@ -61,7 +74,7 @@ body::before{
 /* CARD */
 .card{
 
-    max-width:950px;
+    max-width:1000px;
 
     margin:auto;
 
@@ -75,12 +88,19 @@ body::before{
 
     box-shadow:0 15px 40px rgba(0,0,0,0.35);
 
+    border:4px solid rgba(255,255,255,0.4);
+
 }
 
 /* HEADER */
 .header{
 
-    background:white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.97),
+            rgba(230,245,255,0.95)
+        );
 
     padding:35px;
 
@@ -90,7 +110,7 @@ body::before{
 
 }
 
-/* WATERMARK */
+/* WATERMARK HEADER */
 .header::before{
 
     content:"";
@@ -143,23 +163,25 @@ body::before{
 
 .title-area h1{
 
-    font-size:46px;
+    font-size:50px;
 
-    color:#001b4d;
+    color:#002b70;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
-    font-weight:bold;
+    font-weight:900;
 
-    letter-spacing:1px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.08);
 
 }
 
 .title-area p{
 
-    font-size:19px;
+    font-size:20px;
 
-    color:#334;
+    color:#223;
+
+    font-weight:500;
 
 }
 
@@ -168,11 +190,15 @@ body::before{
 
     width:95px;
 
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+
 }
 
 .logo-simpan{
 
-    width:130px;
+    width:140px;
+
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
 
 }
 
@@ -194,22 +220,29 @@ body::before{
 
     border:5px solid white;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
 
 }
 
 /* ITEM */
 .item{
 
-    background:white;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f5faff
+        );
 
-    border-radius:20px;
+    border-radius:22px;
 
-    padding:20px;
+    padding:22px;
 
     margin-bottom:18px;
 
-    box-shadow:0 4px 12px rgba(0,0,0,0.07);
+    box-shadow:0 5px 15px rgba(0,0,0,0.07);
+
+    border-left:8px solid #0066cc;
 
     transition:0.3s;
 
@@ -217,14 +250,16 @@ body::before{
 
 .item:hover{
 
-    transform:translateY(-2px);
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.12);
 
 }
 
 /* LABEL */
 .label{
 
-    color:#0066cc;
+    color:#0056b3;
 
     font-weight:bold;
 
@@ -233,6 +268,8 @@ body::before{
     font-size:15px;
 
     text-transform:uppercase;
+
+    letter-spacing:0.5px;
 
 }
 
@@ -245,7 +282,7 @@ body::before{
 
     word-break:break-word;
 
-    line-height:1.5;
+    line-height:1.6;
 
 }
 
@@ -254,9 +291,14 @@ body::before{
 
     display:inline-block;
 
-    padding:12px 22px;
+    padding:13px 24px;
 
-    background:linear-gradient(135deg,#0066cc,#00a2ff);
+    background:
+        linear-gradient(
+            135deg,
+            #0056b3,
+            #00a2ff
+        );
 
     color:white;
 
@@ -270,17 +312,17 @@ body::before{
 
     transition:0.3s;
 
+    box-shadow:0 5px 15px rgba(0,102,204,0.2);
+
 }
 
 .btn-link:hover{
 
     transform:scale(1.05);
 
-    box-shadow:0 5px 15px rgba(0,102,204,0.3);
-
 }
 
-/* BADGE */
+/* STATUS BADGE */
 .badge{
 
     display:inline-block;
@@ -289,13 +331,20 @@ body::before{
 
     border-radius:30px;
 
-    background:#00aa55;
+    background:
+        linear-gradient(
+            135deg,
+            #00aa55,
+            #00cc66
+        );
 
     color:white;
 
     font-size:14px;
 
     font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,170,85,0.25);
 
 }
 
@@ -306,13 +355,15 @@ body::before{
 
     font-size:25px;
 
-    padding:70px;
+    padding:80px;
 
     color:#0066cc;
 
+    font-weight:bold;
+
 }
 
-/* NOT FOUND */
+/* ERROR */
 .notfound{
 
     text-align:center;
@@ -321,7 +372,9 @@ body::before{
 
     font-size:26px;
 
-    padding:70px;
+    padding:80px;
+
+    font-weight:bold;
 
 }
 
@@ -334,9 +387,16 @@ body::before{
 
     font-size:14px;
 
-    color:#555;
+    color:#fff;
 
-    background:#fafafa;
+    background:
+        linear-gradient(
+            135deg,
+            #003b8f,
+            #005ecb
+        );
+
+    font-weight:bold;
 
 }
 
@@ -351,7 +411,7 @@ body::before{
 
     .title-area h1{
 
-        font-size:30px;
+        font-size:32px;
 
     }
 
@@ -363,13 +423,13 @@ body::before{
 
     .logo-kabupaten{
 
-        width:70px;
+        width:75px;
 
     }
 
     .logo-simpan{
 
-        width:90px;
+        width:95px;
 
     }
 
@@ -400,13 +460,13 @@ body::before{
 
         <div class="header-top">
 
-            <!-- LOGO KABUPATEN -->
+            <!-- LOGO BATENG -->
             <img 
                 src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png"
                 class="logo-kabupaten"
             >
 
-            <!-- JUDUL -->
+            <!-- TITLE -->
             <div class="title-area">
 
                 <h1>DATA KAPAL SIMPAN</h1>
@@ -467,16 +527,12 @@ Papa.parse(csvUrl, {
 
         const data = results.data;
 
-        console.log(data);
-
-        // CARI DATA BERDASARKAN ID SIMPAN
         const kapal = data.find(item =>
 
             item["ID SIMPAN"]?.trim() === kapalId?.trim()
 
         );
 
-        // JIKA DATA DITEMUKAN
         if(kapal){
 
             container.innerHTML = "";
@@ -494,7 +550,7 @@ Papa.parse(csvUrl, {
 
             }
 
-            // LOOP SEMUA DATA
+            // LOOP DATA
             for(const key in kapal){
 
                 // SEMBUNYIKAN KOLOM
@@ -510,15 +566,38 @@ Papa.parse(csvUrl, {
                     key.toUpperCase() === "FOTO"
                 ) continue;
 
-                // SKIP KOSONG
-                if(
-                    kapal[key] === ""
-                ) continue;
-
                 let valueContent = kapal[key];
 
-                // JIKA LINK
+                // JIKA KOSONG
                 if(
+                    !valueContent ||
+                    valueContent.trim() === ""
+                ){
+
+                    valueContent = "-";
+
+                }
+
+                // FOTO ALAT TANGKAP
+                if(
+
+                    key.toUpperCase().includes("FOTO ALAT TANGKAP")
+
+                ){
+
+                    valueContent = `
+
+                        <img 
+                            src="${kapal[key]}"
+                            class="foto"
+                        >
+
+                    `;
+
+                }
+
+                // LINK DOKUMEN
+                else if(
 
                     valueContent.startsWith("http://") ||
                     valueContent.startsWith("https://")
@@ -539,7 +618,7 @@ Papa.parse(csvUrl, {
 
                 }
 
-                // STATUS BADGE
+                // STATUS
                 if(
                     key.toUpperCase().includes("STATUS")
                 ){
