@@ -7,13 +7,13 @@
 
 <title>QR STIKER SIMPAN</title>
 
-<!-- QRCode -->
+<!-- QR CODE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<!-- PapaParse -->
+<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<!-- html2canvas -->
+<!-- HTML2CANVAS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
@@ -28,15 +28,15 @@ body{
 
     font-family:Arial, sans-serif;
 
-    background:#dbe7f2;
+    background:#dfe8f2;
 
     padding:20px;
 
 }
 
-/* ============================
-STIKER 8 x 13 CM PRESISI
-============================ */
+/* ===================================
+STIKER 8 x 13 cm
+=================================== */
 
 .print-area{
 
@@ -48,13 +48,13 @@ STIKER 8 x 13 CM PRESISI
 
     background:#ffffff;
 
-    border:4px solid #000;
+    border:5px solid #000;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.20);
 
 }
 
@@ -72,9 +72,9 @@ STIKER 8 x 13 CM PRESISI
 
     background-repeat:repeat;
 
-    background-size:190px;
+    background-size:200px;
 
-    opacity:0.018;
+    opacity:0.025;
 
     z-index:1;
 
@@ -87,69 +87,65 @@ STIKER 8 x 13 CM PRESISI
 
     z-index:2;
 
-    padding:20px 26px 14px;
+    padding:24px 30px 18px;
 
 }
 
-/* ============================
+/* ===================================
 HEADER
-============================ */
+=================================== */
 
 .header{
 
     text-align:center;
 
-    padding-bottom:10px;
-
-    margin-bottom:12px;
+    margin-bottom:18px;
 
 }
 
 /* LOGO BATENG */
 .logo{
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 
 }
 
 .logo img{
 
-    width:135px;
+    width:155px;
 
 }
 
 /* DINAS */
 .dinas{
 
-    font-size:32px;
-
-    line-height:1.15;
+    font-size:36px;
 
     font-weight:900;
 
+    line-height:1.15;
+
     color:#000;
 
-    letter-spacing:0.3px;
+    letter-spacing:0.4px;
 
 }
 
-/* ============================
+/* ===================================
 QR AREA
-============================ */
+=================================== */
 
 .qr-area{
-
-    padding:10px 0 12px;
-
-    margin-bottom:10px;
 
     display:flex;
 
     flex-direction:column;
 
+    align-items:center;
+
     justify-content:center;
 
-    align-items:center;
+    margin-bottom:10px;
 
 }
 
@@ -166,7 +162,7 @@ QR AREA
 
     justify-content:center;
 
-    background:white;
+    background:#fff;
 
 }
 
@@ -179,102 +175,112 @@ QR AREA
 
 }
 
-/* LOGO SIMPAN */
+/* ===================================
+LOGO SIMPAN
+=================================== */
+
 .logo-mini{
 
-    margin-top:12px;
+    margin-top:10px;
+
+    text-align:center;
 
 }
 
 .logo-mini img{
 
-    width:95px;
-
-    opacity:0.95;
+    width:200px;
 
 }
 
-/* ============================
+/* ===================================
 ID SIMPAN
-============================ */
+=================================== */
 
 .id{
 
     text-align:center;
 
-    font-size:42px;
+    font-size:52px;
 
     font-weight:900;
 
-    background:#003fa5;
+    background:
+    linear-gradient(
+        135deg,
+        #003b9f,
+        #0066ff
+    );
 
     color:white;
 
-    padding:10px 26px;
+    padding:14px 30px;
 
-    border-radius:14px;
+    border-radius:18px;
 
     display:table;
 
-    margin:8px auto 14px;
+    margin:18px auto 18px;
 
     letter-spacing:1px;
 
-    box-shadow:0 5px 14px rgba(0,59,143,0.22);
+    box-shadow:0 6px 18px rgba(0,60,160,0.25);
 
 }
 
-/* ============================
+/* ===================================
 INFO
-============================ */
+=================================== */
 
 .info{
 
     text-align:center;
 
-    font-size:22px;
+    font-size:28px;
 
-    line-height:1.35;
+    line-height:1.45;
 
-    margin-bottom:16px;
+    margin-bottom:18px;
 
     color:#111;
 
 }
 
-/* ============================
+/* ===================================
 SCAN
-============================ */
+=================================== */
 
 .scan{
 
     text-align:center;
 
-    font-size:28px;
+    font-size:30px;
 
     font-weight:900;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
+
+    color:#000;
 
 }
 
-/* ============================
+/* ===================================
 DATE
-============================ */
+=================================== */
 
 .date{
 
     text-align:center;
 
-    font-size:18px;
+    font-size:20px;
 
-    color:#333;
+    color:#222;
 
 }
 
-/* ============================
+/* ===================================
 FOOTER
-============================ */
+=================================== */
 
 .footer{
 
@@ -286,15 +292,15 @@ FOOTER
 
     width:100%;
 
-    height:4px;
+    height:5px;
 
     background:#000;
 
 }
 
-/* ============================
+/* ===================================
 BUTTON
-============================ */
+=================================== */
 
 .button-area{
 
@@ -312,22 +318,22 @@ BUTTON
 
     flex:1;
 
-    padding:16px;
+    padding:18px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:14px;
 
     background:
     linear-gradient(
         135deg,
-        #003b8f,
+        #0047b3,
         #0099ff
     );
 
     color:white;
 
-    font-size:17px;
+    font-size:20px;
 
     font-weight:bold;
 
@@ -335,7 +341,7 @@ BUTTON
 
     transition:0.25s;
 
-    box-shadow:0 4px 12px rgba(0,80,180,0.22);
+    box-shadow:0 5px 14px rgba(0,80,180,0.24);
 
 }
 
@@ -345,9 +351,9 @@ BUTTON
 
 }
 
-/* ============================
+/* ===================================
 RESPONSIVE
-============================ */
+=================================== */
 
 @media(max-width:850px){
 
@@ -391,9 +397,9 @@ RESPONSIVE
 
 }
 
-/* ============================
+/* ===================================
 PRINT
-============================ */
+=================================== */
 
 @media print{
 
@@ -417,7 +423,7 @@ PRINT
 
         height:13cm;
 
-        border:4px solid #000;
+        border:5px solid #000;
 
         box-shadow:none;
 
@@ -431,9 +437,9 @@ PRINT
 
 <body>
 
-<!-- ============================
+<!-- ===================================
 AREA CETAK
-============================ -->
+=================================== -->
 
 <div class="print-area" id="printArea">
 
@@ -442,7 +448,7 @@ AREA CETAK
         <!-- HEADER -->
         <div class="header">
 
-            <!-- LOGO -->
+            <!-- LOGO BATENG -->
             <div class="logo">
 
                 <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png">
@@ -511,9 +517,9 @@ AREA CETAK
 
 </div>
 
-<!-- ============================
+<!-- ===================================
 BUTTON
-============================ -->
+=================================== -->
 
 <div class="button-area">
 
@@ -533,24 +539,24 @@ BUTTON
 
 <script>
 
-/* ============================
+/* ===================================
 CSV GOOGLE SHEET
-============================ */
+=================================== */
 
 const csvUrl =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* ============================
+/* ===================================
 AMBIL PARAMETER URL
-============================ */
+=================================== */
 
 const params = new URLSearchParams(window.location.search);
 
 const kapalId = params.get("id");
 
-/* ============================
+/* ===================================
 TANGGAL CETAK
-============================ */
+=================================== */
 
 const now = new Date();
 
@@ -558,9 +564,9 @@ document.getElementById("tanggalCetak").innerHTML =
 "Tanggal Cetak : " +
 now.toLocaleDateString("id-ID");
 
-/* ============================
-LOAD CSV
-============================ */
+/* ===================================
+LOAD DATA
+=================================== */
 
 Papa.parse(csvUrl, {
 
@@ -582,7 +588,7 @@ Papa.parse(csvUrl, {
 
         if(kapal){
 
-            /* LINK VERIFIKASI */
+            /* LINK QR */
             const qrLink =
             "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
             kapal["ID SIMPAN"];
@@ -642,9 +648,9 @@ Papa.parse(csvUrl, {
 
 });
 
-/* ============================
+/* ===================================
 DOWNLOAD PNG
-============================ */
+=================================== */
 
 function downloadQR(){
 
