@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIMPAN - Data Kapal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f2f5f9;
+    padding:20px;
+}
+
+.card{
+
+    max-width:750px;
+    margin:auto;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+.header{
+
+    background:#0066cc;
+    color:white;
+    padding:30px;
+    text-align:center;
+
+}
+
+.header h1{
+    font-size:30px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.content{
+    padding:25px;
+}
+
+.item{
+
+    background:#f7f7f7;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+
+}
+
+.label{
+
+    color:#0066cc;
+    font-weight:bold;
+    margin-bottom:5px;
+    font-size:15px;
+
+}
+
+.value{
+
+    font-size:18px;
+    word-break:break-word;
+
+}
+
+.foto{
+
+    width:100%;
+    border-radius:15px;
+    margin-bottom:20px;
+    border:3px solid #ddd;
+
+}
+
+.loading{
+
+    text-align:center;
+    font-size:22px;
+    padding:50px;
+
+}
+
+.notfound{
+
+    text-align:center;
+    color:red;
+    font-size:24px;
+    padding:50px;
+
+}
+
+.footer{
+
+    text-align:center;
+    padding:20px;
+    color:#777;
+    font-size:13px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="header">
+
+        <h1>SIMPAN</h1>
+
+        <p>
+            Sistem Informasi Manajemen Pendataan Armada Nelayan
+        </p>
+
+    </div>
+
+    <div class="content" id="data">
+
+        <div class="loading">
+            Memuat data kapal...
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        Dinas Perikanan Kabupaten Bangka Tengah
+
+    </div>
+
+</div>
+
+<script>
+
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+
+const params = new URLSearchParams(window.location.search);
+
+const kapalId = params.get("id");
+
+const container = document.getElementById("data");
+
+fetch(csvUrl)
+
+.then(response => response.text())
+
+.then(csv => {
+
+    const lines = csv.trim().split("\n");
+
+    const headers = lines[0].split(",");
+
+    const data = lines.slice(1).map(line => {
+
+        const values = line.split(",");
+
+        let obj = {};
+
+        headers.forEach((header, index) => {
+
+            obj[header.trim()] = values[index]?.trim();
+
+        });
+
+        return obj;
+
+    });
+
+    // CARI DATA BERDASARKAN ID SIMPAN
+    const kapal = data.find(item => item["ID SIMPAN"] === kapalId);
+
+    if(kapal){
+
+        container.innerHTML = "";
+
+        // TAMPILKAN FOTO JIKA ADA
+        if(kapal["FOTO"]){
+
+            const foto = document.createElement("img");
+
+            foto.src = kapal["FOTO"];
+
+            foto.className = "foto";
+
+            container.appendChild(foto);
+
+        }
+
+        // TAMPILKAN SEMUA DATA
+        for(const key in kapal){
+
+            // SEMBUNYIKAN NIK
+            if(key === "NIK") continue;
+
+            // FOTO SUDAH DITAMPILKAN DI ATAS
+            if(key === "FOTO") continue;
+
+            const item = document.createElement("div");
+
+            item.className = "item";
+
+            item.innerHTML = `
+
+                <div class="label">
+                    ${key}
+                </div>
+
+                <div class="value">
+                    ${kapal[key]}
+                </div>
+
+            `;
+
+            container.appendChild(item);
+
+        }
+
+    }else{
+
+        container.innerHTML = `
+
+            <div class="notfound">
+
+                Data kapal tidak ditemukan
+
+            </div>
+
+        `;
+
+    }
+
+})
+
+.catch(error => {
+
+    container.innerHTML = `
+
+        <div class="notfound">
+
+            Gagal memuat data Spreadsheet
+
+        </div>
+
+    `;
+
+    console.log(error);
+
+});
+
+</script>
+
+</body>
+</html>
