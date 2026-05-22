@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>SIMPAN - Data Kapal</title>
+
+  <!-- AUTO REDIRECT -->
+  <meta http-equiv="refresh" content="2; url=https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?usp=sharing">
+
+  <!-- ICON -->
+  <link rel="icon" href="logo-simpan.png">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      overflow:hidden;
+      font-family:Arial, sans-serif;
+      color:white;
+      text-align:center;
+
+      background:
+      linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+      url('background_simpan.png');
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    .container{
+      padding:30px;
+      width:90%;
+      max-width:420px;
+      border-radius:25px;
+
+      background:rgba(255,255,255,0.08);
+
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+
+      border:1px solid rgba(255,255,255,.15);
+
+      box-shadow:
+      0 8px 32px rgba(0,0,0,.35);
+    }
+
+    .logo{
+      width:110px;
+      margin-bottom:15px;
+
+      animation:float 3s ease-in-out infinite;
+    }
+
+    .logo-daerah{
+      width:70px;
+      margin-bottom:15px;
+    }
+
+    h1{
+      font-size:30px;
+      margin-bottom:8px;
+      letter-spacing:1px;
+    }
+
+    .subtitle{
+      font-size:14px;
+      opacity:.9;
+      line-height:1.5;
+      margin-bottom:25px;
+    }
+
+    .loader{
+      width:55px;
+      height:55px;
+      margin:auto;
+
+      border-radius:50%;
+
+      border:5px solid rgba(255,255,255,.15);
+      border-top:5px solid #ffffff;
+
+      animation:spin 1s linear infinite;
+    }
+
+    .loading-text{
+      margin-top:18px;
+      font-size:14px;
+      opacity:.85;
+    }
+
+    .footer{
+      position:absolute;
+      bottom:18px;
+      font-size:12px;
+      opacity:.75;
+      width:100%;
+      text-align:center;
+      padding:0 10px;
+    }
+
+    @keyframes spin{
+      100%{
+        transform:rotate(360deg);
+      }
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    @media(max-width:480px){
+
+      h1{
+        font-size:24px;
+      }
+
+      .subtitle{
+        font-size:13px;
+      }
+
+      .container{
+        padding:25px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LOGO DAERAH -->
+    <img
+      src="logo-bateng.png"
+      class="logo-daerah"
+      alt="Logo Bangka Tengah"
+    >
+
+    <!-- LOGO SIMPAN -->
+    <img
+      src="logo-simpan.png"
+      class="logo"
+      alt="Logo SIMPAN"
+    >
+
+    <h1>SIMPAN</h1>
+
+    <div class="subtitle">
+      Sistem Informasi Manajemen Pendataan Armada Nelayan
+      <br>
+      Dinas Perikanan Kabupaten Bangka Tengah
+    </div>
+
+    <div class="loader"></div>
+
+    <div class="loading-text">
+      Membuka Data Kapal...
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 Dinas Perikanan Kabupaten Bangka Tengah
+  </div>
+
+  <script>
+
+    // AUTO OPEN SMARTPHONE & DESKTOP
+
+    setTimeout(function(){
+
+      window.location.href =
+      "https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?usp=sharing";
+
+    }, 2000);
+
+  </script>
+
+</body>
+</html>
