@@ -35,6 +35,79 @@ body{
 }
 
 /* ===================================
+SEARCH BOX
+=================================== */
+
+.search-box{
+
+    width:800px;
+
+    margin:0 auto 18px;
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    height:58px;
+
+    border:2px solid #0066cc;
+
+    border-radius:12px;
+
+    padding:0 18px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    outline:none;
+
+    background:white;
+
+}
+
+.search-box button{
+
+    width:220px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #003b9f,
+        #0099ff
+    );
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.25s;
+
+    box-shadow:0 4px 12px rgba(0,80,180,0.24);
+
+}
+
+.search-box button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===================================
 STIKER PRESISI 8 x 13 CM FINAL
 =================================== */
 
@@ -190,7 +263,7 @@ LOGO SIMPAN
 
 .logo-mini img{
 
-    width:125px;
+    width:145px;
 
 }
 
@@ -366,6 +439,20 @@ RESPONSIVE
 
     }
 
+    .search-box{
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+    .search-box button{
+
+        width:100%;
+
+    }
+
     .print-area{
 
         width:100%;
@@ -414,6 +501,7 @@ PRINT
 
     }
 
+    .search-box,
     .button-area{
 
         display:none;
@@ -439,6 +527,27 @@ PRINT
 </head>
 
 <body>
+
+<!-- ===================================
+SEARCH BOX
+=================================== -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Masukkan 4 digit ID belakang..."
+        maxlength="4"
+    >
+
+    <button onclick="cariQR()">
+
+        🔍 CARI QR
+
+    </button>
+
+</div>
 
 <!-- ===================================
 AREA CETAK
@@ -646,6 +755,80 @@ Papa.parse(csvUrl, {
             `;
 
         }
+
+    }
+
+});
+
+/* ===================================
+PENCARIAN QR
+=================================== */
+
+function cariQR(){
+
+    const input =
+    document.getElementById("searchInput")
+    .value
+    .trim();
+
+    if(input.length < 1){
+
+        alert("Masukkan nomor ID");
+
+        return;
+
+    }
+
+    Papa.parse(csvUrl, {
+
+        download:true,
+
+        header:true,
+
+        skipEmptyLines:true,
+
+        complete:function(results){
+
+            const data = results.data;
+
+            const kapal = data.find(item => {
+
+                const id =
+                item["ID SIMPAN"] || "";
+
+                return id.endsWith(input);
+
+            });
+
+            if(kapal){
+
+                window.location.href =
+                "qr.html?id=" +
+                kapal["ID SIMPAN"];
+
+            }else{
+
+                alert("Data tidak ditemukan");
+
+            }
+
+        }
+
+    });
+
+}
+
+/* ===================================
+ENTER SEARCH
+=================================== */
+
+document
+.getElementById("searchInput")
+.addEventListener("keypress", function(e){
+
+    if(e.key === "Enter"){
+
+        cariQR();
 
     }
 
