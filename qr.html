@@ -1,6 +1,3 @@
-# QR STIKER SIMPAN — HTML FULL FINAL
-
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -24,7 +21,7 @@
 
 body{
 
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
     background:#dfe8f2;
 
@@ -32,15 +29,15 @@ body{
 
 }
 
-/* ===============================
-SEARCH BOX
-=============================== */
+/* ===========================
+SEARCH
+=========================== */
 
 .search-box{
 
     width:820px;
 
-    margin:0 auto 20px;
+    margin:auto auto 18px;
 
     display:flex;
 
@@ -52,15 +49,15 @@ SEARCH BOX
 
     flex:1;
 
-    height:68px;
+    height:70px;
 
-    border:3px solid #1b57d2;
+    border:3px solid #0b63ff;
 
     border-radius:18px;
 
     padding:0 24px;
 
-    font-size:26px;
+    font-size:24px;
 
     font-weight:bold;
 
@@ -70,45 +67,51 @@ SEARCH BOX
 
 .search-box button{
 
-    width:240px;
+    width:230px;
 
     border:none;
 
     border-radius:18px;
 
-    background:linear-gradient(135deg,#003b9f,#008cff);
+    background:linear-gradient(
+        135deg,
+        #0042b5,
+        #008cff
+    );
 
     color:white;
 
     font-size:24px;
 
-    font-weight:bold;
+    font-weight:900;
 
     cursor:pointer;
 
-    box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    box-shadow:0 8px 20px rgba(0,0,0,0.18);
 
 }
 
-/* ===============================
+/* ===========================
 STIKER 8 x 13 CM
-=============================== */
+=========================== */
 
 .print-area{
 
-    width:820px;
+    width:800px;
 
-    height:1330px;
+    height:1300px;
 
     margin:auto;
 
-    background:white;
+    background:#ffffff;
 
     border:6px solid #000;
 
     position:relative;
 
     overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,0.22);
 
 }
 
@@ -122,15 +125,17 @@ STIKER 8 x 13 CM
 
     inset:0;
 
-    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+    background-image:url('logo-simpan.png');
 
     background-repeat:repeat;
 
-    background-size:210px;
+    background-size:180px;
 
-    opacity:0.025;
+    opacity:0.028;
 
 }
+
+/* CONTENT */
 
 .content{
 
@@ -138,7 +143,7 @@ STIKER 8 x 13 CM
 
     z-index:2;
 
-    padding:22px 34px 18px;
+    padding:18px 28px 16px;
 
 }
 
@@ -148,25 +153,25 @@ STIKER 8 x 13 CM
 
     text-align:center;
 
-    margin-bottom:8px;
-
 }
 
 .logo img{
 
-    width:130px;
+    width:118px;
 
 }
 
 .dinas{
 
-    margin-top:8px;
+    margin-top:6px;
 
-    font-size:34px;
+    font-size:28px;
 
-    line-height:1.08;
+    line-height:1.05;
 
     font-weight:900;
+
+    color:#000;
 
 }
 
@@ -174,17 +179,17 @@ STIKER 8 x 13 CM
 
 .qr-area{
 
-    text-align:center;
+    margin-top:6px;
 
-    margin-top:8px;
+    text-align:center;
 
 }
 
 .qr-box{
 
-    width:610px;
+    width:600px;
 
-    height:610px;
+    height:600px;
 
     margin:auto;
 
@@ -208,7 +213,7 @@ STIKER 8 x 13 CM
 
 .logo-mini{
 
-    margin-top:-2px;
+    margin-top:-10px;
 
     margin-bottom:4px;
 
@@ -228,23 +233,27 @@ STIKER 8 x 13 CM
 
     width:fit-content;
 
-    margin:2px auto 14px;
+    margin:4px auto 14px;
 
-    background:linear-gradient(135deg,#003fa8,#006dff);
+    background:linear-gradient(
+        135deg,
+        #0042b5,
+        #0078ff
+    );
 
     color:white;
 
-    padding:12px 34px;
+    padding:12px 32px;
 
     border-radius:16px;
 
-    font-size:52px;
+    font-size:50px;
 
     font-weight:900;
 
     letter-spacing:1px;
 
-    box-shadow:0 5px 14px rgba(0,0,0,0.18);
+    box-shadow:0 6px 18px rgba(0,0,0,0.16);
 
 }
 
@@ -252,15 +261,15 @@ STIKER 8 x 13 CM
 
 .info{
 
-    width:88%;
+    width:92%;
 
-    margin:0 auto;
+    margin:auto;
 
-    border-top:4px dotted #222;
+    border-top:3px dotted #111;
 
-    border-bottom:4px dotted #222;
+    border-bottom:3px dotted #111;
 
-    padding:14px 0;
+    padding:12px 0;
 
 }
 
@@ -270,9 +279,9 @@ STIKER 8 x 13 CM
 
     align-items:center;
 
-    gap:16px;
+    gap:14px;
 
-    font-size:28px;
+    font-size:24px;
 
     font-weight:900;
 
@@ -280,9 +289,23 @@ STIKER 8 x 13 CM
 
 }
 
+.icon{
+
+    width:40px;
+
+    text-align:center;
+
+}
+
 .label{
 
-    width:290px;
+    width:240px;
+
+}
+
+.value{
+
+    flex:1;
 
 }
 
@@ -292,9 +315,9 @@ STIKER 8 x 13 CM
 
     text-align:center;
 
-    margin-top:18px;
+    margin-top:16px;
 
-    font-size:30px;
+    font-size:28px;
 
     font-weight:900;
 
@@ -304,7 +327,7 @@ STIKER 8 x 13 CM
 
     text-align:center;
 
-    margin-top:10px;
+    margin-top:6px;
 
     font-size:18px;
 
@@ -314,7 +337,7 @@ STIKER 8 x 13 CM
 
 .button-area{
 
-    width:820px;
+    width:800px;
 
     margin:16px auto;
 
@@ -328,23 +351,29 @@ STIKER 8 x 13 CM
 
     flex:1;
 
+    height:62px;
+
     border:none;
 
     border-radius:14px;
 
-    height:62px;
-
-    background:linear-gradient(135deg,#0040a8,#0090ff);
+    background:linear-gradient(
+        135deg,
+        #0042b5,
+        #008cff
+    );
 
     color:white;
 
     font-size:24px;
 
-    font-weight:bold;
+    font-weight:900;
 
     cursor:pointer;
 
 }
+
+/* PRINT */
 
 @media print{
 
@@ -371,6 +400,8 @@ STIKER 8 x 13 CM
 
         box-shadow:none;
 
+        margin:0;
+
     }
 
 }
@@ -381,6 +412,7 @@ STIKER 8 x 13 CM
 <body>
 
 <!-- SEARCH -->
+
 <div class="search-box">
 
     <input
@@ -399,16 +431,18 @@ STIKER 8 x 13 CM
 </div>
 
 <!-- STIKER -->
+
 <div class="print-area" id="printArea">
 
     <div class="content">
 
         <!-- HEADER -->
+
         <div class="header">
 
             <div class="logo">
 
-                <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png">
+                <img src="logo-bateng.png">
 
             </div>
 
@@ -422,6 +456,7 @@ STIKER 8 x 13 CM
         </div>
 
         <!-- QR -->
+
         <div class="qr-area">
 
             <div class="qr-box">
@@ -432,13 +467,14 @@ STIKER 8 x 13 CM
 
             <div class="logo-mini">
 
-                <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png">
+                <img src="logo-simpan.png">
 
             </div>
 
         </div>
 
         <!-- ID -->
+
         <div class="id" id="idSimpan">
 
             MEMUAT...
@@ -446,38 +482,55 @@ STIKER 8 x 13 CM
         </div>
 
         <!-- INFO -->
+
         <div class="info">
 
             <div class="info-row">
 
-                👤
+                <div class="icon">👤</div>
 
-                <div class="label">NAMA PEMILIK</div>
+                <div class="label">
 
-                <div>: <span id="namaNelayan"></span></div>
+                    NAMA PEMILIK
+
+                </div>
+
+                <div class="value">
+
+                    : <span id="namaNelayan"></span>
+
+                </div>
 
             </div>
 
             <div class="info-row">
 
-                🚢
+                <div class="icon">🚢</div>
 
-                <div class="label">NAMA KAPAL</div>
+                <div class="label">
 
-                <div>: <span id="namaKapal"></span></div>
+                    NAMA KAPAL
+
+                </div>
+
+                <div class="value">
+
+                    : <span id="namaKapal"></span>
+
+                </div>
 
             </div>
 
         </div>
 
         <!-- SCAN -->
+
         <div class="scan">
 
             📱 SCAN UNTUK VERIFIKASI
 
         </div>
 
-        <!-- DATE -->
         <div class="date" id="tanggalCetak"></div>
 
     </div>
@@ -485,6 +538,7 @@ STIKER 8 x 13 CM
 </div>
 
 <!-- BUTTON -->
+
 <div class="button-area">
 
     <button class="btn" onclick="window.print()">
@@ -544,9 +598,9 @@ Papa.parse(csvUrl, {
 
                 text:qrLink,
 
-                width:590,
+                width:580,
 
-                height:590,
+                height:580,
 
                 colorDark:"#000000",
 
@@ -572,6 +626,7 @@ Papa.parse(csvUrl, {
 });
 
 /* SEARCH */
+
 function cariQR(){
 
     const input =
@@ -625,6 +680,7 @@ function cariQR(){
 }
 
 /* ENTER SEARCH */
+
 document
 .getElementById("searchInput")
 .addEventListener("keypress", function(e){
@@ -638,6 +694,7 @@ document
 });
 
 /* DOWNLOAD PNG */
+
 function downloadQR(){
 
     html2canvas(document.querySelector("#printArea"),{
@@ -662,4 +719,3 @@ function downloadQR(){
 
 </body>
 </html>
-```
