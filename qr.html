@@ -1,3 +1,6 @@
+# QR STIKER SIMPAN — HTML FULL FINAL
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,13 +10,8 @@
 
 <title>QR STIKER SIMPAN</title>
 
-<!-- QR CODE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-<!-- HTML2CANVAS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
@@ -34,19 +32,19 @@ body{
 
 }
 
-/* ===================================
+/* ===============================
 SEARCH BOX
-=================================== */
+=============================== */
 
 .search-box{
 
-    width:800px;
+    width:820px;
 
-    margin:0 auto 18px;
+    margin:0 auto 20px;
 
     display:flex;
 
-    gap:12px;
+    gap:14px;
 
 }
 
@@ -54,83 +52,68 @@ SEARCH BOX
 
     flex:1;
 
-    height:58px;
+    height:68px;
 
-    border:2px solid #0066cc;
+    border:3px solid #1b57d2;
 
-    border-radius:12px;
+    border-radius:18px;
 
-    padding:0 18px;
+    padding:0 24px;
 
-    font-size:22px;
+    font-size:26px;
 
     font-weight:bold;
 
     outline:none;
 
-    background:white;
-
 }
 
 .search-box button{
 
-    width:220px;
+    width:240px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:18px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #003b9f,
-        #0099ff
-    );
+    background:linear-gradient(135deg,#003b9f,#008cff);
 
     color:white;
 
-    font-size:20px;
+    font-size:24px;
 
     font-weight:bold;
 
     cursor:pointer;
 
-    transition:0.25s;
-
-    box-shadow:0 4px 12px rgba(0,80,180,0.24);
+    box-shadow:0 6px 18px rgba(0,0,0,0.18);
 
 }
 
-.search-box button:hover{
-
-    transform:translateY(-2px);
-
-}
-
-/* ===================================
-STIKER PRESISI 8 x 13 CM FINAL
-=================================== */
+/* ===============================
+STIKER 8 x 13 CM
+=============================== */
 
 .print-area{
 
-    width:800px;
-    height:1300px;
+    width:820px;
+
+    height:1330px;
 
     margin:auto;
 
-    background:#ffffff;
+    background:white;
 
-    border:5px solid #000;
+    border:6px solid #000;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.20);
-
 }
 
 /* WATERMARK */
+
 .print-area::before{
 
     content:"";
@@ -139,33 +122,27 @@ STIKER PRESISI 8 x 13 CM FINAL
 
     inset:0;
 
-    background-image:
-    url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
 
     background-repeat:repeat;
 
-    background-size:190px;
+    background-size:210px;
 
-    opacity:0.022;
-
-    z-index:1;
+    opacity:0.025;
 
 }
 
-/* CONTENT */
 .content{
 
     position:relative;
 
     z-index:2;
 
-    padding:16px 28px 10px;
+    padding:22px 34px 18px;
 
 }
 
-/* ===================================
-HEADER
-=================================== */
+/* HEADER */
 
 .header{
 
@@ -175,70 +152,50 @@ HEADER
 
 }
 
-/* LOGO BATENG */
-.logo{
-
-    margin-bottom:8px;
-
-}
-
 .logo img{
 
-    width:125px;
+    width:130px;
 
 }
 
-/* DINAS */
 .dinas{
 
-    font-size:31px;
+    margin-top:8px;
 
-    font-weight:900;
+    font-size:34px;
 
     line-height:1.08;
 
-    color:#000;
-
-    letter-spacing:0.2px;
-
-}
-
-/* ===================================
-QR AREA
-=================================== */
-
-.qr-area{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin-bottom:4px;
-
-}
-
-/* QR BOX */
-.qr-box{
-
-    width:590px;
-
-    height:590px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#fff;
+    font-weight:900;
 
 }
 
 /* QR */
+
+.qr-area{
+
+    text-align:center;
+
+    margin-top:8px;
+
+}
+
+.qr-box{
+
+    width:610px;
+
+    height:610px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
 #qrcode img{
 
     width:100% !important;
@@ -247,142 +204,119 @@ QR AREA
 
 }
 
-/* ===================================
-LOGO SIMPAN
-=================================== */
+/* LOGO SIMPAN */
 
 .logo-mini{
 
-    margin-top:4px;
+    margin-top:-2px;
 
-    margin-bottom:2px;
-
-    text-align:center;
+    margin-bottom:4px;
 
 }
 
 .logo-mini img{
 
-    width:145px;
+    width:165px;
 
 }
 
-/* ===================================
-ID SIMPAN
-=================================== */
+/* ID */
 
 .id{
 
     text-align:center;
 
-    font-size:42px;
+    width:fit-content;
 
-    font-weight:900;
+    margin:2px auto 14px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #003b9f,
-        #0066ff
-    );
+    background:linear-gradient(135deg,#003fa8,#006dff);
 
     color:white;
 
-    padding:10px 26px;
+    padding:12px 34px;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    display:table;
+    font-size:52px;
 
-    margin:6px auto 8px;
+    font-weight:900;
 
     letter-spacing:1px;
 
-    box-shadow:0 4px 12px rgba(0,60,160,0.22);
+    box-shadow:0 5px 14px rgba(0,0,0,0.18);
 
 }
 
-/* ===================================
-INFO
-=================================== */
+/* INFO */
 
 .info{
 
-    text-align:center;
+    width:88%;
 
-    font-size:20px;
+    margin:0 auto;
 
-    line-height:1.4;
+    border-top:4px dotted #222;
 
-    margin-bottom:10px;
+    border-bottom:4px dotted #222;
 
-    color:#111;
-
-    font-weight:600;
+    padding:14px 0;
 
 }
 
-/* ===================================
-SCAN
-=================================== */
+.info-row{
 
-.scan{
+    display:flex;
 
-    text-align:center;
+    align-items:center;
+
+    gap:16px;
 
     font-size:28px;
 
     font-weight:900;
 
-    margin-bottom:6px;
-
-    color:#000;
+    margin:8px 0;
 
 }
 
-/* ===================================
-DATE
-=================================== */
+.label{
+
+    width:290px;
+
+}
+
+/* SCAN */
+
+.scan{
+
+    text-align:center;
+
+    margin-top:18px;
+
+    font-size:30px;
+
+    font-weight:900;
+
+}
 
 .date{
 
     text-align:center;
 
+    margin-top:10px;
+
     font-size:18px;
 
-    color:#222;
-
 }
 
-/* ===================================
-FOOTER
-=================================== */
-
-.footer{
-
-    position:absolute;
-
-    bottom:0;
-
-    left:0;
-
-    width:100%;
-
-    height:5px;
-
-    background:#000;
-
-}
-
-/* ===================================
-BUTTON
-=================================== */
+/* BUTTON */
 
 .button-area{
 
-    width:800px;
+    width:820px;
 
-    margin:18px auto;
+    margin:16px auto;
 
     display:flex;
 
@@ -394,102 +328,23 @@ BUTTON
 
     flex:1;
 
-    padding:16px;
-
     border:none;
 
-    border-radius:12px;
+    border-radius:14px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #003b8f,
-        #0099ff
-    );
+    height:62px;
+
+    background:linear-gradient(135deg,#0040a8,#0090ff);
 
     color:white;
 
-    font-size:18px;
+    font-size:24px;
 
     font-weight:bold;
 
     cursor:pointer;
 
-    transition:0.25s;
-
-    box-shadow:0 5px 14px rgba(0,80,180,0.24);
-
 }
-
-.btn:hover{
-
-    transform:translateY(-2px);
-
-}
-
-/* ===================================
-RESPONSIVE
-=================================== */
-
-@media(max-width:850px){
-
-    body{
-
-        padding:10px;
-
-    }
-
-    .search-box{
-
-        width:100%;
-
-        flex-direction:column;
-
-    }
-
-    .search-box button{
-
-        width:100%;
-
-    }
-
-    .print-area{
-
-        width:100%;
-
-        height:auto;
-
-    }
-
-    .button-area{
-
-        width:100%;
-
-        flex-direction:column;
-
-    }
-
-    .qr-box{
-
-        width:100%;
-
-        height:auto;
-
-    }
-
-    #qrcode img{
-
-        width:100% !important;
-
-        height:auto !important;
-
-    }
-
-}
-
-/* ===================================
-PRINT
-=================================== */
 
 @media print{
 
@@ -514,8 +369,6 @@ PRINT
 
         height:13cm;
 
-        border:5px solid #000;
-
         box-shadow:none;
 
     }
@@ -525,13 +378,9 @@ PRINT
 </style>
 
 </head>
-
 <body>
 
-<!-- ===================================
-SEARCH BOX
-=================================== -->
-
+<!-- SEARCH -->
 <div class="search-box">
 
     <input
@@ -549,10 +398,7 @@ SEARCH BOX
 
 </div>
 
-<!-- ===================================
-AREA CETAK
-=================================== -->
-
+<!-- STIKER -->
 <div class="print-area" id="printArea">
 
     <div class="content">
@@ -560,14 +406,12 @@ AREA CETAK
         <!-- HEADER -->
         <div class="header">
 
-            <!-- LOGO BATENG -->
             <div class="logo">
 
                 <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png">
 
             </div>
 
-            <!-- DINAS -->
             <div class="dinas">
 
                 DINAS PERIKANAN<br>
@@ -577,17 +421,15 @@ AREA CETAK
 
         </div>
 
-        <!-- QR AREA -->
+        <!-- QR -->
         <div class="qr-area">
 
-            <!-- QR -->
             <div class="qr-box">
 
                 <div id="qrcode"></div>
 
             </div>
 
-            <!-- LOGO SIMPAN -->
             <div class="logo-mini">
 
                 <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png">
@@ -606,9 +448,25 @@ AREA CETAK
         <!-- INFO -->
         <div class="info">
 
-            <div id="namaNelayan"></div>
+            <div class="info-row">
 
-            <div id="namaKapal"></div>
+                👤
+
+                <div class="label">NAMA PEMILIK</div>
+
+                <div>: <span id="namaNelayan"></span></div>
+
+            </div>
+
+            <div class="info-row">
+
+                🚢
+
+                <div class="label">NAMA KAPAL</div>
+
+                <div>: <span id="namaKapal"></span></div>
+
+            </div>
 
         </div>
 
@@ -624,15 +482,9 @@ AREA CETAK
 
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer"></div>
-
 </div>
 
-<!-- ===================================
-BUTTON
-=================================== -->
-
+<!-- BUTTON -->
 <div class="button-area">
 
     <button class="btn" onclick="window.print()">
@@ -643,7 +495,7 @@ BUTTON
 
     <button class="btn" onclick="downloadQR()">
 
-        📥 DOWNLOAD PNG
+        ⬇ DOWNLOAD PNG
 
     </button>
 
@@ -651,34 +503,18 @@ BUTTON
 
 <script>
 
-/* ===================================
-CSV GOOGLE SHEET
-=================================== */
-
 const csvUrl =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
-
-/* ===================================
-AMBIL PARAMETER URL
-=================================== */
 
 const params = new URLSearchParams(window.location.search);
 
 const kapalId = params.get("id");
-
-/* ===================================
-TANGGAL CETAK
-=================================== */
 
 const now = new Date();
 
 document.getElementById("tanggalCetak").innerHTML =
 "Tanggal Cetak : " +
 now.toLocaleDateString("id-ID");
-
-/* ===================================
-LOAD DATA
-=================================== */
 
 Papa.parse(csvUrl, {
 
@@ -700,19 +536,17 @@ Papa.parse(csvUrl, {
 
         if(kapal){
 
-            /* LINK QR */
             const qrLink =
             "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
             kapal["ID SIMPAN"];
 
-            /* GENERATE QR */
             new QRCode(document.getElementById("qrcode"), {
 
                 text:qrLink,
 
-                width:570,
+                width:590,
 
-                height:570,
+                height:590,
 
                 colorDark:"#000000",
 
@@ -722,37 +556,14 @@ Papa.parse(csvUrl, {
 
             });
 
-            /* ID */
             document.getElementById("idSimpan").innerHTML =
             kapal["ID SIMPAN"];
 
-            /* NAMA */
             document.getElementById("namaNelayan").innerHTML =
-            "NAMA : " +
-            (kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-");
+            kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-";
 
-            /* KAPAL */
             document.getElementById("namaKapal").innerHTML =
-            "KAPAL : " +
-            (kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-");
-
-        }else{
-
-            document.body.innerHTML = `
-
-            <div style="
-                text-align:center;
-                padding:100px;
-                font-size:40px;
-                font-weight:bold;
-                color:red;
-            ">
-
-                DATA TIDAK DITEMUKAN
-
-            </div>
-
-            `;
+            kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-";
 
         }
 
@@ -760,10 +571,7 @@ Papa.parse(csvUrl, {
 
 });
 
-/* ===================================
-PENCARIAN QR
-=================================== */
-
+/* SEARCH */
 function cariQR(){
 
     const input =
@@ -793,8 +601,7 @@ function cariQR(){
 
             const kapal = data.find(item => {
 
-                const id =
-                item["ID SIMPAN"] || "";
+                const id = item["ID SIMPAN"] || "";
 
                 return id.endsWith(input);
 
@@ -803,8 +610,7 @@ function cariQR(){
             if(kapal){
 
                 window.location.href =
-                "qr.html?id=" +
-                kapal["ID SIMPAN"];
+                "qr.html?id=" + kapal["ID SIMPAN"];
 
             }else{
 
@@ -818,10 +624,7 @@ function cariQR(){
 
 }
 
-/* ===================================
-ENTER SEARCH
-=================================== */
-
+/* ENTER SEARCH */
 document
 .getElementById("searchInput")
 .addEventListener("keypress", function(e){
@@ -834,10 +637,7 @@ document
 
 });
 
-/* ===================================
-DOWNLOAD PNG
-=================================== */
-
+/* DOWNLOAD PNG */
 function downloadQR(){
 
     html2canvas(document.querySelector("#printArea"),{
@@ -862,3 +662,4 @@ function downloadQR(){
 
 </body>
 </html>
+```
