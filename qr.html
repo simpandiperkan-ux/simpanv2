@@ -48,13 +48,13 @@ UKURAN STIKER 8 x 13 cm
 
     background:#ffffff;
 
-    border:5px solid #000;
+    border:3px solid #000;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    box-shadow:0 8px 25px rgba(0,0,0,0.18);
 
 }
 
@@ -74,7 +74,7 @@ UKURAN STIKER 8 x 13 cm
 
     background-size:200px;
 
-    opacity:0.035;
+    opacity:0.02;
 
     z-index:1;
 
@@ -87,7 +87,7 @@ UKURAN STIKER 8 x 13 cm
 
     z-index:2;
 
-    padding:20px 25px 25px;
+    padding:20px 25px 15px;
 
 }
 
@@ -96,6 +96,10 @@ UKURAN STIKER 8 x 13 cm
 
     text-align:center;
 
+    border-bottom:4px solid #0056b3;
+
+    padding-bottom:20px;
+
     margin-bottom:20px;
 
 }
@@ -103,13 +107,13 @@ UKURAN STIKER 8 x 13 cm
 /* LOGO */
 .logo{
 
-    margin-bottom:15px;
+    margin-bottom:12px;
 
 }
 
 .logo img{
 
-    width:155px;
+    width:165px;
 
 }
 
@@ -118,34 +122,45 @@ UKURAN STIKER 8 x 13 cm
 
     text-align:center;
 
-    font-size:36px;
+    font-size:40px;
 
     font-weight:900;
 
-    line-height:1.2;
-
-    margin-bottom:20px;
+    line-height:1.15;
 
     letter-spacing:0.5px;
 
+    color:#000;
+
 }
 
-/* QR */
+/* QR AREA */
 .qr-area{
+
+    border-top:2px solid #d9d9d9;
+
+    border-bottom:2px solid #d9d9d9;
+
+    padding:25px 0;
 
     display:flex;
 
+    flex-direction:column;
+
     justify-content:center;
 
-    margin-bottom:25px;
+    align-items:center;
+
+    margin-bottom:20px;
 
 }
 
+/* QR BOX */
 .qr-box{
 
-    width:580px;
+    width:640px;
 
-    height:580px;
+    height:640px;
 
     background:white;
 
@@ -157,7 +172,7 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
-/* QR IMAGE */
+/* QR */
 #qrcode img{
 
     width:100% !important;
@@ -166,18 +181,47 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
+/* LOGO MINI */
+.logo-mini{
+
+    text-align:center;
+
+    margin-top:18px;
+
+}
+
+.logo-mini img{
+
+    width:90px;
+
+    opacity:0.92;
+
+}
+
 /* ID */
 .id{
 
     text-align:center;
 
-    font-size:56px;
+    font-size:52px;
 
     font-weight:900;
 
-    margin-bottom:10px;
+    margin:20px auto;
 
     letter-spacing:1px;
+
+    background:#003b8f;
+
+    color:white;
+
+    padding:12px 28px;
+
+    border-radius:18px;
+
+    display:table;
+
+    box-shadow:0 5px 15px rgba(0,59,143,0.25);
 
 }
 
@@ -188,9 +232,11 @@ UKURAN STIKER 8 x 13 cm
 
     font-size:30px;
 
-    line-height:1.35;
+    line-height:1.4;
 
-    margin-bottom:30px;
+    margin-bottom:28px;
+
+    color:#111;
 
 }
 
@@ -207,6 +253,8 @@ UKURAN STIKER 8 x 13 cm
 
     letter-spacing:0.5px;
 
+    color:#000;
+
 }
 
 /* DATE */
@@ -216,7 +264,7 @@ UKURAN STIKER 8 x 13 cm
 
     font-size:22px;
 
-    margin-bottom:10px;
+    color:#333;
 
 }
 
@@ -231,13 +279,13 @@ UKURAN STIKER 8 x 13 cm
 
     width:100%;
 
-    height:18px;
+    height:4px;
 
     background:#000;
 
 }
 
-/* BUTTON */
+/* BUTTON AREA */
 .button-area{
 
     width:800px;
@@ -250,6 +298,7 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
+/* BUTTON */
 .btn{
 
     flex:1;
@@ -258,7 +307,7 @@ UKURAN STIKER 8 x 13 cm
 
     border:none;
 
-    border-radius:12px;
+    border-radius:14px;
 
     background:
     linear-gradient(
@@ -277,42 +326,13 @@ UKURAN STIKER 8 x 13 cm
 
     transition:0.3s;
 
+    box-shadow:0 5px 15px rgba(0,80,180,0.25);
+
 }
 
 .btn:hover{
 
     transform:translateY(-2px);
-
-}
-
-/* PRINT */
-@media print{
-
-    body{
-
-        background:white;
-
-        padding:0;
-
-    }
-
-    .button-area{
-
-        display:none;
-
-    }
-
-    .print-area{
-
-        width:8cm;
-
-        height:13cm;
-
-        border:2px solid #000;
-
-        box-shadow:none;
-
-    }
 
 }
 
@@ -343,7 +363,7 @@ UKURAN STIKER 8 x 13 cm
 
     .dinas{
 
-        font-size:24px;
+        font-size:26px;
 
     }
 
@@ -383,6 +403,37 @@ UKURAN STIKER 8 x 13 cm
 
 }
 
+/* PRINT */
+@media print{
+
+    body{
+
+        background:white;
+
+        padding:0;
+
+    }
+
+    .button-area{
+
+        display:none;
+
+    }
+
+    .print-area{
+
+        width:8cm;
+
+        height:13cm;
+
+        border:2px solid #000;
+
+        box-shadow:none;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -414,12 +465,20 @@ UKURAN STIKER 8 x 13 cm
 
         </div>
 
-        <!-- QR -->
+        <!-- QR AREA -->
         <div class="qr-area">
 
+            <!-- QR -->
             <div class="qr-box">
 
                 <div id="qrcode"></div>
+
+            </div>
+
+            <!-- LOGO MINI -->
+            <div class="logo-mini">
+
+                <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png">
 
             </div>
 
@@ -444,7 +503,7 @@ UKURAN STIKER 8 x 13 cm
         <!-- SCAN -->
         <div class="scan">
 
-            SCAN UNTUK VERIFIKASI
+            📱 SCAN UNTUK VERIFIKASI
 
         </div>
 
@@ -522,9 +581,9 @@ Papa.parse(csvUrl, {
 
                 text:qrLink,
 
-                width:560,
+                width:620,
 
-                height:560,
+                height:620,
 
                 colorDark:"#000000",
 
