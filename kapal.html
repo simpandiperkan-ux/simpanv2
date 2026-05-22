@@ -7,6 +7,7 @@
 
 <title>SIMPAN - Data Kapal</title>
 
+<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
@@ -25,7 +26,7 @@ body{
 
 .card{
 
-    max-width:800px;
+    max-width:850px;
     margin:auto;
     background:white;
     border-radius:20px;
@@ -38,45 +39,52 @@ body{
 
     background:#0066cc;
     color:white;
-    padding:30px;
+    padding:35px;
     text-align:center;
 
 }
 
 .header h1{
-    font-size:32px;
+
+    font-size:34px;
     margin-bottom:5px;
+
 }
 
 .header p{
+
     font-size:15px;
+
 }
 
 .content{
+
     padding:25px;
+
 }
 
 .item{
 
     background:#f7f7f7;
-    border-radius:12px;
-    padding:15px;
+    border-radius:15px;
+    padding:18px;
     margin-bottom:15px;
 
 }
 
 .label{
 
-    font-weight:bold;
     color:#0066cc;
-    margin-bottom:5px;
-    font-size:14px;
+    font-weight:bold;
+    margin-bottom:8px;
+    font-size:15px;
+    text-transform:uppercase;
 
 }
 
 .value{
 
-    font-size:18px;
+    font-size:20px;
     word-break:break-word;
 
 }
@@ -86,7 +94,7 @@ body{
     width:100%;
     border-radius:15px;
     margin-bottom:20px;
-    border:3px solid #ddd;
+    border:4px solid #ddd;
 
 }
 
@@ -113,6 +121,25 @@ body{
     padding:20px;
     font-size:13px;
     color:#777;
+
+}
+
+.btn-link{
+
+    display:inline-block;
+    padding:12px 18px;
+    background:#0066cc;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:bold;
+
+}
+
+.btn-link:hover{
+
+    background:#004999;
 
 }
 
@@ -170,21 +197,23 @@ Papa.parse(csvUrl, {
 
     complete: function(results) {
 
-        console.log(results.data);
-
         const data = results.data;
 
+        console.log(data);
+
+        // CARI DATA BERDASARKAN ID SIMPAN
         const kapal = data.find(item =>
 
             item["ID SIMPAN"]?.trim() === kapalId?.trim()
 
         );
 
+        // JIKA DATA DITEMUKAN
         if(kapal){
 
             container.innerHTML = "";
 
-            // FOTO
+            // FOTO KAPAL
             if(kapal["FOTO"]){
 
                 const foto = document.createElement("img");
@@ -197,17 +226,52 @@ Papa.parse(csvUrl, {
 
             }
 
-            // TAMPILKAN DATA
+            // TAMPILKAN SEMUA DATA
             for(const key in kapal){
 
                 // SEMBUNYIKAN NIK
-                if(key.toUpperCase() === "NIK") continue;
+                if(
+                    key.toUpperCase().includes("NIK")
+                ) continue;
+
+                // SEMBUNYIKAN TIMESTAMP
+                if(
+                    key.toUpperCase().includes("TIMESTAMP")
+                ) continue;
 
                 // FOTO SUDAH DITAMPILKAN
-                if(key.toUpperCase() === "FOTO") continue;
+                if(
+                    key.toUpperCase() === "FOTO"
+                ) continue;
 
                 // SKIP DATA KOSONG
-                if(kapal[key] === "") continue;
+                if(
+                    kapal[key] === ""
+                ) continue;
+
+                let valueContent = kapal[key];
+
+                // JIKA ISI ADALAH LINK
+                if(
+
+                    valueContent.startsWith("http://") ||
+                    valueContent.startsWith("https://")
+
+                ){
+
+                    valueContent = `
+
+                        <a 
+                            href="${kapal[key]}"
+                            target="_blank"
+                            class="btn-link"
+                        >
+                            Buka Dokumen
+                        </a>
+
+                    `;
+
+                }
 
                 const item = document.createElement("div");
 
@@ -220,7 +284,7 @@ Papa.parse(csvUrl, {
                     </div>
 
                     <div class="value">
-                        ${kapal[key]}
+                        ${valueContent}
                     </div>
 
                 `;
