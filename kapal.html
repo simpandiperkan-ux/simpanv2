@@ -525,7 +525,7 @@ const kapalId = params.get("id");
 
 const container = document.getElementById("data");
 
-// CONVERT GOOGLE DRIVE IMAGE
+/* CONVERT GOOGLE DRIVE IMAGE */
 function convertDriveImage(url){
 
     if(!url) return url;
@@ -568,7 +568,7 @@ Papa.parse(csvUrl, {
 
             container.innerHTML = "";
 
-            // LOOP DATA
+            // LOOP SEMUA DATA
             for(const key in kapal){
 
                 // SEMBUNYIKAN KOLOM
@@ -593,10 +593,11 @@ Papa.parse(csvUrl, {
 
                 }
 
-                // SEMUA FOTO
+                // SEMUA FOTO + KARTU KUSUKA
                 if(
 
-                    key.toUpperCase().includes("FOTO")
+                    key.toUpperCase().includes("FOTO") ||
+                    key.toUpperCase().includes("KARTU KUSUKA")
 
                 ){
 
