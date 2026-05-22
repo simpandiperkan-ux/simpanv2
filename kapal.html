@@ -28,7 +28,7 @@ body{
             rgba(0,35,90,0.75),
             rgba(0,20,50,0.82)
         ),
-        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b');
+        url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21');
 
     background-size:cover;
 
@@ -525,6 +525,27 @@ const kapalId = params.get("id");
 
 const container = document.getElementById("data");
 
+// CONVERT GOOGLE DRIVE IMAGE
+function convertDriveImage(url){
+
+    if(!url) return url;
+
+    if(url.includes("drive.google.com")){
+
+        const match = url.match(/[-\w]{25,}/);
+
+        if(match){
+
+            return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
+
+        }
+
+    }
+
+    return url;
+
+}
+
 Papa.parse(csvUrl, {
 
     download:true,
@@ -547,33 +568,6 @@ Papa.parse(csvUrl, {
 
             container.innerHTML = "";
 
-            // FOTO UTAMA
-            if(kapal["FOTO"]){
-
-                let fotoUrl = kapal["FOTO"];
-
-                if(fotoUrl.includes("drive.google.com")){
-
-                    const match = fotoUrl.match(/[-\w]{25,}/);
-
-                    if(match){
-
-                        fotoUrl = `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
-
-                    }
-
-                }
-
-                const foto = document.createElement("img");
-
-                foto.src = fotoUrl;
-
-                foto.className = "foto";
-
-                container.appendChild(foto);
-
-            }
-
             // LOOP DATA
             for(const key in kapal){
 
@@ -585,11 +579,6 @@ Papa.parse(csvUrl, {
                     key.toUpperCase() === "LINK HALAMAN KAPAL" ||
                     key.toUpperCase() === "LINK QR"
 
-                ) continue;
-
-                // FOTO UTAMA SUDAH DI ATAS
-                if(
-                    key.toUpperCase() === "FOTO"
                 ) continue;
 
                 let valueContent = kapal[key];
@@ -604,29 +593,16 @@ Papa.parse(csvUrl, {
 
                 }
 
-                // FOTO ALAT TANGKAP
+                // SEMUA FOTO
                 if(
 
-                    key.toUpperCase().includes("FOTO ALAT TANGKAP")
+                    key.toUpperCase().includes("FOTO")
 
                 ){
 
                     if(valueContent !== "-"){
 
-                        let imageUrl = kapal[key];
-
-                        // GOOGLE DRIVE CONVERTER
-                        if(imageUrl.includes("drive.google.com")){
-
-                            const match = imageUrl.match(/[-\w]{25,}/);
-
-                            if(match){
-
-                                imageUrl = `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
-
-                            }
-
-                        }
+                        const imageUrl = convertDriveImage(kapal[key]);
 
                         valueContent = `
 
