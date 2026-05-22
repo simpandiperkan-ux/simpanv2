@@ -19,41 +19,86 @@
 }
 
 body{
+
     font-family:Arial, sans-serif;
-    background:#f1f5f9;
+
+    background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
     padding:20px;
+
+    position:relative;
+
+}
+
+/* OVERLAY GELAP */
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.45);
+
+    z-index:-1;
+
 }
 
 .card{
 
     max-width:850px;
     margin:auto;
-    background:white;
-    border-radius:20px;
+
+    background:rgba(255,255,255,0.92);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:25px;
+
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
 
 }
 
 .header{
 
-    background:#0066cc;
+    background:linear-gradient(135deg,#0066cc,#0099ff);
+
     color:white;
+
     padding:35px;
+
     text-align:center;
 
 }
 
 .header h1{
 
-    font-size:34px;
-    margin-bottom:5px;
+    font-size:38px;
+
+    margin-bottom:8px;
+
+    letter-spacing:2px;
 
 }
 
 .header p{
 
     font-size:15px;
+
+    opacity:0.95;
 
 }
 
@@ -65,19 +110,36 @@ body{
 
 .item{
 
-    background:#f7f7f7;
-    border-radius:15px;
+    background:white;
+
+    border-radius:18px;
+
     padding:18px;
+
     margin-bottom:15px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+
+    transition:0.3s;
+
+}
+
+.item:hover{
+
+    transform:translateY(-2px);
 
 }
 
 .label{
 
     color:#0066cc;
+
     font-weight:bold;
+
     margin-bottom:8px;
-    font-size:15px;
+
+    font-size:14px;
+
     text-transform:uppercase;
 
 }
@@ -85,61 +147,110 @@ body{
 .value{
 
     font-size:20px;
+
     word-break:break-word;
+
+    color:#222;
 
 }
 
 .foto{
 
     width:100%;
-    border-radius:15px;
+
+    border-radius:20px;
+
     margin-bottom:20px;
-    border:4px solid #ddd;
+
+    border:5px solid white;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
 
 }
 
 .loading{
 
     text-align:center;
-    font-size:22px;
-    padding:50px;
+
+    font-size:24px;
+
+    padding:60px;
+
+    color:#0066cc;
 
 }
 
 .notfound{
 
     text-align:center;
+
     color:red;
+
     font-size:24px;
-    padding:50px;
+
+    padding:60px;
 
 }
 
 .footer{
 
     text-align:center;
+
     padding:20px;
+
     font-size:13px;
-    color:#777;
+
+    color:#555;
 
 }
 
 .btn-link{
 
     display:inline-block;
-    padding:12px 18px;
-    background:#0066cc;
+
+    padding:12px 20px;
+
+    background:linear-gradient(135deg,#0066cc,#0099ff);
+
     color:white;
+
     text-decoration:none;
-    border-radius:10px;
+
+    border-radius:12px;
+
     font-size:15px;
+
     font-weight:bold;
+
+    transition:0.3s;
 
 }
 
 .btn-link:hover{
 
-    background:#004999;
+    transform:scale(1.05);
+
+    box-shadow:0 5px 15px rgba(0,102,204,0.3);
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    background:#00aa55;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-top:10px;
 
 }
 
@@ -159,6 +270,10 @@ body{
             Sistem Informasi Manajemen Pendataan Armada Nelayan
         </p>
 
+        <div class="badge">
+            DATA TERVERIFIKASI
+        </div>
+
     </div>
 
     <div class="content" id="data">
@@ -171,7 +286,7 @@ body{
 
     <div class="footer">
 
-        Dinas Perikanan Kabupaten Bangka Tengah
+        © Dinas Perikanan Kabupaten Bangka Tengah
 
     </div>
 
@@ -189,13 +304,13 @@ const container = document.getElementById("data");
 
 Papa.parse(csvUrl, {
 
-    download: true,
+    download:true,
 
-    header: true,
+    header:true,
 
-    skipEmptyLines: true,
+    skipEmptyLines:true,
 
-    complete: function(results) {
+    complete:function(results){
 
         const data = results.data;
 
@@ -226,7 +341,7 @@ Papa.parse(csvUrl, {
 
             }
 
-            // TAMPILKAN SEMUA DATA
+            // LOOP DATA
             for(const key in kapal){
 
                 // SEMBUNYIKAN NIK
@@ -234,24 +349,19 @@ Papa.parse(csvUrl, {
                     key.toUpperCase().includes("NIK")
                 ) continue;
 
-                // SEMBUNYIKAN TIMESTAMP
-                if(
-                    key.toUpperCase().includes("TIMESTAMP")
-                ) continue;
-
-                // FOTO SUDAH DITAMPILKAN
+                // FOTO SUDAH DI ATAS
                 if(
                     key.toUpperCase() === "FOTO"
                 ) continue;
 
-                // SKIP DATA KOSONG
+                // SKIP KOSONG
                 if(
                     kapal[key] === ""
                 ) continue;
 
                 let valueContent = kapal[key];
 
-                // JIKA ISI ADALAH LINK
+                // CEK LINK
                 if(
 
                     valueContent.startsWith("http://") ||
@@ -268,6 +378,23 @@ Papa.parse(csvUrl, {
                         >
                             Buka Dokumen
                         </a>
+
+                    `;
+
+                }
+
+                // STATUS KAPAL
+                if(
+                    key.toUpperCase().includes("STATUS")
+                ){
+
+                    valueContent = `
+
+                        <div class="badge">
+
+                            ${kapal[key]}
+
+                        </div>
 
                     `;
 
@@ -309,7 +436,7 @@ Papa.parse(csvUrl, {
 
     },
 
-    error: function(error){
+    error:function(error){
 
         console.log(error);
 
