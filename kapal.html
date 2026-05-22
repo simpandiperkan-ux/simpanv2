@@ -22,11 +22,14 @@ body{
 
     font-family:Arial, sans-serif;
 
-    background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    /* BACKGROUND KAPAL DI DERMAGA */
+    background-image:url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13');
 
     background-size:cover;
 
     background-position:center;
+
+    background-repeat:no-repeat;
 
     background-attachment:fixed;
 
@@ -36,7 +39,7 @@ body{
 
 }
 
-/* OVERLAY */
+/* OVERLAY GELAP */
 body::before{
 
     content:"";
@@ -49,7 +52,7 @@ body::before{
     width:100%;
     height:100%;
 
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.5);
 
     z-index:-1;
 
@@ -58,19 +61,19 @@ body::before{
 /* CARD */
 .card{
 
-    max-width:900px;
+    max-width:950px;
 
     margin:auto;
 
-    background:rgba(255,255,255,0.95);
+    background:rgba(255,255,255,0.96);
 
     backdrop-filter:blur(10px);
 
-    border-radius:25px;
+    border-radius:30px;
 
     overflow:hidden;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
 
 }
 
@@ -79,7 +82,7 @@ body::before{
 
     background:white;
 
-    padding:30px;
+    padding:35px;
 
     position:relative;
 
@@ -140,19 +143,21 @@ body::before{
 
 .title-area h1{
 
-    font-size:42px;
+    font-size:46px;
 
     color:#001b4d;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
     font-weight:bold;
+
+    letter-spacing:1px;
 
 }
 
 .title-area p{
 
-    font-size:18px;
+    font-size:19px;
 
     color:#334;
 
@@ -161,20 +166,35 @@ body::before{
 /* LOGO */
 .logo-kabupaten{
 
-    width:90px;
+    width:95px;
 
 }
 
 .logo-simpan{
 
-    width:120px;
+    width:130px;
 
 }
 
 /* CONTENT */
 .content{
 
-    padding:25px;
+    padding:30px;
+
+}
+
+/* FOTO */
+.foto{
+
+    width:100%;
+
+    border-radius:25px;
+
+    margin-bottom:25px;
+
+    border:5px solid white;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
 
 }
 
@@ -183,13 +203,13 @@ body::before{
 
     background:white;
 
-    border-radius:18px;
+    border-radius:20px;
 
-    padding:18px;
+    padding:20px;
 
-    margin-bottom:15px;
+    margin-bottom:18px;
 
-    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+    box-shadow:0 4px 12px rgba(0,0,0,0.07);
 
     transition:0.3s;
 
@@ -208,9 +228,9 @@ body::before{
 
     font-weight:bold;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
-    font-size:14px;
+    font-size:15px;
 
     text-transform:uppercase;
 
@@ -219,26 +239,13 @@ body::before{
 /* VALUE */
 .value{
 
-    font-size:20px;
+    font-size:21px;
 
     color:#222;
 
     word-break:break-word;
 
-}
-
-/* FOTO */
-.foto{
-
-    width:100%;
-
-    border-radius:20px;
-
-    margin-bottom:20px;
-
-    border:5px solid white;
-
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    line-height:1.5;
 
 }
 
@@ -247,15 +254,15 @@ body::before{
 
     display:inline-block;
 
-    padding:12px 20px;
+    padding:12px 22px;
 
-    background:linear-gradient(135deg,#0066cc,#0099ff);
+    background:linear-gradient(135deg,#0066cc,#00a2ff);
 
     color:white;
 
     text-decoration:none;
 
-    border-radius:12px;
+    border-radius:14px;
 
     font-size:15px;
 
@@ -278,15 +285,15 @@ body::before{
 
     display:inline-block;
 
-    padding:8px 16px;
+    padding:10px 18px;
 
-    border-radius:20px;
+    border-radius:30px;
 
     background:#00aa55;
 
     color:white;
 
-    font-size:13px;
+    font-size:14px;
 
     font-weight:bold;
 
@@ -297,9 +304,9 @@ body::before{
 
     text-align:center;
 
-    font-size:24px;
+    font-size:25px;
 
-    padding:60px;
+    padding:70px;
 
     color:#0066cc;
 
@@ -312,9 +319,9 @@ body::before{
 
     color:red;
 
-    font-size:24px;
+    font-size:26px;
 
-    padding:60px;
+    padding:70px;
 
 }
 
@@ -323,11 +330,13 @@ body::before{
 
     text-align:center;
 
-    padding:20px;
+    padding:25px;
 
-    font-size:13px;
+    font-size:14px;
 
     color:#555;
+
+    background:#fafafa;
 
 }
 
@@ -342,13 +351,13 @@ body::before{
 
     .title-area h1{
 
-        font-size:28px;
+        font-size:30px;
 
     }
 
     .title-area p{
 
-        font-size:14px;
+        font-size:15px;
 
     }
 
@@ -367,6 +376,12 @@ body::before{
     .value{
 
         font-size:17px;
+
+    }
+
+    .content{
+
+        padding:18px;
 
     }
 
@@ -391,7 +406,7 @@ body::before{
                 class="logo-kabupaten"
             >
 
-            <!-- TITLE -->
+            <!-- JUDUL -->
             <div class="title-area">
 
                 <h1>DATA KAPAL SIMPAN</h1>
@@ -454,19 +469,19 @@ Papa.parse(csvUrl, {
 
         console.log(data);
 
-        // CARI DATA
+        // CARI DATA BERDASARKAN ID SIMPAN
         const kapal = data.find(item =>
 
             item["ID SIMPAN"]?.trim() === kapalId?.trim()
 
         );
 
-        // JIKA DATA ADA
+        // JIKA DATA DITEMUKAN
         if(kapal){
 
             container.innerHTML = "";
 
-            // FOTO
+            // FOTO UTAMA
             if(kapal["FOTO"]){
 
                 const foto = document.createElement("img");
@@ -479,15 +494,18 @@ Papa.parse(csvUrl, {
 
             }
 
-            // LOOP DATA
+            // LOOP SEMUA DATA
             for(const key in kapal){
 
-                // SEMBUNYIKAN NIK
+                // SEMBUNYIKAN KOLOM
                 if(
-                    key.toUpperCase().includes("NIK")
+
+                    key.toUpperCase().includes("NIK") ||
+                    key.toUpperCase() === "TIMESTAMP"
+
                 ) continue;
 
-                // FOTO SUDAH DI ATAS
+                // FOTO SUDAH DITAMPILKAN
                 if(
                     key.toUpperCase() === "FOTO"
                 ) continue;
@@ -499,7 +517,7 @@ Papa.parse(csvUrl, {
 
                 let valueContent = kapal[key];
 
-                // LINK DOKUMEN
+                // JIKA LINK
                 if(
 
                     valueContent.startsWith("http://") ||
@@ -521,7 +539,7 @@ Papa.parse(csvUrl, {
 
                 }
 
-                // STATUS
+                // STATUS BADGE
                 if(
                     key.toUpperCase().includes("STATUS")
                 ){
