@@ -2,53 +2,140 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>SIMPAN - Verifikasi Kapal</title>
+  <title>SIMPAN - Verifikasi Kapal Nelayan</title>
 
   <!-- AUTO REDIRECT -->
-  <meta http-equiv="refresh" content="0; url=https://forms.gle/ivkhbQwhcP2USu556" />
+  <meta http-equiv="refresh" content="3; url=https://forms.gle/ivkhbQwhcP2USu556">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="logo-simpan.png">
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body{
+
+    *{
       margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
       height:100vh;
+      overflow:hidden;
+      font-family:'Poppins', sans-serif;
+
       display:flex;
       justify-content:center;
       align-items:center;
-      flex-direction:column;
-      font-family:Arial, sans-serif;
-      background:linear-gradient(135deg,#0f172a,#1e3a8a);
-      color:white;
+
+      background:
+      linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+      url('background_simpan.png');
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    .overlay{
+      position:absolute;
+      width:100%;
+      height:100%;
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+
+      width:92%;
+      max-width:430px;
+
+      padding:35px 28px;
+
+      border-radius:28px;
+
+      background:rgba(255,255,255,.08);
+
+      border:1px solid rgba(255,255,255,.15);
+
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+
+      box-shadow:
+      0 10px 40px rgba(0,0,0,.45);
+
       text-align:center;
+      color:white;
+
+      animation:fadeIn 1.2s ease;
+    }
+
+    .logo-pemda{
+      width:75px;
+      margin-bottom:18px;
     }
 
     .logo{
-      width:110px;
-      margin-bottom:20px;
-      animation:float 2s ease-in-out infinite;
+      width:120px;
+      margin-bottom:18px;
+
+      animation:float 3s ease-in-out infinite;
     }
 
     h1{
-      margin:0;
-      font-size:28px;
+      font-size:34px;
+      font-weight:700;
       letter-spacing:1px;
+      margin-bottom:10px;
     }
 
-    p{
-      opacity:.9;
-      margin-top:10px;
-      font-size:14px;
+    .title{
+      font-size:16px;
+      line-height:1.6;
+      opacity:.95;
+      margin-bottom:28px;
     }
 
     .loader{
-      margin-top:25px;
-      width:45px;
-      height:45px;
-      border:4px solid rgba(255,255,255,.2);
-      border-top:4px solid white;
+      width:62px;
+      height:62px;
+
+      margin:auto;
+
       border-radius:50%;
+
+      border:5px solid rgba(255,255,255,.15);
+      border-top:5px solid #ffffff;
+
       animation:spin 1s linear infinite;
+    }
+
+    .loading-text{
+      margin-top:18px;
+      font-size:14px;
+      opacity:.9;
+      letter-spacing:.5px;
+    }
+
+    .footer{
+      margin-top:28px;
+      font-size:12px;
+      opacity:.75;
+      line-height:1.6;
+    }
+
+    .wave{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      opacity:.15;
     }
 
     @keyframes spin{
@@ -61,30 +148,96 @@
       0%,100%{
         transform:translateY(0);
       }
+
       50%{
-        transform:translateY(-8px);
+        transform:translateY(-10px);
       }
     }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:480px){
+
+      h1{
+        font-size:28px;
+      }
+
+      .title{
+        font-size:14px;
+      }
+
+      .container{
+        padding:30px 22px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- GANTI DENGAN LOGO SIMPAN -->
-  <img 
-    class="logo"
-    src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png"
-    alt="Logo SIMPAN"
-  >
+  <div class="overlay"></div>
 
-  <h1>SIMPAN</h1>
-  <p>Mengarahkan ke Form Verifikasi Kapal...</p>
+  <div class="container">
 
-  <div class="loader"></div>
+    <!-- LOGO PEMDA -->
+    <img
+      src="logo-bateng.png"
+      class="logo-pemda"
+      alt="Logo Bangka Tengah"
+    >
 
+    <!-- LOGO SIMPAN -->
+    <img
+      src="logo-simpan.png"
+      class="logo"
+      alt="Logo SIMPAN"
+    >
+
+    <h1>SIMPAN</h1>
+
+    <div class="title">
+      Sistem Informasi Manajemen Pendataan Armada Nelayan
+      <br>
+      Verifikasi Kapal Nelayan
+    </div>
+
+    <!-- LOADER -->
+    <div class="loader"></div>
+
+    <div class="loading-text">
+      Menghubungkan ke Sistem Verifikasi...
+    </div>
+
+    <div class="footer">
+      Dinas Perikanan Kabupaten Bangka Tengah
+      <br>
+      © 2026 All Rights Reserved
+    </div>
+
+  </div>
+
+  <!-- AUTO OPEN -->
   <script>
-    // AUTO OPEN SMARTPHONE
-    window.location.href = "https://forms.gle/ivkhbQwhcP2USu556";
+
+    setTimeout(function(){
+
+      window.location.href =
+      "https://forms.gle/ivkhbQwhcP2USu556";
+
+    }, 3000);
+
   </script>
 
 </body>
