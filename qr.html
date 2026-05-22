@@ -34,9 +34,9 @@ body{
 
 }
 
-/* ===============================
-STIKER 8 x 13 cm PRESISI
-================================= */
+/* ============================
+STIKER 8 x 13 CM PRESISI
+============================ */
 
 .print-area{
 
@@ -48,13 +48,13 @@ STIKER 8 x 13 cm PRESISI
 
     background:#ffffff;
 
-    border:2px solid #000;
+    border:4px solid #000;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 8px 20px rgba(0,0,0,0.18);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 
 }
 
@@ -87,43 +87,41 @@ STIKER 8 x 13 cm PRESISI
 
     z-index:2;
 
-    padding:18px 24px 12px;
+    padding:20px 26px 14px;
 
 }
 
-/* ===============================
+/* ============================
 HEADER
-================================= */
+============================ */
 
 .header{
 
     text-align:center;
 
-    border-bottom:3px solid #0056b3;
+    padding-bottom:10px;
 
-    padding-bottom:14px;
-
-    margin-bottom:14px;
+    margin-bottom:12px;
 
 }
 
-/* LOGO */
+/* LOGO BATENG */
 .logo{
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 
 }
 
 .logo img{
 
-    width:130px;
+    width:135px;
 
 }
 
 /* DINAS */
 .dinas{
 
-    font-size:31px;
+    font-size:32px;
 
     line-height:1.15;
 
@@ -131,23 +129,19 @@ HEADER
 
     color:#000;
 
-    letter-spacing:0.4px;
+    letter-spacing:0.3px;
 
 }
 
-/* ===============================
+/* ============================
 QR AREA
-================================= */
+============================ */
 
 .qr-area{
 
-    border-top:1px solid #d9d9d9;
+    padding:10px 0 12px;
 
-    border-bottom:1px solid #d9d9d9;
-
-    padding:18px 0;
-
-    margin-bottom:12px;
+    margin-bottom:10px;
 
     display:flex;
 
@@ -185,7 +179,7 @@ QR AREA
 
 }
 
-/* LOGO MINI */
+/* LOGO SIMPAN */
 .logo-mini{
 
     margin-top:12px;
@@ -194,15 +188,15 @@ QR AREA
 
 .logo-mini img{
 
-    width:70px;
+    width:95px;
 
-    opacity:0.9;
+    opacity:0.95;
 
 }
 
-/* ===============================
+/* ============================
 ID SIMPAN
-================================= */
+============================ */
 
 .id{
 
@@ -212,61 +206,61 @@ ID SIMPAN
 
     font-weight:900;
 
-    background:#003b8f;
+    background:#003fa5;
 
     color:white;
 
-    padding:10px 24px;
+    padding:10px 26px;
 
     border-radius:14px;
 
     display:table;
 
-    margin:14px auto;
+    margin:8px auto 14px;
 
     letter-spacing:1px;
 
-    box-shadow:0 4px 12px rgba(0,59,143,0.2);
+    box-shadow:0 5px 14px rgba(0,59,143,0.22);
 
 }
 
-/* ===============================
+/* ============================
 INFO
-================================= */
+============================ */
 
 .info{
 
     text-align:center;
 
-    font-size:24px;
+    font-size:22px;
 
     line-height:1.35;
 
-    margin-bottom:18px;
+    margin-bottom:16px;
 
     color:#111;
 
 }
 
-/* ===============================
+/* ============================
 SCAN
-================================= */
+============================ */
 
 .scan{
 
     text-align:center;
 
-    font-size:30px;
+    font-size:28px;
 
     font-weight:900;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
 
-/* ===============================
+/* ============================
 DATE
-================================= */
+============================ */
 
 .date{
 
@@ -278,9 +272,9 @@ DATE
 
 }
 
-/* ===============================
+/* ============================
 FOOTER
-================================= */
+============================ */
 
 .footer{
 
@@ -292,15 +286,15 @@ FOOTER
 
     width:100%;
 
-    height:3px;
+    height:4px;
 
     background:#000;
 
 }
 
-/* ===============================
+/* ============================
 BUTTON
-================================= */
+============================ */
 
 .button-area{
 
@@ -351,9 +345,9 @@ BUTTON
 
 }
 
-/* ===============================
+/* ============================
 RESPONSIVE
-================================= */
+============================ */
 
 @media(max-width:850px){
 
@@ -397,9 +391,9 @@ RESPONSIVE
 
 }
 
-/* ===============================
+/* ============================
 PRINT
-================================= */
+============================ */
 
 @media print{
 
@@ -423,7 +417,7 @@ PRINT
 
         height:13cm;
 
-        border:2px solid #000;
+        border:4px solid #000;
 
         box-shadow:none;
 
@@ -437,9 +431,9 @@ PRINT
 
 <body>
 
-<!-- ===============================
+<!-- ============================
 AREA CETAK
-================================= -->
+============================ -->
 
 <div class="print-area" id="printArea">
 
@@ -475,7 +469,7 @@ AREA CETAK
 
             </div>
 
-            <!-- LOGO MINI -->
+            <!-- LOGO SIMPAN -->
             <div class="logo-mini">
 
                 <img src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png">
@@ -517,9 +511,9 @@ AREA CETAK
 
 </div>
 
-<!-- ===============================
+<!-- ============================
 BUTTON
-================================= -->
+============================ -->
 
 <div class="button-area">
 
@@ -539,24 +533,24 @@ BUTTON
 
 <script>
 
-/* ===============================
+/* ============================
 CSV GOOGLE SHEET
-================================= */
+============================ */
 
 const csvUrl =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* ===============================
+/* ============================
 AMBIL PARAMETER URL
-================================= */
+============================ */
 
 const params = new URLSearchParams(window.location.search);
 
 const kapalId = params.get("id");
 
-/* ===============================
+/* ============================
 TANGGAL CETAK
-================================= */
+============================ */
 
 const now = new Date();
 
@@ -564,9 +558,9 @@ document.getElementById("tanggalCetak").innerHTML =
 "Tanggal Cetak : " +
 now.toLocaleDateString("id-ID");
 
-/* ===============================
+/* ============================
 LOAD CSV
-================================= */
+============================ */
 
 Papa.parse(csvUrl, {
 
@@ -648,9 +642,9 @@ Papa.parse(csvUrl, {
 
 });
 
-/* ===============================
+/* ============================
 DOWNLOAD PNG
-================================= */
+============================ */
 
 function downloadQR(){
 
