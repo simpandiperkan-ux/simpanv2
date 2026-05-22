@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIMPAN - Data Kapal</title>
+
+<!-- PAPAPARSE -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    /* BACKGROUND CUSTOM SIMPAN */
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.08),
+            rgba(0,40,90,0.35)
+        ),
+        url('https://simpandiperkan-ux.github.io/simpanv2/background_simpan.png');
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    padding:20px;
+
+    position:relative;
+
+    min-height:100vh;
+
+}
+
+/* WATERMARK BODY */
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:240px;
+
+    opacity:0.025;
+
+    z-index:-1;
+
+}
+
+/* CARD */
+.card{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,0.95);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.30);
+
+    border:4px solid rgba(255,255,255,0.35);
+
+}
+
+/* HEADER */
+.header{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.98),
+            rgba(225,240,255,0.96)
+        );
+
+    padding:35px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* WATERMARK HEADER */
+.header::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:url('https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:180px;
+
+    opacity:0.04;
+
+    z-index:1;
+
+}
+
+/* HEADER FLEX */
+.header-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* TITLE */
+.title-area{
+
+    text-align:center;
+
+    flex:1;
+
+}
+
+.title-area h1{
+
+    font-size:50px;
+
+    color:#002b70;
+
+    margin-bottom:10px;
+
+    font-weight:900;
+
+    text-shadow:0 2px 4px rgba(0,0,0,0.08);
+
+}
+
+.title-area p{
+
+    font-size:20px;
+
+    color:#223;
+
+    font-weight:500;
+
+}
+
+/* LOGO */
+.logo-kabupaten{
+
+    width:95px;
+
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+
+}
+
+.logo-simpan{
+
+    width:140px;
+
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+
+}
+
+/* =========================
+NAVIGATION
+========================= */
+
+.nav-box{
+
+    padding:25px;
+
+    background:rgba(255,255,255,0.75);
+
+    border-bottom:1px solid rgba(0,0,0,0.08);
+
+}
+
+/* SEARCH */
+.search-area{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+}
+
+.search-area input{
+
+    flex:1;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    border:2px solid #cfe5ff;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+.search-area input:focus{
+
+    border-color:#0066cc;
+
+}
+
+/* BUTTON */
+.search-area button,
+.nav-btn{
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0056b3,
+            #00a2ff
+        );
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-size:15px;
+
+}
+
+.search-area button:hover,
+.nav-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* NAVIGATION BUTTON */
+.nav-button-area{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+}
+
+.nav-btn{
+
+    flex:1;
+
+}
+
+/* CONTENT */
+.content{
+
+    padding:30px;
+
+}
+
+/* FOTO */
+.foto{
+
+    width:100%;
+
+    border-radius:25px;
+
+    margin-top:10px;
+
+    margin-bottom:10px;
+
+    border:5px solid white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+    transition:0.3s;
+
+}
+
+.foto:hover{
+
+    transform:scale(1.01);
+
+}
+
+/* ITEM */
+.item{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f5faff
+        );
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.07);
+
+    border-left:8px solid #0066cc;
+
+    transition:0.3s;
+
+}
+
+.item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.12);
+
+}
+
+/* LABEL */
+.label{
+
+    color:#0056b3;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.5px;
+
+}
+
+/* VALUE */
+.value{
+
+    font-size:21px;
+
+    color:#222;
+
+    word-break:break-word;
+
+    line-height:1.6;
+
+}
+
+/* BUTTON */
+.btn-link{
+
+    display:inline-block;
+
+    padding:13px 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0056b3,
+            #00a2ff
+        );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+
+    box-shadow:0 5px 15px rgba(0,102,204,0.2);
+
+}
+
+.btn-link:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* BADGE */
+.badge{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00aa55,
+            #00cc66
+        );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,170,85,0.25);
+
+}
+
+/* LOADING */
+.loading{
+
+    text-align:center;
+
+    font-size:25px;
+
+    padding:80px;
+
+    color:#0066cc;
+
+    font-weight:bold;
+
+}
+
+/* ERROR */
+.notfound{
+
+    text-align:center;
+
+    color:red;
+
+    font-size:26px;
+
+    padding:80px;
+
+    font-weight:bold;
+
+}
+
+/* FOOTER */
+.footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    font-size:14px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #003b8f,
+            #005ecb
+        );
+
+    font-weight:bold;
+
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .header-top{
+
+        flex-direction:column;
+
+    }
+
+    .title-area h1{
+
+        font-size:32px;
+
+    }
+
+    .title-area p{
+
+        font-size:15px;
+
+    }
+
+    .logo-kabupaten{
+
+        width:75px;
+
+    }
+
+    .logo-simpan{
+
+        width:95px;
+
+    }
+
+    .value{
+
+        font-size:17px;
+
+    }
+
+    .content{
+
+        padding:18px;
+
+    }
+
+    .search-area{
+
+        flex-direction:column;
+
+    }
+
+    .nav-button-area{
+
+        flex-direction:column;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="header-top">
+
+            <!-- LOGO BATENG -->
+            <img 
+                src="https://simpandiperkan-ux.github.io/simpanv2/logo-bateng.png"
+                class="logo-kabupaten"
+            >
+
+            <!-- TITLE -->
+            <div class="title-area">
+
+                <h1>DATA KAPAL SIMPAN</h1>
+
+                <p>
+                    Sistem Informasi Manajemen Pendataan Armada Nelayan
+                </p>
+
+            </div>
+
+            <!-- LOGO SIMPAN -->
+            <img 
+                src="https://simpandiperkan-ux.github.io/simpanv2/logo-simpan.png"
+                class="logo-simpan"
+            >
+
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-box">
+
+        <!-- SEARCH -->
+        <div class="search-area">
+
+            <input 
+                type="text"
+                id="searchInput"
+                placeholder="Cari 4 digit ID SIMPAN..."
+            >
+
+            <button onclick="cariID()">
+                CARI
+            </button>
+
+        </div>
+
+        <!-- NAV BUTTON -->
+        <div class="nav-button-area">
+
+            <button onclick="prevData()" class="nav-btn">
+                ⬅ SEBELUMNYA
+            </button>
+
+            <button onclick="nextData()" class="nav-btn">
+                SELANJUTNYA ➡
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content" id="data">
+
+        <div class="loading">
+            Memuat data kapal...
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+        © Dinas Perikanan Kabupaten Bangka Tengah
+
+    </div>
+
+</div>
+
+<script>
+
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+
+const params = new URLSearchParams(window.location.search);
+
+const kapalId = params.get("id");
+
+const container = document.getElementById("data");
+
+let semuaData = [];
+
+let currentIndex = -1;
+
+/* CONVERT GOOGLE DRIVE IMAGE */
+function convertDriveImage(url){
+
+    if(!url) return url;
+
+    if(url.includes("drive.google.com")){
+
+        const match = url.match(/[-\w]{25,}/);
+
+        if(match){
+
+            return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
+
+        }
+
+    }
+
+    return url;
+
+}
+
+Papa.parse(csvUrl, {
+
+    download:true,
+
+    header:true,
+
+    skipEmptyLines:true,
+
+    complete:function(results){
+
+        const data = results.data;
+
+        semuaData = data;
+
+        currentIndex = data.findIndex(item =>
+
+            item["ID SIMPAN"]?.trim() === kapalId?.trim()
+
+        );
+
+        const kapal = data.find(item =>
+
+            item["ID SIMPAN"]?.trim() === kapalId?.trim()
+
+        );
+
+        if(kapal){
+
+            container.innerHTML = "";
+
+            // LOOP SEMUA DATA
+            for(const key in kapal){
+
+                // SEMBUNYIKAN KOLOM
+                if(
+
+                    key.toUpperCase().includes("NIK") ||
+                    key.toUpperCase() === "TIMESTAMP" ||
+                    key.toUpperCase() === "LINK HALAMAN KAPAL" ||
+                    key.toUpperCase() === "LINK QR"
+
+                ) continue;
+
+                let valueContent = kapal[key];
+
+                // JIKA KOSONG
+                if(
+                    !valueContent ||
+                    valueContent.trim() === ""
+                ){
+
+                    valueContent = "-";
+
+                }
+
+                // FOTO + KARTU KUSUKA
+                if(
+
+                    key.toUpperCase().includes("FOTO") ||
+                    key.toUpperCase().includes("KARTU KUSUKA")
+
+                ){
+
+                    if(valueContent !== "-"){
+
+                        const imageUrl = convertDriveImage(kapal[key]);
+
+                        valueContent = `
+
+                            <a href="${kapal[key]}" target="_blank">
+
+                                <img 
+                                    src="${imageUrl}"
+                                    class="foto"
+                                >
+
+                            </a>
+
+                        `;
+
+                    }
+
+                }
+
+                // LINK DOKUMEN
+                else if(
+
+                    valueContent.startsWith("http://") ||
+                    valueContent.startsWith("https://")
+
+                ){
+
+                    valueContent = `
+
+                        <a 
+                            href="${kapal[key]}"
+                            target="_blank"
+                            class="btn-link"
+                        >
+                            Buka Dokumen
+                        </a>
+
+                    `;
+
+                }
+
+                // STATUS
+                if(
+                    key.toUpperCase().includes("STATUS")
+                ){
+
+                    valueContent = `
+
+                        <div class="badge">
+
+                            ${kapal[key]}
+
+                        </div>
+
+                    `;
+
+                }
+
+                const item = document.createElement("div");
+
+                item.className = "item";
+
+                item.innerHTML = `
+
+                    <div class="label">
+                        ${key}
+                    </div>
+
+                    <div class="value">
+                        ${valueContent}
+                    </div>
+
+                `;
+
+                container.appendChild(item);
+
+            }
+
+        }else{
+
+            container.innerHTML = `
+
+                <div class="notfound">
+
+                    Data kapal tidak ditemukan
+
+                </div>
+
+            `;
+
+        }
+
+    },
+
+    error:function(error){
+
+        console.log(error);
+
+        container.innerHTML = `
+
+            <div class="notfound">
+
+                Gagal membaca Spreadsheet
+
+            </div>
+
+        `;
+
+    }
+
+});
+
+/* =========================
+SEARCH ID
+========================= */
+
+function cariID(){
+
+    const keyword = document
+        .getElementById("searchInput")
+        .value
+        .trim();
+
+    if(!keyword){
+
+        alert("Masukkan ID");
+
+        return;
+
+    }
+
+    // CARI 4 DIGIT BELAKANG
+    const found = semuaData.find(item => {
+
+        const id = item["ID SIMPAN"] || "";
+
+        return id.endsWith(keyword);
+
+    });
+
+    if(found){
+
+        window.location.href =
+            "kapal.html?id=" +
+            found["ID SIMPAN"];
+
+    }else{
+
+        alert("ID tidak ditemukan");
+
+    }
+
+}
+
+/* =========================
+SEBELUMNYA
+========================= */
+
+function prevData(){
+
+    if(currentIndex > 0){
+
+        const prevId =
+            semuaData[currentIndex - 1]["ID SIMPAN"];
+
+        window.location.href =
+            "kapal.html?id=" + prevId;
+
+    }else{
+
+        alert("Data pertama");
+
+    }
+
+}
+
+/* =========================
+SELANJUTNYA
+========================= */
+
+function nextData(){
+
+    if(currentIndex < semuaData.length - 1){
+
+        const nextId =
+            semuaData[currentIndex + 1]["ID SIMPAN"];
+
+        window.location.href =
+            "kapal.html?id=" + nextId;
+
+    }else{
+
+        alert("Data terakhir");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
