@@ -22,13 +22,13 @@ body{
 
     font-family:Arial, sans-serif;
 
-    /* BACKGROUND KAPAL NELAYAN < 5 GT */
+    /* BACKGROUND KAPAL NELAYAN */
     background:
         linear-gradient(
             rgba(0,35,90,0.75),
             rgba(0,20,50,0.82)
         ),
-        url('https://images.unsplash.com/photo-1523275335684-37898b6baf30');
+        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b');
 
     background-size:cover;
 
@@ -216,11 +216,21 @@ body::before{
 
     border-radius:25px;
 
-    margin-bottom:25px;
+    margin-top:10px;
+
+    margin-bottom:10px;
 
     border:5px solid white;
 
     box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+    transition:0.3s;
+
+}
+
+.foto:hover{
+
+    transform:scale(1.01);
 
 }
 
@@ -286,7 +296,7 @@ body::before{
 
 }
 
-/* BUTTON LINK */
+/* BUTTON */
 .btn-link{
 
     display:inline-block;
@@ -540,9 +550,23 @@ Papa.parse(csvUrl, {
             // FOTO UTAMA
             if(kapal["FOTO"]){
 
+                let fotoUrl = kapal["FOTO"];
+
+                if(fotoUrl.includes("drive.google.com")){
+
+                    const match = fotoUrl.match(/[-\w]{25,}/);
+
+                    if(match){
+
+                        fotoUrl = `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
+
+                    }
+
+                }
+
                 const foto = document.createElement("img");
 
-                foto.src = kapal["FOTO"];
+                foto.src = fotoUrl;
 
                 foto.className = "foto";
 
@@ -563,7 +587,7 @@ Papa.parse(csvUrl, {
 
                 ) continue;
 
-                // FOTO SUDAH DITAMPILKAN
+                // FOTO UTAMA SUDAH DI ATAS
                 if(
                     key.toUpperCase() === "FOTO"
                 ) continue;
@@ -589,12 +613,31 @@ Papa.parse(csvUrl, {
 
                     if(valueContent !== "-"){
 
+                        let imageUrl = kapal[key];
+
+                        // GOOGLE DRIVE CONVERTER
+                        if(imageUrl.includes("drive.google.com")){
+
+                            const match = imageUrl.match(/[-\w]{25,}/);
+
+                            if(match){
+
+                                imageUrl = `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1000`;
+
+                            }
+
+                        }
+
                         valueContent = `
 
-                            <img 
-                                src="${kapal[key]}"
-                                class="foto"
-                            >
+                            <a href="${kapal[key]}" target="_blank">
+
+                                <img 
+                                    src="${imageUrl}"
+                                    class="foto"
+                                >
+
+                            </a>
 
                         `;
 
