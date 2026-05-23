@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>QR Stiker SIMPAN</title>
+
+<!-- ===== LIBRARY ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#eee;
+  font-family:Arial, Helvetica, sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ===== TOMBOL ===== */
+.actions{
+  margin-bottom:15px;
+}
+.actions button{
+  padding:8px 16px;
+  margin:0 4px;
+  border:none;
+  background:#0a4ea3;
+  color:#fff;
+  font-weight:bold;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* ===== AREA CETAK ===== */
+#areaCetak{
+  width:8cm;
+  height:13cm;
+  background:#fff;
+  border:3px solid #000;
+  position:relative;
+  box-sizing:border-box;
+  padding:10px;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* ===== WATERMARK ===== */
+#areaCetak::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("logo-simpan.png");
+  background-size:40%;
+  background-repeat:repeat;
+  opacity:0.08;
+  z-index:0;
+}
+
+/* ===== KONTEN ===== */
+.konten{
+  position:relative;
+  z-index:1;
+}
+
+.logo{
+  width:55px;
+  margin:5px auto;
+}
+
+.judul{
+  font-size:13px;
+  font-weight:bold;
+  margin:6px 0 10px;
+}
+
+#qrImg{
+  width:230px;
+  height:230px;
+  margin:5px auto;
+}
+
+.id{
+  font-weight:bold;
+  margin-top:6px;
+}
+
+.info{
+  font-size:11px;
+}
+
+.scan{
+  margin-top:6px;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.footer{
+  font-size:10px;
+  margin-top:4px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== TOMBOL ===== -->
+<div class="actions">
+  <button id="btnPNG">Download PNG</button>
+  <button id="btnJPG">Download JPG</button>
+  <button id="btnPDF">Download PDF</button>
+</div>
+
+<!-- ===== CETAK ===== -->
+<div id="areaCetak">
+  <div class="konten">
+    <img src="logo-bateng.png" class="logo">
+    <div class="judul">DINAS PERIKANAN<br>KABUPATEN BANGKA TENGAH</div>
+
+    <img id="qrImg" crossOrigin="anonymous">
+
+    <div id="idText" class="id"></div>
+    <div id="namaText" class="info"></div>
+    <div id="kapalText" class="info"></div>
+
+    <div class="scan">SCAN UNTUK VERIFIKASI</div>
+    <div id="tglCetak" class="footer"></div>
+  </div>
+</div>
+
+<script>
+/* ================= KONFIG ================= */
+const SHEET_JSON =
+"https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/gviz/tq?tqx=out:json";
+
+const DETAIL_URL =
+"https://simpandiperkan-ux.github.io/simpan/kapal.html?id=";
+
+/* ================= PARAM ================= */
+const idCari = new URLSearchParams(location.search).get("id");
+
+/* ================= DOM ================= */
+const qrImg   = document.getElementById("qrImg");
+const idEl    = document.getElementById("idText");
+const namaEl  = document.getElementById("namaText");
+const kapalEl = document.getElementById("kapalText");
+const tglEl   = document.getElementById("tglCetak");
+
+/* ================= DEFAULT ================= */
+idEl.innerText = idCari || "-";
+tglEl.innerText = "Tanggal Cetak : " + new Date().toLocaleDateString("id-ID");
+
+/* ================= QR ================= */
+if(idCari){
+  qrImg.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=0&data=" +
+    encodeURIComponent(DETAIL_URL + idCari);
+}
+
+/* ================= DATA SHEET ================= */
+fetch(SHEET_JSON)
+.then(r=>r.text())
+.then(t=>{
+  const j = JSON.parse(t.substring(47, t.length-2));
+  const h = j.table.cols.map(c=>c.label);
+  const rows = j.table.rows.map(r=>r.c.map(c=>c?.v ?? ""));
+
+  const iID = h.indexOf("ID SIMPAN");
+  const iNama = h.indexOf("Nama Pemilik Kapal (Sesuai KTP)");
+  const iKapal = h.indexOf("Nama Kapal");
+
+  const row = rows.find(r => String(r[iID]).trim() === idCari);
+  if(row){
+    namaEl.innerText  = "NAMA : " + row[iNama];
+    kapalEl.innerText = "KAPAL : " + row[iKapal];
+  }
+});
+
+/* ================= DOWNLOAD ================= */
+const area = document.getElementById("areaCetak");
+
+btnPNG.onclick = () => download("png");
+btnJPG.onclick = () => download("jpg");
+btnPDF.onclick = () => download("pdf");
+
+function download(type){
+  html2canvas(area,{
+    scale:3,
+    useCORS:true,
+    backgroundColor:"#ffffff"
+  }).then(canvas=>{
+    if(type==="pdf"){
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF("p","cm",[13,8]);
+      pdf.addImage(canvas,"PNG",0,0,8,13);
+      pdf.save("QR-"+idCari+".pdf");
+    }else{
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/"+type,0.95);
+      a.download = "QR-"+idCari+"."+type;
+      a.click();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

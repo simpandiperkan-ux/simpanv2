@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Data Kapal SIMPAN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===============================
+   SIMPAN FINAL OFFICIAL
+================================ */
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg, #e2ebf7, #f8fafc);
+  padding:20px;
+}
+
+/* ===============================
+   CONTAINER
+================================ */
+.box{
+  max-width:900px;
+  margin:auto;
+  background:#fff;
+  padding:32px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===============================
+   WATERMARK PATTERN (LOCKED)
+================================ */
+.box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("logo-simpan.png") repeat;
+  background-size:130px 130px;
+  opacity:0.03;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ===============================
+   CONTENT LAYER
+================================ */
+.box > *{
+  position:relative;
+  z-index:1;
+}
+
+/* ===============================
+   HEADER (LOCKED SYMMETRY)
+================================ */
+.header{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.logo-left,
+.logo-right{
+  display:flex;
+  align-items:center;
+}
+.logo-left{justify-content:flex-start}
+.logo-right{justify-content:flex-end}
+
+.logo-left img,
+.logo-right img{
+  height:70px;
+  width:auto;
+}
+
+/* ===============================
+   TITLE
+================================ */
+.title{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  margin:8px 0 4px;
+  color:#0f172a;
+}
+.subtitle{
+  text-align:center;
+  font-size:14px;
+  color:#475569;
+  margin-bottom:24px;
+}
+
+/* ===============================
+   TABLE
+================================ */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px;border-bottom:1px solid #e5e7eb}
+th{width:35%;background:#f1f5f9;font-weight:600}
+
+/* ===============================
+   FOOTER
+================================ */
+.footer{
+  margin-top:28px;
+  padding-top:10px;
+  border-top:1px dashed #cbd5f5;
+  font-size:12px;
+  color:#475569;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* ===============================
+   PRINT MODE
+================================ */
+@media print{
+  body{background:#fff;padding:0}
+  .box{box-shadow:none;border-radius:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-left">
+      <img src="logo-bateng.png" alt="Logo Kabupaten Bangka Tengah">
+    </div>
+
+    <div></div>
+
+    <div class="logo-right">
+      <img src="logo-simpan.png" alt="Logo SIMPAN">
+    </div>
+  </div>
+
+  <div class="title">DATA KAPAL SIMPAN</div>
+  <div class="subtitle">Sistem Informasi Manajemen Pendataan Armada Nelayan</div>
+
+  <div id="hasil">Memuat data...</div>
+
+  <div class="footer">
+    <div id="doc"></div>
+    <div id="printTime"></div>
+  </div>
+
+</div>
+
+<script>
+const SHEET_JSON =
+"https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/gviz/tq?tqx=out:json";
+
+const HIDDEN_COLS = [
+  "Nomor Induk Kependudukan (NIK)",
+  "Upload Foto KTP Elektronik",
+  "Nomor KUSUKA"
+];
+
+const hasil = document.getElementById("hasil");
+const idCari = new URLSearchParams(location.search).get("id");
+
+function formatValue(label, val){
+  if(!val) return "-";
+  if(typeof val==="string" && val.startsWith("Date")){
+    const m=val.match(/\d+/g).map(Number);
+    return new Date(m[0],m[1],m[2]).toLocaleDateString("id-ID");
+  }
+  if(typeof val==="string" && val.startsWith("http")){
+    return `<a href="${val}" target="_blank">Buka</a>`;
+  }
+  return val;
+}
+
+fetch(SHEET_JSON)
+.then(r=>r.text())
+.then(t=>{
+  const j=JSON.parse(t.substring(47,t.length-2));
+  const h=j.table.cols.map(c=>c.label);
+  const rows=j.table.rows.map(r=>r.c.map(c=>c?.v??""));
+
+  const idx=h.indexOf("ID SIMPAN");
+  const row=rows.find(r=>r[idx]?.toString().trim()===idCari);
+
+  if(!row){hasil.innerHTML="Data tidak ditemukan";return;}
+
+  let html="<table>";
+  h.forEach((k,i)=>{
+    if(HIDDEN_COLS.includes(k)) return;
+    html+=`<tr><th>${k}</th><td>${formatValue(k,row[i])}</td></tr>`;
+  });
+  html+="</table>";
+  hasil.innerHTML=html;
+
+  document.getElementById("doc").innerHTML="No Dokumen: SIMPAN-"+idCari;
+  document.getElementById("printTime").innerHTML="Dicetak: "+new Date().toLocaleString("id-ID");
+});
+</script>
+
+</body>
+</html>
