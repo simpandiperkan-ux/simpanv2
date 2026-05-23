@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIMPAN SUPER APP V3</title>
+<title>SIMPAN SUPER APP V3 FINAL</title>
 
 <!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -517,7 +517,7 @@ QUICK MENU
 }
 
 /* ======================================================
-STATISTIK DESA
+DESA CARD
 ====================================================== */
 
 .desa-card{
@@ -947,7 +947,7 @@ MAIN
 
         © 2026 Dinas Perikanan Kabupaten Bangka Tengah
         <br>
-        SIMPAN SUPER APP V3
+        SIMPAN SUPER APP V3 FINAL
 
     </div>
 
@@ -1030,14 +1030,14 @@ Papa.parse(csvV1,{
                 dataV2.length;
 
                 /* ======================================================
-                TOTAL NELAYAN BERDASARKAN NIK
+                TOTAL NELAYAN BERDASARKAN NIK UNIK
                 ====================================================== */
 
                 const nelayan = new Set();
 
                 semuaData.forEach(item=>{
 
-                    const nik =
+                    let nik =
 
                     (
 
@@ -1049,16 +1049,22 @@ Papa.parse(csvV1,{
 
                         item["NOMOR KTP"] ||
 
+                        item["NIK PEMILIK"] ||
+
                         ""
 
                     )
-                    .trim();
+                    .toString()
+                    .trim()
+                    .replace(/'/g,"")
+                    .replace(/\.0/g,"")
+                    .replace(/\s+/g,"")
+                    .replace(/[^0-9]/g,"");
 
                     if(
 
                         nik &&
-                        nik !== "-" &&
-                        nik.length >= 8
+                        nik.length >= 16
 
                     ){
 
@@ -1074,43 +1080,26 @@ Papa.parse(csvV1,{
                 nelayan.size;
 
                 /* ======================================================
-                TOTAL VERIFIKASI GABUNGAN
+                TOTAL TERVERIFIKASI GABUNGAN
                 ====================================================== */
 
                 let totalVerifikasi = 0;
 
                 semuaData.forEach(item=>{
 
-                    const status =
+                    let status =
 
-                    (
+                    item["STATUS VERIFIKASI"] || "";
 
-                        item[
-                        "STATUS VERIFIKASI"
-                        ] ||
-
-                        item[
-                        "STATUS"
-                        ] ||
-
-                        item[
-                        "VERIFIKASI"
-                        ] ||
-
-                        ""
-
-                    )
+                    status = status
+                    .toString()
+                    .toUpperCase()
                     .trim()
-                    .toUpperCase();
+                    .replace(/\s+/g," ");
 
                     if(
 
-                        status.includes("VERIFIKASI") ||
-                        status.includes("TERVERIFIKASI") ||
-                        status.includes("VALID") ||
-                        status.includes("SELESAI") ||
-                        status.includes("SUDAH") ||
-                        status.includes("OK")
+                        status === "TERVERIFIKASI"
 
                     ){
 
@@ -1137,42 +1126,49 @@ Papa.parse(csvV1,{
 
                     (
 
-                        item[
-                        "DESA / KELURAHAN"
-                        ] ||
-
-                        item[
-                        "DESA/KELURAHAN"
-                        ] ||
-
-                        item[
-                        "DESA"
-                        ] ||
-
-                        item[
-                        "KELURAHAN"
-                        ] ||
-
-                        "-"
+                        item["DESA / KELURAHAN"] ||
+                        item["DESA/KELURAHAN"] ||
+                        item["Desa/ Kelurahan"] ||
+                        item["DESA"] ||
+                        item["KELURAHAN"] ||
+                        item["DESA NELAYAN"] ||
+                        item["ALAMAT"] ||
+                        item["DOMISILI"] ||
+                        item["KAMPUNG"] ||
+                        item["LOKASI"] ||
+                        ""
 
                     )
+                    .toString()
                     .trim()
                     .toUpperCase();
 
+                    desa = desa
+                    .replace(/\s+/g," ")
+                    .replace(/KEL\./g,"")
+                    .replace(/DESA/g,"")
+                    .replace(/KELURAHAN/g,"")
+                    .trim();
+
+                    if(desa.includes(",")){
+
+                        desa = desa
+                        .split(",")[0]
+                        .trim();
+
+                    }
+
                     if(
 
-                        desa === "" ||
-                        desa === "-"
+                        !desa ||
+                        desa === "-" ||
+                        desa.length < 2
 
                     ){
 
                         return;
 
                     }
-
-                    desa = desa
-                    .replace(/\s+/g," ")
-                    .trim();
 
                     if(!desaMap[desa]){
 
