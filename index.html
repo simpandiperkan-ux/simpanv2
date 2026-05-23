@@ -713,8 +713,6 @@ MAIN
 
 <div class="main">
 
-    <!-- TOPBAR -->
-
     <div class="topbar">
 
         <div class="topbar-left">
@@ -732,7 +730,7 @@ MAIN
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="Cari ID SIMPAN / Nama Pemilik / Nama Kapal / NIK..."
+                    placeholder="Cari 4 digit ID SIMPAN atau NIK..."
                 >
 
                 <button onclick="cariKapal()">
@@ -754,7 +752,7 @@ MAIN
     </div>
 
     <!-- ======================================================
-    STATISTIK UTAMA
+    STATISTIK
     ====================================================== -->
 
     <div class="grid">
@@ -845,7 +843,9 @@ MAIN
 
     </div>
 
-    <!-- QUICK MENU -->
+    <!-- ======================================================
+    QUICK MENU
+    ====================================================== -->
 
     <div class="quick">
 
@@ -921,7 +921,9 @@ MAIN
 
     </div>
 
-    <!-- STATISTIK DESA -->
+    <!-- ======================================================
+    STATISTIK DESA
+    ====================================================== -->
 
     <div class="card stat-card">
 
@@ -931,7 +933,9 @@ MAIN
 
     </div>
 
-    <!-- STATISTIK KECAMATAN -->
+    <!-- ======================================================
+    STATISTIK KECAMATAN
+    ====================================================== -->
 
     <div class="card stat-card">
 
@@ -941,7 +945,9 @@ MAIN
 
     </div>
 
-    <!-- FOOTER -->
+    <!-- ======================================================
+    FOOTER
+    ====================================================== -->
 
     <div class="footer">
 
@@ -1006,7 +1012,9 @@ Papa.parse(csvV1,{
 
                 ];
 
-                /* TOTAL */
+                /* ======================================================
+                TOTAL KAPAL
+                ====================================================== */
 
                 document.getElementById(
                     "totalKapal"
@@ -1042,9 +1050,6 @@ Papa.parse(csvV1,{
                     )
                     .toString()
                     .trim()
-                    .replace(/'/g,"")
-                    .replace(/\.0/g,"")
-                    .replace(/\s+/g,"")
                     .replace(/[^0-9]/g,"");
 
                     if(
@@ -1081,8 +1086,7 @@ Papa.parse(csvV1,{
                     status = status
                     .toString()
                     .trim()
-                    .toUpperCase()
-                    .replace(/\s+/g," ");
+                    .toUpperCase();
 
                     if(
 
@@ -1113,7 +1117,7 @@ Papa.parse(csvV1,{
                 totalBelumVerifikasi;
 
                 /* ======================================================
-                DESA
+                STATISTIK DESA
                 ====================================================== */
 
                 const desaMap = {};
@@ -1140,12 +1144,7 @@ Papa.parse(csvV1,{
                     .replace(/KELURAHAN/g,"")
                     .trim();
 
-                    if(
-
-                        !desa ||
-                        desa.length < 2
-
-                    ){
+                    if(!desa){
 
                         return;
 
@@ -1225,7 +1224,7 @@ Papa.parse(csvV1,{
                 desaHTML;
 
                 /* ======================================================
-                KECAMATAN
+                STATISTIK KECAMATAN
                 ====================================================== */
 
                 const kecamatanMap = {};
@@ -1245,16 +1244,7 @@ Papa.parse(csvV1,{
                     .trim()
                     .toUpperCase();
 
-                    kecamatan = kecamatan
-                    .replace(/\s+/g," ")
-                    .trim();
-
-                    if(
-
-                        !kecamatan ||
-                        kecamatan.length < 2
-
-                    ){
+                    if(!kecamatan){
 
                         return;
 
@@ -1342,7 +1332,8 @@ Papa.parse(csvV1,{
 });
 
 /* ======================================================
-SEARCH FINAL PREMIUM
+SEARCH FINAL
+4 DIGIT ID + NIK
 ====================================================== */
 
 function cariKapal(){
@@ -1378,11 +1369,10 @@ function cariKapal(){
     input.replace(/[^0-9]/g,"");
 
     /* ======================================================
-    CARI V1
+    FILTER DATA
     ====================================================== */
 
-    const kapalV1 =
-    dataV1.find(item=>{
+    const hasil = semuaData.filter(item=>{
 
         const id =
         normal(
@@ -1392,47 +1382,35 @@ function cariKapal(){
         const idBelakang =
         id.slice(-4);
 
-        const namaPemilik =
-        normal(
-            item["Nama Pemilik Kapal (Sesuai KTP)"]
-        );
-
-        const namaKapal =
-        normal(
-            item["Nama Kapal"]
-        );
-
         const nik =
+
         normal(
-            item["Nomor Induk Kependudukan (NIK)"]
+
+            item["Nomor Induk Kependudukan (NIK)"] ||
+
+            item["NOMOR INDUK KEPENDUDUKAN (NIK)"]
+
         )
         .replace(/[^0-9]/g,"");
 
         return(
 
-            id.includes(input) ||
+            idBelakang === input ||
 
-            idBelakang.includes(input) ||
-
-            namaPemilik.includes(input) ||
-
-            namaKapal.includes(input) ||
-
-            nik.includes(inputNik)
+            nik === inputNik
 
         );
 
     });
 
-    if(kapalV1){
+    /* ======================================================
+    DATA TIDAK ADA
+    ====================================================== */
 
-        window.open(
+    if(hasil.length === 0){
 
-            "v1/kapal.html?id=" +
-            kapalV1["ID SIMPAN"],
-
-            "_blank"
-
+        alert(
+            "Data kapal tidak ditemukan"
         );
 
         return;
@@ -1440,70 +1418,114 @@ function cariKapal(){
     }
 
     /* ======================================================
-    CARI V2
+    SATU DATA
     ====================================================== */
 
-    const kapalV2 =
-    dataV2.find(item=>{
+    if(hasil.length === 1){
 
-        const id =
-        normal(
-            item["ID SIMPAN"]
-        );
-
-        const idBelakang =
-        id.slice(-4);
-
-        const namaPemilik =
-        normal(
-            item["NAMA PEMILIK KAPAL (SESUAI KTP)"]
-        );
-
-        const namaKapal =
-        normal(
-            item["NAMA KAPAL SESUAI PAS KAPAL"]
-        );
-
-        const nik =
-        normal(
-            item["NOMOR INDUK KEPENDUDUKAN (NIK)"]
-        )
-        .replace(/[^0-9]/g,"");
-
-        return(
-
-            id.includes(input) ||
-
-            idBelakang.includes(input) ||
-
-            namaPemilik.includes(input) ||
-
-            namaKapal.includes(input) ||
-
-            nik.includes(inputNik)
-
-        );
-
-    });
-
-    if(kapalV2){
-
-        window.open(
-
-            "kapal.html?id=" +
-            kapalV2["ID SIMPAN"],
-
-            "_blank"
-
+        bukaData(
+            hasil[0]
         );
 
         return;
 
     }
 
-    alert(
-        "Data kapal tidak ditemukan"
-    );
+    /* ======================================================
+    BANYAK DATA
+    ====================================================== */
+
+    let pilihan =
+    "Ditemukan " +
+    hasil.length +
+    " kapal:\n\n";
+
+    hasil.forEach((item,index)=>{
+
+        const namaKapal =
+
+        item["Nama Kapal"] ||
+
+        item["NAMA KAPAL SESUAI PAS KAPAL"] ||
+
+        "KAPAL TANPA NAMA";
+
+        pilihan +=
+
+        (index+1) +
+        ". " +
+        namaKapal +
+        "\n";
+
+    });
+
+    pilihan +=
+    "\nMasukkan nomor pilihan:";
+
+    const pilih =
+    prompt(pilihan);
+
+    if(!pilih){
+
+        return;
+
+    }
+
+    const index =
+    parseInt(pilih) - 1;
+
+    if(
+
+        hasil[index]
+
+    ){
+
+        bukaData(
+            hasil[index]
+        );
+
+    }
+
+}
+
+/* ======================================================
+BUKA DATA
+====================================================== */
+
+function bukaData(item){
+
+    const id =
+    item["ID SIMPAN"];
+
+    const isV1 =
+
+        item["Nama Kapal"] !== undefined;
+
+    if(isV1){
+
+        window.open(
+
+            "v1/kapal.html?id=" +
+            id,
+
+            "_blank"
+
+        );
+
+    }
+
+    else{
+
+        window.open(
+
+            "kapal.html?id=" +
+            id,
+
+            "_blank"
+
+        );
+
+    }
 
 }
 
