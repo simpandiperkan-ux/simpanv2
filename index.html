@@ -7,10 +7,8 @@
 
 <title>SIMPAN SUPER APP V3 FINAL</title>
 
-<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
@@ -31,8 +29,8 @@ body{
 
     background:
     linear-gradient(
-        rgba(0,35,90,.88),
-        rgba(0,70,160,.88)
+        rgba(0,35,90,.90),
+        rgba(0,70,160,.90)
     ),
     url('background_simpan.png');
 
@@ -379,8 +377,6 @@ CARD
 
     transform:translateY(-8px);
 
-    box-shadow:0 18px 40px rgba(0,0,0,.24);
-
 }
 
 .card::before{
@@ -470,10 +466,6 @@ QUICK MENU
 
     color:#0045aa;
 
-    position:relative;
-
-    overflow:hidden;
-
     transition:.3s;
 
     box-shadow:0 12px 30px rgba(0,0,0,.16);
@@ -483,8 +475,6 @@ QUICK MENU
 .quick-card:hover{
 
     transform:translateY(-8px);
-
-    box-shadow:0 20px 40px rgba(0,0,0,.20);
 
 }
 
@@ -517,10 +507,10 @@ QUICK MENU
 }
 
 /* ======================================================
-DESA CARD
+STATISTIK
 ====================================================== */
 
-.desa-card{
+.stat-card{
 
     margin-top:35px;
 
@@ -617,15 +607,9 @@ SIDEBAR
 
     <div class="logo-area">
 
-        <img
-            src="logo-bateng.png"
-            class="logo-bateng"
-        >
+        <img src="logo-bateng.png" class="logo-bateng">
 
-        <img
-            src="logo-simpan.png"
-            class="logo-simpan"
-        >
+        <img src="logo-simpan.png" class="logo-simpan">
 
         <h1>SIMPAN</h1>
 
@@ -641,29 +625,17 @@ SIDEBAR
 
     <div class="menu">
 
-        <a href="index.html">
-            🏠 Dashboard
-        </a>
+        <a href="index.html">🏠 Dashboard</a>
 
-        <a href="kapal.html?id=BT-SMP-0337">
-            🚀 SIMPAN V2
-        </a>
+        <a href="kapal.html?id=BT-SMP-0337">🚀 SIMPAN V2</a>
 
-        <a href="v1/kapal.html?id=BT-SMP-0001">
-            🗂 SIMPAN V1
-        </a>
+        <a href="v1/kapal.html?id=BT-SMP-0001">🗂 SIMPAN V1</a>
 
-        <a href="qr.html?id=BT-SMP-0337">
-            📱 QR V2
-        </a>
+        <a href="qr.html?id=BT-SMP-0337">📱 QR V2</a>
 
-        <a href="v1/qr.html?id=BT-SMP-0001">
-            🧾 QR V1
-        </a>
+        <a href="v1/qr.html?id=BT-SMP-0001">🧾 QR V1</a>
 
-        <a href="verifikasi-kapal.html">
-            ✅ Verifikasi
-        </a>
+        <a href="verifikasi-kapal.html">✅ Verifikasi</a>
 
     </div>
 
@@ -681,11 +653,7 @@ MAIN
 
         <div class="topbar-left">
 
-            <h2>
-
-                DASHBOARD SIMPAN V3
-
-            </h2>
+            <h2>DASHBOARD SIMPAN V3</h2>
 
             <p>
 
@@ -693,14 +661,12 @@ MAIN
 
             </p>
 
-            <!-- SEARCH -->
-
             <div class="search-box">
 
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="Cari ID SIMPAN / Nama Kapal / Nama Nelayan..."
+                    placeholder="Cari ID SIMPAN..."
                 >
 
                 <button onclick="cariKapal()">
@@ -722,7 +688,7 @@ MAIN
     </div>
 
     <!-- ======================================================
-    STATISTIK
+    STATISTIK UTAMA
     ====================================================== -->
 
     <div class="grid">
@@ -731,11 +697,7 @@ MAIN
 
             <h3>🚢 TOTAL KAPAL</h3>
 
-            <div class="value" id="totalKapal">
-
-                0
-
-            </div>
+            <div class="value" id="totalKapal">0</div>
 
             <div class="sub">
 
@@ -749,11 +711,7 @@ MAIN
 
             <h3>🗂 SIMPAN V1</h3>
 
-            <div class="value" id="totalV1">
-
-                0
-
-            </div>
+            <div class="value" id="totalV1">0</div>
 
             <div class="sub">
 
@@ -767,11 +725,7 @@ MAIN
 
             <h3>🚀 SIMPAN V2</h3>
 
-            <div class="value" id="totalV2">
-
-                0
-
-            </div>
+            <div class="value" id="totalV2">0</div>
 
             <div class="sub">
 
@@ -785,11 +739,7 @@ MAIN
 
             <h3>👨‍✈️ TOTAL NELAYAN</h3>
 
-            <div class="value" id="totalNelayan">
-
-                0
-
-            </div>
+            <div class="value" id="totalNelayan">0</div>
 
             <div class="sub">
 
@@ -803,15 +753,11 @@ MAIN
 
             <h3>✅ TERVERIFIKASI</h3>
 
-            <div class="value" id="totalVerifikasi">
-
-                0
-
-            </div>
+            <div class="value" id="totalVerifikasi">0</div>
 
             <div class="sub">
 
-                Gabungan V1 & V2
+                Hanya Status TERVERIFIKASI
 
             </div>
 
@@ -825,10 +771,7 @@ MAIN
 
     <div class="quick">
 
-        <a
-            href="kapal.html?id=BT-SMP-0337"
-            class="quick-card"
-        >
+        <a href="kapal.html?id=BT-SMP-0337" class="quick-card">
 
             <div class="icon">🚀</div>
 
@@ -842,10 +785,7 @@ MAIN
 
         </a>
 
-        <a
-            href="v1/kapal.html?id=BT-SMP-0001"
-            class="quick-card"
-        >
+        <a href="v1/kapal.html?id=BT-SMP-0001" class="quick-card">
 
             <div class="icon">🗂</div>
 
@@ -859,10 +799,7 @@ MAIN
 
         </a>
 
-        <a
-            href="qr.html?id=BT-SMP-0337"
-            class="quick-card"
-        >
+        <a href="qr.html?id=BT-SMP-0337" class="quick-card">
 
             <div class="icon">📱</div>
 
@@ -876,10 +813,7 @@ MAIN
 
         </a>
 
-        <a
-            href="v1/qr.html?id=BT-SMP-0001"
-            class="quick-card"
-        >
+        <a href="v1/qr.html?id=BT-SMP-0001" class="quick-card">
 
             <div class="icon">🧾</div>
 
@@ -893,10 +827,7 @@ MAIN
 
         </a>
 
-        <a
-            href="verifikasi-kapal.html"
-            class="quick-card"
-        >
+        <a href="verifikasi-kapal.html" class="quick-card">
 
             <div class="icon">✅</div>
 
@@ -916,28 +847,23 @@ MAIN
     STATISTIK DESA
     ====================================================== -->
 
-    <div class="card desa-card">
+    <div class="card stat-card">
 
-        <h3>
+        <h3>🏘 STATISTIK PER DESA</h3>
 
-            🏘 STATISTIK PER DESA
+        <div id="desaContainer"></div>
 
-        </h3>
+    </div>
 
-        <div id="desaContainer">
+    <!-- ======================================================
+    STATISTIK KECAMATAN
+    ====================================================== -->
 
-            <div
-                style="
-                color:white;
-                margin-top:15px;
-                "
-            >
+    <div class="card stat-card">
 
-                Memuat data desa...
+        <h3>🗺 STATISTIK PER KECAMATAN</h3>
 
-            </div>
-
-        </div>
+        <div id="kecamatanContainer"></div>
 
     </div>
 
@@ -1030,7 +956,7 @@ Papa.parse(csvV1,{
                 dataV2.length;
 
                 /* ======================================================
-                TOTAL NELAYAN BERDASARKAN NIK UNIK
+                TOTAL NELAYAN BERDASARKAN NIK
                 ====================================================== */
 
                 const nelayan = new Set();
@@ -1041,15 +967,8 @@ Papa.parse(csvV1,{
 
                     (
 
-                        item["NIK"] ||
-
-                        item["NIK NELAYAN"] ||
-
-                        item["NO KTP"] ||
-
-                        item["NOMOR KTP"] ||
-
-                        item["NIK PEMILIK"] ||
+                        item["Nomor Induk Kependudukan (NIK)"] ||
+                        item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
 
                         ""
 
@@ -1080,7 +999,7 @@ Papa.parse(csvV1,{
                 nelayan.size;
 
                 /* ======================================================
-                TOTAL TERVERIFIKASI GABUNGAN
+                TOTAL TERVERIFIKASI
                 ====================================================== */
 
                 let totalVerifikasi = 0;
@@ -1093,8 +1012,8 @@ Papa.parse(csvV1,{
 
                     status = status
                     .toString()
-                    .toUpperCase()
                     .trim()
+                    .toUpperCase()
                     .replace(/\s+/g," ");
 
                     if(
@@ -1115,7 +1034,7 @@ Papa.parse(csvV1,{
                 totalVerifikasi;
 
                 /* ======================================================
-                STATISTIK DESA GABUNGAN
+                STATISTIK DESA
                 ====================================================== */
 
                 const desaMap = {};
@@ -1129,13 +1048,6 @@ Papa.parse(csvV1,{
                         item["DESA / KELURAHAN"] ||
                         item["DESA/KELURAHAN"] ||
                         item["Desa/ Kelurahan"] ||
-                        item["DESA"] ||
-                        item["KELURAHAN"] ||
-                        item["DESA NELAYAN"] ||
-                        item["ALAMAT"] ||
-                        item["DOMISILI"] ||
-                        item["KAMPUNG"] ||
-                        item["LOKASI"] ||
                         ""
 
                     )
@@ -1145,23 +1057,13 @@ Papa.parse(csvV1,{
 
                     desa = desa
                     .replace(/\s+/g," ")
-                    .replace(/KEL\./g,"")
                     .replace(/DESA/g,"")
                     .replace(/KELURAHAN/g,"")
                     .trim();
 
-                    if(desa.includes(",")){
-
-                        desa = desa
-                        .split(",")[0]
-                        .trim();
-
-                    }
-
                     if(
 
                         !desa ||
-                        desa === "-" ||
                         desa.length < 2
 
                     ){
@@ -1233,6 +1135,105 @@ Papa.parse(csvV1,{
                 ).innerHTML =
                 desaHTML;
 
+                /* ======================================================
+                STATISTIK KECAMATAN
+                ====================================================== */
+
+                const kecamatanMap = {};
+
+                semuaData.forEach(item=>{
+
+                    let kecamatan =
+
+                    (
+
+                        item["Kecamatan"] ||
+                        item["KECAMATAN"] ||
+                        ""
+
+                    )
+                    .toString()
+                    .trim()
+                    .toUpperCase();
+
+                    kecamatan = kecamatan
+                    .replace(/\s+/g," ")
+                    .trim();
+
+                    if(
+
+                        !kecamatan ||
+                        kecamatan.length < 2
+
+                    ){
+
+                        return;
+
+                    }
+
+                    if(!kecamatanMap[kecamatan]){
+
+                        kecamatanMap[kecamatan] = 0;
+
+                    }
+
+                    kecamatanMap[kecamatan]++;
+
+                });
+
+                const kecamatanSorted =
+
+                Object.entries(kecamatanMap)
+                .sort((a,b)=> b[1]-a[1]);
+
+                let kecamatanHTML = "";
+
+                kecamatanSorted.forEach(item=>{
+
+                    kecamatanHTML += `
+
+                    <div
+                        style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        background:rgba(255,255,255,.06);
+                        padding:14px 18px;
+                        border-radius:14px;
+                        margin-top:12px;
+                        color:white;
+                        font-size:15px;
+                        "
+                    >
+
+                        <div>
+
+                            🗺 ${item[0]}
+
+                        </div>
+
+                        <div
+                            style="
+                            font-weight:800;
+                            font-size:18px;
+                            "
+                        >
+
+                            ${item[1]} Kapal
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                });
+
+                document.getElementById(
+                    "kecamatanContainer"
+                ).innerHTML =
+                kecamatanHTML;
+
             }
 
         });
@@ -1266,10 +1267,6 @@ function cariKapal(){
 
     }
 
-    /* ======================================================
-    CARI V1
-    ====================================================== */
-
     const kapalV1 =
     dataV1.find(item=>{
 
@@ -1292,10 +1289,6 @@ function cariKapal(){
         return;
 
     }
-
-    /* ======================================================
-    CARI V2
-    ====================================================== */
 
     const kapalV2 =
     dataV2.find(item=>{
@@ -1325,10 +1318,6 @@ function cariKapal(){
     );
 
 }
-
-/* ======================================================
-ENTER SEARCH
-====================================================== */
 
 document
 .getElementById(
