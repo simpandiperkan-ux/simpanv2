@@ -5,9 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIMPAN SUPER APP V3 FINAL</title>
+<title>SIMPAN SUPER APP V3 ULTRA PREMIUM</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -23,25 +26,93 @@ RESET
     box-sizing:border-box;
 }
 
+/* ======================================================
+BODY ULTRA PREMIUM
+====================================================== */
+
 body{
 
     font-family:'Poppins',sans-serif;
 
-    background:
+    background-image:
+
     linear-gradient(
-        rgba(0,35,90,.92),
-        rgba(0,70,160,.92)
+
+        rgba(0,20,60,.84),
+
+        rgba(0,45,120,.88)
+
     ),
+
     url('background_simpan.png');
 
     background-size:cover;
+
     background-position:center;
+
     background-repeat:no-repeat;
+
     background-attachment:fixed;
 
     min-height:100vh;
 
     overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* ======================================================
+ANIMATED OVERLAY
+====================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+
+        circle at top left,
+
+        rgba(255,255,255,.10),
+
+        transparent 30%
+
+    ),
+
+    radial-gradient(
+
+        circle at bottom right,
+
+        rgba(0,180,255,.18),
+
+        transparent 35%
+
+    ),
+
+    radial-gradient(
+
+        circle at center,
+
+        rgba(255,255,255,.04),
+
+        transparent 45%
+
+    );
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    animation:
+
+    glowMove 18s linear infinite alternate;
 
 }
 
@@ -49,7 +120,7 @@ body{
 WATERMARK
 ====================================================== */
 
-body::before{
+body::after{
 
     content:"";
 
@@ -63,9 +134,70 @@ body::before{
 
     background-size:220px;
 
-    opacity:.03;
+    opacity:.035;
 
     z-index:-1;
+
+    pointer-events:none;
+
+}
+
+/* ======================================================
+ANIMATION
+====================================================== */
+
+@keyframes glowMove{
+
+    0%{
+
+        transform:
+        translate(0px,0px)
+        scale(1);
+
+    }
+
+    100%{
+
+        transform:
+        translate(-20px,-20px)
+        scale(1.05);
+
+    }
+
+}
+
+/* ======================================================
+SCROLLBAR
+====================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:
+    rgba(255,255,255,.08);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        #00c6ff,
+
+        #0072ff
+
+    );
+
+    border-radius:20px;
 
 }
 
@@ -84,21 +216,36 @@ SIDEBAR
     height:100vh;
 
     background:
+
     linear-gradient(
+
         180deg,
-        rgba(0,45,110,.98),
-        rgba(0,95,220,.97)
+
+        rgba(0,30,90,.98),
+
+        rgba(0,85,200,.96)
+
     );
+
+    border-right:
+
+    1px solid rgba(255,255,255,.08);
 
     padding:28px 20px;
 
     overflow-y:auto;
 
-    box-shadow:5px 0 30px rgba(0,0,0,.25);
+    box-shadow:
+
+    5px 0 40px rgba(0,0,0,.30);
 
     z-index:999;
 
 }
+
+/* ======================================================
+LOGO AREA
+====================================================== */
 
 .logo-area{
 
@@ -128,11 +275,13 @@ SIDEBAR
 
     color:white;
 
-    font-size:34px;
+    font-size:36px;
 
     font-weight:900;
 
     margin-bottom:10px;
+
+    letter-spacing:1px;
 
 }
 
@@ -142,7 +291,7 @@ SIDEBAR
 
     font-size:13px;
 
-    line-height:1.7;
+    line-height:1.8;
 
 }
 
@@ -166,7 +315,15 @@ MENU
 
     color:white;
 
-    background:rgba(255,255,255,.08);
+    background:
+
+    rgba(255,255,255,.08);
+
+    border:
+
+    1px solid rgba(255,255,255,.05);
+
+    backdrop-filter:blur(12px);
 
     padding:16px 18px;
 
@@ -176,7 +333,7 @@ MENU
 
     font-weight:600;
 
-    transition:.3s;
+    transition:.35s;
 
     display:flex;
 
@@ -192,7 +349,13 @@ MENU
 
     color:#0057d8;
 
-    transform:translateX(6px);
+    transform:
+    translateX(8px)
+    scale(1.02);
+
+    box-shadow:
+
+    0 10px 25px rgba(255,255,255,.12);
 
 }
 
@@ -214,15 +377,25 @@ TOPBAR
 
 .topbar{
 
-    background:rgba(255,255,255,.10);
+    background:
 
-    border:1px solid rgba(255,255,255,.10);
+    linear-gradient(
 
-    backdrop-filter:blur(16px);
+        180deg,
 
-    border-radius:30px;
+        rgba(255,255,255,.14),
 
-    padding:35px;
+        rgba(255,255,255,.08)
+
+    );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:34px;
+
+    padding:38px;
 
     display:flex;
 
@@ -232,7 +405,11 @@ TOPBAR
 
     gap:25px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
+    box-shadow:
+
+    0 15px 45px rgba(0,0,0,.22),
+
+    inset 0 1px 0 rgba(255,255,255,.10);
 
 }
 
@@ -240,11 +417,15 @@ TOPBAR
 
     color:white;
 
-    font-size:46px;
+    font-size:50px;
 
     font-weight:900;
 
-    margin-bottom:12px;
+    margin-bottom:14px;
+
+    text-shadow:
+
+    0 0 20px rgba(255,255,255,.15);
 
 }
 
@@ -260,7 +441,7 @@ TOPBAR
 
 .topbar-right img{
 
-    width:115px;
+    width:120px;
 
 }
 
@@ -282,13 +463,13 @@ SEARCH
 
     flex:1;
 
-    height:60px;
+    height:62px;
 
     border:none;
 
-    border-radius:18px;
+    border-radius:22px;
 
-    padding:0 22px;
+    padding:0 24px;
 
     font-size:18px;
 
@@ -296,21 +477,34 @@ SEARCH
 
     outline:none;
 
+    background:
+
+    rgba(255,255,255,.92);
+
+    box-shadow:
+
+    inset 0 2px 8px rgba(0,0,0,.08);
+
 }
 
 .search-box button{
 
-    width:190px;
+    width:200px;
 
     border:none;
 
-    border-radius:18px;
+    border-radius:22px;
 
     background:
+
     linear-gradient(
+
         135deg,
-        #0066ff,
-        #00a2ff
+
+        #00c6ff,
+
+        #0072ff
+
     );
 
     color:white;
@@ -321,13 +515,23 @@ SEARCH
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:.35s;
+
+    box-shadow:
+
+    0 10px 25px rgba(0,114,255,.35);
 
 }
 
 .search-box button:hover{
 
-    transform:translateY(-2px);
+    transform:
+    translateY(-3px)
+    scale(1.03);
+
+    box-shadow:
+
+    0 15px 35px rgba(0,114,255,.45);
 
 }
 
@@ -353,29 +557,51 @@ CARD
 
 .card{
 
-    background:rgba(255,255,255,.12);
+    background:
 
-    border:1px solid rgba(255,255,255,.12);
+    linear-gradient(
 
-    backdrop-filter:blur(14px);
+        180deg,
 
-    border-radius:28px;
+        rgba(255,255,255,.16),
 
-    padding:28px;
+        rgba(255,255,255,.08)
+
+    );
+
+    border:1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:32px;
+
+    padding:30px;
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    box-shadow:
 
-    transition:.3s;
+    0 10px 35px rgba(0,0,0,.22),
+
+    inset 0 1px 0 rgba(255,255,255,.10);
+
+    transition:.35s ease;
 
 }
 
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:
+    translateY(-10px)
+    scale(1.015);
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.28),
+
+    0 0 30px rgba(0,180,255,.20);
 
 }
 
@@ -385,15 +611,23 @@ CARD
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:260px;
+    height:260px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.05);
+    background:
 
-    top:-60px;
-    right:-60px;
+    radial-gradient(
+
+        rgba(255,255,255,.12),
+
+        transparent 70%
+
+    );
+
+    top:-100px;
+    right:-100px;
 
 }
 
@@ -414,12 +648,18 @@ CARD
 
     color:white;
 
-    font-size:52px;
+    font-size:56px;
 
     font-weight:900;
 
+    letter-spacing:1px;
+
     position:relative;
     z-index:2;
+
+    text-shadow:
+
+    0 3px 10px rgba(0,0,0,.30);
 
 }
 
@@ -456,25 +696,43 @@ QUICK MENU
 
 .quick-card{
 
-    background:white;
+    background:
 
-    border-radius:28px;
+    linear-gradient(
 
-    padding:30px;
+        180deg,
+
+        rgba(255,255,255,.96),
+
+        rgba(255,255,255,.92)
+
+    );
+
+    border-radius:32px;
+
+    padding:32px;
 
     text-decoration:none;
 
     color:#0045aa;
 
-    transition:.3s;
+    transition:.35s;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.16);
+    box-shadow:
+
+    0 12px 35px rgba(0,0,0,.18);
 
 }
 
 .quick-card:hover{
 
-    transform:translateY(-8px);
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+
+    0 18px 45px rgba(0,0,0,.24);
 
 }
 
@@ -517,7 +775,7 @@ STAT CARD
 }
 
 /* ======================================================
-PROGRESS ITEM
+PROGRESS
 ====================================================== */
 
 .progress-item{
@@ -552,13 +810,19 @@ PROGRESS ITEM
 
     width:100%;
 
-    height:16px;
+    height:18px;
 
-    background:rgba(255,255,255,.10);
+    background:
 
-    border-radius:20px;
+    rgba(255,255,255,.10);
+
+    border-radius:30px;
 
     overflow:hidden;
+
+    box-shadow:
+
+    inset 0 2px 6px rgba(0,0,0,.15);
 
 }
 
@@ -566,7 +830,11 @@ PROGRESS ITEM
 
     height:100%;
 
-    border-radius:20px;
+    border-radius:30px;
+
+    box-shadow:
+
+    0 0 15px rgba(0,198,255,.40);
 
 }
 
@@ -576,15 +844,27 @@ FOOTER
 
 .footer{
 
-    margin-top:35px;
+    margin-top:40px;
 
-    background:rgba(255,255,255,.08);
+    background:
 
-    backdrop-filter:blur(12px);
+    linear-gradient(
 
-    border-radius:24px;
+        180deg,
 
-    padding:20px;
+        rgba(255,255,255,.10),
+
+        rgba(255,255,255,.06)
+
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:28px;
+
+    padding:24px;
 
     text-align:center;
 
@@ -592,7 +872,11 @@ FOOTER
 
     font-size:14px;
 
-    line-height:1.8;
+    line-height:1.9;
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.18);
 
 }
 
@@ -629,7 +913,7 @@ RESPONSIVE
 
     .topbar-left h2{
 
-        font-size:30px;
+        font-size:32px;
 
     }
 
@@ -752,7 +1036,7 @@ MAIN
     </div>
 
     <!-- ======================================================
-    STATISTIK
+    GRID
     ====================================================== -->
 
     <div class="grid">
@@ -843,714 +1127,7 @@ MAIN
 
     </div>
 
-    <!-- ======================================================
-    QUICK MENU
-    ====================================================== -->
-
-    <div class="quick">
-
-        <a
-            href="kapal.html?id=BT-SMP-0337"
-            class="quick-card"
-            target="_blank"
-        >
-
-            <div class="icon">🚀</div>
-
-            <h4>SIMPAN V2</h4>
-
-            <p>Sistem pendataan kapal generasi terbaru.</p>
-
-        </a>
-
-        <a
-            href="v1/kapal.html?id=BT-SMP-0001"
-            class="quick-card"
-            target="_blank"
-        >
-
-            <div class="icon">🗂</div>
-
-            <h4>SIMPAN V1</h4>
-
-            <p>Sistem pendataan kapal generasi pertama.</p>
-
-        </a>
-
-        <a
-            href="qr.html?id=BT-SMP-0337"
-            class="quick-card"
-            target="_blank"
-        >
-
-            <div class="icon">📱</div>
-
-            <h4>CETAK QR V2</h4>
-
-            <p>Cetak QR premium SIMPAN V2.</p>
-
-        </a>
-
-        <a
-            href="v1/qr.html?id=BT-SMP-0001"
-            class="quick-card"
-            target="_blank"
-        >
-
-            <div class="icon">🧾</div>
-
-            <h4>CETAK QR V1</h4>
-
-            <p>Cetak QR premium SIMPAN V1.</p>
-
-        </a>
-
-        <a
-            href="verifikasi-kapal.html"
-            class="quick-card"
-            target="_blank"
-        >
-
-            <div class="icon">✅</div>
-
-            <h4>VERIFIKASI</h4>
-
-            <p>Sistem verifikasi kapal realtime.</p>
-
-        </a>
-
-    </div>
-
-    <!-- ======================================================
-    STATISTIK DESA
-    ====================================================== -->
-
-    <div class="card stat-card">
-
-        <h3>🏘 STATISTIK PER DESA</h3>
-
-        <div id="desaContainer"></div>
-
-    </div>
-
-    <!-- ======================================================
-    STATISTIK KECAMATAN
-    ====================================================== -->
-
-    <div class="card stat-card">
-
-        <h3>🗺 STATISTIK PER KECAMATAN</h3>
-
-        <div id="kecamatanContainer"></div>
-
-    </div>
-
-    <!-- ======================================================
-    FOOTER
-    ====================================================== -->
-
-    <div class="footer">
-
-        © 2026 Dinas Perikanan Kabupaten Bangka Tengah
-        <br>
-        SIMPAN SUPER APP V3 FINAL
-
-    </div>
-
 </div>
-
-<script>
-
-/* ======================================================
-CSV V1
-====================================================== */
-
-const csvV1 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv&t=" +
-new Date().getTime();
-
-/* ======================================================
-CSV V2
-====================================================== */
-
-const csvV2 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv&t=" +
-new Date().getTime();
-
-let dataV1 = [];
-let dataV2 = [];
-let semuaData = [];
-
-/* ======================================================
-LOAD CSV
-====================================================== */
-
-Papa.parse(csvV1,{
-
-    download:true,
-    header:true,
-    skipEmptyLines:true,
-
-    complete:function(v1){
-
-        dataV1 = v1.data;
-
-        Papa.parse(csvV2,{
-
-            download:true,
-            header:true,
-            skipEmptyLines:true,
-
-            complete:function(v2){
-
-                dataV2 = v2.data;
-
-                semuaData = [
-
-                    ...dataV1,
-                    ...dataV2
-
-                ];
-
-                /* ======================================================
-                TOTAL KAPAL
-                ====================================================== */
-
-                document.getElementById(
-                    "totalKapal"
-                ).innerHTML =
-                semuaData.length;
-
-                document.getElementById(
-                    "totalV1"
-                ).innerHTML =
-                dataV1.length;
-
-                document.getElementById(
-                    "totalV2"
-                ).innerHTML =
-                dataV2.length;
-
-                /* ======================================================
-                TOTAL NELAYAN
-                ====================================================== */
-
-                const nelayan = new Set();
-
-                semuaData.forEach(item=>{
-
-                    let nik =
-
-                    (
-
-                        item["Nomor Induk Kependudukan (NIK)"] ||
-                        item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
-                        ""
-
-                    )
-                    .toString()
-                    .trim()
-                    .replace(/[^0-9]/g,"");
-
-                    if(
-
-                        nik &&
-                        nik.length >= 16
-
-                    ){
-
-                        nelayan.add(nik);
-
-                    }
-
-                });
-
-                document.getElementById(
-                    "totalNelayan"
-                ).innerHTML =
-                nelayan.size;
-
-                /* ======================================================
-                VERIFIKASI
-                ====================================================== */
-
-                let totalVerifikasi = 0;
-                let totalBelumVerifikasi = 0;
-
-                semuaData.forEach(item=>{
-
-                    let status =
-
-                    item["STATUS VERIFIKASI"] || "";
-
-                    status = status
-                    .toString()
-                    .trim()
-                    .toUpperCase();
-
-                    if(
-
-                        status === "TERVERIFIKASI"
-
-                    ){
-
-                        totalVerifikasi++;
-
-                    }
-
-                    else{
-
-                        totalBelumVerifikasi++;
-
-                    }
-
-                });
-
-                document.getElementById(
-                    "totalVerifikasi"
-                ).innerHTML =
-                totalVerifikasi;
-
-                document.getElementById(
-                    "totalBelumVerifikasi"
-                ).innerHTML =
-                totalBelumVerifikasi;
-
-                /* ======================================================
-                STATISTIK DESA
-                ====================================================== */
-
-                const desaMap = {};
-
-                semuaData.forEach(item=>{
-
-                    let desa =
-
-                    (
-
-                        item["DESA / KELURAHAN"] ||
-                        item["DESA/KELURAHAN"] ||
-                        item["Desa/ Kelurahan"] ||
-                        ""
-
-                    )
-                    .toString()
-                    .trim()
-                    .toUpperCase();
-
-                    desa = desa
-                    .replace(/\s+/g," ")
-                    .replace(/DESA/g,"")
-                    .replace(/KELURAHAN/g,"")
-                    .trim();
-
-                    if(!desa){
-
-                        return;
-
-                    }
-
-                    if(!desaMap[desa]){
-
-                        desaMap[desa] = 0;
-
-                    }
-
-                    desaMap[desa]++;
-
-                });
-
-                const desaSorted =
-
-                Object.entries(desaMap)
-                .sort((a,b)=> b[1]-a[1]);
-
-                let desaHTML = "";
-
-                const maxDesa =
-                desaSorted[0][1];
-
-                desaSorted.forEach(item=>{
-
-                    const persen =
-                    (item[1] / maxDesa) * 100;
-
-                    desaHTML += `
-
-                    <div class="progress-item">
-
-                        <div class="progress-head">
-
-                            <div>
-
-                                🏘 ${item[0]}
-
-                            </div>
-
-                            <div class="count">
-
-                                ${item[1]} Kapal
-
-                            </div>
-
-                        </div>
-
-                        <div class="progress-bar">
-
-                            <div
-                                class="progress-fill"
-                                style="
-                                width:${persen}%;
-                                background:
-                                linear-gradient(
-                                    90deg,
-                                    #00c6ff,
-                                    #0072ff
-                                );
-                                "
-                            ></div>
-
-                        </div>
-
-                    </div>
-
-                    `;
-
-                });
-
-                document.getElementById(
-                    "desaContainer"
-                ).innerHTML =
-                desaHTML;
-
-                /* ======================================================
-                STATISTIK KECAMATAN
-                ====================================================== */
-
-                const kecamatanMap = {};
-
-                semuaData.forEach(item=>{
-
-                    let kecamatan =
-
-                    (
-
-                        item["Kecamatan"] ||
-                        item["KECAMATAN"] ||
-                        ""
-
-                    )
-                    .toString()
-                    .trim()
-                    .toUpperCase();
-
-                    if(!kecamatan){
-
-                        return;
-
-                    }
-
-                    if(!kecamatanMap[kecamatan]){
-
-                        kecamatanMap[kecamatan] = 0;
-
-                    }
-
-                    kecamatanMap[kecamatan]++;
-
-                });
-
-                const kecamatanSorted =
-
-                Object.entries(kecamatanMap)
-                .sort((a,b)=> b[1]-a[1]);
-
-                let kecamatanHTML = "";
-
-                const maxKecamatan =
-                kecamatanSorted[0][1];
-
-                kecamatanSorted.forEach(item=>{
-
-                    const persen =
-                    (item[1] / maxKecamatan) * 100;
-
-                    kecamatanHTML += `
-
-                    <div class="progress-item">
-
-                        <div class="progress-head">
-
-                            <div>
-
-                                🗺 ${item[0]}
-
-                            </div>
-
-                            <div class="count">
-
-                                ${item[1]} Kapal
-
-                            </div>
-
-                        </div>
-
-                        <div class="progress-bar">
-
-                            <div
-                                class="progress-fill"
-                                style="
-                                width:${persen}%;
-                                background:
-                                linear-gradient(
-                                    90deg,
-                                    #00ffb3,
-                                    #0091ff
-                                );
-                                "
-                            ></div>
-
-                        </div>
-
-                    </div>
-
-                    `;
-
-                });
-
-                document.getElementById(
-                    "kecamatanContainer"
-                ).innerHTML =
-                kecamatanHTML;
-
-            }
-
-        });
-
-    }
-
-});
-
-/* ======================================================
-SEARCH FINAL
-4 DIGIT ID + NIK
-====================================================== */
-
-function cariKapal(){
-
-    const input =
-
-    document.getElementById(
-        "searchInput"
-    )
-    .value
-    .trim()
-    .toUpperCase();
-
-    if(!input){
-
-        alert(
-            "Masukkan pencarian terlebih dahulu"
-        );
-
-        return;
-
-    }
-
-    function normal(v){
-
-        return String(v || "")
-        .toUpperCase()
-        .trim();
-
-    }
-
-    const inputNik =
-    input.replace(/[^0-9]/g,"");
-
-    /* ======================================================
-    FILTER DATA
-    ====================================================== */
-
-    const hasil = semuaData.filter(item=>{
-
-        const id =
-        normal(
-            item["ID SIMPAN"]
-        );
-
-        const idBelakang =
-        id.slice(-4);
-
-        const nik =
-
-        normal(
-
-            item["Nomor Induk Kependudukan (NIK)"] ||
-
-            item["NOMOR INDUK KEPENDUDUKAN (NIK)"]
-
-        )
-        .replace(/[^0-9]/g,"");
-
-        return(
-
-            idBelakang === input ||
-
-            nik === inputNik
-
-        );
-
-    });
-
-    /* ======================================================
-    DATA TIDAK ADA
-    ====================================================== */
-
-    if(hasil.length === 0){
-
-        alert(
-            "Data kapal tidak ditemukan"
-        );
-
-        return;
-
-    }
-
-    /* ======================================================
-    SATU DATA
-    ====================================================== */
-
-    if(hasil.length === 1){
-
-        bukaData(
-            hasil[0]
-        );
-
-        return;
-
-    }
-
-    /* ======================================================
-    BANYAK DATA
-    ====================================================== */
-
-    let pilihan =
-    "Ditemukan " +
-    hasil.length +
-    " kapal:\n\n";
-
-    hasil.forEach((item,index)=>{
-
-        const namaKapal =
-
-        item["Nama Kapal"] ||
-
-        item["NAMA KAPAL SESUAI PAS KAPAL"] ||
-
-        "KAPAL TANPA NAMA";
-
-        pilihan +=
-
-        (index+1) +
-        ". " +
-        namaKapal +
-        "\n";
-
-    });
-
-    pilihan +=
-    "\nMasukkan nomor pilihan:";
-
-    const pilih =
-    prompt(pilihan);
-
-    if(!pilih){
-
-        return;
-
-    }
-
-    const index =
-    parseInt(pilih) - 1;
-
-    if(
-
-        hasil[index]
-
-    ){
-
-        bukaData(
-            hasil[index]
-        );
-
-    }
-
-}
-
-/* ======================================================
-BUKA DATA
-====================================================== */
-
-function bukaData(item){
-
-    const id =
-    item["ID SIMPAN"];
-
-    const isV1 =
-
-        item["Nama Kapal"] !== undefined;
-
-    if(isV1){
-
-        window.open(
-
-            "v1/kapal.html?id=" +
-            id,
-
-            "_blank"
-
-        );
-
-    }
-
-    else{
-
-        window.open(
-
-            "kapal.html?id=" +
-            id,
-
-            "_blank"
-
-        );
-
-    }
-
-}
-
-/* ======================================================
-ENTER SEARCH
-====================================================== */
-
-document
-.getElementById(
-    "searchInput"
-)
-.addEventListener(
-    "keypress",
-    function(e){
-
-        if(e.key === "Enter"){
-
-            cariKapal();
-
-        }
-
-    }
-);
-
-</script>
 
 </body>
 </html>
