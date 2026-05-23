@@ -683,38 +683,23 @@ SIDEBAR
             🏠 Dashboard
         </a>
 
-        <a
-            href="kapal.html?id=BT-SMP-0337"
-            target="_blank"
-        >
+        <a href="kapal.html?id=BT-SMP-0337" target="_blank">
             🚀 SIMPAN V2
         </a>
 
-        <a
-            href="v1/kapal.html?id=BT-SMP-0001"
-            target="_blank"
-        >
+        <a href="v1/kapal.html?id=BT-SMP-0001" target="_blank">
             🗂 SIMPAN V1
         </a>
 
-        <a
-            href="qr.html?id=BT-SMP-0337"
-            target="_blank"
-        >
+        <a href="qr.html?id=BT-SMP-0337" target="_blank">
             📱 QR V2
         </a>
 
-        <a
-            href="v1/qr.html?id=BT-SMP-0001"
-            target="_blank"
-        >
+        <a href="v1/qr.html?id=BT-SMP-0001" target="_blank">
             🧾 QR V1
         </a>
 
-        <a
-            href="verifikasi-kapal.html"
-            target="_blank"
-        >
+        <a href="verifikasi-kapal.html" target="_blank">
             ✅ Verifikasi
         </a>
 
@@ -727,6 +712,8 @@ MAIN
 ====================================================== -->
 
 <div class="main">
+
+    <!-- TOPBAR -->
 
     <div class="topbar">
 
@@ -745,7 +732,7 @@ MAIN
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="Cari ID SIMPAN..."
+                    placeholder="Cari ID SIMPAN / Nama Pemilik / Nama Kapal / NIK..."
                 >
 
                 <button onclick="cariKapal()">
@@ -858,9 +845,7 @@ MAIN
 
     </div>
 
-    <!-- ======================================================
-    QUICK MENU
-    ====================================================== -->
+    <!-- QUICK MENU -->
 
     <div class="quick">
 
@@ -936,9 +921,7 @@ MAIN
 
     </div>
 
-    <!-- ======================================================
-    STATISTIK DESA
-    ====================================================== -->
+    <!-- STATISTIK DESA -->
 
     <div class="card stat-card">
 
@@ -948,9 +931,7 @@ MAIN
 
     </div>
 
-    <!-- ======================================================
-    STATISTIK KECAMATAN
-    ====================================================== -->
+    <!-- STATISTIK KECAMATAN -->
 
     <div class="card stat-card">
 
@@ -960,9 +941,7 @@ MAIN
 
     </div>
 
-    <!-- ======================================================
-    FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
 
     <div class="footer">
 
@@ -1027,9 +1006,7 @@ Papa.parse(csvV1,{
 
                 ];
 
-                /* ======================================================
-                TOTAL KAPAL
-                ====================================================== */
+                /* TOTAL */
 
                 document.getElementById(
                     "totalKapal"
@@ -1089,7 +1066,7 @@ Papa.parse(csvV1,{
                 nelayan.size;
 
                 /* ======================================================
-                TOTAL VERIFIKASI
+                VERIFIKASI
                 ====================================================== */
 
                 let totalVerifikasi = 0;
@@ -1136,7 +1113,7 @@ Papa.parse(csvV1,{
                 totalBelumVerifikasi;
 
                 /* ======================================================
-                STATISTIK DESA
+                DESA
                 ====================================================== */
 
                 const desaMap = {};
@@ -1248,7 +1225,7 @@ Papa.parse(csvV1,{
                 desaHTML;
 
                 /* ======================================================
-                STATISTIK KECAMATAN
+                KECAMATAN
                 ====================================================== */
 
                 const kecamatanMap = {};
@@ -1365,7 +1342,7 @@ Papa.parse(csvV1,{
 });
 
 /* ======================================================
-SEARCH
+SEARCH FINAL PREMIUM
 ====================================================== */
 
 function cariKapal(){
@@ -1389,6 +1366,17 @@ function cariKapal(){
 
     }
 
+    function normal(v){
+
+        return String(v || "")
+        .toUpperCase()
+        .trim();
+
+    }
+
+    const inputNik =
+    input.replace(/[^0-9]/g,"");
+
     /* ======================================================
     CARI V1
     ====================================================== */
@@ -1397,12 +1385,42 @@ function cariKapal(){
     dataV1.find(item=>{
 
         const id =
-        String(
-            item["ID SIMPAN"] || ""
-        )
-        .toUpperCase();
+        normal(
+            item["ID SIMPAN"]
+        );
 
-        return id.includes(input);
+        const idBelakang =
+        id.slice(-4);
+
+        const namaPemilik =
+        normal(
+            item["Nama Pemilik Kapal (Sesuai KTP)"]
+        );
+
+        const namaKapal =
+        normal(
+            item["Nama Kapal"]
+        );
+
+        const nik =
+        normal(
+            item["Nomor Induk Kependudukan (NIK)"]
+        )
+        .replace(/[^0-9]/g,"");
+
+        return(
+
+            id.includes(input) ||
+
+            idBelakang.includes(input) ||
+
+            namaPemilik.includes(input) ||
+
+            namaKapal.includes(input) ||
+
+            nik.includes(inputNik)
+
+        );
 
     });
 
@@ -1429,12 +1447,42 @@ function cariKapal(){
     dataV2.find(item=>{
 
         const id =
-        String(
-            item["ID SIMPAN"] || ""
-        )
-        .toUpperCase();
+        normal(
+            item["ID SIMPAN"]
+        );
 
-        return id.includes(input);
+        const idBelakang =
+        id.slice(-4);
+
+        const namaPemilik =
+        normal(
+            item["NAMA PEMILIK KAPAL (SESUAI KTP)"]
+        );
+
+        const namaKapal =
+        normal(
+            item["NAMA KAPAL SESUAI PAS KAPAL"]
+        );
+
+        const nik =
+        normal(
+            item["NOMOR INDUK KEPENDUDUKAN (NIK)"]
+        )
+        .replace(/[^0-9]/g,"");
+
+        return(
+
+            id.includes(input) ||
+
+            idBelakang.includes(input) ||
+
+            namaPemilik.includes(input) ||
+
+            namaKapal.includes(input) ||
+
+            nik.includes(inputNik)
+
+        );
 
     });
 
