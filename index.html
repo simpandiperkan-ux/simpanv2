@@ -1,139 +1,932 @@
-export default function SimpanV2Dashboard() {
-  return (
-    <div className="min-h-screen bg-slate-100 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <div className="bg-white rounded-3xl shadow-lg p-6">
-          <h1 className="text-4xl font-bold text-slate-800">
-            SIMPAN V2
-          </h1>
-          <p className="text-slate-600 mt-2">
-            Sistem Informasi Manajemen Pendataan Armada Nelayan
-          </p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
 
-          <div className="mt-6 grid md:grid-cols-4 gap-4">
-            <div className="bg-blue-100 rounded-2xl p-4">
-              <h2 className="text-sm text-slate-600">Total Kapal</h2>
-              <p className="text-3xl font-bold">150</p>
-            </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <div className="bg-green-100 rounded-2xl p-4">
-              <h2 className="text-sm text-slate-600">Terverifikasi</h2>
-              <p className="text-3xl font-bold">120</p>
-            </div>
+<title>SIMPAN V3 - Portal Armada Nelayan</title>
 
-            <div className="bg-yellow-100 rounded-2xl p-4">
-              <h2 className="text-sm text-slate-600">Belum Verifikasi</h2>
-              <p className="text-3xl font-bold">30</p>
-            </div>
+<!-- FAVICON -->
+<link rel="icon" href="logo-simpan.png">
 
-            <div className="bg-red-100 rounded-2xl p-4">
-              <h2 className="text-sm text-slate-600">Rekomendasi Ditunda</h2>
-              <p className="text-3xl font-bold">30</p>
-            </div>
-          </div>
-        </div>
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        <div className="bg-white rounded-3xl shadow-lg p-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold text-slate-800">
-                Pendataan Kapal Nelayan
-              </h2>
-              <p className="text-slate-500">
-                Data realtime dari Google Spreadsheet
-              </p>
-            </div>
+<style>
 
-            <div className="flex gap-3">
-              <a
-                href="https://forms.gle/ivkhbQwhcP2USu556"
-                target="_blank"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-2xl font-semibold"
-              >
-                Input Data
-              </a>
-
-              <a
-                href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?gid=482048126&single=true&output=csv"
-                target="_blank"
-                className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-2xl font-semibold"
-              >
-                Download CSV
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-200">
-                <tr>
-                  <th className="p-3 text-left">No</th>
-                  <th className="p-3 text-left">Nama Nelayan</th>
-                  <th className="p-3 text-left">Nama Kapal</th>
-                  <th className="p-3 text-left">GT</th>
-                  <th className="p-3 text-left">Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr className="border-t">
-                  <td className="p-3">1</td>
-                  <td className="p-3">Contoh Nelayan</td>
-                  <td className="p-3">KM Bahari</td>
-                  <td className="p-3">5 GT</td>
-                  <td className="p-3">
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
-                      Terverifikasi
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-3xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-slate-800">
-              Fitur SIMPAN V2
-            </h2>
-
-            <ul className="mt-4 space-y-3 text-slate-600">
-              <li>✅ Dashboard realtime</li>
-              <li>✅ Integrasi Google Form</li>
-              <li>✅ Integrasi Google Spreadsheet CSV</li>
-              <li>✅ Search kapal dan nelayan</li>
-              <li>✅ Export Excel dan PDF</li>
-              <li>✅ Mobile Friendly</li>
-              <li>✅ Siap dijadikan APK Android</li>
-            </ul>
-          </div>
-
-          <div className="bg-white rounded-3xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-slate-800">
-              QR Code Pendataan
-            </h2>
-
-            <div className="mt-6 flex justify-center">
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://forms.gle/ivkhbQwhcP2USu556"
-                alt="QR Code"
-                className="rounded-2xl"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-slate-900 text-white rounded-3xl p-6 text-center">
-          <h2 className="text-2xl font-bold">
-            Dinas Perikanan Kabupaten Bangka Tengah
-          </h2>
-
-          <p className="mt-2 text-slate-300">
-            SIMPAN V2 © 2026
-          </p>
-        </div>
-      </div>
-    </div>
-  )
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(
+        rgba(0,20,50,.70),
+        rgba(0,30,70,.75)
+    ),
+    url('background_simpan.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* =========================
+WATERMARK
+========================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:url('logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:220px;
+
+    opacity:0.025;
+
+    z-index:-1;
+
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:290px;
+    height:100vh;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,45,110,.98),
+        rgba(0,85,190,.96)
+    );
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:5px 0 25px rgba(0,0,0,.25);
+
+    z-index:999;
+
+    padding:25px 18px;
+
+    overflow-y:auto;
+
+}
+
+/* LOGO */
+
+.logo-area{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.logo-daerah{
+
+    width:82px;
+
+    margin-bottom:12px;
+
+}
+
+.logo-simpan{
+
+    width:120px;
+
+    margin-bottom:14px;
+
+    animation:floatLogo 3s ease-in-out infinite;
+
+}
+
+.logo-area h1{
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:8px;
+
+}
+
+.logo-area p{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+/* =========================
+MENU
+========================= */
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.menu a{
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:17px 18px;
+
+    border-radius:18px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.menu a:hover{
+
+    background:white;
+
+    color:#0045aa;
+
+    transform:translateX(6px);
+
+}
+
+/* =========================
+MAIN
+========================= */
+
+.main{
+
+    margin-left:290px;
+
+    padding:30px;
+
+}
+
+/* =========================
+TOPBAR
+========================= */
+
+.topbar{
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+/* LEFT */
+
+.topbar-left h2{
+
+    color:white;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    margin-bottom:8px;
+
+}
+
+.topbar-left p{
+
+    color:rgba(255,255,255,.88);
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+/* RIGHT */
+
+.topbar-right img{
+
+    width:130px;
+
+}
+
+/* =========================
+STAT GRID
+========================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:24px;
+
+}
+
+/* CARD */
+
+.card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.16);
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+
+    top:-60px;
+    right:-60px;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.24);
+
+}
+
+.card h3{
+
+    color:white;
+
+    font-size:18px;
+
+    margin-bottom:18px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.card .value{
+
+    color:white;
+
+    font-size:52px;
+
+    font-weight:900;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.card .sub{
+
+    color:rgba(255,255,255,.88);
+
+    margin-top:10px;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    position:relative;
+    z-index:2;
+
+}
+
+/* =========================
+QUICK MENU
+========================= */
+
+.quick{
+
+    margin-top:32px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:24px;
+
+}
+
+.quick-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:30px;
+
+    text-decoration:none;
+
+    color:#0045aa;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.quick-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    border-radius:50%;
+
+    background:rgba(0,90,200,.04);
+
+    right:-60px;
+    top:-60px;
+
+}
+
+.quick-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+.quick-card .icon{
+
+    font-size:58px;
+
+    margin-bottom:16px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.quick-card h4{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+    font-weight:800;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.quick-card p{
+
+    color:#444;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+
+    margin-top:35px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:24px;
+
+    padding:20px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+}
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes floatLogo{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+    .main{
+
+        margin-left:0;
+
+        padding:20px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:18px;
+
+    }
+
+    .topbar-left h2{
+
+        font-size:30px;
+
+    }
+
+    .topbar-right img{
+
+        width:100px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<div class="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo-area">
+
+        <img
+            src="logo-bateng.png"
+            class="logo-daerah"
+        >
+
+        <img
+            src="logo-simpan.png"
+            class="logo-simpan"
+        >
+
+        <h1>SIMPAN</h1>
+
+        <p>
+
+            Sistem Informasi Manajemen Pendataan Armada Nelayan
+            <br>
+            Kabupaten Bangka Tengah
+
+        </p>
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="menu">
+
+        <a href="index.html">
+
+            🏠 Dashboard
+
+        </a>
+
+        <a href="kapal.html?id=BT-SMP-0337">
+
+            🚢 Data Kapal
+
+        </a>
+
+        <a href="qr.html?id=BT-SMP-0337">
+
+            📱 Cetak QR
+
+        </a>
+
+        <a href="verifikasi-kapal.html">
+
+            ✅ Verifikasi Kapal
+
+        </a>
+
+        <a href="#">
+
+            📊 Statistik Kapal
+
+        </a>
+
+        <a href="#">
+
+            ⛽ Rekap BBM Subsidi
+
+        </a>
+
+        <a href="#">
+
+            👨‍✈️ Data Nelayan
+
+        </a>
+
+        <a href="#">
+
+            🗺 Wilayah Tangkapan
+
+        </a>
+
+        <a href="#">
+
+            ⚙ Pengaturan
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- =========================
+MAIN
+========================= -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="topbar-left">
+
+            <h2>
+
+                DASHBOARD SIMPAN V3
+
+            </h2>
+
+            <p>
+
+                Monitoring Armada Nelayan Kabupaten Bangka Tengah
+                <br>
+                Sistem Digital Pendataan Kapal Nelayan Realtime
+
+            </p>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <img src="logo-bateng.png">
+
+        </div>
+
+    </div>
+
+    <!-- STATISTIK -->
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>
+
+                🚢 TOTAL KAPAL
+
+            </h3>
+
+            <div class="value">
+
+                337
+
+            </div>
+
+            <div class="sub">
+
+                Armada Nelayan Terdata
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                ✅ TERVERIFIKASI
+
+            </h3>
+
+            <div class="value">
+
+                187
+
+            </div>
+
+            <div class="sub">
+
+                Kapal Sudah Diverifikasi
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                ⛽ BBM SUBSIDI
+
+            </h3>
+
+            <div class="value">
+
+                52K
+
+            </div>
+
+            <div class="sub">
+
+                Liter Per Bulan
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                👨‍✈️ NELAYAN
+
+            </h3>
+
+            <div class="value">
+
+                415
+
+            </div>
+
+            <div class="sub">
+
+                Nelayan Aktif
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- QUICK MENU -->
+
+    <div class="quick">
+
+        <a
+            href="kapal.html?id=BT-SMP-0337"
+            class="quick-card"
+        >
+
+            <div class="icon">
+
+                🚢
+
+            </div>
+
+            <h4>
+
+                DATA KAPAL
+
+            </h4>
+
+            <p>
+
+                Lihat detail lengkap data kapal nelayan
+                beserta dokumen dan foto kapal.
+
+            </p>
+
+        </a>
+
+        <a
+            href="qr.html?id=BT-SMP-0337"
+            class="quick-card"
+        >
+
+            <div class="icon">
+
+                📱
+
+            </div>
+
+            <h4>
+
+                CETAK QR
+
+            </h4>
+
+            <p>
+
+                Cetak stiker QR kapal otomatis
+                untuk verifikasi lapangan.
+
+            </p>
+
+        </a>
+
+        <a
+            href="verifikasi-kapal.html"
+            class="quick-card"
+        >
+
+            <div class="icon">
+
+                ✅
+
+            </div>
+
+            <h4>
+
+                VERIFIKASI
+
+            </h4>
+
+            <p>
+
+                Sistem verifikasi kapal nelayan
+                berbasis Google Form realtime.
+
+            </p>
+
+        </a>
+
+        <a
+            href="#"
+            class="quick-card"
+        >
+
+            <div class="icon">
+
+                📊
+
+            </div>
+
+            <h4>
+
+                STATISTIK
+
+            </h4>
+
+            <p>
+
+                Monitoring realtime kapal,
+                nelayan, dan BBM subsidi.
+
+            </p>
+
+        </a>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        © 2026 Dinas Perikanan Kabupaten Bangka Tengah
+        <br>
+        SIMPAN V3 — Sistem Informasi Manajemen Pendataan Armada Nelayan
+
+    </div>
+
+</div>
+
+</body>
+</html>
