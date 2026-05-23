@@ -7,10 +7,8 @@
 
 <title>SIMPAN SUPER APP V3</title>
 
-<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
@@ -101,10 +99,6 @@ SIDEBAR
     z-index:999;
 
 }
-
-/* ======================================================
-LOGO AREA
-====================================================== */
 
 .logo-area{
 
@@ -492,32 +486,11 @@ QUICK MENU
 
 }
 
-.quick-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    border-radius:50%;
-
-    background:rgba(0,90,200,.04);
-
-    top:-60px;
-    right:-60px;
-
-}
-
 .quick-card .icon{
 
     font-size:54px;
 
     margin-bottom:18px;
-
-    position:relative;
-    z-index:2;
 
 }
 
@@ -529,9 +502,6 @@ QUICK MENU
 
     font-weight:800;
 
-    position:relative;
-    z-index:2;
-
 }
 
 .quick-card p{
@@ -542,8 +512,15 @@ QUICK MENU
 
     line-height:1.8;
 
-    position:relative;
-    z-index:2;
+}
+
+/* ======================================================
+STATISTIK DESA
+====================================================== */
+
+.desa-card{
+
+    margin-top:35px;
 
 }
 
@@ -675,7 +652,11 @@ SIDEBAR
         </a>
 
         <a href="qr.html?id=BT-SMP-0337">
-            📱 Cetak QR
+            📱 QR V2
+        </a>
+
+        <a href="v1/qr.html?id=BT-SMP-0001">
+            🧾 QR V1
         </a>
 
         <a href="verifikasi-kapal.html">
@@ -706,8 +687,7 @@ MAIN
 
             <p>
 
-                Portal Monitoring Armada Nelayan
-                Kabupaten Bangka Tengah
+                Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah
 
             </p>
 
@@ -747,11 +727,7 @@ MAIN
 
         <div class="card">
 
-            <h3>
-
-                🚢 TOTAL KAPAL
-
-            </h3>
+            <h3>🚢 TOTAL KAPAL</h3>
 
             <div class="value" id="totalKapal">
 
@@ -769,11 +745,7 @@ MAIN
 
         <div class="card">
 
-            <h3>
-
-                🗂 SIMPAN V1
-
-            </h3>
+            <h3>🗂 SIMPAN V1</h3>
 
             <div class="value" id="totalV1">
 
@@ -791,11 +763,7 @@ MAIN
 
         <div class="card">
 
-            <h3>
-
-                🚀 SIMPAN V2
-
-            </h3>
+            <h3>🚀 SIMPAN V2</h3>
 
             <div class="value" id="totalV2">
 
@@ -813,11 +781,7 @@ MAIN
 
         <div class="card">
 
-            <h3>
-
-                👨‍✈️ TOTAL NELAYAN
-
-            </h3>
+            <h3>👨‍✈️ TOTAL NELAYAN</h3>
 
             <div class="value" id="totalNelayan">
 
@@ -827,7 +791,7 @@ MAIN
 
             <div class="sub">
 
-                Nelayan Unik Terdata
+                Nelayan Unik Gabungan
 
             </div>
 
@@ -835,11 +799,7 @@ MAIN
 
         <div class="card">
 
-            <h3>
-
-                ✅ TERVERIFIKASI
-
-            </h3>
+            <h3>✅ TERVERIFIKASI</h3>
 
             <div class="value" id="totalVerifikasi">
 
@@ -849,7 +809,7 @@ MAIN
 
             <div class="sub">
 
-                Kapal Sudah Diverifikasi
+                Total Kapal Terverifikasi
 
             </div>
 
@@ -926,13 +886,38 @@ MAIN
 
             <h4>
 
-                CETAK QR
+                CETAK QR V2
 
             </h4>
 
             <p>
 
-                Cetak QR premium otomatis.
+                Cetak QR premium SIMPAN V2.
+
+            </p>
+
+        </a>
+
+        <a
+            href="v1/qr.html?id=BT-SMP-0001"
+            class="quick-card"
+        >
+
+            <div class="icon">
+
+                🧾
+
+            </div>
+
+            <h4>
+
+                CETAK QR V1
+
+            </h4>
+
+            <p>
+
+                Cetak QR premium SIMPAN V1.
 
             </p>
 
@@ -962,6 +947,35 @@ MAIN
             </p>
 
         </a>
+
+    </div>
+
+    <!-- ======================================================
+    STATISTIK DESA
+    ====================================================== -->
+
+    <div class="card desa-card">
+
+        <h3>
+
+            🏘 STATISTIK PER DESA
+
+        </h3>
+
+        <div id="desaContainer">
+
+            <div
+                style="
+                color:white;
+                margin-top:15px;
+                "
+            >
+
+                Memuat data desa...
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -999,16 +1013,12 @@ const csvV2 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv&t=" +
 new Date().getTime();
 
-/* ======================================================
-GLOBAL DATA
-====================================================== */
-
 let dataV1 = [];
 let dataV2 = [];
 let semuaData = [];
 
 /* ======================================================
-LOAD CSV V1
+LOAD CSV
 ====================================================== */
 
 Papa.parse(csvV1,{
@@ -1032,9 +1042,15 @@ Papa.parse(csvV1,{
                 dataV2 = v2.data;
 
                 semuaData = [
+
                     ...dataV1,
                     ...dataV2
+
                 ];
+
+                /* ======================================================
+                TOTAL
+                ====================================================== */
 
                 document.getElementById(
                     "totalKapal"
@@ -1051,23 +1067,27 @@ Papa.parse(csvV1,{
                 ).innerHTML =
                 dataV2.length;
 
-                /* NELAYAN */
+                /* ======================================================
+                TOTAL NELAYAN
+                ====================================================== */
 
-                const nelayan =
-                new Set();
+                const nelayan = new Set();
 
                 semuaData.forEach(item=>{
 
                     const nama =
-                    item[
-                    "NAMA PEMILIK KAPAL (SESUAI KTP)"
-                    ];
+
+                    (
+                        item[
+                        "NAMA PEMILIK KAPAL (SESUAI KTP)"
+                        ] || ""
+                    )
+                    .trim()
+                    .toUpperCase();
 
                     if(nama){
 
-                        nelayan.add(
-                            nama.trim()
-                        );
+                        nelayan.add(nama);
 
                     }
 
@@ -1078,13 +1098,16 @@ Papa.parse(csvV1,{
                 ).innerHTML =
                 nelayan.size;
 
-                /* VERIFIKASI */
+                /* ======================================================
+                TOTAL VERIFIKASI
+                ====================================================== */
 
                 let totalVerifikasi = 0;
 
                 semuaData.forEach(item=>{
 
                     const status =
+
                     (
                         item[
                         "STATUS VERIFIKASI"
@@ -1094,9 +1117,11 @@ Papa.parse(csvV1,{
 
                     if(
 
-                        status.includes("SUDAH") ||
+                        status.includes("VERIFIKASI") ||
+                        status.includes("TERVERIFIKASI") ||
                         status.includes("VALID") ||
-                        status.includes("VERIFIKASI")
+                        status.includes("SELESAI") ||
+                        status.includes("SUDAH")
 
                     ){
 
@@ -1110,6 +1135,93 @@ Papa.parse(csvV1,{
                     "totalVerifikasi"
                 ).innerHTML =
                 totalVerifikasi;
+
+                /* ======================================================
+                STATISTIK DESA
+                ====================================================== */
+
+                const desaMap = {};
+
+                semuaData.forEach(item=>{
+
+                    const desa =
+
+                    (
+                        item[
+                        "DESA / KELURAHAN"
+                        ] ||
+
+                        item[
+                        "DESA/KELURAHAN"
+                        ] ||
+
+                        "-"
+                    )
+                    .trim()
+                    .toUpperCase();
+
+                    if(!desaMap[desa]){
+
+                        desaMap[desa] = 0;
+
+                    }
+
+                    desaMap[desa]++;
+
+                });
+
+                const desaSorted =
+
+                Object.entries(desaMap)
+                .sort((a,b)=> b[1]-a[1]);
+
+                let desaHTML = "";
+
+                desaSorted.forEach(item=>{
+
+                    desaHTML += `
+
+                    <div
+                        style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        background:rgba(255,255,255,.06);
+                        padding:14px 18px;
+                        border-radius:14px;
+                        margin-top:12px;
+                        color:white;
+                        font-size:15px;
+                        "
+                    >
+
+                        <div>
+
+                            🏘 ${item[0]}
+
+                        </div>
+
+                        <div
+                            style="
+                            font-weight:800;
+                            font-size:18px;
+                            "
+                        >
+
+                            ${item[1]} Kapal
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                });
+
+                document.getElementById(
+                    "desaContainer"
+                ).innerHTML =
+                desaHTML;
 
             }
 
@@ -1126,6 +1238,7 @@ SEARCH
 function cariKapal(){
 
     const input =
+
     document.getElementById(
         "searchInput"
     )
@@ -1143,7 +1256,9 @@ function cariKapal(){
 
     }
 
-    /* V1 */
+    /* ======================================================
+    CARI V1
+    ====================================================== */
 
     const kapalV1 =
     dataV1.find(item=>{
@@ -1168,7 +1283,9 @@ function cariKapal(){
 
     }
 
-    /* V2 */
+    /* ======================================================
+    CARI V2
+    ====================================================== */
 
     const kapalV2 =
     dataV2.find(item=>{
@@ -1199,7 +1316,9 @@ function cariKapal(){
 
 }
 
-/* ENTER */
+/* ======================================================
+ENTER SEARCH
+====================================================== */
 
 document
 .getElementById(
