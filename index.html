@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SIMPAN SUPER APP V3 ULTRA PREMIUM</title>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
->
-
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<!-- ======================================================
+PASTE INI DI DALAM <head>
+GANTI CSS LAMA DENGAN INI
+JANGAN HAPUS <script> DATA CSV YANG SUDAH ADA
+====================================================== -->
 
 <style>
 
@@ -134,7 +124,7 @@ body::after{
 
     background-size:220px;
 
-    opacity:.035;
+    opacity:.03;
 
     z-index:-1;
 
@@ -244,7 +234,7 @@ SIDEBAR
 }
 
 /* ======================================================
-LOGO AREA
+LOGO
 ====================================================== */
 
 .logo-area{
@@ -280,8 +270,6 @@ LOGO AREA
     font-weight:900;
 
     margin-bottom:10px;
-
-    letter-spacing:1px;
 
 }
 
@@ -423,10 +411,6 @@ TOPBAR
 
     margin-bottom:14px;
 
-    text-shadow:
-
-    0 0 20px rgba(255,255,255,.15);
-
 }
 
 .topbar-left p{
@@ -481,10 +465,6 @@ SEARCH
 
     rgba(255,255,255,.92);
 
-    box-shadow:
-
-    inset 0 2px 8px rgba(0,0,0,.08);
-
 }
 
 .search-box button{
@@ -517,10 +497,6 @@ SEARCH
 
     transition:.35s;
 
-    box-shadow:
-
-    0 10px 25px rgba(0,114,255,.35);
-
 }
 
 .search-box button:hover{
@@ -528,10 +504,6 @@ SEARCH
     transform:
     translateY(-3px)
     scale(1.03);
-
-    box-shadow:
-
-    0 15px 35px rgba(0,114,255,.45);
 
 }
 
@@ -583,9 +555,7 @@ CARD
 
     box-shadow:
 
-    0 10px 35px rgba(0,0,0,.22),
-
-    inset 0 1px 0 rgba(255,255,255,.10);
+    0 10px 35px rgba(0,0,0,.22);
 
     transition:.35s ease;
 
@@ -596,12 +566,6 @@ CARD
     transform:
     translateY(-10px)
     scale(1.015);
-
-    box-shadow:
-
-    0 20px 50px rgba(0,0,0,.28),
-
-    0 0 30px rgba(0,180,255,.20);
 
 }
 
@@ -652,14 +616,8 @@ CARD
 
     font-weight:900;
 
-    letter-spacing:1px;
-
     position:relative;
     z-index:2;
-
-    text-shadow:
-
-    0 3px 10px rgba(0,0,0,.30);
 
 }
 
@@ -718,10 +676,6 @@ QUICK MENU
 
     transition:.35s;
 
-    box-shadow:
-
-    0 12px 35px rgba(0,0,0,.18);
-
 }
 
 .quick-card:hover{
@@ -729,10 +683,6 @@ QUICK MENU
     transform:
     translateY(-10px)
     scale(1.02);
-
-    box-shadow:
-
-    0 18px 45px rgba(0,0,0,.24);
 
 }
 
@@ -765,7 +715,7 @@ QUICK MENU
 }
 
 /* ======================================================
-STAT CARD
+STATISTIK
 ====================================================== */
 
 .stat-card{
@@ -773,10 +723,6 @@ STAT CARD
     margin-top:35px;
 
 }
-
-/* ======================================================
-PROGRESS
-====================================================== */
 
 .progress-item{
 
@@ -820,10 +766,6 @@ PROGRESS
 
     overflow:hidden;
 
-    box-shadow:
-
-    inset 0 2px 6px rgba(0,0,0,.15);
-
 }
 
 .progress-fill{
@@ -831,10 +773,6 @@ PROGRESS
     height:100%;
 
     border-radius:30px;
-
-    box-shadow:
-
-    0 0 15px rgba(0,198,255,.40);
 
 }
 
@@ -873,10 +811,6 @@ FOOTER
     font-size:14px;
 
     line-height:1.9;
-
-    box-shadow:
-
-    0 10px 25px rgba(0,0,0,.18);
 
 }
 
@@ -932,202 +866,3 @@ RESPONSIVE
 }
 
 </style>
-
-</head>
-
-<body>
-
-<!-- ======================================================
-SIDEBAR
-====================================================== -->
-
-<div class="sidebar">
-
-    <div class="logo-area">
-
-        <img src="logo-bateng.png" class="logo-bateng">
-
-        <img src="logo-simpan.png" class="logo-simpan">
-
-        <h1>SIMPAN</h1>
-
-        <p>
-
-            Sistem Informasi Manajemen
-            Pendataan Armada Nelayan
-            Kabupaten Bangka Tengah
-
-        </p>
-
-    </div>
-
-    <div class="menu">
-
-        <a href="index.html">
-            🏠 Dashboard
-        </a>
-
-        <a href="kapal.html?id=BT-SMP-0337" target="_blank">
-            🚀 SIMPAN V2
-        </a>
-
-        <a href="v1/kapal.html?id=BT-SMP-0001" target="_blank">
-            🗂 SIMPAN V1
-        </a>
-
-        <a href="qr.html?id=BT-SMP-0337" target="_blank">
-            📱 QR V2
-        </a>
-
-        <a href="v1/qr.html?id=BT-SMP-0001" target="_blank">
-            🧾 QR V1
-        </a>
-
-        <a href="verifikasi-kapal.html" target="_blank">
-            ✅ Verifikasi
-        </a>
-
-    </div>
-
-</div>
-
-<!-- ======================================================
-MAIN
-====================================================== -->
-
-<div class="main">
-
-    <div class="topbar">
-
-        <div class="topbar-left">
-
-            <h2>DASHBOARD SIMPAN V3</h2>
-
-            <p>
-
-                Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah
-
-            </p>
-
-            <div class="search-box">
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Cari 4 digit ID SIMPAN atau NIK..."
-                >
-
-                <button onclick="cariKapal()">
-
-                    🔍 CARI DATA
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="topbar-right">
-
-            <img src="logo-bateng.png">
-
-        </div>
-
-    </div>
-
-    <!-- ======================================================
-    GRID
-    ====================================================== -->
-
-    <div class="grid">
-
-        <div class="card">
-
-            <h3>🚢 TOTAL KAPAL</h3>
-
-            <div class="value" id="totalKapal">0</div>
-
-            <div class="sub">
-
-                Gabungan SIMPAN V1 & V2
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>🗂 SIMPAN V1</h3>
-
-            <div class="value" id="totalV1">0</div>
-
-            <div class="sub">
-
-                Total Sistem Lama
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>🚀 SIMPAN V2</h3>
-
-            <div class="value" id="totalV2">0</div>
-
-            <div class="sub">
-
-                Total Sistem Baru
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>👨‍✈️ TOTAL NELAYAN</h3>
-
-            <div class="value" id="totalNelayan">0</div>
-
-            <div class="sub">
-
-                Berdasarkan NIK Unik
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>✅ TERVERIFIKASI</h3>
-
-            <div class="value" id="totalVerifikasi">0</div>
-
-            <div class="sub">
-
-                Status = TERVERIFIKASI
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>❌ BELUM TERVERIFIKASI</h3>
-
-            <div class="value" id="totalBelumVerifikasi">0</div>
-
-            <div class="sub">
-
-                Selain status TERVERIFIKASI
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
