@@ -7,8 +7,10 @@
 
 <title>SIMPAN SUPER APP V3</title>
 
+<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<!-- PAPAPARSE -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
@@ -110,7 +112,7 @@ SIDEBAR
 
 .logo-bateng{
 
-    width:80px;
+    width:78px;
 
     margin-bottom:12px;
 
@@ -118,7 +120,7 @@ SIDEBAR
 
 .logo-simpan{
 
-    width:120px;
+    width:118px;
 
     margin-bottom:16px;
 
@@ -260,7 +262,7 @@ TOPBAR
 
 .topbar-right img{
 
-    width:120px;
+    width:115px;
 
 }
 
@@ -791,7 +793,7 @@ MAIN
 
             <div class="sub">
 
-                Nelayan Unik Gabungan
+                Berdasarkan NIK Unik
 
             </div>
 
@@ -809,7 +811,7 @@ MAIN
 
             <div class="sub">
 
-                Total Kapal Terverifikasi
+                Gabungan V1 & V2
 
             </div>
 
@@ -828,17 +830,9 @@ MAIN
             class="quick-card"
         >
 
-            <div class="icon">
+            <div class="icon">🚀</div>
 
-                🚀
-
-            </div>
-
-            <h4>
-
-                SIMPAN V2
-
-            </h4>
+            <h4>SIMPAN V2</h4>
 
             <p>
 
@@ -853,17 +847,9 @@ MAIN
             class="quick-card"
         >
 
-            <div class="icon">
+            <div class="icon">🗂</div>
 
-                🗂
-
-            </div>
-
-            <h4>
-
-                SIMPAN V1
-
-            </h4>
+            <h4>SIMPAN V1</h4>
 
             <p>
 
@@ -878,17 +864,9 @@ MAIN
             class="quick-card"
         >
 
-            <div class="icon">
+            <div class="icon">📱</div>
 
-                📱
-
-            </div>
-
-            <h4>
-
-                CETAK QR V2
-
-            </h4>
+            <h4>CETAK QR V2</h4>
 
             <p>
 
@@ -903,17 +881,9 @@ MAIN
             class="quick-card"
         >
 
-            <div class="icon">
+            <div class="icon">🧾</div>
 
-                🧾
-
-            </div>
-
-            <h4>
-
-                CETAK QR V1
-
-            </h4>
+            <h4>CETAK QR V1</h4>
 
             <p>
 
@@ -928,17 +898,9 @@ MAIN
             class="quick-card"
         >
 
-            <div class="icon">
+            <div class="icon">✅</div>
 
-                ✅
-
-            </div>
-
-            <h4>
-
-                VERIFIKASI
-
-            </h4>
+            <h4>VERIFIKASI</h4>
 
             <p>
 
@@ -1049,7 +1011,7 @@ Papa.parse(csvV1,{
                 ];
 
                 /* ======================================================
-                TOTAL
+                TOTAL KAPAL
                 ====================================================== */
 
                 document.getElementById(
@@ -1068,26 +1030,39 @@ Papa.parse(csvV1,{
                 dataV2.length;
 
                 /* ======================================================
-                TOTAL NELAYAN
+                TOTAL NELAYAN BERDASARKAN NIK
                 ====================================================== */
 
                 const nelayan = new Set();
 
                 semuaData.forEach(item=>{
 
-                    const nama =
+                    const nik =
 
                     (
-                        item[
-                        "NAMA PEMILIK KAPAL (SESUAI KTP)"
-                        ] || ""
+
+                        item["NIK"] ||
+
+                        item["NIK NELAYAN"] ||
+
+                        item["NO KTP"] ||
+
+                        item["NOMOR KTP"] ||
+
+                        ""
+
                     )
-                    .trim()
-                    .toUpperCase();
+                    .trim();
 
-                    if(nama){
+                    if(
 
-                        nelayan.add(nama);
+                        nik &&
+                        nik !== "-" &&
+                        nik.length >= 8
+
+                    ){
+
+                        nelayan.add(nik);
 
                     }
 
@@ -1099,7 +1074,7 @@ Papa.parse(csvV1,{
                 nelayan.size;
 
                 /* ======================================================
-                TOTAL VERIFIKASI
+                TOTAL VERIFIKASI GABUNGAN
                 ====================================================== */
 
                 let totalVerifikasi = 0;
@@ -1109,10 +1084,23 @@ Papa.parse(csvV1,{
                     const status =
 
                     (
+
                         item[
                         "STATUS VERIFIKASI"
-                        ] || ""
+                        ] ||
+
+                        item[
+                        "STATUS"
+                        ] ||
+
+                        item[
+                        "VERIFIKASI"
+                        ] ||
+
+                        ""
+
                     )
+                    .trim()
                     .toUpperCase();
 
                     if(
@@ -1121,7 +1109,8 @@ Papa.parse(csvV1,{
                         status.includes("TERVERIFIKASI") ||
                         status.includes("VALID") ||
                         status.includes("SELESAI") ||
-                        status.includes("SUDAH")
+                        status.includes("SUDAH") ||
+                        status.includes("OK")
 
                     ){
 
@@ -1137,16 +1126,17 @@ Papa.parse(csvV1,{
                 totalVerifikasi;
 
                 /* ======================================================
-                STATISTIK DESA
+                STATISTIK DESA GABUNGAN
                 ====================================================== */
 
                 const desaMap = {};
 
                 semuaData.forEach(item=>{
 
-                    const desa =
+                    let desa =
 
                     (
+
                         item[
                         "DESA / KELURAHAN"
                         ] ||
@@ -1155,10 +1145,34 @@ Papa.parse(csvV1,{
                         "DESA/KELURAHAN"
                         ] ||
 
+                        item[
+                        "DESA"
+                        ] ||
+
+                        item[
+                        "KELURAHAN"
+                        ] ||
+
                         "-"
+
                     )
                     .trim()
                     .toUpperCase();
+
+                    if(
+
+                        desa === "" ||
+                        desa === "-"
+
+                    ){
+
+                        return;
+
+                    }
+
+                    desa = desa
+                    .replace(/\s+/g," ")
+                    .trim();
 
                     if(!desaMap[desa]){
 
