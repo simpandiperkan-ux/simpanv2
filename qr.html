@@ -3,837 +3,1077 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QR STIKER SIMPAN</title>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<title>KARTU SIMPAN V2 FINAL</title>
+
+<!-- ====================================================== -->
+<!-- FONT -->
+<!-- ====================================================== -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
+
+<!-- ====================================================== -->
+<!-- QR -->
+<!-- ====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- CSV -->
+<!-- ====================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- EXPORT -->
+<!-- ====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <style>
 
+/* ====================================================== */
+/* RESET */
+/* ====================================================== */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
+
+/* ====================================================== */
+/* BODY */
+/* ====================================================== */
 
 body{
 
-    font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 
-    background:#dfe8f2;
+background:
+linear-gradient(
+135deg,
+#dfe8f6,
+#cad7ea
+);
 
-    padding:20px;
+min-height:100vh;
+
+padding:30px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+overflow-x:auto;
 
 }
 
-/* ===========================
-SEARCH
-=========================== */
+/* ====================================================== */
+/* SEARCH */
+/* ====================================================== */
 
 .search-box{
 
-    width:1000px;
+display:flex;
 
-    margin:auto auto 18px;
+gap:16px;
 
-    display:flex;
+width:100%;
 
-    gap:16px;
+max-width:860px;
+
+margin-bottom:20px;
 
 }
 
 .search-box input{
 
-    flex:1;
+flex:1;
 
-    height:88px;
+height:68px;
 
-    border:3px solid #0b63ff;
+border:none;
 
-    border-radius:24px;
+outline:none;
 
-    padding:0 30px;
+padding:0 26px;
 
-    font-size:34px;
+font-size:20px;
 
-    outline:none;
+font-weight:700;
+
+border-radius:18px;
+
+background:white;
+
+box-shadow:
+0 10px 24px rgba(0,0,0,.10);
 
 }
 
 .search-box button{
 
-    width:280px;
+width:220px;
 
-    border:none;
+border:none;
 
-    border-radius:24px;
+border-radius:18px;
 
-    background:linear-gradient(
-        135deg,
-        #0042b5,
-        #008cff
-    );
+background:
+linear-gradient(
+135deg,
+#0066ff,
+#00a6ff
+);
 
-    color:white;
+color:white;
 
-    font-size:34px;
+font-size:20px;
 
-    font-weight:900;
+font-weight:900;
 
-    cursor:pointer;
+cursor:pointer;
 
-    box-shadow:0 10px 20px rgba(0,0,0,0.16);
+transition:.3s;
 
-}
-
-/* ===========================
-STIKER
-=========================== */
-
-.print-area{
-
-    width:900px;
-
-    min-height:1400px;
-
-    margin:auto;
-
-    background:#fff;
-
-    border:6px solid #000;
-
-    position:relative;
-
-    overflow:hidden;
-
-    box-shadow:0 12px 30px rgba(0,0,0,0.22);
+box-shadow:
+0 10px 24px rgba(0,0,0,.16);
 
 }
 
+.search-box button:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+/* ====================================================== */
+/* BUTTON */
+/* ====================================================== */
+
+.actions{
+
+display:flex;
+
+gap:12px;
+
+margin-bottom:20px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.actions button{
+
+padding:12px 22px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+linear-gradient(
+135deg,
+#005eff,
+#0044cc
+);
+
+color:white;
+
+font-size:14px;
+
+font-weight:800;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.14);
+
+}
+
+.actions button:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+/* ====================================================== */
+/* CARD */
+/* ====================================================== */
+
+.card{
+
+width:1011px;
+height:638px;
+
+background:white;
+
+border-radius:30px;
+
+padding:26px;
+
+position:relative;
+
+overflow:hidden;
+
+border:
+5px solid #005eff;
+
+box-shadow:
+0 24px 60px rgba(0,0,0,.18);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+/* ====================================================== */
 /* WATERMARK */
+/* ====================================================== */
 
-.print-area::before{
+.card::before{
 
-    content:"";
+content:"";
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+inset:0;
 
-    background-image:url('logo-simpan.png');
+background-image:url('logo-simpan.png');
 
-    background-repeat:repeat;
+background-repeat:repeat;
 
-    background-size:180px;
+background-size:150px;
 
-    opacity:0.03;
+opacity:.03;
 
-}
-
-/* CONTENT */
-
-.content{
-
-    position:relative;
-
-    z-index:2;
-
-    padding:26px 40px 24px;
+pointer-events:none;
 
 }
 
+/* ====================================================== */
 /* HEADER */
+/* ====================================================== */
 
 .header{
 
-    text-align:center;
+display:grid;
+
+grid-template-columns:
+110px 1fr 110px;
+
+align-items:center;
+
+column-gap:16px;
+
+padding-bottom:16px;
+
+border-bottom:
+2px solid rgba(0,94,255,.12);
+
+position:relative;
+z-index:2;
 
 }
 
-.logo img{
+/* ====================================================== */
+/* LOGO */
+/* ====================================================== */
 
-    width:120px;
+.logo-bateng{
 
-}
+width:88px;
 
-.dinas{
+display:block;
 
-    margin-top:10px;
+margin:auto;
 
-    font-size:32px;
+object-fit:contain;
 
-    line-height:1.08;
-
-    font-weight:900;
-
-    color:#000;
+margin-top:8px;
 
 }
 
-/* QR */
+.logo-simpan{
 
-.qr-area{
+width:105px;
 
-    margin-top:14px;
+display:block;
 
-    text-align:center;
+margin:auto;
+
+object-fit:contain;
 
 }
+
+/* ====================================================== */
+/* HEADER TEXT */
+/* ====================================================== */
+
+.header-text{
+
+text-align:center;
+
+}
+
+.header-text h1{
+
+font-size:42px;
+
+font-weight:900;
+
+line-height:1.05;
+
+color:#0047b3;
+
+margin-bottom:10px;
+
+}
+
+.header-text p{
+
+font-size:15px;
+
+font-weight:500;
+
+line-height:1.4;
+
+color:#333;
+
+}
+
+/* ====================================================== */
+/* MAIN */
+/* ====================================================== */
+
+.main{
+
+display:grid;
+
+grid-template-columns:
+390px 1fr;
+
+gap:22px;
+
+align-items:center;
+
+margin-top:16px;
+
+position:relative;
+z-index:2;
+
+}
+
+/* ====================================================== */
+/* QR BOX */
+/* ====================================================== */
 
 .qr-box{
 
-    width:620px;
+height:330px;
 
-    height:620px;
+border:
+4px solid #005eff;
 
-    margin:auto;
+border-radius:22px;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+justify-content:center;
 
-    justify-content:center;
+align-items:center;
 
-}
+padding:12px;
 
-#qrcode img{
-
-    width:100% !important;
-
-    height:100% !important;
+background:white;
 
 }
 
-/* LOGO SIMPAN */
+/* ====================================================== */
+/* RIGHT */
+/* ====================================================== */
 
-.logo-mini{
+.right{
 
-    margin-top:-12px;
+display:flex;
 
-    margin-bottom:8px;
+flex-direction:column;
 
-}
+gap:16px;
 
-.logo-mini img{
-
-    width:170px;
-
-}
-
-/* ID */
-
-.id{
-
-    text-align:center;
-
-    width:fit-content;
-
-    margin:0 auto 18px;
-
-    background:linear-gradient(
-        135deg,
-        #0042b5,
-        #007cff
-    );
-
-    color:white;
-
-    padding:12px 38px;
-
-    border-radius:18px;
-
-    font-size:58px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+height:330px;
 
 }
 
-/* INFO */
+/* ====================================================== */
+/* ID BOX */
+/* ====================================================== */
 
-.info{
+.id-box{
 
-    width:92%;
+height:72px;
 
-    margin:auto;
+border-radius:18px;
 
-    border-top:4px dotted #111;
+background:
+linear-gradient(
+135deg,
+#005eff,
+#0044cc
+);
 
-    border-bottom:4px dotted #111;
+display:flex;
 
-    padding:16px 0;
+justify-content:center;
 
-}
+align-items:center;
 
-/* ROW */
+padding:0 22px;
 
-.info-row{
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:16px;
-
-    margin:12px 0;
-
-}
-
-/* ICON */
-
-.icon{
-
-    width:44px;
-
-    text-align:center;
-
-    font-size:32px;
-
-    margin-top:2px;
+box-shadow:
+0 8px 20px rgba(0,0,0,.16);
 
 }
 
-/* LABEL */
+.id-box h2{
 
-.label{
+font-size:38px;
 
-    width:260px;
+font-weight:900;
 
-    min-width:260px;
+color:white;
 
-    font-size:28px;
+white-space:nowrap;
 
-    font-weight:900;
-
-    line-height:1.25;
+line-height:1;
 
 }
 
-/* VALUE */
+/* ====================================================== */
+/* DETAIL BOX */
+/* ====================================================== */
 
-.value{
+.detail-box{
 
-    flex:1;
+flex:1;
 
-    font-weight:900;
+border:
+2px solid rgba(0,94,255,.10);
 
-    line-height:1.25;
+border-radius:20px;
 
-    word-break:break-word;
+padding:20px;
 
-    overflow-wrap:break-word;
+background:
+rgba(0,94,255,.03);
 
-    hyphens:auto;
+display:flex;
 
-}
+flex-direction:column;
 
-/* AUTO TEXT */
-
-.auto-text{
-
-    font-size:28px;
-
-}
-
-/* LONG */
-
-.auto-text.long{
-
-    font-size:24px;
+justify-content:center;
 
 }
 
-/* VERY LONG */
+/* ====================================================== */
+/* DETAIL ITEM */
+/* ====================================================== */
 
-.auto-text.very-long{
+.detail-item{
 
-    font-size:21px;
+padding:10px 0;
 
-}
-
-/* SCAN */
-
-.scan{
-
-    text-align:center;
-
-    margin-top:20px;
-
-    font-size:34px;
-
-    font-weight:900;
+border-bottom:
+1px solid rgba(0,94,255,.10);
 
 }
 
-/* DATE */
+.detail-item:last-child{
 
-.date{
-
-    text-align:center;
-
-    margin-top:10px;
-
-    font-size:24px;
+border-bottom:none;
 
 }
 
-/* BUTTON */
+.detail-item h3{
 
-.button-area{
+font-size:13px;
 
-    width:900px;
+font-weight:500;
 
-    margin:18px auto;
+color:#555;
 
-    display:flex;
-
-    gap:18px;
+margin-bottom:5px;
 
 }
 
-.btn{
+.detail-item p{
 
-    flex:1;
+font-size:24px;
 
-    height:72px;
+font-weight:800;
 
-    border:none;
+color:#0047b3;
 
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        #0042b5,
-        #008cff
-    );
-
-    color:white;
-
-    font-size:30px;
-
-    font-weight:900;
-
-    cursor:pointer;
+line-height:1.3;
 
 }
 
+/* ====================================================== */
+/* FOOTER */
+/* ====================================================== */
+
+.footer{
+
+margin-top:12px;
+
+padding-top:12px;
+
+border-top:
+2px solid rgba(0,94,255,.12);
+
+text-align:center;
+
+position:relative;
+z-index:2;
+
+}
+
+.footer h3{
+
+font-size:24px;
+
+font-weight:900;
+
+color:#005eff;
+
+margin-bottom:6px;
+
+}
+
+.footer p{
+
+font-size:13px;
+
+font-weight:600;
+
+color:#333;
+
+}
+
+/* ====================================================== */
+/* RESPONSIVE */
+/* ====================================================== */
+
+@media(max-width:1100px){
+
+.card{
+
+width:100%;
+height:auto;
+
+}
+
+.main{
+
+grid-template-columns:1fr;
+
+}
+
+.right,
+.qr-box{
+
+height:auto;
+
+}
+
+.header{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+gap:10px;
+
+}
+
+}
+
+/* ====================================================== */
 /* PRINT */
+/* ====================================================== */
 
 @media print{
 
-    body{
+body{
 
-        background:white;
+background:white;
+padding:0;
 
-        padding:0;
+}
 
-    }
+.search-box,
+.actions{
 
-    .search-box,
-    .button-area{
+display:none;
 
-        display:none;
+}
 
-    }
+.card{
 
-    .print-area{
+box-shadow:none;
 
-        width:8cm;
-
-        height:13cm;
-
-        box-shadow:none;
-
-        margin:0;
-
-    }
+}
 
 }
 
 </style>
 
 </head>
+
 <body>
 
+<!-- ====================================================== -->
 <!-- SEARCH -->
+<!-- ====================================================== -->
 
 <div class="search-box">
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Masukkan 4 digit ID belakang..."
-        maxlength="4"
-    >
+<input
+type="text"
+id="searchInput"
+placeholder="Masukkan 4 digit ID belakang..."
+>
 
-    <button onclick="cariQR()">
+<button onclick="cariQR()">
 
-        🔍 CARI QR
+🔍 CARI QR
 
-    </button>
-
-</div>
-
-<!-- STIKER -->
-
-<div class="print-area" id="printArea">
-
-    <div class="content">
-
-        <!-- HEADER -->
-
-        <div class="header">
-
-            <div class="logo">
-
-                <img src="logo-bateng.png">
-
-            </div>
-
-            <div class="dinas">
-
-                DINAS PERIKANAN<br>
-                KABUPATEN BANGKA TENGAH
-
-            </div>
-
-        </div>
-
-        <!-- QR -->
-
-        <div class="qr-area">
-
-            <div class="qr-box">
-
-                <div id="qrcode"></div>
-
-            </div>
-
-            <div class="logo-mini">
-
-                <img src="logo-simpan.png">
-
-            </div>
-
-        </div>
-
-        <!-- ID -->
-
-        <div class="id" id="idSimpan">
-
-            MEMUAT...
-
-        </div>
-
-        <!-- INFO -->
-
-        <div class="info">
-
-            <!-- NAMA PEMILIK -->
-
-            <div class="info-row">
-
-                <div class="icon">
-
-                    👤
-
-                </div>
-
-                <div class="label">
-
-                    NAMA PEMILIK
-
-                </div>
-
-                <div class="value auto-text" id="namaNelayan">
-
-                    -
-
-                </div>
-
-            </div>
-
-            <!-- NAMA KAPAL -->
-
-            <div class="info-row">
-
-                <div class="icon">
-
-                    🚢
-
-                </div>
-
-                <div class="label">
-
-                    NAMA KAPAL
-
-                </div>
-
-                <div class="value auto-text" id="namaKapal">
-
-                    -
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- SCAN -->
-
-        <div class="scan">
-
-            📱 SCAN UNTUK VERIFIKASI
-
-        </div>
-
-        <!-- DATE -->
-
-        <div class="date" id="tanggalCetak"></div>
-
-    </div>
+</button>
 
 </div>
 
-<!-- BUTTON -->
+<!-- ====================================================== -->
+<!-- ACTION -->
+<!-- ====================================================== -->
 
-<div class="button-area">
+<div class="actions">
 
-    <button class="btn" onclick="window.print()">
+<button onclick="downloadPNG()">
+🖼 Download PNG
+</button>
 
-        🖨 CETAK QR
+<button onclick="downloadJPG()">
+🖼 Download JPG
+</button>
 
-    </button>
+<button onclick="window.print()">
+📄 Download PDF
+</button>
 
-    <button class="btn" onclick="downloadQR()">
+</div>
 
-        ⬇ DOWNLOAD PNG
+<!-- ====================================================== -->
+<!-- CARD -->
+<!-- ====================================================== -->
 
-    </button>
+<div class="card" id="card">
+
+<!-- ====================================================== -->
+<!-- HEADER -->
+<!-- ====================================================== -->
+
+<div class="header">
+
+<!-- LOGO KIRI -->
+
+<div>
+
+<img
+src="logo-bateng.png"
+class="logo-bateng"
+>
+
+</div>
+
+<!-- TEXT -->
+
+<div class="header-text">
+
+<h1>
+
+DINAS PERIKANAN
+<br>
+KABUPATEN BANGKA TENGAH
+
+</h1>
+
+<p>
+
+Sistem Informasi Manajemen Pendataan Armada Nelayan
+
+</p>
+
+</div>
+
+<!-- LOGO KANAN -->
+
+<div>
+
+<img
+src="logo-simpan.png"
+class="logo-simpan"
+>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- MAIN -->
+<!-- ====================================================== -->
+
+<div class="main">
+
+<!-- QR -->
+
+<div class="qr-box">
+
+<div id="qrcode"></div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
+<!-- ID -->
+
+<div class="id-box">
+
+<h2 id="idText">
+BT-SMP-0001
+</h2>
+
+</div>
+
+<!-- DETAIL -->
+
+<div class="detail-box">
+
+<div class="detail-item">
+
+<h3>
+👤 Pemilik :
+</h3>
+
+<p id="namaPemilik">
+-
+</p>
+
+</div>
+
+<div class="detail-item">
+
+<h3>
+🚢 Nama Kapal :
+</h3>
+
+<p id="namaKapal">
+-
+</p>
+
+</div>
+
+<div class="detail-item">
+
+<h3>
+📅 Tanggal Cetak :
+</h3>
+
+<p id="tanggal">
+-
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- FOOTER -->
+<!-- ====================================================== -->
+
+<div class="footer">
+
+<h3>
+SCAN QR UNTUK VERIFIKASI DATA KAPAL
+</h3>
+
+<p>
+
+SIMPAN V2 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
+
+</p>
+
+</div>
 
 </div>
 
 <script>
 
+/* ====================================================== */
+/* CSV URL */
+/* ====================================================== */
+
 const csvUrl =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584Q8mkVUkqHoS6wVp4iF/pub?output=csv&t=" +
+new Date().getTime();
 
-const params = new URLSearchParams(window.location.search);
+/* ====================================================== */
+/* PARAM */
+/* ====================================================== */
 
-const kapalId = params.get("id");
+const params =
+new URLSearchParams(
+window.location.search
+);
 
-const now = new Date();
+let id =
+params.get("id") ||
+"BT-SMP-0001";
 
-document.getElementById("tanggalCetak").innerHTML =
-"Tanggal Cetak : " +
-now.toLocaleDateString("id-ID");
+/* ====================================================== */
+/* DATE */
+/* ====================================================== */
 
-/* AUTO RESIZE TEXT */
+document.getElementById(
+"tanggal"
+).innerHTML =
 
-function autoResizeText(element){
+new Date().toLocaleDateString(
+"id-ID"
+);
 
-    const length = element.innerText.length;
+/* ====================================================== */
+/* LOAD CSV */
+/* ====================================================== */
 
-    element.classList.remove(
-        "long",
-        "very-long"
-    );
+Papa.parse(csvUrl,{
 
-    if(length > 45){
+download:true,
+header:true,
+skipEmptyLines:true,
 
-        element.classList.add(
-            "very-long"
-        );
+complete:function(result){
 
-    }
-    else if(length > 28){
+const data = result.data;
 
-        element.classList.add(
-            "long"
-        );
+/* ====================================================== */
+/* FIND DATA */
+/* ====================================================== */
 
-    }
+const kapal = data.find(item =>
+
+(item["ID SIMPAN"] || "")
+.toString()
+.trim()
+.toUpperCase()
+
+===
+
+id.toUpperCase()
+
+);
+
+/* ====================================================== */
+/* SET DATA */
+/* ====================================================== */
+
+if(kapal){
+
+document.getElementById(
+"idText"
+).innerHTML =
+
+kapal["ID SIMPAN"] || "-";
+
+document.getElementById(
+"namaPemilik"
+).innerHTML =
+
+kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-";
+
+document.getElementById(
+"namaKapal"
+).innerHTML =
+
+kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-";
 
 }
 
-/* LOAD DATA */
+/* ====================================================== */
+/* QR */
+/* ====================================================== */
 
-Papa.parse(csvUrl, {
+QRCode.toCanvas(
 
-    download:true,
+document.createElement("canvas"),
 
-    header:true,
+window.location.origin +
+"/simpanv2/kapal.html?id=" +
+id,
 
-    skipEmptyLines:true,
+{
+width:300
+},
 
-    complete:function(results){
+function(err,canvas){
 
-        const data = results.data;
+if(err){
 
-        const kapal = data.find(item =>
+console.log(err);
 
-            item["ID SIMPAN"]?.trim() === kapalId?.trim()
+return;
 
-        );
+}
 
-        if(kapal){
+document
+.getElementById("qrcode")
+.innerHTML = "";
 
-            const qrLink =
-            "https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
-            kapal["ID SIMPAN"];
+document
+.getElementById("qrcode")
+.appendChild(canvas);
 
-            new QRCode(document.getElementById("qrcode"), {
+}
 
-                text:qrLink,
+);
 
-                width:600,
-
-                height:600,
-
-                colorDark:"#000000",
-
-                colorLight:"#ffffff",
-
-                correctLevel:QRCode.CorrectLevel.H
-
-            });
-
-            document.getElementById("idSimpan").innerHTML =
-            kapal["ID SIMPAN"];
-
-            document.getElementById("namaNelayan").innerHTML =
-            ": " +
-            (
-                kapal[
-                "NAMA PEMILIK KAPAL (SESUAI KTP)"
-                ] || "-"
-            );
-
-            document.getElementById("namaKapal").innerHTML =
-            ": " +
-            (
-                kapal[
-                "NAMA KAPAL SESUAI PAS KAPAL"
-                ] || "-"
-            );
-
-            /* AUTO TEXT */
-
-            autoResizeText(
-                document.getElementById(
-                    "namaNelayan"
-                )
-            );
-
-            autoResizeText(
-                document.getElementById(
-                    "namaKapal"
-                )
-            );
-
-        }
-
-    }
+}
 
 });
 
+/* ====================================================== */
 /* SEARCH */
+/* ====================================================== */
 
 function cariQR(){
 
-    const input =
-    document.getElementById("searchInput")
-    .value
-    .trim();
+const input =
+document.getElementById(
+"searchInput"
+)
+.value
+.trim();
 
-    if(input.length < 1){
+if(!input){
 
-        alert("Masukkan nomor ID");
+alert(
+"Masukkan 4 digit ID belakang"
+);
 
-        return;
-
-    }
-
-    Papa.parse(csvUrl, {
-
-        download:true,
-
-        header:true,
-
-        skipEmptyLines:true,
-
-        complete:function(results){
-
-            const data = results.data;
-
-            const kapal = data.find(item => {
-
-                const id = item["ID SIMPAN"] || "";
-
-                return id.endsWith(input);
-
-            });
-
-            if(kapal){
-
-                window.location.href =
-                "qr.html?id=" +
-                kapal["ID SIMPAN"];
-
-            }else{
-
-                alert("Data tidak ditemukan");
-
-            }
-
-        }
-
-    });
+return;
 
 }
 
+window.location.href =
+"?id=BT-SMP-" + input;
+
+}
+
+/* ====================================================== */
 /* ENTER */
+/* ====================================================== */
 
 document
-.getElementById("searchInput")
-.addEventListener("keypress", function(e){
+.getElementById(
+"searchInput"
+)
+.addEventListener(
+"keypress",
+function(e){
 
-    if(e.key === "Enter"){
+if(e.key === "Enter"){
 
-        cariQR();
+cariQR();
 
-    }
+}
+
+}
+);
+
+/* ====================================================== */
+/* PNG */
+/* ====================================================== */
+
+function downloadPNG(){
+
+html2canvas(
+document.getElementById("card")
+).then(canvas=>{
+
+const link =
+document.createElement("a");
+
+link.download =
+"QR-" + id + ".png";
+
+link.href =
+canvas.toDataURL();
+
+link.click();
 
 });
 
-/* DOWNLOAD PNG */
+}
 
-function downloadQR(){
+/* ====================================================== */
+/* JPG */
+/* ====================================================== */
 
-    html2canvas(document.querySelector("#printArea"),{
+function downloadJPG(){
 
-        scale:4
+html2canvas(
+document.getElementById("card")
+).then(canvas=>{
 
-    }).then(canvas => {
+const link =
+document.createElement("a");
 
-        const link =
-        document.createElement("a");
+link.download =
+"QR-" + id + ".jpg";
 
-        link.download =
-        kapalId + ".png";
+link.href =
+canvas.toDataURL(
+"image/jpeg"
+);
 
-        link.href =
-        canvas.toDataURL("image/png");
+link.click();
 
-        link.click();
-
-    });
+});
 
 }
 
