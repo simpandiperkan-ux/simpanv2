@@ -921,7 +921,7 @@ document
 .getElementById('searchInput')
 .value
 .trim()
-.toUpperCase();
+.toLowerCase();
 
 if(!keyword){
 
@@ -930,11 +930,13 @@ return;
 
 }
 
-/* =========================
-CARI V1
-========================= */
+let adaV1 = false;
+let adaV2 = false;
 
-const foundV1 = dataV1.find(item=>{
+let urlV1 = '';
+let urlV2 = '';
+
+dataV1.forEach(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -948,23 +950,34 @@ const nik =
 (item['Nomor Induk Kependudukan (NIK)']||'')
 .trim();
 
-return (
+const input =
+keyword
+.trim()
+.toUpperCase();
 
-keyword === last4 ||
+if(
 
-keyword === nik ||
+input === last4 ||
 
-keyword === fullId
+input === nik ||
 
+input === fullId
+
+){
+
+adaV1 = true;
+
+urlV1 =
+'v1/kapal.html?id='+
+encodeURIComponent(
+item['ID SIMPAN']
 );
 
+}
+
 });
-
-/* =========================
-CARI V2
-========================= */
-
-const foundV2 = dataV2.find(item=>{
+  
+dataV2.forEach(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -978,64 +991,65 @@ const nik =
 (item['NOMOR INDUK KEPENDUDUKAN (NIK)']||'')
 .trim();
 
-return (
+const input =
+keyword
+.trim()
+.toUpperCase();
 
-keyword === last4 ||
+if(
 
-keyword === nik ||
+input === last4 ||
 
-keyword === fullId
+input === nik ||
 
+input === fullId
+
+){
+
+adaV2 = true;
+
+urlV2 =
+'kapal.html?id='+
+encodeURIComponent(
+item['ID SIMPAN']
 );
 
+}
+
 });
-
-/* =========================
-TIDAK DITEMUKAN
-========================= */
-
-if(!foundV1 && !foundV2){
+  
+if(!adaV1 && !adaV2){
 
 alert('Data tidak ditemukan');
 return;
 
 }
 
-/* =========================
-URL
-========================= */
-
-const urlV1 = foundV1
-? 'v1/kapal.html?id=' +
-encodeURIComponent(foundV1['ID SIMPAN'])
-: '';
-
-const urlV2 = foundV2
-? 'kapal.html?id=' +
-encodeURIComponent(foundV2['ID SIMPAN'])
-: '';
-
-/* =========================
-JIKA ADA DI KEDUA SISTEM
-========================= */
-
-if(foundV1 && foundV2){
+if(adaV1 && adaV2){
 
 const pilihan =
 prompt(
-'Data ditemukan di 2 sistem.\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
+'Pilih Sistem:\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
 );
 
 if(pilihan === '1'){
 
-window.open(urlV1,'_blank');
+window.open(
+urlV1,
+'_blank'
+);
+
 return;
 
 }
 
 if(pilihan === '2'){
 
-window.open(urlV2,'_blank');
+window.open(
+urlV2,
+'_blank'
+);
+
 return;
 
 }
@@ -1044,30 +1058,34 @@ return;
 
 }
 
-/* =========================
-JIKA HANYA V1
-========================= */
+if(adaV1){
 
-if(foundV1){
+window.open(
+urlV1,
+'_blank'
+);
 
-window.open(urlV1,'_blank');
 return;
 
 }
 
-/* =========================
-JIKA HANYA V2
-========================= */
+if(adaV2){
 
-if(foundV2){
+window.open(
+urlV2,
+'_blank'
+);
 
-window.open(urlV2,'_blank');
 return;
 
 }
 
 }
-  
+
+document
+.getElementById('searchInput')
+.addEventListener('keypress',function(e){
+
 if(e.key==='Enter'){
 
 cariData();
