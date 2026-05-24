@@ -25,8 +25,8 @@ body{
 
 background:
 linear-gradient(
-rgba(0,25,90,.92),
-rgba(0,90,200,.90)
+rgba(0,20,90,.92),
+rgba(0,80,200,.88)
 ),
 url('background_simpan.png');
 
@@ -67,7 +67,7 @@ overflow-y:auto;
 
 z-index:999;
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 box-shadow:
 0 0 25px rgba(0,0,0,.35);
@@ -90,7 +90,7 @@ margin:4px;
 
 .logo h2{
 
-font-size:24px;
+font-size:28px;
 font-weight:900;
 margin-top:10px;
 
@@ -659,13 +659,16 @@ flex-direction:column;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="wrapper">
 
+<!-- ====================================================== -->
 <!-- SIDEBAR -->
+<!-- ====================================================== -->
 
 <div class="sidebar">
 
@@ -700,7 +703,9 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 </div>
 
+<!-- ====================================================== -->
 <!-- CONTENT -->
+<!-- ====================================================== -->
 
 <div class="content">
 
@@ -730,7 +735,9 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
+<!-- ====================================================== -->
 <!-- STATS -->
+<!-- ====================================================== -->
 
 <div class="stats">
 
@@ -772,7 +779,9 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- CARDS -->
+<!-- ====================================================== -->
+<!-- MENU CARD -->
+<!-- ====================================================== -->
 
 <div class="cards">
 
@@ -844,7 +853,9 @@ Download PDF SIMPAN V1 & V2.
 
 </div>
 
+<!-- ====================================================== -->
 <!-- STATISTIK DESA -->
+<!-- ====================================================== -->
 
 <div class="section">
 
@@ -853,16 +864,16 @@ Download PDF SIMPAN V1 & V2.
 </h2>
 
 <div id="statistikDesa">
-
 <div style="padding:20px;text-align:center;">
 Memuat data statistik desa...
 </div>
-
 </div>
 
 </div>
 
+<!-- ====================================================== -->
 <!-- STATISTIK KECAMATAN -->
+<!-- ====================================================== -->
 
 <div class="section">
 
@@ -871,11 +882,9 @@ Memuat data statistik desa...
 </h2>
 
 <div id="statistikKecamatan">
-
 <div style="padding:20px;text-align:center;">
 Memuat data statistik kecamatan...
 </div>
-
 </div>
 
 </div>
@@ -888,7 +897,9 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
+<!-- ====================================================== -->
 <!-- MODAL EXCEL -->
+<!-- ====================================================== -->
 
 <div class="modal" id="excelModal">
 
@@ -912,7 +923,9 @@ TUTUP
 
 </div>
 
+<!-- ====================================================== -->
 <!-- MODAL PDF -->
+<!-- ====================================================== -->
 
 <div class="modal" id="pdfModal">
 
@@ -1109,11 +1122,19 @@ async function loadStatistik(){
 
 try{
 
+/* ====================================================== */
+/* CSV PUBLIK */
+/* ====================================================== */
+
 const urlV1 =
-'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/gviz/tq?tqx=out:csv';
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv';
 
 const urlV2 =
-'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/gviz/tq?tqx=out:csv';
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv';
+
+/* ====================================================== */
+/* FETCH */
+/* ====================================================== */
 
 const csvV1 =
 await fetch(urlV1).then(r=>r.text());
@@ -1121,8 +1142,13 @@ await fetch(urlV1).then(r=>r.text());
 const csvV2 =
 await fetch(urlV2).then(r=>r.text());
 
+/* ====================================================== */
+/* PARSE CSV */
+/* ====================================================== */
+
 function parseCSV(csv){
 
+const rows = [];
 const lines = csv.split('\n');
 
 const headers =
@@ -1130,24 +1156,30 @@ lines[0]
 .split(',')
 .map(h=>h.replace(/"/g,'').trim());
 
-return lines.slice(1).map(line=>{
+for(let i=1;i<lines.length;i++){
+
+const line = lines[i];
+
+if(!line.trim()) continue;
 
 const cols = line.split(',');
 
 const obj = {};
 
-headers.forEach((h,i)=>{
+headers.forEach((h,index)=>{
 
 obj[h] =
-(cols[i] || '')
+(cols[index] || '')
 .replace(/"/g,'')
 .trim();
 
 });
 
-return obj;
+rows.push(obj);
 
-});
+}
+
+return rows;
 
 }
 
@@ -1160,7 +1192,46 @@ const semuaData = [
 ];
 
 /* ====================================================== */
-/* ID UNIK */
+/* CLEAN */
+/* ====================================================== */
+
+function bersih(text){
+
+if(!text) return '';
+
+return text
+.toString()
+.trim()
+.toUpperCase();
+
+}
+
+function validWilayah(text){
+
+const t = bersih(text);
+
+if(
+!t ||
+t === '-' ||
+t === '0' ||
+t === 'NULL' ||
+t === 'UNDEFINED'
+){
+return false;
+}
+
+if(t.includes('HTTP')) return false;
+if(t.includes('DRIVE.GOOGLE')) return false;
+if(t.includes('OPENID=')) return false;
+
+if(/^\d+$/.test(t)) return false;
+
+return true;
+
+}
+
+/* ====================================================== */
+/* FILTER ID UNIK */
 /* ====================================================== */
 
 const idSet = new Set();
@@ -1170,15 +1241,18 @@ const dataUnik = [];
 semuaData.forEach(item=>{
 
 const id =
-(item['ID SIMPAN'] || '')
-.trim()
-.toUpperCase();
+bersih(
+item['ID SIMPAN']
+);
 
 if(
-id &&
-id !== '-' &&
-!idSet.has(id)
+!id ||
+id === '-'
 ){
+return;
+}
+
+if(!idSet.has(id)){
 
 idSet.add(id);
 
@@ -1205,21 +1279,17 @@ const nikSet = new Set();
 dataUnik.forEach(item=>{
 
 const nik =
+bersih(
 item['Nomor Induk Kependudukan (NIK)'] ||
-item['NOMOR INDUK KEPENDUDUKAN (NIK)'] ||
-'';
-
-const nikClean =
-nik
-.toString()
-.trim();
+item['NOMOR INDUK KEPENDUDUKAN (NIK)']
+);
 
 if(
-nikClean &&
-nikClean.length >= 8
+nik &&
+nik.length >= 8
 ){
 
-nikSet.add(nikClean);
+nikSet.add(nik);
 
 }
 
@@ -1230,39 +1300,7 @@ document
 .innerText = nikSet.size;
 
 /* ====================================================== */
-/* VALIDASI */
-/* ====================================================== */
-
-function validWilayah(text){
-
-if(!text) return false;
-
-const t =
-text
-.toString()
-.trim()
-.toUpperCase();
-
-if(
-t === '' ||
-t === '-' ||
-t === '0'
-){
-return false;
-}
-
-if(t.includes('HTTP')) return false;
-if(t.includes('DRIVE.GOOGLE')) return false;
-if(t.includes('OPENID=')) return false;
-
-if(/^\d+$/.test(t)) return false;
-
-return true;
-
-}
-
-/* ====================================================== */
-/* DESA */
+/* STATISTIK DESA */
 /* ====================================================== */
 
 const desaMap = {};
@@ -1276,19 +1314,16 @@ item['DESA / KELURAHAN'] ||
 
 if(!validWilayah(desa)) return;
 
-const nama =
-desa
-.toString()
-.trim()
-.toUpperCase();
+const namaDesa =
+bersih(desa);
 
-if(!desaMap[nama]){
+if(!desaMap[namaDesa]){
 
-desaMap[nama]=0;
+desaMap[namaDesa]=0;
 
 }
 
-desaMap[nama]++;
+desaMap[namaDesa]++;
 
 });
 
@@ -1302,7 +1337,7 @@ document.getElementById('statistikDesa');
 desaContainer.innerHTML='';
 
 const maxDesa =
-desaSorted[0]
+desaSorted.length
 ? desaSorted[0][1]
 : 1;
 
@@ -1339,7 +1374,7 @@ style="width:${persen}%">
 });
 
 /* ====================================================== */
-/* KECAMATAN */
+/* STATISTIK KECAMATAN */
 /* ====================================================== */
 
 const kecMap = {};
@@ -1353,19 +1388,16 @@ item['KECAMATAN'] ||
 
 if(!validWilayah(kec)) return;
 
-const nama =
-kec
-.toString()
-.trim()
-.toUpperCase();
+const namaKec =
+bersih(kec);
 
-if(!kecMap[nama]){
+if(!kecMap[namaKec]){
 
-kecMap[nama]=0;
+kecMap[namaKec]=0;
 
 }
 
-kecMap[nama]++;
+kecMap[namaKec]++;
 
 });
 
@@ -1379,7 +1411,7 @@ document.getElementById('statistikKecamatan');
 kecContainer.innerHTML='';
 
 const maxKec =
-kecSorted[0]
+kecSorted.length
 ? kecSorted[0][1]
 : 1;
 
