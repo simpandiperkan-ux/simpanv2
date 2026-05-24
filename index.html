@@ -665,9 +665,7 @@ flex-direction:column;
 
 <div class="wrapper">
 
-<!-- ====================================================== -->
 <!-- SIDEBAR -->
-<!-- ====================================================== -->
 
 <div class="sidebar">
 
@@ -702,9 +700,7 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CONTENT -->
-<!-- ====================================================== -->
 
 <div class="content">
 
@@ -734,9 +730,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- STATS -->
-<!-- ====================================================== -->
 
 <div class="stats">
 
@@ -778,9 +772,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CARDS -->
-<!-- ====================================================== -->
 
 <div class="cards">
 
@@ -796,28 +788,11 @@ Cetak QR gabungan SIMPAN V1 & V2.
 
 </a>
 
-<!-- DATA V2 -->
-
-<a
-target="_blank"
-href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
-class="card">
-
-<div class="card-icon">📊</div>
-
-<h3>DATA SIMPAN V2</h3>
-
-<p>
-Buka Spreadsheet data kapal SIMPAN V2.
-</p>
-
-</a>
-
 <!-- DATA V1 -->
 
 <a
 target="_blank"
-href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126"
+href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
 class="card">
 
 <div class="card-icon">📘</div>
@@ -826,6 +801,23 @@ class="card">
 
 <p>
 Buka Spreadsheet data kapal SIMPAN V1.
+</p>
+
+</a>
+
+<!-- DATA V2 -->
+
+<a
+target="_blank"
+href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126"
+class="card">
+
+<div class="card-icon">📊</div>
+
+<h3>DATA SIMPAN V2</h3>
+
+<p>
+Buka Spreadsheet data kapal SIMPAN V2.
 </p>
 
 </a>
@@ -856,9 +848,7 @@ Download PDF SIMPAN V1 & V2.
 
 </div>
 
-<!-- ====================================================== -->
-<!-- STATISTIK DESA -->
-<!-- ====================================================== -->
+<!-- SECTION DESA -->
 
 <div class="section">
 
@@ -886,21 +876,9 @@ Download PDF SIMPAN V1 & V2.
 </div>
 </div>
 
-<div class="bar-item">
-<div class="bar-label">
-<span>BATU BELUBANG</span>
-<span>55 Kapal</span>
-</div>
-<div class="bar">
-<div class="bar-fill" style="width:55%"></div>
-</div>
 </div>
 
-</div>
-
-<!-- ====================================================== -->
-<!-- STATISTIK KECAMATAN -->
-<!-- ====================================================== -->
+<!-- SECTION KECAMATAN -->
 
 <div class="section">
 
@@ -938,9 +916,7 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL EXCEL -->
-<!-- ====================================================== -->
 
 <div class="modal" id="excelModal">
 
@@ -964,9 +940,7 @@ TUTUP
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL PDF -->
-<!-- ====================================================== -->
 
 <div class="modal" id="pdfModal">
 
@@ -992,9 +966,7 @@ TUTUP
 
 <script>
 
-/* ====================================================== */
 /* SEARCH */
-/* ====================================================== */
 
 function searchData(){
 
@@ -1012,10 +984,6 @@ alert("Masukkan NIK atau 4 digit ID");
 return;
 
 }
-
-/* ====================================================== */
-/* FORMAT ID */
-/* ====================================================== */
 
 if(/^\d{4}$/.test(keyword)){
 
@@ -1046,10 +1014,6 @@ return;
 
 }
 
-/* ====================================================== */
-/* NIK */
-/* ====================================================== */
-
 const pilih =
 confirm(
 "NIK ditemukan.\n\nOK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
@@ -1073,9 +1037,7 @@ window.open(
 
 }
 
-/* ====================================================== */
-/* ENTER SEARCH */
-/* ====================================================== */
+/* ENTER */
 
 document
 .getElementById("searchInput")
@@ -1092,9 +1054,7 @@ searchData();
 
 });
 
-/* ====================================================== */
 /* MODAL */
-/* ====================================================== */
 
 function openExcelModal(){
 
@@ -1128,20 +1088,9 @@ document
 
 }
 
-/* ====================================================== */
 /* DOWNLOAD EXCEL */
-/* ====================================================== */
 
 function downloadExcelV1(){
-
-window.open(
-'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
-'_blank'
-);
-
-}
-
-function downloadExcelV2(){
 
 window.open(
 'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx',
@@ -1150,20 +1099,18 @@ window.open(
 
 }
 
-/* ====================================================== */
-/* DOWNLOAD PDF */
-/* ====================================================== */
-
-function downloadPdfV1(){
+function downloadExcelV2(){
 
 window.open(
-'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
 '_blank'
 );
 
 }
 
-function downloadPdfV2(){
+/* DOWNLOAD PDF */
+
+function downloadPdfV1(){
 
 window.open(
 'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf',
@@ -1172,9 +1119,16 @@ window.open(
 
 }
 
-/* ====================================================== */
+function downloadPdfV2(){
+
+window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
+'_blank'
+);
+
+}
+
 /* PWA */
-/* ====================================================== */
 
 if('serviceWorker' in navigator){
 
