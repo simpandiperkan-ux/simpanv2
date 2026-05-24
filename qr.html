@@ -3,23 +3,56 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KARTU SIMPAN V2 FINAL</title>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>CETAK QR SIMPAN SUPER APP</title>
+
+<!-- ====================================================== -->
+<!-- FONT -->
+<!-- ====================================================== -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
+
+<!-- ====================================================== -->
+<!-- QR -->
+<!-- ====================================================== -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- CSV -->
+<!-- ====================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- EXPORT -->
+<!-- ====================================================== -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
+
+/* ====================================================== */
+/* RESET */
+/* ====================================================== */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
+
+/* ====================================================== */
+/* BODY */
+/* ====================================================== */
 
 body{
 
@@ -46,7 +79,9 @@ overflow-x:auto;
 
 }
 
+/* ====================================================== */
 /* SEARCH */
+/* ====================================================== */
 
 .search-box{
 
@@ -114,7 +149,9 @@ box-shadow:
 
 }
 
+/* ====================================================== */
 /* BUTTON */
+/* ====================================================== */
 
 .actions{
 
@@ -123,6 +160,10 @@ display:flex;
 gap:12px;
 
 margin-bottom:20px;
+
+flex-wrap:wrap;
+
+justify-content:center;
 
 }
 
@@ -151,7 +192,105 @@ cursor:pointer;
 
 }
 
+/* ====================================================== */
+/* PILIHAN DATA */
+/* ====================================================== */
+
+#pilihanData{
+
+width:100%;
+max-width:1011px;
+
+margin-bottom:20px;
+
+display:none;
+
+gap:12px;
+
+flex-direction:column;
+
+}
+
+.pilih-item{
+
+background:white;
+
+padding:18px 22px;
+
+border-radius:18px;
+
+cursor:pointer;
+
+border:2px solid rgba(0,94,255,.12);
+
+box-shadow:
+0 10px 24px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.pilih-item:hover{
+
+transform:translateY(-2px);
+
+border-color:#005eff;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:5px 12px;
+
+border-radius:999px;
+
+font-size:12px;
+
+font-weight:800;
+
+margin-bottom:8px;
+
+color:white;
+
+}
+
+.badge.v1{
+
+background:#666;
+
+}
+
+.badge.v2{
+
+background:#005eff;
+
+}
+
+.pilih-item h3{
+
+font-size:20px;
+
+font-weight:800;
+
+color:#0047b3;
+
+margin-bottom:6px;
+
+}
+
+.pilih-item p{
+
+font-size:14px;
+
+color:#444;
+
+}
+
+/* ====================================================== */
 /* CARD */
+/* ====================================================== */
 
 .card{
 
@@ -182,6 +321,8 @@ justify-content:space-between;
 
 }
 
+/* WATERMARK */
+
 .card::before{
 
 content:"";
@@ -200,7 +341,9 @@ opacity:.03;
 
 }
 
+/* ====================================================== */
 /* HEADER */
+/* ====================================================== */
 
 .header{
 
@@ -275,7 +418,9 @@ color:#333;
 
 }
 
+/* ====================================================== */
 /* MAIN */
+/* ====================================================== */
 
 .main{
 
@@ -418,7 +563,9 @@ line-height:1.3;
 
 }
 
+/* ====================================================== */
 /* FOOTER */
+/* ====================================================== */
 
 .footer{
 
@@ -479,6 +626,10 @@ maxlength="4"
 </button>
 
 </div>
+
+<!-- PILIHAN -->
+
+<div id="pilihanData"></div>
 
 <!-- BUTTON -->
 
@@ -624,9 +775,9 @@ SCAN QR UNTUK VERIFIKASI DATA KAPAL
 
 </h3>
 
-<p>
+<p id="footerText">
 
-SIMPAN V2 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
+SIMPAN SUPER APP • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </p>
 
@@ -636,12 +787,21 @@ SIMPAN V2 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 <script>
 
-/* CSV V2 */
+/* ====================================================== */
+/* CSV */
+/* ====================================================== */
 
-const csvUrl =
+const csvV1 =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
+
+const csvV2 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* PARAM */
+/* ====================================================== */
+/* GLOBAL */
+/* ====================================================== */
+
+let semuaData = [];
 
 const params =
 new URLSearchParams(window.location.search);
@@ -654,70 +814,147 @@ params.get("id");
 document.getElementById("tanggal").innerHTML =
 new Date().toLocaleDateString("id-ID");
 
-/* LOAD DATA */
+/* ====================================================== */
+/* LOAD V1 */
+/* ====================================================== */
 
-Papa.parse(csvUrl, {
+Papa.parse(csvV1,{
 
 download:true,
-
 header:true,
-
 skipEmptyLines:true,
 
-complete:function(results){
+complete:function(v1){
 
-const data = results.data;
+const dataV1 = v1.data.map(item => ({
 
-const kapal = data.find(item =>
+id:item["ID SIMPAN"] || "",
 
-item["ID SIMPAN"]?.trim()
-===
-kapalId?.trim()
+pemilik:
+item["Nama Pemilik Kapal (Sesuai KTP)"] || "-",
+
+kapal:
+item["Nama Kapal"] || "-",
+
+source:"V1",
+
+url:
+"https://simpandiperkan-ux.github.io/simpanv2/v1/kapal.html?id=" +
+(item["ID SIMPAN"] || "")
+
+}));
+
+/* ====================================================== */
+/* LOAD V2 */
+/* ====================================================== */
+
+Papa.parse(csvV2,{
+
+download:true,
+header:true,
+skipEmptyLines:true,
+
+complete:function(v2){
+
+const dataV2 = v2.data.map(item => ({
+
+id:item["ID SIMPAN"] || "",
+
+pemilik:
+item["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-",
+
+kapal:
+item["NAMA KAPAL SESUAI PAS KAPAL"] || "-",
+
+source:"V2",
+
+url:
+"https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
+(item["ID SIMPAN"] || "")
+
+}));
+
+semuaData = [
+...dataV1,
+...dataV2
+];
+
+/* AUTO LOAD */
+
+if(kapalId){
+
+const hasil =
+semuaData.filter(item =>
+
+item.id.trim() === kapalId.trim()
 
 );
 
-if(kapal){
+if(hasil.length > 0){
+
+loadCard(hasil[0]);
+
+}
+
+}
+
+}
+
+});
+
+}
+
+});
+
+/* ====================================================== */
+/* LOAD CARD */
+/* ====================================================== */
+
+function loadCard(data){
+
+/* ID */
+
+document.getElementById("idText").innerHTML =
+data.id;
+
+/* NAMA */
+
+document.getElementById("namaPemilik").innerHTML =
+data.pemilik;
+
+document.getElementById("namaKapal").innerHTML =
+data.kapal;
+
+/* FOOTER */
+
+document.getElementById("footerText").innerHTML =
+"SIMPAN " +
+data.source +
+" • DINAS PERIKANAN KABUPATEN BANGKA TENGAH";
 
 /* QR */
 
-const qrLink =
-"https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
-kapal["ID SIMPAN"];
+document.getElementById("qrcode").innerHTML = "";
 
-new QRCode(document.getElementById("qrcode"), {
+new QRCode(document.getElementById("qrcode"),{
 
-text:qrLink,
+text:data.url,
 
 width:300,
-
 height:300,
 
 colorDark:"#000000",
-
 colorLight:"#ffffff",
 
 correctLevel:QRCode.CorrectLevel.H
 
 });
 
-/* DATA */
-
-document.getElementById("idText").innerHTML =
-kapal["ID SIMPAN"];
-
-document.getElementById("namaPemilik").innerHTML =
-kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-";
-
-document.getElementById("namaKapal").innerHTML =
-kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-";
-
 }
 
-}
-
-});
-
+/* ====================================================== */
 /* SEARCH */
+/* ====================================================== */
 
 function cariQR(){
 
@@ -726,47 +963,84 @@ document.getElementById("searchInput")
 .value
 .trim();
 
-if(input.length < 1){
+if(!input){
 
-alert("Masukkan nomor ID");
+alert("Masukkan ID");
 
 return;
 
 }
 
-Papa.parse(csvUrl, {
+const hasil =
+semuaData.filter(item => {
 
-download:true,
-
-header:true,
-
-skipEmptyLines:true,
-
-complete:function(results){
-
-const data = results.data;
-
-const kapal = data.find(item => {
-
-const id = item["ID SIMPAN"] || "";
+const id = item.id || "";
 
 return id.endsWith(input);
 
 });
 
-if(kapal){
+/* TIDAK ADA */
 
-window.location.href =
-"qr.html?id=" +
-kapal["ID SIMPAN"];
-
-}else{
+if(hasil.length === 0){
 
 alert("Data tidak ditemukan");
 
-}
+return;
 
 }
+
+/* 1 DATA */
+
+if(hasil.length === 1){
+
+loadCard(hasil[0]);
+
+return;
+
+}
+
+/* LEBIH DARI 1 */
+
+const pilihan =
+document.getElementById("pilihanData");
+
+pilihan.style.display = "flex";
+
+pilihan.innerHTML = "";
+
+hasil.forEach(item => {
+
+const div =
+document.createElement("div");
+
+div.className = "pilih-item";
+
+div.innerHTML =
+
+`
+<div class="badge ${item.source.toLowerCase()}">
+SIMPAN ${item.source}
+</div>
+
+<h3>
+${item.kapal}
+</h3>
+
+<p>
+${item.pemilik}
+</p>
+`;
+
+div.onclick = () => {
+
+loadCard(item);
+
+pilihan.style.display = "none";
+
+};
+
+pilihan.appendChild(div);
 
 });
 
@@ -786,7 +1060,9 @@ cariQR();
 
 });
 
+/* ====================================================== */
 /* DOWNLOAD PNG */
+/* ====================================================== */
 
 function downloadPNG(){
 
@@ -800,7 +1076,7 @@ const link =
 document.createElement("a");
 
 link.download =
-kapalId + ".png";
+"QR-SIMPAN.png";
 
 link.href =
 canvas.toDataURL("image/png");
@@ -811,7 +1087,9 @@ link.click();
 
 }
 
+/* ====================================================== */
 /* DOWNLOAD JPG */
+/* ====================================================== */
 
 function downloadJPG(){
 
@@ -825,7 +1103,7 @@ const link =
 document.createElement("a");
 
 link.download =
-kapalId + ".jpg";
+"QR-SIMPAN.jpg";
 
 link.href =
 canvas.toDataURL("image/jpeg");
