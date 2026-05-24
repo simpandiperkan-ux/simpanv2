@@ -858,7 +858,6 @@ style="width:${persen}%">
 }
 
 
-
 function cariData(){
 
 const keyword =
@@ -867,11 +866,22 @@ document.getElementById('searchInput')
 .trim()
 .toLowerCase();
 
-if(!keyword) return;
+if(!keyword){
+alert('Masukkan ID atau NIK');
+return;
+}
 
-const hasil = [];
+let adaV1 = false;
+let adaV2 = false;
+
+let urlV1 = '';
+let urlV2 = '';
 
 
+
+// =======================
+// CEK DATA V1
+// =======================
 
 dataV1.forEach(item=>{
 
@@ -890,23 +900,23 @@ id.includes(keyword) ||
 nik.includes(keyword)
 ){
 
-hasil.push({
+adaV1 = true;
 
-versi:'V1',
-
-url:
+urlV1 =
 'v1/kapal.html?id='+
 encodeURIComponent(
 item['ID SIMPAN']
-)
-
-});
+);
 
 }
 
 });
 
 
+
+// =======================
+// CEK DATA V2
+// =======================
 
 dataV2.forEach(item=>{
 
@@ -925,17 +935,13 @@ id.includes(keyword) ||
 nik.includes(keyword)
 ){
 
-hasil.push({
+adaV2 = true;
 
-versi:'V2',
-
-url:
+urlV2 =
 'kapal.html?id='+
 encodeURIComponent(
 item['ID SIMPAN']
-)
-
-});
+);
 
 }
 
@@ -943,7 +949,11 @@ item['ID SIMPAN']
 
 
 
-if(hasil.length===0){
+// =======================
+// TIDAK ADA DATA
+// =======================
+
+if(!adaV1 && !adaV2){
 
 alert('Data tidak ditemukan');
 return;
@@ -952,10 +962,57 @@ return;
 
 
 
-if(hasil.length===1){
+// =======================
+// ADA DI V1 & V2
+// =======================
+
+if(adaV1 && adaV2){
+
+const pilih = prompt(
+
+'Pilih Sistem:\\n\\n'+
+'1 = SIMPAN V1\\n'+
+'2 = SIMPAN V2'
+
+);
+
+if(pilih === '1'){
 
 window.open(
-hasil[0].url,
+urlV1,
+'_blank'
+);
+
+return;
+
+}
+
+if(pilih === '2'){
+
+window.open(
+urlV2,
+'_blank'
+);
+
+return;
+
+}
+
+alert('Pilihan dibatalkan');
+return;
+
+}
+
+
+
+// =======================
+// HANYA V1
+// =======================
+
+if(adaV1){
+
+window.open(
+urlV1,
 '_blank'
 );
 
@@ -965,31 +1022,20 @@ return;
 
 
 
-let pilihan =
-'Pilih Data:\\n\\n';
+// =======================
+// HANYA V2
+// =======================
 
-hasil.forEach((h,i)=>{
-
-pilihan +=
-(i+1)+'. '+h.versi+'\\n';
-
-});
-
-const pilih =
-prompt(
-pilihan+
-'\\nMasukkan nomor pilihan:'
-);
-
-const index =
-parseInt(pilih)-1;
-
-if(hasil[index]){
+if(adaV2){
 
 window.open(
-hasil[index].url,
+urlV2,
 '_blank'
 );
+
+return;
+
+}
 
 }
 
