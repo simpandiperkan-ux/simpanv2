@@ -939,39 +939,32 @@ let urlV2 = '';
 dataV1.forEach(item=>{
 
 const fullId =
-(item['ID SIMPAN']||'')
+String(item['ID SIMPAN'] || '')
 .trim()
+.replace(/\s+/g,'')
 .toUpperCase();
 
 const last4 =
 fullId.slice(-4);
 
 const nik =
-(item['Nomor Induk Kependudukan (NIK)']||'')
-.trim();
-
-const input =
-keyword
+String(
+item['Nomor Induk Kependudukan (NIK)'] || ''
+)
 .trim()
-.toUpperCase();
+.replace(/\s+/g,'');
 
 if(
 
-input === last4 ||
+keyword === fullId ||
 
-input === nik ||
+keyword === last4 ||
 
-input === fullId
+keyword === nik
 
 ){
 
-adaV1 = true;
-
-urlV1 =
-'v1/kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
-);
+hasilV1.push(item);
 
 }
 
@@ -980,39 +973,32 @@ item['ID SIMPAN']
 dataV2.forEach(item=>{
 
 const fullId =
-(item['ID SIMPAN']||'')
+String(item['ID SIMPAN'] || '')
 .trim()
+.replace(/\s+/g,'')
 .toUpperCase();
 
 const last4 =
 fullId.slice(-4);
 
 const nik =
-(item['NOMOR INDUK KEPENDUDUKAN (NIK)']||'')
-.trim();
-
-const input =
-keyword
+String(
+item['NOMOR INDUK KEPENDUDUKAN (NIK)'] || ''
+)
 .trim()
-.toUpperCase();
+.replace(/\s+/g,'');
 
 if(
 
-input === last4 ||
+keyword === fullId ||
 
-input === nik ||
+keyword === last4 ||
 
-input === fullId
+keyword === nik
 
 ){
 
-adaV2 = true;
-
-urlV2 =
-'kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
-);
+hasilV2.push(item);
 
 }
 
