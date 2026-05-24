@@ -27,8 +27,8 @@ body{
 
 background:
 linear-gradient(
-rgba(0,30,100,.90),
-rgba(0,80,190,.88)
+rgba(0,25,90,.92),
+rgba(0,90,200,.90)
 ),
 url('background_simpan.png');
 
@@ -37,40 +37,39 @@ background-position:center;
 background-attachment:fixed;
 
 color:white;
-
 overflow-x:hidden;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* WRAPPER */
-/* ===================================================== */
+/* ====================================================== */
 
 .wrapper{
 display:flex;
 min-height:100vh;
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* SIDEBAR */
-/* ===================================================== */
+/* ====================================================== */
 
 .sidebar{
 
 width:240px;
 
 background:
-rgba(0,25,90,.96);
+rgba(0,20,80,.96);
 
-backdrop-filter:blur(10px);
-
-padding:24px 16px;
+backdrop-filter:blur(12px);
 
 position:fixed;
 
 top:0;
 left:0;
 bottom:0;
+
+padding:24px 16px;
 
 overflow-y:auto;
 
@@ -81,63 +80,54 @@ box-shadow:
 
 }
 
-.logo-area{
+.logo{
 
 text-align:center;
-
-margin-bottom:30px;
+margin-bottom:28px;
 
 }
 
-.logo-area img{
+.logo img{
 
-width:72px;
-
+width:70px;
 margin:4px;
 
 }
 
-.logo-title{
+.logo h2{
 
 font-size:24px;
-
 font-weight:900;
-
 margin-top:10px;
 
 }
 
-.logo-sub{
+.logo p{
 
 font-size:12px;
-
 line-height:1.7;
-
 margin-top:10px;
-
-opacity:.92;
+opacity:.9;
 
 }
 
 .menu{
 
-margin-top:24px;
+margin-top:26px;
 
 }
 
 .menu a{
 
 display:flex;
-
 align-items:center;
-
 gap:12px;
 
 padding:15px 16px;
 
 margin-bottom:12px;
 
-border-radius:16px;
+border-radius:18px;
 
 background:
 rgba(255,255,255,.08);
@@ -145,8 +135,6 @@ rgba(255,255,255,.08);
 color:white;
 
 text-decoration:none;
-
-font-size:15px;
 
 font-weight:700;
 
@@ -167,9 +155,9 @@ transform:translateX(4px);
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* CONTENT */
-/* ===================================================== */
+/* ====================================================== */
 
 .content{
 
@@ -181,32 +169,32 @@ width:100%;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* HERO */
-/* ===================================================== */
+/* ====================================================== */
 
 .hero{
 
 background:
 rgba(255,255,255,.10);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 padding:34px;
 
 border-radius:30px;
 
-margin-bottom:28px;
-
 position:relative;
 
 overflow:hidden;
+
+margin-bottom:28px;
 
 border:
 1px solid rgba(255,255,255,.10);
 
 box-shadow:
-0 10px 35px rgba(0,0,0,.22);
+0 12px 35px rgba(0,0,0,.22);
 
 }
 
@@ -225,14 +213,13 @@ rgba(255,255,255,.05);
 border-radius:50%;
 
 top:-120px;
-right:-100px;
+right:-120px;
 
 }
 
 .hero h1{
 
 font-size:58px;
-
 font-weight:900;
 
 position:relative;
@@ -253,19 +240,16 @@ z-index:2;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* SEARCH */
-/* ===================================================== */
+/* ====================================================== */
 
 .search-box{
 
-margin-top:28px;
-
 display:flex;
-
 gap:14px;
 
-flex-wrap:wrap;
+margin-top:28px;
 
 position:relative;
 z-index:2;
@@ -275,8 +259,6 @@ z-index:2;
 .search-box input{
 
 flex:1;
-
-min-width:260px;
 
 padding:18px 22px;
 
@@ -310,7 +292,6 @@ linear-gradient(
 color:white;
 
 font-size:18px;
-
 font-weight:800;
 
 cursor:pointer;
@@ -325,9 +306,9 @@ transform:scale(1.03);
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* STATS */
-/* ===================================================== */
+/* ====================================================== */
 
 .stats{
 
@@ -384,10 +365,7 @@ right:-40px;
 .stat-title{
 
 font-size:15px;
-
 font-weight:700;
-
-opacity:.9;
 
 position:relative;
 z-index:2;
@@ -397,7 +375,6 @@ z-index:2;
 .stat-value{
 
 font-size:58px;
-
 font-weight:900;
 
 margin-top:8px;
@@ -409,9 +386,9 @@ z-index:2;
 
 .stat-sub{
 
-font-size:14px;
-
 margin-top:10px;
+
+font-size:14px;
 
 opacity:.85;
 
@@ -420,9 +397,9 @@ z-index:2;
 
 }
 
-/* ===================================================== */
-/* CARD */
-/* ===================================================== */
+/* ====================================================== */
+/* CARDS */
+/* ====================================================== */
 
 .cards{
 
@@ -451,10 +428,10 @@ text-decoration:none;
 
 transition:.35s;
 
-box-shadow:
-0 10px 30px rgba(0,0,0,.18);
-
 cursor:pointer;
+
+box-shadow:
+0 12px 30px rgba(0,0,0,.18);
 
 }
 
@@ -474,8 +451,7 @@ margin-bottom:18px;
 
 .card h3{
 
-font-size:22px;
-
+font-size:24px;
 font-weight:900;
 
 margin-bottom:12px;
@@ -485,23 +461,22 @@ margin-bottom:12px;
 .card p{
 
 font-size:14px;
-
 line-height:1.7;
 
 color:#444;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* SECTION */
-/* ===================================================== */
+/* ====================================================== */
 
 .section{
 
 background:
 rgba(255,255,255,.12);
 
-padding:26px;
+padding:28px;
 
 border-radius:28px;
 
@@ -513,17 +488,16 @@ margin-bottom:28px;
 
 .section h2{
 
-font-size:28px;
-
+font-size:30px;
 font-weight:900;
 
 margin-bottom:24px;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* BAR */
-/* ===================================================== */
+/* ====================================================== */
 
 .bar-item{
 
@@ -534,12 +508,9 @@ margin-bottom:18px;
 .bar-label{
 
 display:flex;
-
 justify-content:space-between;
 
 margin-bottom:8px;
-
-font-size:15px;
 
 font-weight:700;
 
@@ -573,9 +544,9 @@ linear-gradient(
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* MODAL */
-/* ===================================================== */
+/* ====================================================== */
 
 .modal{
 
@@ -589,7 +560,6 @@ background:
 rgba(0,0,0,.65);
 
 justify-content:center;
-
 align-items:center;
 
 z-index:9999;
@@ -613,11 +583,10 @@ max-width:420px;
 
 .modal-content h2{
 
-margin-bottom:20px;
-
 font-size:24px;
-
 font-weight:900;
+
+margin-bottom:18px;
 
 }
 
@@ -643,22 +612,21 @@ linear-gradient(
 color:white;
 
 font-size:16px;
-
 font-weight:800;
 
 cursor:pointer;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* FOOTER */
-/* ===================================================== */
+/* ====================================================== */
 
 .footer{
 
 text-align:center;
 
-padding:24px;
+padding:26px;
 
 font-size:14px;
 
@@ -666,9 +634,9 @@ opacity:.9;
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* MOBILE */
-/* ===================================================== */
+/* ====================================================== */
 
 @media(max-width:980px){
 
@@ -690,6 +658,10 @@ margin-left:0;
 font-size:40px;
 }
 
+.search-box{
+flex-direction:column;
+}
+
 }
 
 </style>
@@ -699,28 +671,30 @@ font-size:40px;
 
 <div class="wrapper">
 
+<!-- ====================================================== -->
 <!-- SIDEBAR -->
+<!-- ====================================================== -->
 
 <div class="sidebar">
 
-<div class="logo-area">
+<div class="logo">
 
 <img src="logo-bateng.png">
 <img src="logo-simpan.png">
 
-<div class="logo-title">
-SIMPAN
-</div>
+<h2>SIMPAN</h2>
 
-<div class="logo-sub">
+<p>
 Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
-</div>
+</p>
 
 </div>
 
 <div class="menu">
 
-<a href="#">🏠 Dashboard</a>
+<a href="#">
+🏠 Dashboard
+</a>
 
 <a href="qr.html" target="_blank">
 🧾 CETAK QR
@@ -734,7 +708,9 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 </div>
 
+<!-- ====================================================== -->
 <!-- CONTENT -->
+<!-- ====================================================== -->
 
 <div class="content">
 
@@ -766,7 +742,9 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
+<!-- ====================================================== -->
 <!-- STATS -->
+<!-- ====================================================== -->
 
 <div class="stats">
 
@@ -808,7 +786,9 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
+<!-- ====================================================== -->
 <!-- CARDS -->
+<!-- ====================================================== -->
 
 <div class="cards">
 
@@ -892,7 +872,9 @@ Download PDF gabungan V1 & V2.
 
 </div>
 
-<!-- DESA -->
+<!-- ====================================================== -->
+<!-- STATISTIK DESA -->
+<!-- ====================================================== -->
 
 <div class="section">
 
@@ -904,7 +886,9 @@ Download PDF gabungan V1 & V2.
 
 </div>
 
-<!-- KECAMATAN -->
+<!-- ====================================================== -->
+<!-- STATISTIK KECAMATAN -->
+<!-- ====================================================== -->
 
 <div class="section">
 
@@ -924,7 +908,9 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
+<!-- ====================================================== -->
 <!-- MODAL EXCEL -->
+<!-- ====================================================== -->
 
 <div class="modal" id="excelModal">
 
@@ -948,7 +934,9 @@ TUTUP
 
 </div>
 
+<!-- ====================================================== -->
 <!-- MODAL PDF -->
+<!-- ====================================================== -->
 
 <div class="modal" id="pdfModal">
 
@@ -974,9 +962,9 @@ TUTUP
 
 <script>
 
-/* ===================================================== */
-/* CSV */
-/* ===================================================== */
+/* ====================================================== */
+/* CSV DATABASE */
+/* ====================================================== */
 
 const csvV1 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
@@ -984,22 +972,23 @@ const csvV1 =
 const csvV2 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* ===================================================== */
+/* ====================================================== */
 /* GLOBAL */
-/* ===================================================== */
+/* ====================================================== */
 
 let dataV1 = [];
 let dataV2 = [];
 let allData = [];
 
-/* ===================================================== */
+/* ====================================================== */
 /* SEARCH */
-/* ===================================================== */
+/* ====================================================== */
 
-async function searchData(){
+function searchData(){
 
 const keyword =
-document.getElementById("searchInput")
+document
+.getElementById("searchInput")
 .value
 .trim()
 .toUpperCase();
@@ -1012,47 +1001,43 @@ return;
 
 }
 
-let finalID = keyword;
+/* ====================================================== */
+/* ID */
+/* ====================================================== */
 
 if(/^\d{4}$/.test(keyword)){
 
-finalID = "BT-SMP-" + keyword;
+const id = "BT-SMP-" + keyword;
 
-}
+/* ====================================================== */
+/* CEK V2 */
+/* ====================================================== */
 
-/* ===================================== */
-/* CARI DATA */
-/* ===================================== */
+const v2 = dataV2.find(item=>
 
-const foundV1 =
-dataV1.filter(item=>{
+JSON.stringify(item)
+.toUpperCase()
+.includes(id)
 
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
+);
 
-return text.includes(finalID);
+/* ====================================================== */
+/* CEK V1 */
+/* ====================================================== */
 
-});
+const v1 = dataV1.find(item=>
 
-const foundV2 =
-dataV2.filter(item=>{
+JSON.stringify(item)
+.toUpperCase()
+.includes(id)
 
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
+);
 
-return text.includes(finalID);
+/* ====================================================== */
+/* ADA DI KEDUANYA */
+/* ====================================================== */
 
-});
-
-/* ===================================== */
-/* JIKA ADA DI KEDUANYA */
-/* ===================================== */
-
-if(foundV1.length > 0 && foundV2.length > 0){
+if(v1 && v2){
 
 const pilih =
 confirm(
@@ -1062,16 +1047,14 @@ confirm(
 if(pilih){
 
 window.open(
-"kapal.html?id=" +
-encodeURIComponent(finalID),
+"kapal.html?id=" + id,
 "_blank"
 );
 
 }else{
 
 window.open(
-"v1/kapal.html?id=" +
-encodeURIComponent(finalID),
+"v1/kapal.html?id=" + id,
 "_blank"
 );
 
@@ -1081,31 +1064,14 @@ return;
 
 }
 
-/* ===================================== */
-/* HANYA V1 */
-/* ===================================== */
-
-if(foundV1.length > 0){
-
-window.open(
-"v1/kapal.html?id=" +
-encodeURIComponent(finalID),
-"_blank"
-);
-
-return;
-
-}
-
-/* ===================================== */
+/* ====================================================== */
 /* HANYA V2 */
-/* ===================================== */
+/* ====================================================== */
 
-if(foundV2.length > 0){
+if(v2){
 
 window.open(
-"kapal.html?id=" +
-encodeURIComponent(finalID),
+"kapal.html?id=" + id,
 "_blank"
 );
 
@@ -1113,39 +1079,54 @@ return;
 
 }
 
-/* ===================================== */
-/* CEK NIK */
-/* ===================================== */
+/* ====================================================== */
+/* HANYA V1 */
+/* ====================================================== */
 
-const nikV1 =
-dataV1.filter(item=>{
+if(v1){
 
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
+window.open(
+"v1/kapal.html?id=" + id,
+"_blank"
+);
 
-return text.includes(keyword);
+return;
+
+}
+
+}
+
+/* ====================================================== */
+/* PENCARIAN NIK */
+/* ====================================================== */
+
+const hasilV1 = dataV1.filter(item=>{
+
+const nik =
+String(
+item["Nomor Induk Kependudukan (NIK)"] || ""
+);
+
+return nik.includes(keyword);
 
 });
 
-const nikV2 =
-dataV2.filter(item=>{
+const hasilV2 = dataV2.filter(item=>{
 
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
+const nik =
+String(
+item["NOMOR INDUK KEPENDUDUKAN (NIK)"] || ""
+);
 
-return text.includes(keyword);
+return nik.includes(keyword);
 
 });
 
-/* ===================================== */
-/* NIK ADA DI KEDUANYA */
-/* ===================================== */
+/* ====================================================== */
+/* ADA DI KEDUANYA */
+/* ====================================================== */
 
-if(nikV1.length > 0 && nikV2.length > 0){
+if(hasilV1.length > 0 && hasilV2.length > 0){
 
 const pilih =
 confirm(
@@ -1153,29 +1134,31 @@ confirm(
 );
 
 const data =
-pilih ? nikV2[0] : nikV1[0];
+pilih ? hasilV2[0] : hasilV1[0];
+
+const semua =
+Object.values(data);
 
 const id =
-Object.values(data)
-.find(v=>
+semua.find(v=>
+
 String(v)
 .toUpperCase()
 .includes("BT-SMP-")
+
 );
 
 if(pilih){
 
 window.open(
-"kapal.html?id=" +
-encodeURIComponent(id),
+"kapal.html?id=" + id,
 "_blank"
 );
 
 }else{
 
 window.open(
-"v1/kapal.html?id=" +
-encodeURIComponent(id),
+"v1/kapal.html?id=" + id,
 "_blank"
 );
 
@@ -1185,23 +1168,26 @@ return;
 
 }
 
-/* ===================================== */
-/* NIK HANYA V1 */
-/* ===================================== */
+/* ====================================================== */
+/* HANYA V2 */
+/* ====================================================== */
 
-if(nikV1.length > 0){
+if(hasilV2.length > 0){
+
+const semua =
+Object.values(hasilV2[0]);
 
 const id =
-Object.values(nikV1[0])
-.find(v=>
+semua.find(v=>
+
 String(v)
 .toUpperCase()
 .includes("BT-SMP-")
+
 );
 
 window.open(
-"v1/kapal.html?id=" +
-encodeURIComponent(id),
+"kapal.html?id=" + id,
 "_blank"
 );
 
@@ -1209,23 +1195,26 @@ return;
 
 }
 
-/* ===================================== */
-/* NIK HANYA V2 */
-/* ===================================== */
+/* ====================================================== */
+/* HANYA V1 */
+/* ====================================================== */
 
-if(nikV2.length > 0){
+if(hasilV1.length > 0){
+
+const semua =
+Object.values(hasilV1[0]);
 
 const id =
-Object.values(nikV2[0])
-.find(v=>
+semua.find(v=>
+
 String(v)
 .toUpperCase()
 .includes("BT-SMP-")
+
 );
 
 window.open(
-"kapal.html?id=" +
-encodeURIComponent(id),
+"v1/kapal.html?id=" + id,
 "_blank"
 );
 
@@ -1237,9 +1226,9 @@ alert("Data tidak ditemukan");
 
 }
 
-/* ===================================================== */
+/* ====================================================== */
 /* ENTER SEARCH */
-/* ===================================================== */
+/* ====================================================== */
 
 document
 .getElementById("searchInput")
@@ -1256,9 +1245,9 @@ searchData();
 
 });
 
-/* ===================================================== */
+/* ====================================================== */
 /* MODAL */
-/* ===================================================== */
+/* ====================================================== */
 
 function openExcelModal(){
 
@@ -1292,9 +1281,9 @@ document
 
 }
 
-/* ===================================================== */
-/* LOAD CSV */
-/* ===================================================== */
+/* ====================================================== */
+/* LOAD DATA */
+/* ====================================================== */
 
 Promise.all([
 
@@ -1320,9 +1309,9 @@ allData = [
 ...dataV2
 ];
 
-/* ===================================================== */
+/* ====================================================== */
 /* TOTAL */
-/* ===================================================== */
+/* ====================================================== */
 
 document.getElementById("totalV1")
 .innerHTML = dataV1.length;
@@ -1334,57 +1323,58 @@ document.getElementById("totalKapal")
 .innerHTML =
 dataV1.length + dataV2.length;
 
-/* ===================================================== */
+/* ====================================================== */
 /* TOTAL NELAYAN BERDASARKAN NIK UNIK */
-/* ===================================================== */
+/* ====================================================== */
 
 const nikSet = new Set();
 
 allData.forEach(item => {
 
-Object.entries(item).forEach(([key,val]) => {
+/* ====================================================== */
+/* AMBIL NIK V1 DAN V2 */
+/* ====================================================== */
 
-const namaKolom =
-String(key)
-.toUpperCase()
+const nik =
+
+item["Nomor Induk Kependudukan (NIK)"] ||
+
+item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
+
+"";
+
+/* ====================================================== */
+/* BERSIHKAN */
+/* ====================================================== */
+
+const cleanNik =
+
+String(nik)
+.replace(/\D/g,'')
 .trim();
 
-const isi =
-String(val)
-.trim();
+/* ====================================================== */
+/* VALIDASI */
+/* ====================================================== */
 
-if(
+if(cleanNik.length >= 16){
 
-namaKolom.includes("NIK")
-
-&&
-
-isi !== ""
-
-&&
-
-isi !== "-"
-
-&&
-
-isi.length >= 10
-
-){
-
-nikSet.add(isi);
+nikSet.add(cleanNik);
 
 }
 
 });
 
-});
+/* ====================================================== */
+/* TOTAL */
+/* ====================================================== */
 
 document.getElementById("totalNelayan")
 .innerHTML = nikSet.size;
 
-/* ===================================================== */
+/* ====================================================== */
 /* VERIFIKASI */
-/* ===================================================== */
+/* ====================================================== */
 
 let verifikasi = 0;
 let belum = 0;
@@ -1392,8 +1382,7 @@ let belum = 0;
 allData.forEach(item=>{
 
 const text =
-Object.values(item)
-.join(" ")
+JSON.stringify(item)
 .toUpperCase();
 
 if(text.includes("TERVERIFIKASI")){
@@ -1414,9 +1403,9 @@ document.getElementById("totalVerifikasi")
 document.getElementById("belumVerifikasi")
 .innerHTML = belum;
 
-/* ===================================================== */
-/* STATISTIK DESA */
-/* ===================================================== */
+/* ====================================================== */
+/* DESA */
+/* ====================================================== */
 
 const desaData = {
 
@@ -1467,9 +1456,9 @@ style="width:${Math.min(total,100)}%">
 
 });
 
-/* ===================================================== */
-/* STATISTIK KECAMATAN */
-/* ===================================================== */
+/* ====================================================== */
+/* KECAMATAN */
+/* ====================================================== */
 
 const kecamatanData = {
 
@@ -1517,9 +1506,9 @@ style="width:${Math.min(total,100)}%">
 
 });
 
-/* ===================================================== */
+/* ====================================================== */
 /* PWA */
-/* ===================================================== */
+/* ====================================================== */
 
 if('serviceWorker' in navigator){
 
