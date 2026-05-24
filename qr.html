@@ -21,19 +21,19 @@ rel="stylesheet"
 >
 
 <!-- ====================================================== -->
-<!-- QR -->
+<!-- QR CODE -->
 <!-- ====================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <!-- ====================================================== -->
-<!-- CSV -->
+<!-- PAPAPARSE -->
 <!-- ====================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <!-- ====================================================== -->
-<!-- EXPORT -->
+<!-- HTML2CANVAS -->
 <!-- ====================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -160,7 +160,7 @@ translateY(-2px);
 }
 
 /* ====================================================== */
-/* BUTTON */
+/* ACTION BUTTON */
 /* ====================================================== */
 
 .actions{
@@ -673,7 +673,7 @@ placeholder="Masukkan 4 digit ID belakang..."
 </div>
 
 <!-- ====================================================== -->
-<!-- ACTION -->
+<!-- BUTTON -->
 <!-- ====================================================== -->
 
 <div class="actions">
@@ -845,7 +845,7 @@ SIMPAN V2 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 <script>
 
 /* ====================================================== */
-/* CSV URL */
+/* CSV URL V2 */
 /* ====================================================== */
 
 const csvUrl =
@@ -891,46 +891,64 @@ complete:function(result){
 
 const data = result.data;
 
+console.log(data);
+
 /* ====================================================== */
 /* FIND DATA */
 /* ====================================================== */
 
-const kapal = data.find(item =>
+const kapal = data.find(item => {
 
-(item["ID SIMPAN"] || "")
+const idKapal =
+
+(
+item["ID SIMPAN"] ||
+item["Id SIMPAN"] ||
+item["id simpan"] ||
+""
+)
 .toString()
 .trim()
-.toUpperCase()
+.toUpperCase();
 
-===
+return idKapal === id.toUpperCase();
 
-id.toUpperCase()
-
-);
+});
 
 /* ====================================================== */
-/* SET DATA */
+/* JIKA DATA DITEMUKAN */
 /* ====================================================== */
 
 if(kapal){
+
+/* ID */
 
 document.getElementById(
 "idText"
 ).innerHTML =
 
-kapal["ID SIMPAN"] || "-";
+kapal["ID SIMPAN"] ||
+"-";
+
+/* NAMA PEMILIK */
 
 document.getElementById(
 "namaPemilik"
 ).innerHTML =
 
-kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-";
+kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] ||
+kapal["Nama Pemilik Kapal (Sesuai KTP)"] ||
+"-";
+
+/* NAMA KAPAL */
 
 document.getElementById(
 "namaKapal"
 ).innerHTML =
 
-kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-";
+kapal["NAMA KAPAL SESUAI PAS KAPAL"] ||
+kapal["Nama Kapal"] ||
+"-";
 
 }
 
@@ -943,7 +961,7 @@ QRCode.toCanvas(
 document.createElement("canvas"),
 
 window.location.origin +
-"/simpanv2/kapal.html?id=" +
+"/simpanv2/verifikasi-kapal.html?id=" +
 id,
 
 {
@@ -1026,7 +1044,7 @@ cariQR();
 );
 
 /* ====================================================== */
-/* PNG */
+/* DOWNLOAD PNG */
 /* ====================================================== */
 
 function downloadPNG(){
@@ -1051,7 +1069,7 @@ link.click();
 }
 
 /* ====================================================== */
-/* JPG */
+/* DOWNLOAD JPG */
 /* ====================================================== */
 
 function downloadJPG(){
