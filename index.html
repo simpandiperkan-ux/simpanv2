@@ -1,14 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>KARTU SIMPAN V1 FINAL</title>
+
+<!-- ====================================================== -->
+<!-- FONT -->
+<!-- ====================================================== -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
+
+<!-- ====================================================== -->
+<!-- QR CODE -->
+<!-- ====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- PAPAPARSE -->
+<!-- ====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- HTML2CANVAS -->
+<!-- ====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<style>
+
+/* ====================================================== */
+/* RESET */
+/* ====================================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* ====================================================== */
+/* BODY */
+/* ====================================================== */
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#dbe6f5,
+#cdd9eb
+);
+
+min-height:100vh;
+
+padding:40px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+overflow-x:auto;
+
+}
+
+/* ====================================================== */
+/* SEARCH */
+/* ====================================================== */
+
+.search-box{
+
+display:flex;
+
+gap:18px;
+
+width:100%;
+
+max-width:900px;
+
+margin-bottom:24px;
+
+}
+
+.search-box input{
+
+flex:1;
+
+height:70px;
+
+border:none;
+
+outline:none;
+
+padding:0 28px;
+
+font-size:20px;
+
+font-weight:700;
+
+border-radius:20px;
+
+background:white;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.10);
+
+}
+
+.search-box button{
+
+width:240px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+#0066ff,
+#00a6ff
+);
+
+color:white;
+
+font-size:22px;
+
+font-weight:900;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:
+0 10px 26px rgba(0,0,0,.16);
+
+}
+
+.search-box button:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+/* ====================================================== */
+/* BUTTONS */
+/* ====================================================== */
+
+.actions{
+
+display:flex;
+
+gap:12px;
+
+margin-bottom:24px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.actions button{
+
+padding:14px 24px;
+
+border:none;
+
+border-radius:14px;
+
+background:
+linear-gradient(
+135deg,
+#005eff,
+#0044cc
+);
+
+color:white;
+
+font-size:14px;
+
+font-weight:800;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:
+0 6px 18px rgba(0,0,0,.16);
+
+}
+
+.actions button:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+/* ====================================================== */
+/* CARD */
+/* ====================================================== */
+
+.card{
+
+width:1011px;
+height:638px;
+
+background:white;
+
+border-radius:34px;
+
+padding:28px;
+
+position:relative;
+
+overflow:hidden;
+
+border:
+5px solid #005eff;
+
+box-shadow:
+0 24px 60px rgba(0,0,0,.18);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+/* ====================================================== */
+/* WATERMARK */
+/* ====================================================== */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background-image:url('../logo-simpan.png');
+
+background-repeat:repeat;
+
+background-size:150px;
+
+opacity:.03;
+
+pointer-events:none;
+
+}
+
+/* ====================================================== */
+/* HEADER */
+/* ====================================================== */
+
+.header{
+
+display:grid;
+
+grid-template-columns:
+120px 1fr 120px;
+
+align-items:center;
+
+column-gap:18px;
+
+padding-bottom:18px;
+
+border-bottom:
+2px solid rgba(0,94,255,.15);
+
+position:relative;
+z-index:2;
+
+}
+
+/* ====================================================== */
+/* LOGO BATENG */
+/* ====================================================== */
+
+.logo-bateng{
+
+width:95px;
+
+display:block;
+
+margin:auto;
+
+object-fit:contain;
+
+}
+
+/* ====================================================== */
+/* LOGO SIMPAN */
+/* ====================================================== */
+
+.logo-simpan{
+
+width:110px;
+
+display:block;
+
+margin:auto;
+
+object-fit:contain;
+
+}
+
+/* ====================================================== */
+/* HEADER TEXT */
+/* ====================================================== */
+
+.header-text{
+
+text-align:center;
+
+}
+
+.header-text h1{
+
+font-size:44px;
+
+font-weight:900;
+
+line-height:1.05;
+
+color:#0047b3;
+
+margin-bottom:10px;
+
+}
+
+.header-text p{
+
+font-size:16px;
+
+font-weight:500;
+
+line-height:1.5;
+
+color:#333;
+
+}
+
+/* ====================================================== */
+/* MAIN */
+/* ====================================================== */
+
+.main{
+
+display:grid;
+
+grid-template-columns:
+420px 1fr;
+
+gap:24px;
+
+align-items:center;
+
+margin-top:20px;
+
+position:relative;
+z-index:2;
+
+}
+
+/* ====================================================== */
+/* QR BOX */
+/* ====================================================== */
+
+.qr-box{
+
+height:360px;
+
+border:
+4px solid #005eff;
+
+border-radius:24px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:16px;
+
+background:white;
+
+}
+
+/* ====================================================== */
+/* RIGHT */
+/* ====================================================== */
+
+.right{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+height:360px;
+
+}
+
+/* ====================================================== */
+/* ID BOX */
+/* ====================================================== */
+
+.id-box{
+
+height:82px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+#005eff,
+#0044cc
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+box-shadow:
+0 10px 24px rgba(0,0,0,.16);
+
+padding:0 24px;
+
+}
+
+.id-box h2{
+
+font-size:42px;
+
+font-weight:900;
+
+color:white;
+
+white-space:nowrap;
+
+line-height:1;
+
+}
+
+/* ====================================================== */
+/* DETAIL BOX */
+/* ====================================================== */
+
+.detail-box{
+
+flex:1;
+
+border:
+2px solid rgba(0,94,255,.12);
+
+border-radius:22px;
+
+padding:22px;
+
+background:
+rgba(0,94,255,.03);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+}
+
+/* ====================================================== */
+/* DETAIL ITEM */
+/* ====================================================== */
+
+.detail-item{
+
+padding:12px 0;
+
+border-bottom:
+1px solid rgba(0,94,255,.10);
+
+}
+
+.detail-item:last-child{
+
+border-bottom:none;
+
+}
+
+.detail-item h3{
+
+font-size:14px;
+
+font-weight:500;
+
+color:#555;
+
+margin-bottom:6px;
+
+}
+
+.detail-item p{
+
+font-size:26px;
+
+font-weight:800;
+
+color:#0047b3;
+
+line-height:1.3;
+
+}
+
+/* ====================================================== */
+/* FOOTER */
+/* ====================================================== */
+
+.footer{
+
+margin-top:16px;
+
+padding-top:14px;
+
+border-top:
+2px solid rgba(0,94,255,.15);
+
+text-align:center;
+
+position:relative;
+z-index:2;
+
+}
+
+.footer h3{
+
+font-size:26px;
+
+font-weight:900;
+
+color:#005eff;
+
+margin-bottom:6px;
+
+}
+
+.footer p{
+
+font-size:14px;
+
+font-weight:600;
+
+color:#333;
+
+}
+
+/* ====================================================== */
+/* RESPONSIVE */
+/* ====================================================== */
+
+@media(max-width:1100px){
+
+.card{
+
+width:100%;
+height:auto;
+
+}
+
+.main{
+
+grid-template-columns:1fr;
+
+}
+
+.right,
+.qr-box{
+
+height:auto;
+
+}
+
+}
+
+/* ====================================================== */
+/* PRINT */
+/* ====================================================== */
+
+@media print{
+
+body{
+
+background:white;
+padding:0;
+
+}
+
+.search-box,
+.actions{
+
+display:none;
+
+}
+
+.card{
+
+box-shadow:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ====================================================== -->
+<!-- SEARCH -->
+<!-- ====================================================== -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Masukkan 4 digit ID belakang..."
+>
+
+<button onclick="cariQR()">
+
+🔍 CARI QR
+
+</button>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- ACTIONS -->
+<!-- ====================================================== -->
+
+<div class="actions">
+
+<button onclick="downloadPNG()">
+🖼 Download PNG
+</button>
+
+<button onclick="downloadJPG()">
+🖼 Download JPG
+</button>
+
+<button onclick="window.print()">
+📄 Download PDF
+</button>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- CARD -->
+<!-- ====================================================== -->
+
+<div class="card" id="card">
+
+<!-- ====================================================== -->
+<!-- HEADER -->
+<!-- ====================================================== -->
+
+<div class="header">
+
+<!-- LOGO KIRI -->
+
+<div>
+
+<img
+src="../logo-bateng.png"
+class="logo-bateng"
+>
+
+</div>
+
+<!-- TEXT -->
+
+<div class="header-text">
+
+<h1>
+
+DINAS PERIKANAN
+<br>
+KABUPATEN BANGKA TENGAH
+
+</h1>
+
+<p>
+
+Sistem Informasi Manajemen Pendataan
+Armada Nelayan
+
+</p>
+
+</div>
+
+<!-- LOGO KANAN -->
+
+<div>
+
+<img
+src="../logo-simpan.png"
+class="logo-simpan"
+>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- MAIN -->
+<!-- ====================================================== -->
+
 <!-- ===================================================== -->
-<!-- MENU UTAMA FINAL -->
-<!-- GANTI SELURUH BLOK MENU LAMA DENGAN INI -->
+<!-- MENU GRID FINAL SUPER APP -->
+<!-- GANTI SELURUH BLOK MENU-GRID LAMA -->
 <!-- ===================================================== -->
 
 <div class="menu-grid">
 
+    <!-- ===================================================== -->
     <!-- SIMPAN V2 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
-         onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfxxxxxxxxxxxxxxxx/viewform','_blank')">
+         onclick="window.open('https://docs.google.com/forms','_blank')">
 
         <div class="menu-icon">🚀</div>
 
@@ -20,10 +769,12 @@
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- SIMPAN V1 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
-         onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSxxxxxxxxxxxxxxxx/viewform','_blank')">
+         onclick="window.open('https://docs.google.com/forms','_blank')">
 
         <div class="menu-icon">🛥️</div>
 
@@ -35,7 +786,9 @@
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- CETAK QR GABUNGAN -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('qr.html','_blank')">
@@ -45,12 +798,14 @@
         <h3>CETAK QR</h3>
 
         <p>
-            Cetak QR gabungan SIMPAN V1 & V2.
+            Cetak QR gabungan SIMPAN V1 & SIMPAN V2.
         </p>
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- VERIFIKASI -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('verifikasi-kapal.html','_blank')">
@@ -65,7 +820,9 @@
 
     </div>
 
-    <!-- DATA V2 -->
+    <!-- ===================================================== -->
+    <!-- DATA SIMPAN V2 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')">
@@ -75,12 +832,14 @@
         <h3>DATA SIMPAN V2</h3>
 
         <p>
-            Buka Spreadsheet Data Kapal SIMPAN V2.
+            Spreadsheet data kapal SIMPAN V2.
         </p>
 
     </div>
 
-    <!-- DATA V1 -->
+    <!-- ===================================================== -->
+    <!-- DATA SIMPAN V1 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')">
@@ -90,12 +849,14 @@
         <h3>DATA SIMPAN V1</h3>
 
         <p>
-            Buka Spreadsheet Data Kapal SIMPAN V1.
+            Spreadsheet data kapal SIMPAN V1.
         </p>
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- DOWNLOAD EXCEL V2 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
@@ -110,7 +871,9 @@
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- DOWNLOAD EXCEL V1 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
@@ -125,7 +888,9 @@
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- DOWNLOAD PDF V2 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
@@ -140,12 +905,14 @@
 
     </div>
 
+    <!-- ===================================================== -->
     <!-- DOWNLOAD PDF V1 -->
+    <!-- ===================================================== -->
 
     <div class="menu-card"
          onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
 
-        <div class="menu-icon">🧾</div>
+        <div class="menu-icon">📑</div>
 
         <h3>DOWNLOAD PDF V1</h3>
 
@@ -156,3 +923,31 @@
     </div>
 
 </div>
+
+<!-- ===================================================== -->
+<!-- JANGAN HAPUS ENGINE LAMA -->
+<!-- ===================================================== -->
+
+<!--
+PERTAHANKAN SCRIPT LAMA BERIKUT:
+
+1. loadData()
+2. searchData()
+3. renderStatistikDesa()
+4. renderStatistikKecamatan()
+5. Statistik realtime CSV
+6. Popup multiple data
+7. Statistik verifikasi
+8. Statistik belum verifikasi
+9. Statistik nelayan unik
+10. Statistik per desa
+11. Statistik per kecamatan
+
+AGAR:
+
+✅ seluruh dashboard tetap berjalan
+✅ pencarian tetap aktif
+✅ statistik realtime tetap aktif
+✅ QR gabungan tetap aktif
+✅ APK/PWA tetap normal
+-->
