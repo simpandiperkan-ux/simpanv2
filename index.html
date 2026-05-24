@@ -1031,7 +1031,7 @@ return;
 }
 
 /* =========================
-JIKA ADA BANYAK DATA
+JIKA DATA LEBIH DARI 1
 ========================= */
 
 if(
@@ -1041,26 +1041,93 @@ hasilV2.length > 1
 
 ){
 
+let daftar = [];
+let nomor = 1;
+
 let pesan =
 'Data ditemukan lebih dari 1.\n\n';
 
-hasilV1.forEach((item,index)=>{
+/* =========================
+V1
+========================= */
 
-pesan +=
-`V1 - ${index+1} : ${item['ID SIMPAN']}\n`;
+hasilV1.forEach(item=>{
+
+daftar.push({
+
+url:
+'v1/kapal.html?id=' +
+encodeURIComponent(
+item['ID SIMPAN']
+)
 
 });
 
-hasilV2.forEach((item,index)=>{
-
 pesan +=
-`V2 - ${index+1} : ${item['ID SIMPAN']}\n`;
+nomor +
+'. SIMPAN V1 - ' +
+item['ID SIMPAN'] +
+'\n';
+
+nomor++;
 
 });
 
-pesan += '\nMasukkan ID lengkap kapal.';
+/* =========================
+V2
+========================= */
 
-alert(pesan);
+hasilV2.forEach(item=>{
+
+daftar.push({
+
+url:
+'kapal.html?id=' +
+encodeURIComponent(
+item['ID SIMPAN']
+)
+
+});
+
+pesan +=
+nomor +
+'. SIMPAN V2 - ' +
+item['ID SIMPAN'] +
+'\n';
+
+nomor++;
+
+});
+
+/* =========================
+PILIH
+========================= */
+
+const pilihan =
+prompt(
+
+pesan +
+
+'\nMasukkan nomor pilihan:'
+
+);
+
+const index =
+parseInt(pilihan) - 1;
+
+if(
+
+!isNaN(index) &&
+daftar[index]
+
+){
+
+window.open(
+daftar[index].url,
+'_blank'
+);
+
+}
 
 return;
 
