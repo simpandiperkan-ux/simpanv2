@@ -59,16 +59,15 @@ body{
 font-family:'Poppins',sans-serif;
 
 background:
-
 linear-gradient(
 135deg,
 #dfe8f5,
-#c9d8ec
+#cfd9eb
 );
 
 min-height:100vh;
 
-padding:30px;
+padding:28px;
 
 display:flex;
 
@@ -88,13 +87,13 @@ SEARCH
 
 display:flex;
 
-gap:15px;
+gap:18px;
 
 width:100%;
 
-max-width:760px;
+max-width:950px;
 
-margin-bottom:25px;
+margin-bottom:26px;
 
 }
 
@@ -102,55 +101,54 @@ margin-bottom:25px;
 
 flex:1;
 
-height:72px;
+height:82px;
 
 border:none;
 
 outline:none;
 
-padding:0 30px;
+padding:0 34px;
 
 font-size:22px;
 
-font-weight:600;
+font-weight:700;
 
-border-radius:24px;
+border-radius:26px;
 
 background:white;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.10);
+0 10px 30px rgba(0,0,0,.12);
 
 }
 
 .search-box button{
 
-width:230px;
+width:270px;
 
 border:none;
 
-border-radius:24px;
+border-radius:26px;
 
 background:
-
 linear-gradient(
 135deg,
-#00c6ff,
-#0072ff
+#0066ff,
+#00a6ff
 );
 
 color:white;
 
-font-size:22px;
+font-size:24px;
 
-font-weight:800;
+font-weight:900;
 
 cursor:pointer;
 
 transition:.3s;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.16);
+0 12px 28px rgba(0,0,0,.18);
 
 }
 
@@ -163,16 +161,16 @@ scale(1.02);
 }
 
 /* ======================================================
-BUTTONS
+BUTTON DOWNLOAD
 ====================================================== */
 
 .actions{
 
 display:flex;
 
-gap:12px;
+gap:18px;
 
-margin-bottom:22px;
+margin-bottom:26px;
 
 flex-wrap:wrap;
 
@@ -182,32 +180,31 @@ justify-content:center;
 
 .actions button{
 
-padding:12px 22px;
+padding:14px 26px;
 
 border:none;
 
 border-radius:14px;
 
 background:
-
 linear-gradient(
 135deg,
 #005eff,
-#003cb3
+#0044cc
 );
 
 color:white;
 
-font-size:14px;
+font-size:15px;
 
-font-weight:700;
+font-weight:800;
 
 cursor:pointer;
 
 transition:.3s;
 
 box-shadow:
-0 6px 18px rgba(0,0,0,.15);
+0 6px 18px rgba(0,0,0,.16);
 
 }
 
@@ -219,33 +216,33 @@ translateY(-2px);
 }
 
 /* ======================================================
-QR CARD
+CARD
 ====================================================== */
 
 .card{
 
-width:660px;
+width:980px;
 
 background:white;
 
-border-radius:28px;
+border-radius:34px;
 
-padding:35px;
+padding:40px;
 
 position:relative;
 
 overflow:hidden;
 
-box-shadow:
-0 20px 60px rgba(0,0,0,.18);
-
 border:
-6px solid #0a53be;
+7px solid #005eff;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.16);
 
 }
 
 /* ======================================================
-BACKGROUND
+WATERMARK
 ====================================================== */
 
 .card::before{
@@ -260,9 +257,9 @@ background-image:url('../logo-simpan.png');
 
 background-repeat:repeat;
 
-background-size:160px;
+background-size:180px;
 
-opacity:.035;
+opacity:.03;
 
 pointer-events:none;
 
@@ -276,11 +273,11 @@ HEADER
 
 display:flex;
 
-align-items:center;
-
 justify-content:space-between;
 
-margin-bottom:25px;
+align-items:flex-start;
+
+margin-bottom:32px;
 
 position:relative;
 z-index:2;
@@ -291,57 +288,82 @@ z-index:2;
 
 display:flex;
 
-align-items:center;
+align-items:flex-start;
 
-gap:18px;
+gap:26px;
 
 }
 
-.header-left img{
+/* ======================================================
+LOGO PEMKAB
+====================================================== */
 
-width:88px;
-height:88px;
+.logo-bateng{
+
+width:120px;
+
+margin-top:12px;
 
 object-fit:contain;
 
 }
 
+/* ======================================================
+TEXT HEADER
+====================================================== */
+
 .header-text h1{
 
-font-size:32px;
+font-size:54px;
 
 font-weight:900;
 
-line-height:1.2;
+line-height:1.15;
 
-color:#003c99;
+color:#0047b3;
+
+margin-bottom:14px;
 
 }
 
 .header-text p{
 
-font-size:15px;
+font-size:24px;
 
-font-weight:600;
+font-weight:500;
 
-color:#444;
+line-height:1.45;
 
-margin-top:5px;
+color:#333;
 
 }
 
 /* ======================================================
-QR AREA
+LOGO SIMPAN
 ====================================================== */
 
-.qr-area{
+.logo-simpan{
+
+width:200px;
+
+margin-top:8px;
+
+object-fit:contain;
+
+}
+
+/* ======================================================
+QR SECTION
+====================================================== */
+
+.qr-section{
 
 display:grid;
 
 grid-template-columns:
-300px 1fr;
+420px 1fr;
 
-gap:28px;
+gap:34px;
 
 align-items:center;
 
@@ -351,10 +373,17 @@ z-index:2;
 }
 
 /* ======================================================
-QR
+QR BOX
 ====================================================== */
 
-#qrcode{
+.qr-box{
+
+border:
+5px solid #005eff;
+
+border-radius:24px;
+
+padding:22px;
 
 display:flex;
 
@@ -362,14 +391,7 @@ justify-content:center;
 
 align-items:center;
 
-padding:15px;
-
 background:white;
-
-border-radius:20px;
-
-border:
-4px solid #005eff;
 
 }
 
@@ -383,82 +405,100 @@ display:flex;
 
 flex-direction:column;
 
-justify-content:center;
+gap:24px;
 
 }
+
+/* ======================================================
+ID BOX
+====================================================== */
 
 .id-box{
 
 background:
-
 linear-gradient(
 135deg,
 #005eff,
-#003cb3
+#0044cc
 );
+
+padding:22px 28px;
+
+border-radius:22px;
 
 color:white;
 
-padding:18px;
-
-border-radius:18px;
-
-margin-bottom:20px;
-
 box-shadow:
-0 10px 25px rgba(0,0,0,.15);
+0 10px 25px rgba(0,0,0,.16);
 
 }
 
 .id-box h2{
 
-font-size:42px;
+font-size:58px;
 
 font-weight:900;
 
-letter-spacing:1px;
+white-space:nowrap;
 
 line-height:1.1;
 
-white-space:nowrap;
-
-overflow:hidden;
-
-text-overflow:ellipsis;
-
 }
 
-.detail{
+/* ======================================================
+DETAIL BOX
+====================================================== */
+
+.detail-box{
 
 background:
-rgba(0,94,255,.06);
-
-padding:20px;
-
-border-radius:18px;
+rgba(0,94,255,.05);
 
 border:
-1px solid rgba(0,94,255,.15);
+2px solid rgba(0,94,255,.18);
+
+border-radius:22px;
+
+padding:28px;
 
 }
 
-.detail p{
+.detail-item{
 
-font-size:16px;
+padding:14px 0;
 
-margin-bottom:12px;
-
-line-height:1.7;
-
-color:#222;
+border-bottom:
+2px solid rgba(0,94,255,.15);
 
 }
 
-.detail span{
+.detail-item:last-child{
+
+border-bottom:none;
+
+}
+
+.detail-item h3{
+
+font-size:18px;
+
+font-weight:500;
+
+color:#444;
+
+margin-bottom:8px;
+
+}
+
+.detail-item p{
+
+font-size:26px;
 
 font-weight:800;
 
-color:#003c99;
+color:#0047b3;
+
+word-break:break-word;
 
 }
 
@@ -468,7 +508,7 @@ FOOTER
 
 .footer{
 
-margin-top:25px;
+margin-top:38px;
 
 text-align:center;
 
@@ -479,23 +519,23 @@ z-index:2;
 
 .footer h3{
 
-font-size:18px;
+font-size:28px;
 
 font-weight:900;
 
 color:#005eff;
 
-margin-bottom:8px;
+margin-bottom:10px;
 
 }
 
 .footer p{
 
-font-size:13px;
+font-size:18px;
 
 font-weight:600;
 
-color:#444;
+color:#333;
 
 }
 
@@ -503,19 +543,13 @@ color:#444;
 RESPONSIVE
 ====================================================== */
 
-@media(max-width:760px){
+@media(max-width:1024px){
 
 .card{
 
 width:100%;
 
-padding:25px;
-
-}
-
-.qr-area{
-
-grid-template-columns:1fr;
+padding:26px;
 
 }
 
@@ -523,27 +557,31 @@ grid-template-columns:1fr;
 
 flex-direction:column;
 
-gap:15px;
-
-text-align:center;
+gap:25px;
 
 }
 
-.search-box{
+.qr-section{
 
-flex-direction:column;
-
-}
-
-.search-box button{
-
-width:100%;
+grid-template-columns:1fr;
 
 }
 
-.search-box input{
+.logo-simpan{
 
-font-size:18px;
+width:160px;
+
+}
+
+.header-text h1{
+
+font-size:40px;
+
+}
+
+.id-box h2{
+
+font-size:42px;
 
 }
 
@@ -576,27 +614,27 @@ placeholder="Masukkan 4 digit ID belakang..."
 </div>
 
 <!-- ======================================================
-BUTTONS
+DOWNLOAD
 ====================================================== -->
 
 <div class="actions">
 
 <button onclick="downloadPNG()">
-Download PNG
+🖼 Download PNG
 </button>
 
 <button onclick="downloadJPG()">
-Download JPG
+🖼 Download JPG
 </button>
 
 <button onclick="window.print()">
-Download PDF
+📄 Download PDF
 </button>
 
 </div>
 
 <!-- ======================================================
-QR CARD
+CARD
 ====================================================== -->
 
 <div class="card" id="card">
@@ -607,7 +645,10 @@ QR CARD
 
 <div class="header-left">
 
-<img src="../logo-bateng.png">
+<img
+src="../logo-bateng.png"
+class="logo-bateng"
+>
 
 <div class="header-text">
 
@@ -615,14 +656,17 @@ QR CARD
 
 DINAS PERIKANAN
 <br>
-KABUPATEN BANGKA TENGAH
+KABUPATEN
+<br>
+BANGKA TENGAH
 
 </h1>
 
 <p>
 
-Sistem Informasi Manajemen
-Pendataan Armada Nelayan
+Sistem Informasi Manajemen Pendataan
+<br>
+Armada Nelayan
 
 </p>
 
@@ -632,23 +676,22 @@ Pendataan Armada Nelayan
 
 <img
 src="../logo-simpan.png"
-
-style="
-width:88px;
-height:88px;
-object-fit:contain;
-"
+class="logo-simpan"
 >
 
 </div>
 
-<!-- QR AREA -->
+<!-- QR SECTION -->
 
-<div class="qr-area">
+<div class="qr-section">
 
 <!-- QR -->
 
+<div class="qr-box">
+
 <div id="qrcode"></div>
+
+</div>
 
 <!-- INFO -->
 
@@ -662,40 +705,43 @@ BT-SMP-0001
 
 </div>
 
-<div class="detail">
+<div class="detail-box">
 
-<p>
+<div class="detail-item">
 
+<h3>
 👤 Pemilik :
-<br>
+</h3>
 
-<span id="namaPemilik">
+<p id="namaPemilik">
 -
-</span>
-
 </p>
 
-<p>
+</div>
 
+<div class="detail-item">
+
+<h3>
 🚢 Nama Kapal :
-<br>
+</h3>
 
-<span id="namaKapal">
+<p id="namaKapal">
 -
-</span>
-
 </p>
 
-<p>
+</div>
 
+<div class="detail-item">
+
+<h3>
 📅 Tanggal Cetak :
-<br>
+</h3>
 
-<span id="tanggal">
+<p id="tanggal">
 -
-</span>
-
 </p>
+
+</div>
 
 </div>
 
@@ -788,7 +834,7 @@ id.toUpperCase()
 );
 
 /* ======================================================
-JIKA ADA
+SET DATA
 ====================================================== */
 
 if(kapal){
@@ -814,7 +860,7 @@ kapal["Nama Kapal"] || "-";
 }
 
 /* ======================================================
-QR GENERATE
+QR
 ====================================================== */
 
 QRCode.toCanvas(
@@ -826,7 +872,7 @@ window.location.origin +
 id,
 
 {
-width:260
+width:330
 },
 
 function(err,canvas){
