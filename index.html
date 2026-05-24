@@ -921,7 +921,7 @@ document
 .getElementById('searchInput')
 .value
 .trim()
-.toLowerCase();
+.toUpperCase();
 
 if(!keyword){
 
@@ -930,13 +930,11 @@ return;
 
 }
 
-let adaV1 = false;
-let adaV2 = false;
+/* =========================
+CARI V1
+========================= */
 
-let urlV1 = '';
-let urlV2 = '';
-
-dataV1.forEach(item=>{
+const foundV1 = dataV1.find(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -950,34 +948,23 @@ const nik =
 (item['Nomor Induk Kependudukan (NIK)']||'')
 .trim();
 
-const input =
-keyword
-.trim()
-.toUpperCase();
+return (
 
-if(
+keyword === last4 ||
 
-input === last4 ||
+keyword === nik ||
 
-input === nik ||
+keyword === fullId
 
-input === fullId
-
-){
-
-adaV1 = true;
-
-urlV1 =
-'v1/kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
 );
 
-}
-
 });
-  
-dataV2.forEach(item=>{
+
+/* =========================
+CARI V2
+========================= */
+
+const foundV2 = dataV2.find(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -991,65 +978,64 @@ const nik =
 (item['NOMOR INDUK KEPENDUDUKAN (NIK)']||'')
 .trim();
 
-const input =
-keyword
-.trim()
-.toUpperCase();
+return (
 
-if(
+keyword === last4 ||
 
-input === last4 ||
+keyword === nik ||
 
-input === nik ||
+keyword === fullId
 
-input === fullId
-
-){
-
-adaV2 = true;
-
-urlV2 =
-'kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
 );
 
-}
-
 });
-  
-if(!adaV1 && !adaV2){
+
+/* =========================
+TIDAK DITEMUKAN
+========================= */
+
+if(!foundV1 && !foundV2){
 
 alert('Data tidak ditemukan');
 return;
 
 }
 
-if(adaV1 && adaV2){
+/* =========================
+URL
+========================= */
+
+const urlV1 = foundV1
+? 'v1/kapal.html?id=' +
+encodeURIComponent(foundV1['ID SIMPAN'])
+: '';
+
+const urlV2 = foundV2
+? 'kapal.html?id=' +
+encodeURIComponent(foundV2['ID SIMPAN'])
+: '';
+
+/* =========================
+JIKA ADA DI KEDUA SISTEM
+========================= */
+
+if(foundV1 && foundV2){
 
 const pilihan =
 prompt(
-'Pilih Sistem:\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
+'Data ditemukan di 2 sistem.\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
 );
 
 if(pilihan === '1'){
 
-window.open(
-urlV1,
-'_blank'
-);
-
+window.open(urlV1,'_blank');
 return;
 
 }
 
 if(pilihan === '2'){
 
-window.open(
-urlV2,
-'_blank'
-);
-
+window.open(urlV2,'_blank');
 return;
 
 }
@@ -1058,34 +1044,30 @@ return;
 
 }
 
-if(adaV1){
+/* =========================
+JIKA HANYA V1
+========================= */
 
-window.open(
-urlV1,
-'_blank'
-);
+if(foundV1){
 
+window.open(urlV1,'_blank');
 return;
 
 }
 
-if(adaV2){
+/* =========================
+JIKA HANYA V2
+========================= */
 
-window.open(
-urlV2,
-'_blank'
-);
+if(foundV2){
 
+window.open(urlV2,'_blank');
 return;
 
 }
 
 }
-
-document
-.getElementById('searchInput')
-.addEventListener('keypress',function(e){
-
+  
 if(e.key==='Enter'){
 
 cariData();
