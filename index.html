@@ -665,9 +665,7 @@ flex-direction:column;
 
 <div class="wrapper">
 
-<!-- ====================================================== -->
 <!-- SIDEBAR -->
-<!-- ====================================================== -->
 
 <div class="sidebar">
 
@@ -702,9 +700,7 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CONTENT -->
-<!-- ====================================================== -->
 
 <div class="content">
 
@@ -734,9 +730,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- STATS -->
-<!-- ====================================================== -->
 
 <div class="stats">
 
@@ -778,9 +772,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CARDS -->
-<!-- ====================================================== -->
 
 <div class="cards">
 
@@ -852,9 +844,7 @@ Download PDF SIMPAN V1 & V2.
 
 </div>
 
-<!-- ====================================================== -->
 <!-- STATISTIK DESA -->
-<!-- ====================================================== -->
 
 <div class="section">
 
@@ -872,9 +862,7 @@ Memuat data statistik desa...
 
 </div>
 
-<!-- ====================================================== -->
 <!-- STATISTIK KECAMATAN -->
-<!-- ====================================================== -->
 
 <div class="section">
 
@@ -900,9 +888,7 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL EXCEL -->
-<!-- ====================================================== -->
 
 <div class="modal" id="excelModal">
 
@@ -926,9 +912,7 @@ TUTUP
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL PDF -->
-<!-- ====================================================== -->
 
 <div class="modal" id="pdfModal">
 
@@ -981,7 +965,7 @@ const id = "BT-SMP-" + keyword;
 
 const pilih =
 confirm(
-"Data ditemukan.\n\nOK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
+"OK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
 );
 
 if(pilih){
@@ -1006,7 +990,7 @@ return;
 
 const pilih =
 confirm(
-"NIK ditemukan.\n\nOK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
+"OK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
 );
 
 if(pilih){
@@ -1027,13 +1011,8 @@ window.open(
 
 }
 
-/* ====================================================== */
-/* ENTER */
-/* ====================================================== */
-
 document
 .getElementById("searchInput")
-
 .addEventListener("keypress",function(e){
 
 if(e.key==="Enter"){
@@ -1083,7 +1062,7 @@ document
 }
 
 /* ====================================================== */
-/* DOWNLOAD EXCEL */
+/* DOWNLOAD */
 /* ====================================================== */
 
 function downloadExcelV1(){
@@ -1104,10 +1083,6 @@ window.open(
 
 }
 
-/* ====================================================== */
-/* DOWNLOAD PDF */
-/* ====================================================== */
-
 function downloadPdfV1(){
 
 window.open(
@@ -1127,7 +1102,7 @@ window.open(
 }
 
 /* ====================================================== */
-/* LOAD STATISTIK */
+/* LOAD STATISTIK FINAL */
 /* ====================================================== */
 
 async function loadStatistik(){
@@ -1185,7 +1160,7 @@ const semuaData = [
 ];
 
 /* ====================================================== */
-/* FILTER ID UNIK */
+/* ID UNIK */
 /* ====================================================== */
 
 const idSet = new Set();
@@ -1195,9 +1170,15 @@ const dataUnik = [];
 semuaData.forEach(item=>{
 
 const id =
-(item['ID SIMPAN'] || '').trim();
+(item['ID SIMPAN'] || '')
+.trim()
+.toUpperCase();
 
-if(id && !idSet.has(id)){
+if(
+id &&
+id !== '-' &&
+!idSet.has(id)
+){
 
 idSet.add(id);
 
@@ -1228,9 +1209,17 @@ item['Nomor Induk Kependudukan (NIK)'] ||
 item['NOMOR INDUK KEPENDUDUKAN (NIK)'] ||
 '';
 
-if(nik.trim()){
+const nikClean =
+nik
+.toString()
+.trim();
 
-nikSet.add(nik.trim());
+if(
+nikClean &&
+nikClean.length >= 8
+){
+
+nikSet.add(nikClean);
 
 }
 
@@ -1239,6 +1228,38 @@ nikSet.add(nik.trim());
 document
 .getElementById('totalNelayan')
 .innerText = nikSet.size;
+
+/* ====================================================== */
+/* VALIDASI */
+/* ====================================================== */
+
+function validWilayah(text){
+
+if(!text) return false;
+
+const t =
+text
+.toString()
+.trim()
+.toUpperCase();
+
+if(
+t === '' ||
+t === '-' ||
+t === '0'
+){
+return false;
+}
+
+if(t.includes('HTTP')) return false;
+if(t.includes('DRIVE.GOOGLE')) return false;
+if(t.includes('OPENID=')) return false;
+
+if(/^\d+$/.test(t)) return false;
+
+return true;
+
+}
 
 /* ====================================================== */
 /* DESA */
@@ -1251,18 +1272,23 @@ dataUnik.forEach(item=>{
 const desa =
 item['Desa/ Kelurahan'] ||
 item['DESA / KELURAHAN'] ||
-'TANPA DESA';
+'';
 
-const namaDesa =
-desa.toUpperCase().trim();
+if(!validWilayah(desa)) return;
 
-if(!desaMap[namaDesa]){
+const nama =
+desa
+.toString()
+.trim()
+.toUpperCase();
 
-desaMap[namaDesa]=0;
+if(!desaMap[nama]){
+
+desaMap[nama]=0;
 
 }
 
-desaMap[namaDesa]++;
+desaMap[nama]++;
 
 });
 
@@ -1276,7 +1302,9 @@ document.getElementById('statistikDesa');
 desaContainer.innerHTML='';
 
 const maxDesa =
-desaSorted[0][1];
+desaSorted[0]
+? desaSorted[0][1]
+: 1;
 
 desaSorted.forEach(item=>{
 
@@ -1321,18 +1349,23 @@ dataUnik.forEach(item=>{
 const kec =
 item['Kecamatan'] ||
 item['KECAMATAN'] ||
-'TANPA KECAMATAN';
+'';
 
-const namaKec =
-kec.toUpperCase().trim();
+if(!validWilayah(kec)) return;
 
-if(!kecMap[namaKec]){
+const nama =
+kec
+.toString()
+.trim()
+.toUpperCase();
 
-kecMap[namaKec]=0;
+if(!kecMap[nama]){
+
+kecMap[nama]=0;
 
 }
 
-kecMap[namaKec]++;
+kecMap[nama]++;
 
 });
 
@@ -1346,7 +1379,9 @@ document.getElementById('statistikKecamatan');
 kecContainer.innerHTML='';
 
 const maxKec =
-kecSorted[0][1];
+kecSorted[0]
+? kecSorted[0][1]
+: 1;
 
 kecSorted.forEach(item=>{
 
@@ -1380,7 +1415,7 @@ style="width:${persen}%">
 
 });
 
-console.log('Statistik berhasil dimuat');
+console.log('STATISTIK FINAL BERHASIL');
 
 }catch(err){
 
