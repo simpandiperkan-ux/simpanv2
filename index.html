@@ -1028,14 +1028,15 @@ let allData = [];
 /* SEARCH */
 /* ====================================================== */
 
-function searchData(){
+async function searchData() {
 
 const keyword =
 document.getElementById("searchInput")
 .value
-.trim();
+.trim()
+.toUpperCase();
 
-if(!keyword){
+if (!keyword) {
 
 alert("Masukkan ID atau NIK");
 
@@ -1043,13 +1044,75 @@ return;
 
 }
 
-window.open(
-"qr.html?id=" + keyword,
-"_blank"
-);
+// otomatis ubah 4 digit jadi BT-SMP
+
+let finalID = keyword;
+
+if (/^\d{4}$/.test(keyword)) {
+
+finalID = "BT-SMP-" + keyword;
 
 }
 
+// ===============================
+// CEK DATA V2
+// ===============================
+
+const foundV2 = allData.find(item => {
+
+const id =
+(item["ID SIMPAN"] ||
+item["Id SIMPAN"] ||
+item["id"] ||
+"")
+.toUpperCase();
+
+return id === finalID;
+
+});
+
+if (foundV2) {
+
+window.open(
+"input.html?id=" + encodeURIComponent(finalID),
+"_blank"
+);
+
+return;
+
+}
+
+// ===============================
+// CEK DATA V1
+// ===============================
+
+const foundV1 = allData.find(item => {
+
+const id =
+(item["ID SIMPAN"] ||
+item["Id SIMPAN"] ||
+item["id"] ||
+"")
+.toUpperCase();
+
+return id === finalID;
+
+});
+
+if (foundV1) {
+
+window.open(
+"kapal.html?id=" + encodeURIComponent(finalID),
+"_blank"
+);
+
+return;
+
+}
+
+alert("Data tidak ditemukan");
+
+}
 /* ====================================================== */
 /* MODAL */
 /* ====================================================== */
