@@ -938,17 +938,31 @@ let urlV2 = '';
 
 dataV1.forEach(item=>{
 
-const id =
+const fullId =
 (item['ID SIMPAN']||'')
-.toLowerCase();
+.trim()
+.toUpperCase();
+
+const last4 =
+fullId.slice(-4);
 
 const nik =
 (item['Nomor Induk Kependudukan (NIK)']||'')
-.toLowerCase();
+.trim();
+
+const input =
+keyword
+.trim()
+.toUpperCase();
 
 if(
-id.includes(keyword) ||
-nik.includes(keyword)
+
+input === last4 ||
+
+input === nik ||
+
+input === fullId
+
 ){
 
 adaV1 = true;
@@ -962,20 +976,34 @@ item['ID SIMPAN']
 }
 
 });
-
+  
 dataV2.forEach(item=>{
 
-const id =
+const fullId =
 (item['ID SIMPAN']||'')
-.toLowerCase();
+.trim()
+.toUpperCase();
+
+const last4 =
+fullId.slice(-4);
 
 const nik =
 (item['NOMOR INDUK KEPENDUDUKAN (NIK)']||'')
-.toLowerCase();
+.trim();
+
+const input =
+keyword
+.trim()
+.toUpperCase();
 
 if(
-id.includes(keyword) ||
-nik.includes(keyword)
+
+input === last4 ||
+
+input === nik ||
+
+input === fullId
+
 ){
 
 adaV2 = true;
@@ -989,7 +1017,7 @@ item['ID SIMPAN']
 }
 
 });
-
+  
 if(!adaV1 && !adaV2){
 
 alert('Data tidak ditemukan');
