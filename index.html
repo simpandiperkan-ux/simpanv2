@@ -1,1076 +1,158 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
+<!-- ===================================================== -->
+<!-- MENU UTAMA FINAL -->
+<!-- GANTI SELURUH BLOK MENU LAMA DENGAN INI -->
+<!-- ===================================================== -->
 
-<meta charset="UTF-8">
+<div class="menu-grid">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+    <!-- SIMPAN V2 -->
 
-<title>KARTU SIMPAN V1 FINAL</title>
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfxxxxxxxxxxxxxxxx/viewform','_blank')">
 
-<!-- ====================================================== -->
-<!-- FONT -->
-<!-- ====================================================== -->
+        <div class="menu-icon">🚀</div>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
->
+        <h3>SIMPAN V2</h3>
 
-<!-- ====================================================== -->
-<!-- QR CODE -->
-<!-- ====================================================== -->
+        <p>
+            Sistem pendataan kapal generasi terbaru.
+        </p>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    </div>
 
-<!-- ====================================================== -->
-<!-- PAPAPARSE -->
-<!-- ====================================================== -->
+    <!-- SIMPAN V1 -->
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSxxxxxxxxxxxxxxxx/viewform','_blank')">
 
-<!-- ====================================================== -->
-<!-- HTML2CANVAS -->
-<!-- ====================================================== -->
+        <div class="menu-icon">🛥️</div>
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+        <h3>SIMPAN V1</h3>
 
-<style>
+        <p>
+            Sistem pendataan kapal generasi pertama.
+        </p>
 
-/* ====================================================== */
-/* RESET */
-/* ====================================================== */
+    </div>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    <!-- CETAK QR GABUNGAN -->
 
-/* ====================================================== */
-/* BODY */
-/* ====================================================== */
+    <div class="menu-card"
+         onclick="window.open('qr.html','_blank')">
 
-body{
+        <div class="menu-icon">🧾</div>
 
-font-family:'Poppins',sans-serif;
+        <h3>CETAK QR</h3>
 
-background:
-linear-gradient(
-135deg,
-#dbe6f5,
-#cdd9eb
-);
+        <p>
+            Cetak QR gabungan SIMPAN V1 & V2.
+        </p>
 
-min-height:100vh;
+    </div>
 
-padding:40px;
+    <!-- VERIFIKASI -->
 
-display:flex;
+    <div class="menu-card"
+         onclick="window.open('verifikasi-kapal.html','_blank')">
 
-flex-direction:column;
+        <div class="menu-icon">✅</div>
 
-align-items:center;
+        <h3>VERIFIKASI</h3>
 
-overflow-x:auto;
+        <p>
+            Sistem verifikasi kapal realtime.
+        </p>
 
-}
+    </div>
 
-/* ====================================================== */
-/* SEARCH */
-/* ====================================================== */
+    <!-- DATA V2 -->
 
-.search-box{
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')">
 
-display:flex;
+        <div class="menu-icon">📊</div>
 
-gap:18px;
+        <h3>DATA SIMPAN V2</h3>
 
-width:100%;
+        <p>
+            Buka Spreadsheet Data Kapal SIMPAN V2.
+        </p>
 
-max-width:900px;
+    </div>
 
-margin-bottom:24px;
+    <!-- DATA V1 -->
 
-}
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')">
 
-.search-box input{
+        <div class="menu-icon">📘</div>
 
-flex:1;
+        <h3>DATA SIMPAN V1</h3>
 
-height:70px;
+        <p>
+            Buka Spreadsheet Data Kapal SIMPAN V1.
+        </p>
 
-border:none;
+    </div>
 
-outline:none;
+    <!-- DOWNLOAD EXCEL V2 -->
 
-padding:0 28px;
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
 
-font-size:20px;
+        <div class="menu-icon">⬇️</div>
 
-font-weight:700;
+        <h3>DOWNLOAD EXCEL V2</h3>
 
-border-radius:20px;
+        <p>
+            Unduh data SIMPAN V2 format Excel.
+        </p>
 
-background:white;
+    </div>
 
-box-shadow:
-0 10px 25px rgba(0,0,0,.10);
+    <!-- DOWNLOAD EXCEL V1 -->
 
-}
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
 
-.search-box button{
+        <div class="menu-icon">⬇️</div>
 
-width:240px;
+        <h3>DOWNLOAD EXCEL V1</h3>
 
-border:none;
+        <p>
+            Unduh data SIMPAN V1 format Excel.
+        </p>
 
-border-radius:20px;
+    </div>
 
-background:
-linear-gradient(
-135deg,
-#0066ff,
-#00a6ff
-);
+    <!-- DOWNLOAD PDF V2 -->
 
-color:white;
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
 
-font-size:22px;
+        <div class="menu-icon">📄</div>
 
-font-weight:900;
+        <h3>DOWNLOAD PDF V2</h3>
 
-cursor:pointer;
+        <p>
+            Unduh data SIMPAN V2 format PDF.
+        </p>
 
-transition:.3s;
+    </div>
 
-box-shadow:
-0 10px 26px rgba(0,0,0,.16);
+    <!-- DOWNLOAD PDF V1 -->
 
-}
+    <div class="menu-card"
+         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
 
-.search-box button:hover{
+        <div class="menu-icon">🧾</div>
 
-transform:
-translateY(-2px);
+        <h3>DOWNLOAD PDF V1</h3>
 
-}
+        <p>
+            Unduh data SIMPAN V1 format PDF.
+        </p>
 
-/* ====================================================== */
-/* BUTTONS */
-/* ====================================================== */
-
-.actions{
-
-display:flex;
-
-gap:12px;
-
-margin-bottom:24px;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-}
-
-.actions button{
-
-padding:14px 24px;
-
-border:none;
-
-border-radius:14px;
-
-background:
-linear-gradient(
-135deg,
-#005eff,
-#0044cc
-);
-
-color:white;
-
-font-size:14px;
-
-font-weight:800;
-
-cursor:pointer;
-
-transition:.3s;
-
-box-shadow:
-0 6px 18px rgba(0,0,0,.16);
-
-}
-
-.actions button:hover{
-
-transform:
-translateY(-2px);
-
-}
-
-/* ====================================================== */
-/* CARD */
-/* ====================================================== */
-
-.card{
-
-width:1011px;
-height:638px;
-
-background:white;
-
-border-radius:34px;
-
-padding:28px;
-
-position:relative;
-
-overflow:hidden;
-
-border:
-5px solid #005eff;
-
-box-shadow:
-0 24px 60px rgba(0,0,0,.18);
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:space-between;
-
-}
-
-/* ====================================================== */
-/* WATERMARK */
-/* ====================================================== */
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background-image:url('../logo-simpan.png');
-
-background-repeat:repeat;
-
-background-size:150px;
-
-opacity:.03;
-
-pointer-events:none;
-
-}
-
-/* ====================================================== */
-/* HEADER */
-/* ====================================================== */
-
-.header{
-
-display:grid;
-
-grid-template-columns:
-120px 1fr 120px;
-
-align-items:center;
-
-column-gap:18px;
-
-padding-bottom:18px;
-
-border-bottom:
-2px solid rgba(0,94,255,.15);
-
-position:relative;
-z-index:2;
-
-}
-
-/* ====================================================== */
-/* LOGO BATENG */
-/* ====================================================== */
-
-.logo-bateng{
-
-width:95px;
-
-display:block;
-
-margin:auto;
-
-object-fit:contain;
-
-}
-
-/* ====================================================== */
-/* LOGO SIMPAN */
-/* ====================================================== */
-
-.logo-simpan{
-
-width:110px;
-
-display:block;
-
-margin:auto;
-
-object-fit:contain;
-
-}
-
-/* ====================================================== */
-/* HEADER TEXT */
-/* ====================================================== */
-
-.header-text{
-
-text-align:center;
-
-}
-
-.header-text h1{
-
-font-size:44px;
-
-font-weight:900;
-
-line-height:1.05;
-
-color:#0047b3;
-
-margin-bottom:10px;
-
-}
-
-.header-text p{
-
-font-size:16px;
-
-font-weight:500;
-
-line-height:1.5;
-
-color:#333;
-
-}
-
-/* ====================================================== */
-/* MAIN */
-/* ====================================================== */
-
-.main{
-
-display:grid;
-
-grid-template-columns:
-420px 1fr;
-
-gap:24px;
-
-align-items:center;
-
-margin-top:20px;
-
-position:relative;
-z-index:2;
-
-}
-
-/* ====================================================== */
-/* QR BOX */
-/* ====================================================== */
-
-.qr-box{
-
-height:360px;
-
-border:
-4px solid #005eff;
-
-border-radius:24px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:16px;
-
-background:white;
-
-}
-
-/* ====================================================== */
-/* RIGHT */
-/* ====================================================== */
-
-.right{
-
-display:flex;
-
-flex-direction:column;
-
-gap:18px;
-
-height:360px;
-
-}
-
-/* ====================================================== */
-/* ID BOX */
-/* ====================================================== */
-
-.id-box{
-
-height:82px;
-
-border-radius:20px;
-
-background:
-linear-gradient(
-135deg,
-#005eff,
-#0044cc
-);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-box-shadow:
-0 10px 24px rgba(0,0,0,.16);
-
-padding:0 24px;
-
-}
-
-.id-box h2{
-
-font-size:42px;
-
-font-weight:900;
-
-color:white;
-
-white-space:nowrap;
-
-line-height:1;
-
-}
-
-/* ====================================================== */
-/* DETAIL BOX */
-/* ====================================================== */
-
-.detail-box{
-
-flex:1;
-
-border:
-2px solid rgba(0,94,255,.12);
-
-border-radius:22px;
-
-padding:22px;
-
-background:
-rgba(0,94,255,.03);
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-}
-
-/* ====================================================== */
-/* DETAIL ITEM */
-/* ====================================================== */
-
-.detail-item{
-
-padding:12px 0;
-
-border-bottom:
-1px solid rgba(0,94,255,.10);
-
-}
-
-.detail-item:last-child{
-
-border-bottom:none;
-
-}
-
-.detail-item h3{
-
-font-size:14px;
-
-font-weight:500;
-
-color:#555;
-
-margin-bottom:6px;
-
-}
-
-.detail-item p{
-
-font-size:26px;
-
-font-weight:800;
-
-color:#0047b3;
-
-line-height:1.3;
-
-}
-
-/* ====================================================== */
-/* FOOTER */
-/* ====================================================== */
-
-.footer{
-
-margin-top:16px;
-
-padding-top:14px;
-
-border-top:
-2px solid rgba(0,94,255,.15);
-
-text-align:center;
-
-position:relative;
-z-index:2;
-
-}
-
-.footer h3{
-
-font-size:26px;
-
-font-weight:900;
-
-color:#005eff;
-
-margin-bottom:6px;
-
-}
-
-.footer p{
-
-font-size:14px;
-
-font-weight:600;
-
-color:#333;
-
-}
-
-/* ====================================================== */
-/* RESPONSIVE */
-/* ====================================================== */
-
-@media(max-width:1100px){
-
-.card{
-
-width:100%;
-height:auto;
-
-}
-
-.main{
-
-grid-template-columns:1fr;
-
-}
-
-.right,
-.qr-box{
-
-height:auto;
-
-}
-
-}
-
-/* ====================================================== */
-/* PRINT */
-/* ====================================================== */
-
-@media print{
-
-body{
-
-background:white;
-padding:0;
-
-}
-
-.search-box,
-.actions{
-
-display:none;
-
-}
-
-.card{
-
-box-shadow:none;
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- ====================================================== -->
-<!-- SEARCH -->
-<!-- ====================================================== -->
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Masukkan 4 digit ID belakang..."
->
-
-<button onclick="cariQR()">
-
-🔍 CARI QR
-
-</button>
+    </div>
 
 </div>
-
-<!-- ====================================================== -->
-<!-- ACTIONS -->
-<!-- ====================================================== -->
-
-<div class="actions">
-
-<button onclick="downloadPNG()">
-🖼 Download PNG
-</button>
-
-<button onclick="downloadJPG()">
-🖼 Download JPG
-</button>
-
-<button onclick="window.print()">
-📄 Download PDF
-</button>
-
-</div>
-
-<!-- ====================================================== -->
-<!-- CARD -->
-<!-- ====================================================== -->
-
-<div class="card" id="card">
-
-<!-- ====================================================== -->
-<!-- HEADER -->
-<!-- ====================================================== -->
-
-<div class="header">
-
-<!-- LOGO KIRI -->
-
-<div>
-
-<img
-src="../logo-bateng.png"
-class="logo-bateng"
->
-
-</div>
-
-<!-- TEXT -->
-
-<div class="header-text">
-
-<h1>
-
-DINAS PERIKANAN
-<br>
-KABUPATEN BANGKA TENGAH
-
-</h1>
-
-<p>
-
-Sistem Informasi Manajemen Pendataan
-Armada Nelayan
-
-</p>
-
-</div>
-
-<!-- LOGO KANAN -->
-
-<div>
-
-<img
-src="../logo-simpan.png"
-class="logo-simpan"
->
-
-</div>
-
-</div>
-
-<!-- ====================================================== -->
-<!-- MAIN -->
-<!-- ====================================================== -->
-
-<div class="main">
-
-<!-- QR -->
-
-<div class="qr-box">
-
-<div id="qrcode"></div>
-
-</div>
-
-<!-- RIGHT -->
-
-<div class="right">
-
-<!-- ID -->
-
-<div class="id-box">
-
-<h2 id="idText">
-BT-SMP-0001
-</h2>
-
-</div>
-
-<!-- DETAIL -->
-
-<div class="detail-box">
-
-<div class="detail-item">
-
-<h3>
-👤 Pemilik :
-</h3>
-
-<p id="namaPemilik">
--
-</p>
-
-</div>
-
-<div class="detail-item">
-
-<h3>
-🚢 Nama Kapal :
-</h3>
-
-<p id="namaKapal">
--
-</p>
-
-</div>
-
-<div class="detail-item">
-
-<h3>
-📅 Tanggal Cetak :
-</h3>
-
-<p id="tanggal">
--
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ====================================================== -->
-<!-- FOOTER -->
-<!-- ====================================================== -->
-
-<div class="footer">
-
-<h3>
-SCAN QR UNTUK VERIFIKASI DATA KAPAL
-</h3>
-
-<p>
-
-SIMPAN V1 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
-
-</p>
-
-</div>
-
-</div>
-
-<script>
-
-/* ====================================================== */
-/* CSV URL */
-/* ====================================================== */
-
-const csvUrl =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv&t=" +
-new Date().getTime();
-
-/* ====================================================== */
-/* PARAM */
-/* ====================================================== */
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-let id =
-params.get("id") ||
-"BT-SMP-0001";
-
-/* ====================================================== */
-/* DATE */
-/* ====================================================== */
-
-document.getElementById(
-"tanggal"
-).innerHTML =
-
-new Date().toLocaleDateString(
-"id-ID"
-);
-
-/* ====================================================== */
-/* LOAD CSV */
-/* ====================================================== */
-
-Papa.parse(csvUrl,{
-
-download:true,
-header:true,
-skipEmptyLines:true,
-
-complete:function(result){
-
-const data = result.data;
-
-/* ====================================================== */
-/* FIND */
-/* ====================================================== */
-
-const kapal = data.find(item =>
-
-(item["ID SIMPAN"] || "")
-.toString()
-.trim()
-.toUpperCase()
-
-===
-
-id.toUpperCase()
-
-);
-
-/* ====================================================== */
-/* SET DATA */
-/* ====================================================== */
-
-if(kapal){
-
-document.getElementById(
-"idText"
-).innerHTML =
-
-kapal["ID SIMPAN"] || "-";
-
-document.getElementById(
-"namaPemilik"
-).innerHTML =
-
-kapal["Nama Pemilik Kapal (Sesuai KTP)"] || "-";
-
-document.getElementById(
-"namaKapal"
-).innerHTML =
-
-kapal["Nama Kapal"] || "-";
-
-}
-
-/* ====================================================== */
-/* QR */
-/* ====================================================== */
-
-QRCode.toCanvas(
-
-document.createElement("canvas"),
-
-window.location.origin +
-"/simpanv2/v1/kapal.html?id=" +
-id,
-
-{
-width:430
-},
-
-function(err,canvas){
-
-if(err){
-
-console.log(err);
-
-return;
-
-}
-
-document
-.getElementById("qrcode")
-.innerHTML = "";
-
-document
-.getElementById("qrcode")
-.appendChild(canvas);
-
-}
-
-);
-
-}
-
-});
-
-/* ====================================================== */
-/* SEARCH */
-/* ====================================================== */
-
-function cariQR(){
-
-const input =
-document.getElementById(
-"searchInput"
-)
-.value
-.trim();
-
-if(!input){
-
-alert(
-"Masukkan 4 digit ID belakang"
-);
-
-return;
-
-}
-
-window.location.href =
-"?id=BT-SMP-" + input;
-
-}
-
-/* ====================================================== */
-/* ENTER */
-/* ====================================================== */
-
-document
-.getElementById(
-"searchInput"
-)
-.addEventListener(
-"keypress",
-function(e){
-
-if(e.key === "Enter"){
-
-cariQR();
-
-}
-
-}
-);
-
-/* ====================================================== */
-/* DOWNLOAD PNG */
-/* ====================================================== */
-
-function downloadPNG(){
-
-html2canvas(
-document.getElementById("card")
-).then(canvas=>{
-
-const link =
-document.createElement("a");
-
-link.download =
-"QR-" + id + ".png";
-
-link.href =
-canvas.toDataURL();
-
-link.click();
-
-});
-
-}
-
-/* ====================================================== */
-/* DOWNLOAD JPG */
-/* ====================================================== */
-
-function downloadJPG(){
-
-html2canvas(
-document.getElementById("card")
-).then(canvas=>{
-
-const link =
-document.createElement("a");
-
-link.download =
-"QR-" + id + ".jpg";
-
-link.href =
-canvas.toDataURL(
-"image/jpeg"
-);
-
-link.click();
-
-});
-
-}
-
-</script>
-
-</body>
-</html>
