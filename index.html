@@ -932,11 +932,11 @@ return;
 }
 
 /* =========================
-HASIL
+HASIL ARRAY
 ========================= */
 
-let hasilV1 = null;
-let hasilV2 = null;
+let hasilV1 = [];
+let hasilV2 = [];
 
 /* =========================
 SCAN V1
@@ -970,7 +970,7 @@ keyword === nik
 
 ){
 
-hasilV1 = item;
+hasilV1.push(item);
 
 }
 
@@ -1008,19 +1008,60 @@ keyword === nik
 
 ){
 
-hasilV2 = item;
+hasilV2.push(item);
 
 }
 
 });
 
 /* =========================
-NOT FOUND
+DATA TIDAK DITEMUKAN
 ========================= */
 
-if(!hasilV1 && !hasilV2){
+if(
+
+hasilV1.length === 0 &&
+hasilV2.length === 0
+
+){
 
 alert('Data tidak ditemukan');
+return;
+
+}
+
+/* =========================
+JIKA ADA BANYAK DATA
+========================= */
+
+if(
+
+hasilV1.length > 1 ||
+hasilV2.length > 1
+
+){
+
+let pesan =
+'Data ditemukan lebih dari 1.\n\n';
+
+hasilV1.forEach((item,index)=>{
+
+pesan +=
+`V1 - ${index+1} : ${item['ID SIMPAN']}\n`;
+
+});
+
+hasilV2.forEach((item,index)=>{
+
+pesan +=
+`V2 - ${index+1} : ${item['ID SIMPAN']}\n`;
+
+});
+
+pesan += '\nMasukkan ID lengkap kapal.';
+
+alert(pesan);
+
 return;
 
 }
@@ -1029,25 +1070,30 @@ return;
 URL
 ========================= */
 
-const urlV1 = hasilV1
+const urlV1 = hasilV1.length > 0
 ? 'v1/kapal.html?id=' +
 encodeURIComponent(
-hasilV1['ID SIMPAN']
+hasilV1[0]['ID SIMPAN']
 )
 : '';
 
-const urlV2 = hasilV2
+const urlV2 = hasilV2.length > 0
 ? 'kapal.html?id=' +
 encodeURIComponent(
-hasilV2['ID SIMPAN']
+hasilV2[0]['ID SIMPAN']
 )
 : '';
 
 /* =========================
-DOUBLE DATA
+JIKA ADA DI 2 SISTEM
 ========================= */
 
-if(hasilV1 && hasilV2){
+if(
+
+hasilV1.length > 0 &&
+hasilV2.length > 0
+
+){
 
 const pilihan = prompt(
 
@@ -1074,10 +1120,10 @@ return;
 }
 
 /* =========================
-ONLY V1
+HANYA V1
 ========================= */
 
-if(hasilV1){
+if(hasilV1.length > 0){
 
 window.open(urlV1,'_blank');
 return;
@@ -1085,17 +1131,17 @@ return;
 }
 
 /* =========================
-ONLY V2
+HANYA V2
 ========================= */
 
-if(hasilV2){
+if(hasilV2.length > 0){
 
 window.open(urlV2,'_blank');
 return;
 
 }
 
-}
+} 
   
 document
 .getElementById('searchInput')
