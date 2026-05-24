@@ -1,12 +1,6 @@
-<!-- ========================================================= -->
-<!-- FULL FINAL INDEX.HTML - SIMPAN SUPER APP V3 -->
-<!-- REPLACE SELURUH FILE INDEX.HTML -->
-<!-- ========================================================= -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,176 +9,200 @@
 <link rel="manifest" href="manifest.json">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#0d47a1;
-color:white;
+background:#0a2b73;
+color:#fff;
 display:flex;
 min-height:100vh;
-overflow-x:hidden;
+text-shadow:0 1px 2px rgba(0,0,0,.45);
 }
 
 .sidebar{
 width:220px;
-background:#08307c;
-padding:20px 15px;
+background:#05296b;
+padding:20px;
 position:fixed;
-top:0;
-left:0;
-bottom:0;
-overflow-y:auto;
+height:100vh;
+overflow:auto;
 }
 
-.sidebar img{
-width:60px;
-margin-bottom:10px;
-}
-
-.logo-wrap{
+.logo{
 text-align:center;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
-.logo-wrap h2{
+.logo img{
+width:60px;
+margin:5px;
+}
+
+.logo h2{
 font-size:18px;
 margin-top:10px;
 }
 
-.logo-wrap p{
-font-size:12px;
+.logo p{
+font-size:11px;
 line-height:1.5;
+margin-top:10px;
 opacity:.9;
 }
 
 .menu{
-display:flex;
-flex-direction:column;
-gap:10px;
-margin-top:20px;
+margin-top:25px;
 }
 
 .menu a{
-background:#114db6;
+display:block;
 padding:14px;
-border-radius:12px;
+margin-bottom:12px;
+background:#0d47a1;
+border-radius:14px;
+color:#fff;
 text-decoration:none;
-color:white;
-font-weight:bold;
+font-weight:700;
 transition:.3s;
 }
 
 .menu a:hover{
-background:#1b66eb;
+background:#1976d2;
+transform:translateX(4px);
 }
 
 .main{
 margin-left:220px;
-padding:20px;
-width:100%;
+width:calc(100% - 220px);
+
 background:
-linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),
+linear-gradient(
+rgba(3,18,50,.72),
+rgba(3,18,50,.72)
+),
 url('background_simpan.png');
+
 background-size:cover;
 background-attachment:fixed;
-min-height:100vh;
+padding:28px;
 }
 
 .header{
-background:rgba(255,255,255,.15);
-padding:25px;
+background:rgba(16,37,82,.92);
+padding:28px;
 border-radius:25px;
-backdrop-filter:blur(8px);
-margin-bottom:20px;
+margin-bottom:25px;
+backdrop-filter:blur(10px);
 }
 
 .header h1{
-font-size:60px;
+font-size:58px;
 font-weight:900;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .header p{
-opacity:.9;
-margin-bottom:25px;
+color:#dbe7ff;
+font-weight:600;
 }
 
 .search-box{
 display:flex;
-gap:10px;
+gap:12px;
+margin-top:25px;
 }
 
 .search-box input{
 flex:1;
-padding:20px;
+padding:18px;
 border:none;
 border-radius:18px;
-font-size:20px;
-font-weight:bold;
+font-size:18px;
+font-weight:700;
+background:#fff;
+color:#0b1f4d;
+}
+
+.search-box input::placeholder{
+color:#6b7a99;
 }
 
 .search-box button{
-padding:20px 35px;
+padding:18px 35px;
 border:none;
 border-radius:18px;
-background:#10a5ff;
-color:white;
-font-size:20px;
-font-weight:bold;
 cursor:pointer;
+background:linear-gradient(
+90deg,
+#00a8ff,
+#0066ff
+);
+color:#fff;
+font-weight:900;
+font-size:17px;
 }
 
-.cards{
+.stats{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-bottom:20px;
+gap:18px;
+margin-bottom:25px;
 }
 
-.card{
-background:rgba(255,255,255,.15);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(6px);
+.stat-box{
+background:rgba(13,39,86,.92);
+padding:24px;
+border-radius:22px;
+backdrop-filter:blur(12px);
 position:relative;
 overflow:hidden;
 }
 
-.card h3{
+.stat-box::after{
+content:'';
+position:absolute;
+top:-30px;
+right:-30px;
+width:110px;
+height:110px;
+background:rgba(255,255,255,.06);
+border-radius:50%;
+}
+
+.stat-box h4{
 font-size:14px;
-margin-bottom:15px;
-opacity:.9;
+margin-bottom:14px;
+opacity:.95;
 }
 
-.card h2{
-font-size:60px;
+.stat-box h2{
+font-size:58px;
 font-weight:900;
+margin-bottom:6px;
 }
 
-.card p{
-margin-top:10px;
+.stat-box p{
 font-size:13px;
 opacity:.9;
 }
 
-.menu-cards{
+.cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:15px;
-margin-bottom:20px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
+margin-bottom:25px;
 }
 
 .menu-card{
-background:white;
-color:#0d47a1;
-padding:25px;
-border-radius:25px;
+background:#fff;
+padding:28px;
+border-radius:22px;
+color:#0b3d91;
 cursor:pointer;
 transition:.3s;
 }
@@ -193,31 +211,34 @@ transition:.3s;
 transform:translateY(-5px);
 }
 
-.menu-card h2{
-font-size:40px;
-margin-bottom:15px;
+.menu-card .icon{
+font-size:38px;
+margin-bottom:18px;
 }
 
 .menu-card h3{
-font-size:20px;
-margin-bottom:10px;
+font-size:18px;
+margin-bottom:12px;
 }
 
 .menu-card p{
-line-height:1.6;
+font-size:14px;
+line-height:1.5;
+color:#2b3d66;
+font-weight:600;
 }
 
-.stat-box{
-background:rgba(255,255,255,.15);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(6px);
-margin-bottom:20px;
+.card{
+background:rgba(18,41,87,.88);
+padding:24px;
+border-radius:22px;
+backdrop-filter:blur(10px);
+margin-bottom:25px;
 }
 
-.stat-box h2{
-margin-bottom:20px;
-font-size:35px;
+.card h2{
+margin-bottom:22px;
+font-size:20px;
 }
 
 .stat-item{
@@ -228,78 +249,52 @@ margin-bottom:18px;
 display:flex;
 justify-content:space-between;
 margin-bottom:8px;
-font-weight:bold;
+font-weight:700;
+font-size:15px;
 }
 
 .bar-bg{
-height:14px;
-background:rgba(255,255,255,.2);
+width:100%;
+height:16px;
+background:rgba(255,255,255,.14);
 border-radius:20px;
 overflow:hidden;
 }
 
 .bar-fill{
 height:100%;
-background:linear-gradient(90deg,#00e5ff,#2979ff);
 border-radius:20px;
-}
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
-z-index:999;
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:white;
-padding:30px;
-border-radius:25px;
-width:350px;
-color:#0d47a1;
-}
-
-.modal-content h2{
-margin-bottom:20px;
-}
-
-.modal-content button{
-width:100%;
-padding:16px;
-margin-bottom:10px;
-border:none;
-border-radius:15px;
-background:#10a5ff;
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+background:linear-gradient(
+90deg,
+#00d9ff,
+#2979ff
+);
+box-shadow:0 0 10px rgba(0,217,255,.5);
 }
 
 @media(max-width:900px){
 
 .sidebar{
-position:relative;
 width:100%;
 height:auto;
+position:relative;
 }
 
 .main{
 margin-left:0;
+width:100%;
+padding:15px;
+}
+
+.search-box{
+flex-direction:column;
 }
 
 .header h1{
-font-size:40px;
+font-size:36px;
 }
 
 }
-
 </style>
 </head>
 
@@ -307,27 +302,21 @@ font-size:40px;
 
 <div class="sidebar">
 
-<div class="logo-wrap">
-
+<div class="logo">
 <img src="logo-bateng.png">
 <img src="logo-simpan.png">
 
 <h2>SIMPAN</h2>
 
 <p>
-Sistem Informasi Manajemen
-Pendataan Armada Nelayan
-Kabupaten Bangka Tengah
+Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 </p>
-
 </div>
 
 <div class="menu">
-
 <a href="#">🏠 Dashboard</a>
 <a href="qr.html" target="_blank">🧾 CETAK QR</a>
 <a href="verifikasi-kapal.html" target="_blank">✅ Verifikasi</a>
-
 </div>
 
 </div>
@@ -338,9 +327,7 @@ Kabupaten Bangka Tengah
 
 <h1>DASHBOARD SIMPAN V3</h1>
 
-<p>
-Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah
-</p>
+<p>Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah</p>
 
 <div class="search-box">
 
@@ -350,288 +337,141 @@ id="searchInput"
 placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 >
 
-<button onclick="cariData()">
-🔍 CARI DATA
-</button>
+<button onclick="cariData()">🔍 CARI DATA</button>
 
 </div>
 
 </div>
 
+<div class="stats">
 
-
-<div class="cards">
-
-<div class="card">
-<h3>🚢 TOTAL KAPAL</h3>
+<div class="stat-box">
+<h4>🚢 TOTAL KAPAL</h4>
 <h2 id="totalKapal">0</h2>
 <p>Gabungan SIMPAN V1 & V2</p>
 </div>
 
-<div class="card">
-<h3>📁 SIMPAN V1</h3>
+<div class="stat-box">
+<h4>📁 SIMPAN V1</h4>
 <h2 id="totalV1">0</h2>
 <p>Total Sistem Lama</p>
 </div>
 
-<div class="card">
-<h3>🚀 SIMPAN V2</h3>
+<div class="stat-box">
+<h4>🚀 SIMPAN V2</h4>
 <h2 id="totalV2">0</h2>
 <p>Total Sistem Baru</p>
 </div>
 
-<div class="card">
-<h3>🧑‍🌾 TOTAL NELAYAN</h3>
+<div class="stat-box">
+<h4>🧑‍🌾 TOTAL NELAYAN</h4>
 <h2 id="totalNelayan">0</h2>
 <p>Berdasarkan NIK unik</p>
 </div>
 
-<div class="card">
-<h3>✅ TERVERIFIKASI</h3>
-<h2 id="totalVerifikasi">0</h2>
+<div class="stat-box">
+<h4>✅ TERVERIFIKASI</h4>
+<h2 id="verifiedCount">0</h2>
 <p>Status verifikasi</p>
 </div>
 
-<div class="card">
-<h3>❌ BELUM VERIFIKASI</h3>
-<h2 id="belumVerifikasi">0</h2>
+<div class="stat-box">
+<h4>❌ BELUM VERIFIKASI</h4>
+<h2 id="unverifiedCount">0</h2>
 <p>Status belum verifikasi</p>
 </div>
 
 </div>
 
-
-
-<div class="menu-cards">
+<div class="cards">
 
 <div class="menu-card"
 onclick="window.open('qr.html','_blank')">
-
-<h2>🧾</h2>
+<div class="icon">🧾</div>
 <h3>CETAK QR</h3>
-
-<p>
-Cetak QR gabungan SIMPAN V1 & V2.
-</p>
-
+<p>Cetak QR gabungan SIMPAN V1 & V2.</p>
 </div>
-
-
 
 <div class="menu-card"
 onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')">
-
-<h2>📘</h2>
+<div class="icon">📘</div>
 <h3>DATA SIMPAN V1</h3>
-
-<p>
-Buka Spreadsheet data kapal SIMPAN V1.
-</p>
-
+<p>Buka Spreadsheet data kapal SIMPAN V1.</p>
 </div>
-
-
 
 <div class="menu-card"
 onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')">
-
-<h2>📊</h2>
+<div class="icon">📊</div>
 <h3>DATA SIMPAN V2</h3>
-
-<p>
-Buka Spreadsheet data kapal SIMPAN V2.
-</p>
-
+<p>Buka Spreadsheet data kapal SIMPAN V2.</p>
 </div>
 
-
-
 <div class="menu-card"
-onclick="openExcelModal()">
-
-<h2>⬇️</h2>
+onclick="downloadExcel()">
+<div class="icon">⬇️</div>
 <h3>DOWNLOAD EXCEL</h3>
-
-<p>
-Download spreadsheet SIMPAN V1 & V2.
-</p>
-
+<p>Download spreadsheet SIMPAN V1 & V2.</p>
 </div>
-
-
 
 <div class="menu-card"
-onclick="openPdfModal()">
-
-<h2>📄</h2>
+onclick="downloadPDF()">
+<div class="icon">📄</div>
 <h3>DOWNLOAD PDF</h3>
-
-<p>
-Download PDF SIMPAN V1 & V2.
-</p>
-
+<p>Download PDF SIMPAN V1 & V2.</p>
 </div>
 
 </div>
 
+<div class="card">
 
+<h2>🏘️ STATISTIK PER DESA</h2>
 
-<div class="stat-box">
-
-<h2>🏡 STATISTIK PER DESA</h2>
-
-<div id="statistikDesa"></div>
+<div id="desaStats"></div>
 
 </div>
 
-
-
-<div class="stat-box">
+<div class="card">
 
 <h2>🏙️ STATISTIK PER KECAMATAN</h2>
 
-<div id="statistikKecamatan"></div>
+<div id="kecamatanStats"></div>
 
 </div>
 
 </div>
-
-
-
-<!-- MODAL EXCEL -->
-
-<div class="modal" id="excelModal">
-
-<div class="modal-content">
-
-<h2>DOWNLOAD EXCEL</h2>
-
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
-DOWNLOAD EXCEL V1
-</button>
-
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
-DOWNLOAD EXCEL V2
-</button>
-
-<button onclick="closeExcelModal()">
-TUTUP
-</button>
-
-</div>
-
-</div>
-
-
-
-<!-- MODAL PDF -->
-
-<div class="modal" id="pdfModal">
-
-<div class="modal-content">
-
-<h2>DOWNLOAD PDF</h2>
-
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
-DOWNLOAD PDF V1
-</button>
-
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
-DOWNLOAD PDF V2
-</button>
-
-<button onclick="closePdfModal()">
-TUTUP
-</button>
-
-</div>
-
-</div>
-
-
 
 <script>
 
 const CSV_V1 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv';
 
 const CSV_V2 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv';
 
 let dataV1 = [];
 let dataV2 = [];
 
+function parseCSV(text){
 
+const lines = text.split('\n');
 
-function parseCSV(csv){
+const headers = lines[0]
+.split(',')
+.map(h=>h.trim());
 
-const lines = csv.trim().split(/\r?\n/);
-
-function splitCSV(line){
-
-const result = [];
-let current = '';
-let insideQuotes = false;
-
-for(let i=0;i<line.length;i++){
-
-const char = line[i];
-const next = line[i+1];
-
-if(char === '"'){
-
-if(insideQuotes && next === '"'){
-current += '"';
-i++;
-}else{
-insideQuotes = !insideQuotes;
-}
-
-}
-
-else if(char === ',' && !insideQuotes){
-
-result.push(current.trim());
-current='';
-
-}
-
-else{
-
-current += char;
-
-}
-
-}
-
-result.push(current.trim());
-
-return result;
-
-}
-
-const headers =
-splitCSV(lines[0]).map(h=>
-h.replace(/^"|"$/g,'').trim()
-);
-
-const rows=[];
+const rows = [];
 
 for(let i=1;i<lines.length;i++){
 
-if(!lines[i].trim()) continue;
+const row = lines[i]
+.split(',');
 
-const cols = splitCSV(lines[i]);
+if(row.length < 2) continue;
 
-const obj = {};
+let obj = {};
 
-headers.forEach((header,index)=>{
-
-obj[header] =
-(cols[index]||'')
-.replace(/^"|"$/g,'')
-.trim();
-
+headers.forEach((h,index)=>{
+obj[h] = row[index]?.trim() || '';
 });
 
 rows.push(obj);
@@ -642,71 +482,104 @@ return rows;
 
 }
 
-
-
 async function loadData(){
 
-const [v1,v2] = await Promise.all([
-
-fetch(CSV_V1).then(r=>r.text()),
-fetch(CSV_V2).then(r=>r.text())
-
-]);
+const v1 = await fetch(CSV_V1).then(r=>r.text());
+const v2 = await fetch(CSV_V2).then(r=>r.text());
 
 dataV1 = parseCSV(v1);
 dataV2 = parseCSV(v2);
 
-updateDashboard();
+generateDashboard();
 
 }
 
+function generateDashboard(){
 
-
-function updateDashboard(){
-
-const gabungan = [...dataV1,...dataV2];
-
-
-
-const kapalSet = new Set();
-
-gabungan.forEach(item=>{
-
-const id =
-(item['ID SIMPAN']||'').trim();
-
-if(id){
-kapalSet.add(id);
-}
-
-});
-
-
+const kapalMap = new Map();
 
 const nikSet = new Set();
 
-gabungan.forEach(item=>{
+const desaMap = {};
+const kecMap = {};
+
+let verified = 0;
+let unverified = 0;
+
+function processData(data,version){
+
+data.forEach(item=>{
+
+const id = item['ID SIMPAN'];
+
+if(!id) return;
+
+if(!kapalMap.has(id)){
+kapalMap.set(id,item);
+}
 
 const nik =
-(
-item['Nomor Induk Kependudukan (NIK)'] ||
-item['NOMOR INDUK KEPENDUDUKAN (NIK)'] ||
-''
-).trim();
+version === 'v1'
+? item['Nomor Induk Kependudukan (NIK)']
+: item['NOMOR INDUK KEPENDUDUKAN (NIK)'];
 
-if(nik){
+if(nik && nik.length > 5){
 nikSet.add(nik);
+}
+
+const desa =
+version === 'v1'
+? item['Desa/ Kelurahan']
+: item['DESA / KELURAHAN'];
+
+if(desa){
+
+const key = desa.toUpperCase();
+
+if(!desaMap[key]){
+desaMap[key] = new Set();
+}
+
+desaMap[key].add(id);
+
+}
+
+const kec =
+version === 'v1'
+? item['Kecamatan']
+: item['KECAMATAN'];
+
+if(kec){
+
+const key = kec.toUpperCase();
+
+if(!kecMap[key]){
+kecMap[key] = new Set();
+}
+
+kecMap[key].add(id);
+
+}
+
+const status =
+(item['STATUS'] || '')
+.toUpperCase();
+
+if(status.includes('VERIF')){
+verified++;
+}else{
+unverified++;
 }
 
 });
 
+}
 
+processData(dataV1,'v1');
+processData(dataV2,'v2');
 
 document.getElementById('totalKapal').innerText =
-kapalSet.size;
-
-document.getElementById('totalNelayan').innerText =
-nikSet.size;
+kapalMap.size;
 
 document.getElementById('totalV1').innerText =
 dataV1.length;
@@ -714,139 +587,65 @@ dataV1.length;
 document.getElementById('totalV2').innerText =
 dataV2.length;
 
-document.getElementById('totalVerifikasi').innerText =
-dataV1.length;
+document.getElementById('totalNelayan').innerText =
+nikSet.size;
 
-document.getElementById('belumVerifikasi').innerText =
-dataV2.length;
+document.getElementById('verifiedCount').innerText =
+verified;
 
+document.getElementById('unverifiedCount').innerText =
+unverified;
 
-
-// ======================
-// STATISTIK DESA
-// ======================
-
-const desaMap = {};
-const desaUnique = new Set();
-
-gabungan.forEach(item=>{
-
-const desa =
-(
-item['Desa/ Kelurahan'] ||
-item['DESA / KELURAHAN'] ||
-''
-)
-.trim()
-.toUpperCase();
-
-const id =
-(item['ID SIMPAN']||'')
-.trim();
-
-if(!desa || !id) return;
-
-const key = desa+'_'+id;
-
-if(desaUnique.has(key)) return;
-
-desaUnique.add(key);
-
-desaMap[desa] =
-(desaMap[desa]||0)+1;
-
-});
-
-
-
-// ======================
-// STATISTIK KECAMATAN
-// ======================
-
-const kecMap = {};
-const kecUnique = new Set();
-
-gabungan.forEach(item=>{
-
-const kec =
-(
-item['Kecamatan'] ||
-item['KECAMATAN'] ||
-''
-)
-.trim()
-.toUpperCase();
-
-const id =
-(item['ID SIMPAN']||'')
-.trim();
-
-if(!kec || !id) return;
-
-const key = kec+'_'+id;
-
-if(kecUnique.has(key)) return;
-
-kecUnique.add(key);
-
-kecMap[kec] =
-(kecMap[kec]||0)+1;
-
-});
-
-
-
-renderStatistik(
-'statistikDesa',
-desaMap
+renderStats(
+desaMap,
+'desaStats'
 );
 
-renderStatistik(
-'statistikKecamatan',
-kecMap
+renderStats(
+kecMap,
+'kecamatanStats'
 );
 
 }
 
-
-
-function renderStatistik(target,dataMap){
+function renderStats(data,target){
 
 const container =
 document.getElementById(target);
 
-container.innerHTML='';
+container.innerHTML = '';
 
 const sorted =
-Object.entries(dataMap)
-.sort((a,b)=>b[1]-a[1]);
+Object.entries(data)
+.sort((a,b)=>
+b[1].size - a[1].size
+);
 
 const max =
-sorted.length ? sorted[0][1] : 1;
+sorted[0]
+? sorted[0][1].size
+: 1;
 
-sorted.forEach(([nama,jumlah])=>{
+sorted.forEach(([name,set])=>{
 
-const persen =
-(jumlah/max)*100;
+const total = set.size;
+
+const percent =
+(total/max)*100;
 
 container.innerHTML += `
 
 <div class="stat-item">
 
 <div class="stat-header">
-
-<span>${nama}</span>
-
-<span>${jumlah} Kapal</span>
-
+<span>${name}</span>
+<span>${total} Kapal</span>
 </div>
 
 <div class="bar-bg">
-
 <div class="bar-fill"
-style="width:${persen}%">
+style="width:${percent}%">
 </div>
-
 </div>
 
 </div>
@@ -857,183 +656,88 @@ style="width:${persen}%">
 
 }
 
-
-
 function cariData(){
 
 const keyword =
-document.getElementById('searchInput')
+document
+.getElementById('searchInput')
 .value
-.trim()
-.toLowerCase();
+.trim();
 
-if(!keyword) return;
-
-const hasil = [];
-
-
-
-dataV1.forEach(item=>{
-
-const id =
-(item['ID SIMPAN']||'')
-.toLowerCase();
-
-const nik =
-(
-item['Nomor Induk Kependudukan (NIK)']||''
-)
-.toLowerCase();
-
-if(
-id.includes(keyword) ||
-nik.includes(keyword)
-){
-
-hasil.push({
-
-versi:'V1',
-
-url:
-'v1/kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
-)
-
-});
-
-}
-
-});
-
-
-
-dataV2.forEach(item=>{
-
-const id =
-(item['ID SIMPAN']||'')
-.toLowerCase();
-
-const nik =
-(
-item['NOMOR INDUK KEPENDUDUKAN (NIK)']||''
-)
-.toLowerCase();
-
-if(
-id.includes(keyword) ||
-nik.includes(keyword)
-){
-
-hasil.push({
-
-versi:'V2',
-
-url:
-'kapal.html?id='+
-encodeURIComponent(
-item['ID SIMPAN']
-)
-
-});
-
-}
-
-});
-
-
-
-if(hasil.length===0){
-
-alert('Data tidak ditemukan');
+if(!keyword){
+alert('Masukkan ID atau NIK');
 return;
-
 }
-
-
-
-if(hasil.length===1){
 
 window.open(
-hasil[0].url,
-'_blank'
-);
-
-return;
-
-}
-
-
-
-let pilihan =
-'Pilih Data:\\n\\n';
-
-hasil.forEach((h,i)=>{
-
-pilihan +=
-(i+1)+'. '+h.versi+'\\n';
-
-});
-
-const pilih =
-prompt(
-pilihan+
-'\\nMasukkan nomor pilihan:'
-);
-
-const index =
-parseInt(pilih)-1;
-
-if(hasil[index]){
-
-window.open(
-hasil[index].url,
+'kapal.html?id='+keyword,
 '_blank'
 );
 
 }
-
-}
-
-
 
 document
 .getElementById('searchInput')
-.addEventListener('keypress',function(e){
+.addEventListener(
+'keypress',
+function(e){
 
-if(e.key==='Enter'){
+if(e.key === 'Enter'){
 cariData();
 }
 
-});
+}
+);
 
+function downloadExcel(){
 
+const pilih =
+confirm(
+'OK = Download Excel V2\nCANCEL = Download Excel V1'
+);
 
-function openExcelModal(){
-document.getElementById('excelModal').style.display='flex';
+if(pilih){
+
+window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
+'_blank'
+);
+
+}else{
+
+window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx',
+'_blank'
+);
+
 }
 
-function closeExcelModal(){
-document.getElementById('excelModal').style.display='none';
 }
 
-function openPdfModal(){
-document.getElementById('pdfModal').style.display='flex';
+function downloadPDF(){
+
+const pilih =
+confirm(
+'OK = Download PDF V2\nCANCEL = Download PDF V1'
+);
+
+if(pilih){
+
+window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
+'_blank'
+);
+
+}else{
+
+window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf',
+'_blank'
+);
+
 }
 
-function closePdfModal(){
-document.getElementById('pdfModal').style.display='none';
 }
-
-
-
-if('serviceWorker' in navigator){
-
-navigator.serviceWorker.register('sw.js');
-
-}
-
-
 
 loadData();
 
