@@ -27,8 +27,8 @@ body{
 
 background:
 linear-gradient(
-rgba(0,27,95,.90),
-rgba(0,81,190,.88)
+rgba(0,30,100,.90),
+rgba(0,80,190,.88)
 ),
 url('background_simpan.png');
 
@@ -42,25 +42,25 @@ overflow-x:hidden;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* WRAPPER */
-/* ========================= */
+/* ===================================================== */
 
 .wrapper{
 display:flex;
 min-height:100vh;
 }
 
-/* ========================= */
+/* ===================================================== */
 /* SIDEBAR */
-/* ========================= */
+/* ===================================================== */
 
 .sidebar{
 
 width:240px;
 
 background:
-rgba(0,30,100,.96);
+rgba(0,25,90,.96);
 
 backdrop-filter:blur(10px);
 
@@ -99,7 +99,7 @@ margin:4px;
 
 .logo-title{
 
-font-size:22px;
+font-size:24px;
 
 font-weight:900;
 
@@ -115,7 +115,7 @@ line-height:1.7;
 
 margin-top:10px;
 
-opacity:.9;
+opacity:.92;
 
 }
 
@@ -167,9 +167,9 @@ transform:translateX(4px);
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* CONTENT */
-/* ========================= */
+/* ===================================================== */
 
 .content{
 
@@ -181,9 +181,9 @@ width:100%;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* HERO */
-/* ========================= */
+/* ===================================================== */
 
 .hero{
 
@@ -196,17 +196,17 @@ padding:34px;
 
 border-radius:30px;
 
+margin-bottom:28px;
+
 position:relative;
 
 overflow:hidden;
-
-margin-bottom:28px;
 
 border:
 1px solid rgba(255,255,255,.10);
 
 box-shadow:
-0 10px 35px rgba(0,0,0,.25);
+0 10px 35px rgba(0,0,0,.22);
 
 }
 
@@ -216,8 +216,8 @@ content:'';
 
 position:absolute;
 
-width:300px;
-height:300px;
+width:320px;
+height:320px;
 
 background:
 rgba(255,255,255,.05);
@@ -253,9 +253,9 @@ z-index:2;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* SEARCH */
-/* ========================= */
+/* ===================================================== */
 
 .search-box{
 
@@ -276,7 +276,7 @@ z-index:2;
 
 flex:1;
 
-min-width:250px;
+min-width:260px;
 
 padding:18px 22px;
 
@@ -325,9 +325,9 @@ transform:scale(1.03);
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* STATS */
-/* ========================= */
+/* ===================================================== */
 
 .stats{
 
@@ -351,11 +351,11 @@ padding:26px;
 
 border-radius:28px;
 
-backdrop-filter:blur(8px);
-
 position:relative;
 
 overflow:hidden;
+
+backdrop-filter:blur(8px);
 
 border:
 1px solid rgba(255,255,255,.08);
@@ -420,9 +420,9 @@ z-index:2;
 
 }
 
-/* ========================= */
-/* MENU CARD */
-/* ========================= */
+/* ===================================================== */
+/* CARD */
+/* ===================================================== */
 
 .cards{
 
@@ -492,9 +492,9 @@ color:#444;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* SECTION */
-/* ========================= */
+/* ===================================================== */
 
 .section{
 
@@ -521,9 +521,9 @@ margin-bottom:24px;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* BAR */
-/* ========================= */
+/* ===================================================== */
 
 .bar-item{
 
@@ -573,9 +573,9 @@ linear-gradient(
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* MODAL */
-/* ========================= */
+/* ===================================================== */
 
 .modal{
 
@@ -650,9 +650,9 @@ cursor:pointer;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* FOOTER */
-/* ========================= */
+/* ===================================================== */
 
 .footer{
 
@@ -666,9 +666,9 @@ opacity:.9;
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* MOBILE */
-/* ========================= */
+/* ===================================================== */
 
 @media(max-width:980px){
 
@@ -722,9 +722,13 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 <a href="#">🏠 Dashboard</a>
 
-<a href="qr.html" target="_blank">🧾 CETAK QR</a>
+<a href="qr.html" target="_blank">
+🧾 CETAK QR
+</a>
 
-<a href="verifikasi-kapal.html" target="_blank">✅ Verifikasi</a>
+<a href="verifikasi-kapal.html" target="_blank">
+✅ Verifikasi
+</a>
 
 </div>
 
@@ -804,7 +808,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 </div>
 
-<!-- MENU -->
+<!-- CARDS -->
 
 <div class="cards">
 
@@ -970,9 +974,9 @@ TUTUP
 
 <script>
 
-/* ========================= */
+/* ===================================================== */
 /* CSV */
-/* ========================= */
+/* ===================================================== */
 
 const csvV1 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
@@ -980,17 +984,17 @@ const csvV1 =
 const csvV2 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* ========================= */
+/* ===================================================== */
 /* GLOBAL */
-/* ========================= */
+/* ===================================================== */
 
 let dataV1 = [];
 let dataV2 = [];
 let allData = [];
 
-/* ========================= */
+/* ===================================================== */
 /* SEARCH */
-/* ========================= */
+/* ===================================================== */
 
 async function searchData(){
 
@@ -1016,12 +1020,12 @@ finalID = "BT-SMP-" + keyword;
 
 }
 
-/* ========================= */
-/* CEK V1 */
-/* ========================= */
+/* ===================================== */
+/* CARI DATA */
+/* ===================================== */
 
 const foundV1 =
-dataV1.find(item=>{
+dataV1.filter(item=>{
 
 const text =
 Object.values(item)
@@ -1032,7 +1036,56 @@ return text.includes(finalID);
 
 });
 
-if(foundV1){
+const foundV2 =
+dataV2.filter(item=>{
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(finalID);
+
+});
+
+/* ===================================== */
+/* JIKA ADA DI KEDUANYA */
+/* ===================================== */
+
+if(foundV1.length > 0 && foundV2.length > 0){
+
+const pilih =
+confirm(
+"Data ditemukan di SIMPAN V1 dan V2.\n\nOK = buka V2\nCancel = buka V1"
+);
+
+if(pilih){
+
+window.open(
+"kapal.html?id=" +
+encodeURIComponent(finalID),
+"_blank"
+);
+
+}else{
+
+window.open(
+"v1/kapal.html?id=" +
+encodeURIComponent(finalID),
+"_blank"
+);
+
+}
+
+return;
+
+}
+
+/* ===================================== */
+/* HANYA V1 */
+/* ===================================== */
+
+if(foundV1.length > 0){
 
 window.open(
 "v1/kapal.html?id=" +
@@ -1044,23 +1097,11 @@ return;
 
 }
 
-/* ========================= */
-/* CEK V2 */
-/* ========================= */
+/* ===================================== */
+/* HANYA V2 */
+/* ===================================== */
 
-const foundV2 =
-dataV2.find(item=>{
-
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
-
-return text.includes(finalID);
-
-});
-
-if(foundV2){
+if(foundV2.length > 0){
 
 window.open(
 "kapal.html?id=" +
@@ -1072,12 +1113,12 @@ return;
 
 }
 
-/* ========================= */
-/* CEK NIK V1 */
-/* ========================= */
+/* ===================================== */
+/* CEK NIK */
+/* ===================================== */
 
 const nikV1 =
-dataV1.find(item=>{
+dataV1.filter(item=>{
 
 const text =
 Object.values(item)
@@ -1088,10 +1129,70 @@ return text.includes(keyword);
 
 });
 
-if(nikV1){
+const nikV2 =
+dataV2.filter(item=>{
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(keyword);
+
+});
+
+/* ===================================== */
+/* NIK ADA DI KEDUANYA */
+/* ===================================== */
+
+if(nikV1.length > 0 && nikV2.length > 0){
+
+const pilih =
+confirm(
+"NIK ditemukan di SIMPAN V1 dan V2.\n\nOK = buka V2\nCancel = buka V1"
+);
+
+const data =
+pilih ? nikV2[0] : nikV1[0];
 
 const id =
-Object.values(nikV1)
+Object.values(data)
+.find(v=>
+String(v)
+.toUpperCase()
+.includes("BT-SMP-")
+);
+
+if(pilih){
+
+window.open(
+"kapal.html?id=" +
+encodeURIComponent(id),
+"_blank"
+);
+
+}else{
+
+window.open(
+"v1/kapal.html?id=" +
+encodeURIComponent(id),
+"_blank"
+);
+
+}
+
+return;
+
+}
+
+/* ===================================== */
+/* NIK HANYA V1 */
+/* ===================================== */
+
+if(nikV1.length > 0){
+
+const id =
+Object.values(nikV1[0])
 .find(v=>
 String(v)
 .toUpperCase()
@@ -1108,26 +1209,14 @@ return;
 
 }
 
-/* ========================= */
-/* CEK NIK V2 */
-/* ========================= */
+/* ===================================== */
+/* NIK HANYA V2 */
+/* ===================================== */
 
-const nikV2 =
-dataV2.find(item=>{
-
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
-
-return text.includes(keyword);
-
-});
-
-if(nikV2){
+if(nikV2.length > 0){
 
 const id =
-Object.values(nikV2)
+Object.values(nikV2[0])
 .find(v=>
 String(v)
 .toUpperCase()
@@ -1148,9 +1237,9 @@ alert("Data tidak ditemukan");
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* ENTER SEARCH */
-/* ========================= */
+/* ===================================================== */
 
 document
 .getElementById("searchInput")
@@ -1167,9 +1256,9 @@ searchData();
 
 });
 
-/* ========================= */
+/* ===================================================== */
 /* MODAL */
-/* ========================= */
+/* ===================================================== */
 
 function openExcelModal(){
 
@@ -1203,9 +1292,9 @@ document
 
 }
 
-/* ========================= */
+/* ===================================================== */
 /* LOAD CSV */
-/* ========================= */
+/* ===================================================== */
 
 Promise.all([
 
@@ -1231,7 +1320,9 @@ allData = [
 ...dataV2
 ];
 
+/* ===================================================== */
 /* TOTAL */
+/* ===================================================== */
 
 document.getElementById("totalV1")
 .innerHTML = dataV1.length;
@@ -1243,18 +1334,44 @@ document.getElementById("totalKapal")
 .innerHTML =
 dataV1.length + dataV2.length;
 
-/* NELAYAN */
+/* ===================================================== */
+/* TOTAL NELAYAN BERDASARKAN NIK UNIK */
+/* ===================================================== */
 
-const nikSet =
-new Set();
+const nikSet = new Set();
 
-allData.forEach(item=>{
+allData.forEach(item => {
 
-Object.values(item).forEach(v=>{
+Object.entries(item).forEach(([key,val]) => {
 
-if(String(v).length>10){
+const namaKolom =
+String(key)
+.toUpperCase()
+.trim();
 
-nikSet.add(v);
+const isi =
+String(val)
+.trim();
+
+if(
+
+namaKolom.includes("NIK")
+
+&&
+
+isi !== ""
+
+&&
+
+isi !== "-"
+
+&&
+
+isi.length >= 10
+
+){
+
+nikSet.add(isi);
 
 }
 
@@ -1265,7 +1382,9 @@ nikSet.add(v);
 document.getElementById("totalNelayan")
 .innerHTML = nikSet.size;
 
+/* ===================================================== */
 /* VERIFIKASI */
+/* ===================================================== */
 
 let verifikasi = 0;
 let belum = 0;
@@ -1295,7 +1414,9 @@ document.getElementById("totalVerifikasi")
 document.getElementById("belumVerifikasi")
 .innerHTML = belum;
 
-/* DESA */
+/* ===================================================== */
+/* STATISTIK DESA */
+/* ===================================================== */
 
 const desaData = {
 
@@ -1346,7 +1467,9 @@ style="width:${Math.min(total,100)}%">
 
 });
 
-/* KECAMATAN */
+/* ===================================================== */
+/* STATISTIK KECAMATAN */
+/* ===================================================== */
 
 const kecamatanData = {
 
@@ -1394,9 +1517,9 @@ style="width:${Math.min(total,100)}%">
 
 });
 
-/* ========================= */
+/* ===================================================== */
 /* PWA */
-/* ========================= */
+/* ===================================================== */
 
 if('serviceWorker' in navigator){
 
