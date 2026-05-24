@@ -3,56 +3,23 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KARTU SIMPAN V2 FINAL</title>
 
-<!-- ====================================================== -->
-<!-- FONT -->
-<!-- ====================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
->
-
-<!-- ====================================================== -->
-<!-- QR CODE -->
-<!-- ====================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-
-<!-- ====================================================== -->
-<!-- PAPAPARSE -->
-<!-- ====================================================== -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-<!-- ====================================================== -->
-<!-- HTML2CANVAS -->
-<!-- ====================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
-
-/* ====================================================== */
-/* RESET */
-/* ====================================================== */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
-
-/* ====================================================== */
-/* BODY */
-/* ====================================================== */
 
 body{
 
@@ -79,9 +46,7 @@ overflow-x:auto;
 
 }
 
-/* ====================================================== */
 /* SEARCH */
-/* ====================================================== */
 
 .search-box{
 
@@ -90,7 +55,6 @@ display:flex;
 gap:16px;
 
 width:100%;
-
 max-width:860px;
 
 margin-bottom:20px;
@@ -145,23 +109,12 @@ font-weight:900;
 
 cursor:pointer;
 
-transition:.3s;
-
 box-shadow:
 0 10px 24px rgba(0,0,0,.16);
 
 }
 
-.search-box button:hover{
-
-transform:
-translateY(-2px);
-
-}
-
-/* ====================================================== */
-/* ACTION BUTTON */
-/* ====================================================== */
+/* BUTTON */
 
 .actions{
 
@@ -170,10 +123,6 @@ display:flex;
 gap:12px;
 
 margin-bottom:20px;
-
-flex-wrap:wrap;
-
-justify-content:center;
 
 }
 
@@ -200,23 +149,9 @@ font-weight:800;
 
 cursor:pointer;
 
-transition:.3s;
-
-box-shadow:
-0 8px 20px rgba(0,0,0,.14);
-
 }
 
-.actions button:hover{
-
-transform:
-translateY(-2px);
-
-}
-
-/* ====================================================== */
 /* CARD */
-/* ====================================================== */
 
 .card{
 
@@ -247,10 +182,6 @@ justify-content:space-between;
 
 }
 
-/* ====================================================== */
-/* WATERMARK */
-/* ====================================================== */
-
 .card::before{
 
 content:"";
@@ -267,13 +198,9 @@ background-size:150px;
 
 opacity:.03;
 
-pointer-events:none;
-
 }
 
-/* ====================================================== */
 /* HEADER */
-/* ====================================================== */
 
 .header{
 
@@ -296,10 +223,6 @@ z-index:2;
 
 }
 
-/* ====================================================== */
-/* LOGO */
-/* ====================================================== */
-
 .logo-bateng{
 
 width:88px;
@@ -307,8 +230,6 @@ width:88px;
 display:block;
 
 margin:auto;
-
-object-fit:contain;
 
 margin-top:8px;
 
@@ -322,13 +243,7 @@ display:block;
 
 margin:auto;
 
-object-fit:contain;
-
 }
-
-/* ====================================================== */
-/* HEADER TEXT */
-/* ====================================================== */
 
 .header-text{
 
@@ -356,15 +271,11 @@ font-size:15px;
 
 font-weight:500;
 
-line-height:1.4;
-
 color:#333;
 
 }
 
-/* ====================================================== */
 /* MAIN */
-/* ====================================================== */
 
 .main{
 
@@ -384,9 +295,7 @@ z-index:2;
 
 }
 
-/* ====================================================== */
-/* QR BOX */
-/* ====================================================== */
+/* QR */
 
 .qr-box{
 
@@ -409,9 +318,7 @@ background:white;
 
 }
 
-/* ====================================================== */
 /* RIGHT */
-/* ====================================================== */
 
 .right{
 
@@ -424,10 +331,6 @@ gap:16px;
 height:330px;
 
 }
-
-/* ====================================================== */
-/* ID BOX */
-/* ====================================================== */
 
 .id-box{
 
@@ -448,11 +351,6 @@ justify-content:center;
 
 align-items:center;
 
-padding:0 22px;
-
-box-shadow:
-0 8px 20px rgba(0,0,0,.16);
-
 }
 
 .id-box h2{
@@ -463,15 +361,7 @@ font-weight:900;
 
 color:white;
 
-white-space:nowrap;
-
-line-height:1;
-
 }
-
-/* ====================================================== */
-/* DETAIL BOX */
-/* ====================================================== */
 
 .detail-box{
 
@@ -487,17 +377,7 @@ padding:20px;
 background:
 rgba(0,94,255,.03);
 
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
 }
-
-/* ====================================================== */
-/* DETAIL ITEM */
-/* ====================================================== */
 
 .detail-item{
 
@@ -538,9 +418,7 @@ line-height:1.3;
 
 }
 
-/* ====================================================== */
 /* FOOTER */
-/* ====================================================== */
 
 .footer{
 
@@ -552,9 +430,6 @@ border-top:
 2px solid rgba(0,94,255,.12);
 
 text-align:center;
-
-position:relative;
-z-index:2;
 
 }
 
@@ -580,81 +455,13 @@ color:#333;
 
 }
 
-/* ====================================================== */
-/* RESPONSIVE */
-/* ====================================================== */
-
-@media(max-width:1100px){
-
-.card{
-
-width:100%;
-height:auto;
-
-}
-
-.main{
-
-grid-template-columns:1fr;
-
-}
-
-.right,
-.qr-box{
-
-height:auto;
-
-}
-
-.header{
-
-grid-template-columns:1fr;
-
-text-align:center;
-
-gap:10px;
-
-}
-
-}
-
-/* ====================================================== */
-/* PRINT */
-/* ====================================================== */
-
-@media print{
-
-body{
-
-background:white;
-padding:0;
-
-}
-
-.search-box,
-.actions{
-
-display:none;
-
-}
-
-.card{
-
-box-shadow:none;
-
-}
-
-}
-
 </style>
 
 </head>
 
 <body>
 
-<!-- ====================================================== -->
 <!-- SEARCH -->
-<!-- ====================================================== -->
 
 <div class="search-box">
 
@@ -662,6 +469,7 @@ box-shadow:none;
 type="text"
 id="searchInput"
 placeholder="Masukkan 4 digit ID belakang..."
+maxlength="4"
 >
 
 <button onclick="cariQR()">
@@ -672,9 +480,7 @@ placeholder="Masukkan 4 digit ID belakang..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- BUTTON -->
-<!-- ====================================================== -->
 
 <div class="actions">
 
@@ -692,19 +498,13 @@ placeholder="Masukkan 4 digit ID belakang..."
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CARD -->
-<!-- ====================================================== -->
 
 <div class="card" id="card">
 
-<!-- ====================================================== -->
 <!-- HEADER -->
-<!-- ====================================================== -->
 
 <div class="header">
-
-<!-- LOGO KIRI -->
 
 <div>
 
@@ -714,8 +514,6 @@ class="logo-bateng"
 >
 
 </div>
-
-<!-- TEXT -->
 
 <div class="header-text">
 
@@ -735,8 +533,6 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan
 
 </div>
 
-<!-- LOGO KANAN -->
-
 <div>
 
 <img
@@ -748,9 +544,7 @@ class="logo-simpan"
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MAIN -->
-<!-- ====================================================== -->
 
 <div class="main">
 
@@ -766,17 +560,15 @@ class="logo-simpan"
 
 <div class="right">
 
-<!-- ID -->
-
 <div class="id-box">
 
 <h2 id="idText">
-BT-SMP-0001
+
+MEMUAT...
+
 </h2>
 
 </div>
-
-<!-- DETAIL -->
 
 <div class="detail-box">
 
@@ -822,14 +614,14 @@ BT-SMP-0001
 
 </div>
 
-<!-- ====================================================== -->
 <!-- FOOTER -->
-<!-- ====================================================== -->
 
 <div class="footer">
 
 <h3>
+
 SCAN QR UNTUK VERIFIKASI DATA KAPAL
+
 </h3>
 
 <p>
@@ -844,195 +636,147 @@ SIMPAN V2 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 <script>
 
-/* ====================================================== */
-/* CSV URL V2 */
-/* ====================================================== */
+/* CSV V2 */
 
 const csvUrl =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584Q8mkVUkqHoS6wVp4iF/pub?output=csv&t=" +
-new Date().getTime();
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
 
-/* ====================================================== */
 /* PARAM */
-/* ====================================================== */
 
 const params =
-new URLSearchParams(
-window.location.search
-);
+new URLSearchParams(window.location.search);
 
-let id =
-params.get("id") ||
-"BT-SMP-0001";
+const kapalId =
+params.get("id");
 
-/* ====================================================== */
 /* DATE */
-/* ====================================================== */
 
-document.getElementById(
-"tanggal"
-).innerHTML =
+document.getElementById("tanggal").innerHTML =
+new Date().toLocaleDateString("id-ID");
 
-new Date().toLocaleDateString(
-"id-ID"
-);
+/* LOAD DATA */
 
-/* ====================================================== */
-/* LOAD CSV */
-/* ====================================================== */
-
-Papa.parse(csvUrl,{
+Papa.parse(csvUrl, {
 
 download:true,
+
 header:true,
+
 skipEmptyLines:true,
 
-complete:function(result){
+complete:function(results){
 
-const data = result.data;
+const data = results.data;
 
-console.log(data);
+const kapal = data.find(item =>
 
-/* ====================================================== */
-/* FIND DATA */
-/* ====================================================== */
+item["ID SIMPAN"]?.trim()
+===
+kapalId?.trim()
 
-const kapal = data.find(item => {
-
-const idKapal =
-
-(
-item["ID SIMPAN"] ||
-item["Id SIMPAN"] ||
-item["id simpan"] ||
-""
-)
-.toString()
-.trim()
-.toUpperCase();
-
-return idKapal === id.toUpperCase();
-
-});
-
-/* ====================================================== */
-/* JIKA DATA DITEMUKAN */
-/* ====================================================== */
+);
 
 if(kapal){
 
-/* ID */
-
-document.getElementById(
-"idText"
-).innerHTML =
-
-kapal["ID SIMPAN"] ||
-"-";
-
-/* NAMA PEMILIK */
-
-document.getElementById(
-"namaPemilik"
-).innerHTML =
-
-kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] ||
-kapal["Nama Pemilik Kapal (Sesuai KTP)"] ||
-"-";
-
-/* NAMA KAPAL */
-
-document.getElementById(
-"namaKapal"
-).innerHTML =
-
-kapal["NAMA KAPAL SESUAI PAS KAPAL"] ||
-kapal["Nama Kapal"] ||
-"-";
-
-}
-
-/* ====================================================== */
 /* QR */
-/* ====================================================== */
 
-QRCode.toCanvas(
+const qrLink =
+"https://simpandiperkan-ux.github.io/simpanv2/kapal.html?id=" +
+kapal["ID SIMPAN"];
 
-document.createElement("canvas"),
+new QRCode(document.getElementById("qrcode"), {
 
-window.location.origin +
-"/simpanv2/verifikasi-kapal.html?id=" +
-id,
+text:qrLink,
 
-{
-width:300
-},
+width:300,
 
-function(err,canvas){
+height:300,
 
-if(err){
+colorDark:"#000000",
 
-console.log(err);
+colorLight:"#ffffff",
 
-return;
+correctLevel:QRCode.CorrectLevel.H
+
+});
+
+/* DATA */
+
+document.getElementById("idText").innerHTML =
+kapal["ID SIMPAN"];
+
+document.getElementById("namaPemilik").innerHTML =
+kapal["NAMA PEMILIK KAPAL (SESUAI KTP)"] || "-";
+
+document.getElementById("namaKapal").innerHTML =
+kapal["NAMA KAPAL SESUAI PAS KAPAL"] || "-";
 
 }
-
-document
-.getElementById("qrcode")
-.innerHTML = "";
-
-document
-.getElementById("qrcode")
-.appendChild(canvas);
-
-}
-
-);
 
 }
 
 });
 
-/* ====================================================== */
 /* SEARCH */
-/* ====================================================== */
 
 function cariQR(){
 
 const input =
-document.getElementById(
-"searchInput"
-)
+document.getElementById("searchInput")
 .value
 .trim();
 
-if(!input){
+if(input.length < 1){
 
-alert(
-"Masukkan 4 digit ID belakang"
-);
+alert("Masukkan nomor ID");
 
 return;
 
 }
 
+Papa.parse(csvUrl, {
+
+download:true,
+
+header:true,
+
+skipEmptyLines:true,
+
+complete:function(results){
+
+const data = results.data;
+
+const kapal = data.find(item => {
+
+const id = item["ID SIMPAN"] || "";
+
+return id.endsWith(input);
+
+});
+
+if(kapal){
+
 window.location.href =
-"?id=BT-SMP-" + input;
+"qr.html?id=" +
+kapal["ID SIMPAN"];
+
+}else{
+
+alert("Data tidak ditemukan");
 
 }
 
-/* ====================================================== */
+}
+
+});
+
+}
+
 /* ENTER */
-/* ====================================================== */
 
 document
-.getElementById(
-"searchInput"
-)
-.addEventListener(
-"keypress",
-function(e){
+.getElementById("searchInput")
+.addEventListener("keypress", function(e){
 
 if(e.key === "Enter"){
 
@@ -1040,27 +784,26 @@ cariQR();
 
 }
 
-}
-);
+});
 
-/* ====================================================== */
 /* DOWNLOAD PNG */
-/* ====================================================== */
 
 function downloadPNG(){
 
-html2canvas(
-document.getElementById("card")
-).then(canvas=>{
+html2canvas(document.querySelector("#card"),{
+
+scale:4
+
+}).then(canvas => {
 
 const link =
 document.createElement("a");
 
 link.download =
-"QR-" + id + ".png";
+kapalId + ".png";
 
 link.href =
-canvas.toDataURL();
+canvas.toDataURL("image/png");
 
 link.click();
 
@@ -1068,26 +811,24 @@ link.click();
 
 }
 
-/* ====================================================== */
 /* DOWNLOAD JPG */
-/* ====================================================== */
 
 function downloadJPG(){
 
-html2canvas(
-document.getElementById("card")
-).then(canvas=>{
+html2canvas(document.querySelector("#card"),{
+
+scale:4
+
+}).then(canvas => {
 
 const link =
 document.createElement("a");
 
 link.download =
-"QR-" + id + ".jpg";
+kapalId + ".jpg";
 
 link.href =
-canvas.toDataURL(
-"image/jpeg"
-);
+canvas.toDataURL("image/jpeg");
 
 link.click();
 
