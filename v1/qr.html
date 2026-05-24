@@ -4,18 +4,37 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
-<title>QR STIKER SIMPAN V1 FINAL</title>
+<title>KARTU SIMPAN V1 FINAL</title>
+
+<!-- ====================================================== -->
+<!-- FONT -->
+<!-- ====================================================== -->
 
 <link
 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
 rel="stylesheet"
 >
 
+<!-- ====================================================== -->
+<!-- QR -->
+<!-- ====================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
+<!-- ====================================================== -->
+<!-- CSV -->
+<!-- ====================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<!-- ====================================================== -->
+<!-- EXPORT -->
+<!-- ====================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
@@ -42,13 +61,13 @@ font-family:'Poppins',sans-serif;
 background:
 linear-gradient(
 135deg,
-#dfe7f5,
-#cfd9ea
+#dfe8f6,
+#cad7ea
 );
 
 min-height:100vh;
 
-padding:40px;
+padding:30px;
 
 display:flex;
 
@@ -68,13 +87,13 @@ overflow-x:auto;
 
 display:flex;
 
-gap:18px;
+gap:16px;
 
 width:100%;
 
-max-width:1100px;
+max-width:860px;
 
-margin-bottom:26px;
+margin-bottom:20px;
 
 }
 
@@ -82,34 +101,34 @@ margin-bottom:26px;
 
 flex:1;
 
-height:82px;
+height:68px;
 
 border:none;
 
 outline:none;
 
-padding:0 34px;
+padding:0 26px;
 
-font-size:24px;
+font-size:20px;
 
 font-weight:700;
 
-border-radius:24px;
+border-radius:18px;
 
 background:white;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.10);
+0 10px 24px rgba(0,0,0,.10);
 
 }
 
 .search-box button{
 
-width:280px;
+width:220px;
 
 border:none;
 
-border-radius:24px;
+border-radius:18px;
 
 background:
 linear-gradient(
@@ -120,7 +139,7 @@ linear-gradient(
 
 color:white;
 
-font-size:26px;
+font-size:20px;
 
 font-weight:900;
 
@@ -129,7 +148,7 @@ cursor:pointer;
 transition:.3s;
 
 box-shadow:
-0 12px 30px rgba(0,0,0,.16);
+0 10px 24px rgba(0,0,0,.16);
 
 }
 
@@ -141,16 +160,16 @@ translateY(-2px);
 }
 
 /* ====================================================== */
-/* BUTTONS */
+/* BUTTON */
 /* ====================================================== */
 
 .actions{
 
 display:flex;
 
-gap:14px;
+gap:12px;
 
-margin-bottom:30px;
+margin-bottom:20px;
 
 flex-wrap:wrap;
 
@@ -160,11 +179,11 @@ justify-content:center;
 
 .actions button{
 
-padding:15px 28px;
+padding:12px 22px;
 
 border:none;
 
-border-radius:14px;
+border-radius:12px;
 
 background:
 linear-gradient(
@@ -175,7 +194,7 @@ linear-gradient(
 
 color:white;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:800;
 
@@ -184,7 +203,7 @@ cursor:pointer;
 transition:.3s;
 
 box-shadow:
-0 8px 20px rgba(0,0,0,.16);
+0 8px 20px rgba(0,0,0,.14);
 
 }
 
@@ -201,23 +220,30 @@ translateY(-2px);
 
 .card{
 
-width:1320px;
+width:1011px;
+height:638px;
 
 background:white;
 
-border-radius:36px;
+border-radius:30px;
 
-padding:44px;
+padding:26px;
 
 position:relative;
 
 overflow:hidden;
 
 border:
-6px solid #005eff;
+5px solid #005eff;
 
 box-shadow:
-0 24px 60px rgba(0,0,0,.16);
+0 24px 60px rgba(0,0,0,.18);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
 
 }
 
@@ -237,7 +263,7 @@ background-image:url('../logo-simpan.png');
 
 background-repeat:repeat;
 
-background-size:180px;
+background-size:150px;
 
 opacity:.03;
 
@@ -251,18 +277,19 @@ pointer-events:none;
 
 .header{
 
-display:flex;
+display:grid;
 
-justify-content:space-between;
+grid-template-columns:
+110px 1fr 110px;
 
-align-items:flex-start;
+align-items:center;
 
-padding-bottom:34px;
+column-gap:16px;
+
+padding-bottom:16px;
 
 border-bottom:
-2px solid rgba(0,94,255,.18);
-
-margin-bottom:34px;
+2px solid rgba(0,94,255,.12);
 
 position:relative;
 z-index:2;
@@ -270,40 +297,48 @@ z-index:2;
 }
 
 /* ====================================================== */
-/* HEADER LEFT */
-/* ====================================================== */
-
-.header-left{
-
-display:flex;
-
-align-items:flex-start;
-
-gap:28px;
-
-}
-
-/* ====================================================== */
-/* LOGO BATENG */
+/* LOGO */
 /* ====================================================== */
 
 .logo-bateng{
 
-width:145px;
+width:88px;
 
-margin-top:18px;
+display:block;
+
+margin:auto;
+
+object-fit:contain;
+
+margin-top:8px;
+
+}
+
+.logo-simpan{
+
+width:105px;
+
+display:block;
+
+margin:auto;
 
 object-fit:contain;
 
 }
 
 /* ====================================================== */
-/* TEXT */
+/* HEADER TEXT */
 /* ====================================================== */
+
+.header-text{
+
+text-align:center;
+
+}
 
 .header-text h1{
 
-font-size:68px;
+font-size:42px;
 
 font-weight:900;
 
@@ -311,50 +346,38 @@ line-height:1.05;
 
 color:#0047b3;
 
-margin-bottom:16px;
+margin-bottom:10px;
 
 }
 
 .header-text p{
 
-font-size:24px;
+font-size:15px;
 
 font-weight:500;
 
-line-height:1.5;
+line-height:1.4;
 
 color:#333;
 
 }
 
 /* ====================================================== */
-/* LOGO SIMPAN */
+/* MAIN */
 /* ====================================================== */
 
-.logo-simpan{
-
-width:220px;
-
-margin-top:20px;
-
-object-fit:contain;
-
-}
-
-/* ====================================================== */
-/* QR SECTION */
-/* ====================================================== */
-
-.qr-section{
+.main{
 
 display:grid;
 
 grid-template-columns:
-520px 1fr;
+390px 1fr;
 
-gap:34px;
+gap:22px;
 
-align-items:stretch;
+align-items:center;
+
+margin-top:16px;
 
 position:relative;
 z-index:2;
@@ -367,12 +390,12 @@ z-index:2;
 
 .qr-box{
 
+height:330px;
+
 border:
-5px solid #005eff;
+4px solid #005eff;
 
-border-radius:24px;
-
-padding:20px;
+border-radius:22px;
 
 display:flex;
 
@@ -380,25 +403,25 @@ justify-content:center;
 
 align-items:center;
 
-background:white;
+padding:12px;
 
-height:560px;
+background:white;
 
 }
 
 /* ====================================================== */
-/* INFO */
+/* RIGHT */
 /* ====================================================== */
 
-.info{
+.right{
 
 display:flex;
 
 flex-direction:column;
 
-gap:20px;
+gap:16px;
 
-height:560px;
+height:330px;
 
 }
 
@@ -408,6 +431,10 @@ height:560px;
 
 .id-box{
 
+height:72px;
+
+border-radius:18px;
+
 background:
 linear-gradient(
 135deg,
@@ -415,26 +442,22 @@ linear-gradient(
 #0044cc
 );
 
-border-radius:22px;
-
-height:110px;
-
 display:flex;
 
 justify-content:center;
 
 align-items:center;
 
-padding:0 28px;
+padding:0 22px;
 
 box-shadow:
-0 10px 26px rgba(0,0,0,.16);
+0 8px 20px rgba(0,0,0,.16);
 
 }
 
 .id-box h2{
 
-font-size:66px;
+font-size:38px;
 
 font-weight:900;
 
@@ -454,15 +477,15 @@ line-height:1;
 
 flex:1;
 
-background:
-rgba(0,94,255,.04);
-
 border:
-2px solid rgba(0,94,255,.14);
+2px solid rgba(0,94,255,.10);
 
-border-radius:24px;
+border-radius:20px;
 
-padding:28px;
+padding:20px;
+
+background:
+rgba(0,94,255,.03);
 
 display:flex;
 
@@ -478,10 +501,10 @@ justify-content:center;
 
 .detail-item{
 
-padding:18px 0;
+padding:10px 0;
 
 border-bottom:
-2px solid rgba(0,94,255,.12);
+1px solid rgba(0,94,255,.10);
 
 }
 
@@ -493,19 +516,19 @@ border-bottom:none;
 
 .detail-item h3{
 
-font-size:20px;
+font-size:13px;
 
 font-weight:500;
 
-color:#444;
+color:#555;
 
-margin-bottom:8px;
+margin-bottom:5px;
 
 }
 
 .detail-item p{
 
-font-size:34px;
+font-size:24px;
 
 font-weight:800;
 
@@ -521,12 +544,12 @@ line-height:1.3;
 
 .footer{
 
-margin-top:34px;
+margin-top:12px;
 
-padding-top:26px;
+padding-top:12px;
 
 border-top:
-2px solid rgba(0,94,255,.18);
+2px solid rgba(0,94,255,.12);
 
 text-align:center;
 
@@ -537,19 +560,19 @@ z-index:2;
 
 .footer h3{
 
-font-size:34px;
+font-size:24px;
 
 font-weight:900;
 
 color:#005eff;
 
-margin-bottom:10px;
+margin-bottom:6px;
 
 }
 
 .footer p{
 
-font-size:20px;
+font-size:13px;
 
 font-weight:600;
 
@@ -561,52 +584,35 @@ color:#333;
 /* RESPONSIVE */
 /* ====================================================== */
 
-@media(max-width:1400px){
+@media(max-width:1100px){
 
 .card{
 
 width:100%;
-
-padding:28px;
-
-}
-
-.header{
-
-flex-direction:column;
-
-gap:20px;
+height:auto;
 
 }
 
-.qr-section{
+.main{
 
 grid-template-columns:1fr;
 
 }
 
-.qr-box,
-.info{
+.right,
+.qr-box{
 
 height:auto;
 
 }
 
-.header-text h1{
+.header{
 
-font-size:48px;
+grid-template-columns:1fr;
 
-}
+text-align:center;
 
-.id-box h2{
-
-font-size:48px;
-
-}
-
-.logo-simpan{
-
-width:170px;
+gap:10px;
 
 }
 
@@ -667,7 +673,7 @@ placeholder="Masukkan 4 digit ID belakang..."
 </div>
 
 <!-- ====================================================== -->
-<!-- ACTIONS -->
+<!-- ACTION -->
 <!-- ====================================================== -->
 
 <div class="actions">
@@ -692,16 +698,24 @@ placeholder="Masukkan 4 digit ID belakang..."
 
 <div class="card" id="card">
 
+<!-- ====================================================== -->
 <!-- HEADER -->
+<!-- ====================================================== -->
 
 <div class="header">
 
-<div class="header-left">
+<!-- LOGO KIRI -->
+
+<div>
 
 <img
 src="../logo-bateng.png"
 class="logo-bateng"
 >
+
+</div>
+
+<!-- TEXT -->
 
 <div class="header-text">
 
@@ -709,23 +723,21 @@ class="logo-bateng"
 
 DINAS PERIKANAN
 <br>
-KABUPATEN
-<br>
-BANGKA TENGAH
+KABUPATEN BANGKA TENGAH
 
 </h1>
 
 <p>
 
-Sistem Informasi Manajemen Pendataan
-<br>
-Armada Nelayan
+Sistem Informasi Manajemen Pendataan Armada Nelayan
 
 </p>
 
 </div>
 
-</div>
+<!-- LOGO KANAN -->
+
+<div>
 
 <img
 src="../logo-simpan.png"
@@ -734,9 +746,13 @@ class="logo-simpan"
 
 </div>
 
-<!-- QR SECTION -->
+</div>
 
-<div class="qr-section">
+<!-- ====================================================== -->
+<!-- MAIN -->
+<!-- ====================================================== -->
+
+<div class="main">
 
 <!-- QR -->
 
@@ -746,9 +762,9 @@ class="logo-simpan"
 
 </div>
 
-<!-- INFO -->
+<!-- RIGHT -->
 
-<div class="info">
+<div class="right">
 
 <!-- ID -->
 
@@ -806,7 +822,9 @@ BT-SMP-0001
 
 </div>
 
+<!-- ====================================================== -->
 <!-- FOOTER -->
+<!-- ====================================================== -->
 
 <div class="footer">
 
@@ -835,7 +853,7 @@ const csvUrl =
 new Date().getTime();
 
 /* ====================================================== */
-/* URL PARAM */
+/* PARAM */
 /* ====================================================== */
 
 const params =
@@ -929,7 +947,7 @@ window.location.origin +
 id,
 
 {
-width:430
+width:300
 },
 
 function(err,canvas){
@@ -1008,7 +1026,7 @@ cariQR();
 );
 
 /* ====================================================== */
-/* DOWNLOAD PNG */
+/* PNG */
 /* ====================================================== */
 
 function downloadPNG(){
@@ -1033,7 +1051,7 @@ link.click();
 }
 
 /* ====================================================== */
-/* DOWNLOAD JPG */
+/* JPG */
 /* ====================================================== */
 
 function downloadJPG(){
