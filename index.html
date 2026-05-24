@@ -745,209 +745,332 @@ class="logo-simpan"
 <!-- MAIN -->
 <!-- ====================================================== -->
 
-<!-- ===================================================== -->
-<!-- MENU GRID FINAL SUPER APP -->
-<!-- GANTI SELURUH BLOK MENU-GRID LAMA -->
-<!-- ===================================================== -->
+<div class="main">
 
-<div class="menu-grid">
+<!-- QR -->
 
-    <!-- ===================================================== -->
-    <!-- SIMPAN V2 -->
-    <!-- ===================================================== -->
+<div class="qr-box">
 
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/forms','_blank')">
-
-        <div class="menu-icon">🚀</div>
-
-        <h3>SIMPAN V2</h3>
-
-        <p>
-            Sistem pendataan kapal generasi terbaru.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- SIMPAN V1 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/forms','_blank')">
-
-        <div class="menu-icon">🛥️</div>
-
-        <h3>SIMPAN V1</h3>
-
-        <p>
-            Sistem pendataan kapal generasi pertama.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- CETAK QR GABUNGAN -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('qr.html','_blank')">
-
-        <div class="menu-icon">🧾</div>
-
-        <h3>CETAK QR</h3>
-
-        <p>
-            Cetak QR gabungan SIMPAN V1 & SIMPAN V2.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- VERIFIKASI -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('verifikasi-kapal.html','_blank')">
-
-        <div class="menu-icon">✅</div>
-
-        <h3>VERIFIKASI</h3>
-
-        <p>
-            Sistem verifikasi kapal realtime.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DATA SIMPAN V2 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')">
-
-        <div class="menu-icon">📊</div>
-
-        <h3>DATA SIMPAN V2</h3>
-
-        <p>
-            Spreadsheet data kapal SIMPAN V2.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DATA SIMPAN V1 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')">
-
-        <div class="menu-icon">📘</div>
-
-        <h3>DATA SIMPAN V1</h3>
-
-        <p>
-            Spreadsheet data kapal SIMPAN V1.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DOWNLOAD EXCEL V2 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
-
-        <div class="menu-icon">⬇️</div>
-
-        <h3>DOWNLOAD EXCEL V2</h3>
-
-        <p>
-            Unduh data SIMPAN V2 format Excel.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DOWNLOAD EXCEL V1 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
-
-        <div class="menu-icon">⬇️</div>
-
-        <h3>DOWNLOAD EXCEL V1</h3>
-
-        <p>
-            Unduh data SIMPAN V1 format Excel.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DOWNLOAD PDF V2 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
-
-        <div class="menu-icon">📄</div>
-
-        <h3>DOWNLOAD PDF V2</h3>
-
-        <p>
-            Unduh data SIMPAN V2 format PDF.
-        </p>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- DOWNLOAD PDF V1 -->
-    <!-- ===================================================== -->
-
-    <div class="menu-card"
-         onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
-
-        <div class="menu-icon">📑</div>
-
-        <h3>DOWNLOAD PDF V1</h3>
-
-        <p>
-            Unduh data SIMPAN V1 format PDF.
-        </p>
-
-    </div>
+<div id="qrcode"></div>
 
 </div>
 
-<!-- ===================================================== -->
-<!-- JANGAN HAPUS ENGINE LAMA -->
-<!-- ===================================================== -->
+<!-- RIGHT -->
 
-<!--
-PERTAHANKAN SCRIPT LAMA BERIKUT:
+<div class="right">
 
-1. loadData()
-2. searchData()
-3. renderStatistikDesa()
-4. renderStatistikKecamatan()
-5. Statistik realtime CSV
-6. Popup multiple data
-7. Statistik verifikasi
-8. Statistik belum verifikasi
-9. Statistik nelayan unik
-10. Statistik per desa
-11. Statistik per kecamatan
+<!-- ID -->
 
-AGAR:
+<div class="id-box">
 
-✅ seluruh dashboard tetap berjalan
-✅ pencarian tetap aktif
-✅ statistik realtime tetap aktif
-✅ QR gabungan tetap aktif
-✅ APK/PWA tetap normal
--->
+<h2 id="idText">
+BT-SMP-0001
+</h2>
+
+</div>
+
+<!-- DETAIL -->
+
+<div class="detail-box">
+
+<div class="detail-item">
+
+<h3>
+👤 Pemilik :
+</h3>
+
+<p id="namaPemilik">
+-
+</p>
+
+</div>
+
+<div class="detail-item">
+
+<h3>
+🚢 Nama Kapal :
+</h3>
+
+<p id="namaKapal">
+-
+</p>
+
+</div>
+
+<div class="detail-item">
+
+<h3>
+📅 Tanggal Cetak :
+</h3>
+
+<p id="tanggal">
+-
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- FOOTER -->
+<!-- ====================================================== -->
+
+<div class="footer">
+
+<h3>
+SCAN QR UNTUK VERIFIKASI DATA KAPAL
+</h3>
+
+<p>
+
+SIMPAN V1 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* ====================================================== */
+/* CSV URL */
+/* ====================================================== */
+
+const csvUrl =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv&t=" +
+new Date().getTime();
+
+/* ====================================================== */
+/* PARAM */
+/* ====================================================== */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+let id =
+params.get("id") ||
+"BT-SMP-0001";
+
+/* ====================================================== */
+/* DATE */
+/* ====================================================== */
+
+document.getElementById(
+"tanggal"
+).innerHTML =
+
+new Date().toLocaleDateString(
+"id-ID"
+);
+
+/* ====================================================== */
+/* LOAD CSV */
+/* ====================================================== */
+
+Papa.parse(csvUrl,{
+
+download:true,
+header:true,
+skipEmptyLines:true,
+
+complete:function(result){
+
+const data = result.data;
+
+/* ====================================================== */
+/* FIND */
+/* ====================================================== */
+
+const kapal = data.find(item =>
+
+(item["ID SIMPAN"] || "")
+.toString()
+.trim()
+.toUpperCase()
+
+===
+
+id.toUpperCase()
+
+);
+
+/* ====================================================== */
+/* SET DATA */
+/* ====================================================== */
+
+if(kapal){
+
+document.getElementById(
+"idText"
+).innerHTML =
+
+kapal["ID SIMPAN"] || "-";
+
+document.getElementById(
+"namaPemilik"
+).innerHTML =
+
+kapal["Nama Pemilik Kapal (Sesuai KTP)"] || "-";
+
+document.getElementById(
+"namaKapal"
+).innerHTML =
+
+kapal["Nama Kapal"] || "-";
+
+}
+
+/* ====================================================== */
+/* QR */
+/* ====================================================== */
+
+QRCode.toCanvas(
+
+document.createElement("canvas"),
+
+window.location.origin +
+"/simpanv2/v1/kapal.html?id=" +
+id,
+
+{
+width:430
+},
+
+function(err,canvas){
+
+if(err){
+
+console.log(err);
+
+return;
+
+}
+
+document
+.getElementById("qrcode")
+.innerHTML = "";
+
+document
+.getElementById("qrcode")
+.appendChild(canvas);
+
+}
+
+);
+
+}
+
+});
+
+/* ====================================================== */
+/* SEARCH */
+/* ====================================================== */
+
+function cariQR(){
+
+const input =
+document.getElementById(
+"searchInput"
+)
+.value
+.trim();
+
+if(!input){
+
+alert(
+"Masukkan 4 digit ID belakang"
+);
+
+return;
+
+}
+
+window.location.href =
+"?id=BT-SMP-" + input;
+
+}
+
+/* ====================================================== */
+/* ENTER */
+/* ====================================================== */
+
+document
+.getElementById(
+"searchInput"
+)
+.addEventListener(
+"keypress",
+function(e){
+
+if(e.key === "Enter"){
+
+cariQR();
+
+}
+
+}
+);
+
+/* ====================================================== */
+/* DOWNLOAD PNG */
+/* ====================================================== */
+
+function downloadPNG(){
+
+html2canvas(
+document.getElementById("card")
+).then(canvas=>{
+
+const link =
+document.createElement("a");
+
+link.download =
+"QR-" + id + ".png";
+
+link.href =
+canvas.toDataURL();
+
+link.click();
+
+});
+
+}
+
+/* ====================================================== */
+/* DOWNLOAD JPG */
+/* ====================================================== */
+
+function downloadJPG(){
+
+html2canvas(
+document.getElementById("card")
+).then(canvas=>{
+
+const link =
+document.createElement("a");
+
+link.download =
+"QR-" + id + ".jpg";
+
+link.href =
+canvas.toDataURL(
+"image/jpeg"
+);
+
+link.click();
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
