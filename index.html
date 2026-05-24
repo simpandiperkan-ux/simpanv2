@@ -1,3 +1,8 @@
+<!-- ===================================================== -->
+<!-- FINAL INDEX.HTML SIMPAN SUPER APP V3 -->
+<!-- SUSUN DARI NOL - FINAL CLEAN VERSION -->
+<!-- ===================================================== -->
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -14,10 +19,6 @@
 
 <style>
 
-/* =======================================================
-RESET
-======================================================= */
-
 *{
 margin:0;
 padding:0;
@@ -25,598 +26,331 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
-/* =======================================================
-BODY
-======================================================= */
-
 body{
-
 background:
 linear-gradient(rgba(7,24,66,.82),rgba(7,24,66,.82)),
 url('background_simpan.png');
-
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
-
 color:white;
-
 display:flex;
-
 min-height:100vh;
-
 }
 
-/* =======================================================
-SIDEBAR
-======================================================= */
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
 
 .sidebar{
-
 width:230px;
-
 background:#082a75;
-
 padding:20px;
-
 position:fixed;
-
 top:0;
 left:0;
-
 height:100%;
-
 overflow:auto;
-
 }
 
 .logo{
-
 text-align:center;
-
 margin-bottom:25px;
-
 }
 
 .logo img{
-
 width:60px;
-
 margin:5px;
-
 }
 
 .logo h2{
-
 margin-top:10px;
-
 font-size:20px;
-
 }
 
 .logo p{
-
 font-size:12px;
-
 line-height:1.6;
-
 margin-top:10px;
-
 color:#e8f0ff;
-
 }
 
-/* =======================================================
-MENU
-======================================================= */
-
 .menu button{
-
 width:100%;
-
 border:none;
-
 padding:14px;
-
 margin-bottom:12px;
-
 border-radius:12px;
-
 background:#0f49ba;
-
 color:white;
-
 font-weight:bold;
-
 cursor:pointer;
-
 font-size:15px;
-
 transition:.2s;
-
 }
 
 .menu button:hover{
-
 background:#1e6cff;
-
 }
 
-/* =======================================================
-MAIN
-======================================================= */
+/* ========================= */
+/* MAIN */
+/* ========================= */
 
 .main{
-
 margin-left:230px;
-
 padding:25px;
-
 width:100%;
-
 }
 
-/* =======================================================
-HEADER
-======================================================= */
-
 .header{
-
 background:rgba(255,255,255,.12);
-
 padding:25px;
-
 border-radius:25px;
-
 backdrop-filter:blur(6px);
-
 margin-bottom:25px;
-
 }
 
 .header h1{
-
 font-size:56px;
-
 font-weight:900;
-
 color:white;
-
 margin-bottom:10px;
-
 }
 
 .header p{
-
 color:#f0f0f0;
-
 margin-bottom:25px;
-
 }
 
-/* =======================================================
-SEARCH
-======================================================= */
+/* ========================= */
+/* SEARCH */
+/* ========================= */
 
 .search-box{
-
 display:flex;
-
 gap:12px;
-
 }
 
 .search-box input{
-
 flex:1;
-
 padding:18px;
-
 border:none;
-
 border-radius:18px;
-
 font-size:20px;
-
 font-weight:bold;
-
 outline:none;
-
 color:#082a75;
-
 }
 
 .search-box button{
-
 padding:18px 35px;
-
 border:none;
-
 border-radius:18px;
-
 background:#10a4ff;
-
 color:white;
-
 font-size:18px;
-
 font-weight:bold;
-
 cursor:pointer;
-
-transition:.2s;
-
 }
 
 .search-box button:hover{
-
 background:#1db8ff;
-
-transform:scale(1.02);
-
 }
 
-/* =======================================================
-STATS
-======================================================= */
+/* ========================= */
+/* STATS */
+/* ========================= */
 
 .stats{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
 gap:18px;
-
 margin-top:25px;
-
 }
 
 .card{
-
 background:rgba(255,255,255,.14);
-
 padding:25px;
-
 border-radius:22px;
-
 backdrop-filter:blur(6px);
-
-transition:.2s;
-
-}
-
-.card:hover{
-
-transform:translateY(-3px);
-
 }
 
 .card h3{
-
 font-size:15px;
-
 margin-bottom:15px;
-
 color:#ffffff;
-
 }
 
 .card h1{
-
 font-size:55px;
-
 font-weight:900;
-
 margin-bottom:10px;
-
 color:white;
-
 }
 
 .card p{
-
 font-size:14px;
-
 color:#f5f5f5;
-
 }
 
-/* =======================================================
-MENU GRID
-======================================================= */
+/* ========================= */
+/* MENU CARD */
+/* ========================= */
 
 .menu-grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
 gap:20px;
-
 margin-top:25px;
-
 }
 
 .menu-card{
-
 background:white;
-
 color:#082a75;
-
 padding:25px;
-
 border-radius:24px;
-
 cursor:pointer;
-
 transition:.2s;
-
 }
 
 .menu-card:hover{
-
 transform:translateY(-4px);
-
 }
 
 .menu-card .icon{
-
 font-size:42px;
-
 margin-bottom:15px;
-
 }
 
 .menu-card h3{
-
 font-size:34px;
-
 margin-bottom:10px;
-
 font-weight:900;
-
 }
 
 .menu-card p{
-
 font-size:15px;
-
 line-height:1.6;
-
 font-weight:bold;
-
 color:#444;
-
 }
 
-/* =======================================================
-SECTION
-======================================================= */
+/* ========================= */
+/* STATISTIK */
+/* ========================= */
 
 .section{
-
 margin-top:35px;
-
 background:rgba(255,255,255,.12);
-
 padding:25px;
-
 border-radius:25px;
-
 backdrop-filter:blur(6px);
-
 }
 
 .section h2{
-
 margin-bottom:25px;
-
 font-size:40px;
-
 font-weight:900;
-
 color:white;
-
 }
 
-/* =======================================================
-BAR
-======================================================= */
-
 .bar-item{
-
 margin-bottom:18px;
-
 }
 
 .bar-title{
-
 display:flex;
-
 justify-content:space-between;
-
 margin-bottom:8px;
-
 font-weight:bold;
-
 font-size:15px;
-
 color:white;
-
 }
 
 .bar{
-
 width:100%;
-
 height:15px;
-
 background:rgba(255,255,255,.18);
-
 border-radius:20px;
-
 overflow:hidden;
-
 }
 
 .bar-fill{
-
 height:100%;
-
 background:linear-gradient(90deg,#15d4ff,#246dff);
-
 border-radius:20px;
-
 }
 
-/* =======================================================
-MODAL
-======================================================= */
+/* ========================= */
+/* MODAL */
+/* ========================= */
 
 .modal{
-
 display:none;
-
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 background:rgba(0,0,0,.6);
-
 justify-content:center;
-
 align-items:center;
-
-z-index:9999;
-
+z-index:999;
 }
 
 .modal-box{
-
 background:white;
-
 padding:30px;
-
 border-radius:22px;
-
 width:320px;
-
 text-align:center;
-
 }
 
 .modal-box h2{
-
 color:#082a75;
-
 margin-bottom:20px;
-
 }
 
 .modal-box button{
-
 width:100%;
-
 padding:14px;
-
 border:none;
-
 margin-bottom:12px;
-
 border-radius:12px;
-
 background:#0f49ba;
-
 color:white;
-
 font-weight:bold;
-
 cursor:pointer;
-
-transition:.2s;
-
 }
 
 .modal-box button:hover{
-
 background:#1e6cff;
-
 }
 
-/* =======================================================
-RESPONSIVE
-======================================================= */
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
 
 @media(max-width:900px){
 
 .sidebar{
-
 position:relative;
-
 width:100%;
-
 height:auto;
-
 }
 
 .main{
-
 margin-left:0;
-
 }
 
 body{
-
 flex-direction:column;
-
 }
 
 .header h1{
-
 font-size:38px;
-
 }
-
-.search-box{
-
-flex-direction:column;
-
-}
-
-}
-
-/* =======================================================
-LOADING
-======================================================= */
-
-.loading{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.6);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:99999;
-
-font-size:30px;
-
-font-weight:bold;
-
-backdrop-filter:blur(5px);
-
-display:none;
 
 }
 
@@ -626,19 +360,9 @@ display:none;
 
 <body>
 
-<!-- =======================================================
-LOADING
-======================================================= -->
-
-<div class="loading" id="loading">
-
-🔎 Membuka Data...
-
-</div>
-
-<!-- =======================================================
-SIDEBAR
-======================================================= -->
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
 
 <div class="sidebar">
 
@@ -650,42 +374,32 @@ SIDEBAR
 <h2>SIMPAN</h2>
 
 <p>
-
 Sistem Informasi Manajemen
 Pendataan Armada Nelayan
 Kabupaten Bangka Tengah
-
 </p>
 
 </div>
 
 <div class="menu">
 
-<button>
-
-🏠 Dashboard
-
-</button>
+<button>🏠 Dashboard</button>
 
 <button onclick="window.open('qr.html','_blank')">
-
 🧾 CETAK QR
-
 </button>
 
 <button onclick="window.open('verifikasi-kapal.html','_blank')">
-
 ✅ Verifikasi
-
 </button>
 
 </div>
 
 </div>
 
-<!-- =======================================================
-MAIN
-======================================================= -->
+<!-- ========================= -->
+<!-- MAIN -->
+<!-- ========================= -->
 
 <div class="main">
 
@@ -694,9 +408,7 @@ MAIN
 <h1>DASHBOARD SIMPAN V3</h1>
 
 <p>
-
 Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah
-
 </p>
 
 <div class="search-box">
@@ -708,86 +420,60 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 >
 
 <button onclick="cariData()">
-
 🔎 CARI DATA
-
 </button>
 
 </div>
 
 </div>
 
-<!-- =======================================================
-STATS
-======================================================= -->
+<!-- ========================= -->
+<!-- STATS -->
+<!-- ========================= -->
 
 <div class="stats">
 
 <div class="card">
-
 <h3>🚢 TOTAL KAPAL</h3>
-
 <h1 id="totalKapal">0</h1>
-
 <p>Gabungan SIMPAN V1 & V2</p>
-
 </div>
 
 <div class="card">
-
 <h3>📁 SIMPAN V1</h3>
-
 <h1 id="totalV1">0</h1>
-
 <p>Total Sistem Lama</p>
-
 </div>
 
 <div class="card">
-
 <h3>🚀 SIMPAN V2</h3>
-
 <h1 id="totalV2">0</h1>
-
 <p>Total Sistem Baru</p>
-
 </div>
 
 <div class="card">
-
 <h3>🧑‍🌾 TOTAL NELAYAN</h3>
-
 <h1 id="totalNelayan">0</h1>
-
 <p>Berdasarkan NIK unik</p>
-
 </div>
 
 <div class="card">
-
 <h3>✅ TERVERIFIKASI</h3>
-
 <h1 id="totalVerifikasi">0</h1>
-
 <p>Status verifikasi</p>
-
 </div>
 
 <div class="card">
-
 <h3>❌ BELUM VERIFIKASI</h3>
-
 <h1 id="totalBelum">0</h1>
-
 <p>Status belum verifikasi</p>
-
 </div>
 
 </div>
 
-<!-- =======================================================
-MENU GRID
-======================================================= -->
+<!-- ========================= -->
+<!-- MENU -->
+<!-- ========================= -->
 
 <div class="menu-grid">
 
@@ -801,9 +487,7 @@ onclick="window.open('qr.html','_blank')"
 <h3>CETAK QR</h3>
 
 <p>
-
 Cetak QR gabungan SIMPAN V1 & V2.
-
 </p>
 
 </div>
@@ -818,9 +502,7 @@ onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85u
 <h3>DATA SIMPAN V1</h3>
 
 <p>
-
 Buka Spreadsheet data kapal SIMPAN V1.
-
 </p>
 
 </div>
@@ -835,18 +517,46 @@ onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej
 <h3>DATA SIMPAN V2</h3>
 
 <p>
-
 Buka Spreadsheet data kapal SIMPAN V2.
+</p>
 
+</div>
+
+<div
+class="menu-card"
+onclick="openExcelModal()"
+>
+
+<div class="icon">⬇️</div>
+
+<h3>DOWNLOAD EXCEL</h3>
+
+<p>
+Download spreadsheet SIMPAN V1 & V2.
+</p>
+
+</div>
+
+<div
+class="menu-card"
+onclick="openPdfModal()"
+>
+
+<div class="icon">📄</div>
+
+<h3>DOWNLOAD PDF</h3>
+
+<p>
+Download PDF SIMPAN V1 & V2.
 </p>
 
 </div>
 
 </div>
 
-<!-- =======================================================
-STATISTIK DESA
-======================================================= -->
+<!-- ========================= -->
+<!-- STATISTIK DESA -->
+<!-- ========================= -->
 
 <div class="section">
 
@@ -856,9 +566,9 @@ STATISTIK DESA
 
 </div>
 
-<!-- =======================================================
-STATISTIK KECAMATAN
-======================================================= -->
+<!-- ========================= -->
+<!-- STATISTIK KECAMATAN -->
+<!-- ========================= -->
 
 <div class="section">
 
@@ -870,17 +580,65 @@ STATISTIK KECAMATAN
 
 </div>
 
-<!-- =======================================================
-SCRIPT
-======================================================= -->
+<!-- ========================= -->
+<!-- MODAL EXCEL -->
+<!-- ========================= -->
+
+<div class="modal" id="excelModal">
+
+<div class="modal-box">
+
+<h2>DOWNLOAD EXCEL</h2>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
+DOWNLOAD EXCEL V1
+</button>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
+DOWNLOAD EXCEL V2
+</button>
+
+<button onclick="closeExcelModal()">
+TUTUP
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- MODAL PDF -->
+<!-- ========================= -->
+
+<div class="modal" id="pdfModal">
+
+<div class="modal-box">
+
+<h2>DOWNLOAD PDF</h2>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
+DOWNLOAD PDF V1
+</button>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
+DOWNLOAD PDF V2
+</button>
+
+<button onclick="closePdfModal()">
+TUTUP
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- SCRIPT -->
+<!-- ========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <script>
-
-/* =======================================================
-CSV
-======================================================= */
 
 const CSV_V1 =
 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv';
@@ -888,16 +646,8 @@ const CSV_V1 =
 const CSV_V2 =
 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv';
 
-/* =======================================================
-DATA
-======================================================= */
-
 let dataV1 = [];
 let dataV2 = [];
-
-/* =======================================================
-LOAD CSV
-======================================================= */
 
 async function loadCSV(url){
 
@@ -920,18 +670,12 @@ resolve(results.data);
 
 }
 
-/* =======================================================
-LOAD DATA
-======================================================= */
-
 async function loadData(){
 
 dataV1 = await loadCSV(CSV_V1);
 dataV2 = await loadCSV(CSV_V2);
 
 const gabungan = [...dataV1,...dataV2];
-
-/* TOTAL KAPAL */
 
 const kapalUnik = new Set();
 
@@ -942,9 +686,7 @@ const id =
 .trim();
 
 if(id){
-
 kapalUnik.add(id);
-
 }
 
 });
@@ -952,15 +694,11 @@ kapalUnik.add(id);
 document.getElementById('totalKapal').innerText =
 kapalUnik.size;
 
-/* TOTAL */
-
 document.getElementById('totalV1').innerText =
 dataV1.length;
 
 document.getElementById('totalV2').innerText =
 dataV2.length;
-
-/* TOTAL NELAYAN */
 
 const nikUnik = new Set();
 
@@ -975,9 +713,7 @@ item['NOMOR INDUK KEPENDUDUKAN (NIK)'] ||
 .trim();
 
 if(nik){
-
 nikUnik.add(nik);
-
 }
 
 });
@@ -985,7 +721,9 @@ nikUnik.add(nik);
 document.getElementById('totalNelayan').innerText =
 nikUnik.size;
 
-/* STATUS */
+// =======================
+// HITUNG STATUS VERIFIKASI
+// =======================
 
 let totalVerifikasi = 0;
 let totalBelum = 0;
@@ -1004,6 +742,11 @@ if(kapalVerifikasi.has(id)) return;
 
 kapalVerifikasi.add(id);
 
+
+// =======================
+// AMBIL STATUS
+// =======================
+
 const status = (
 
 item['STATUS'] ||
@@ -1017,6 +760,11 @@ item['STATUS VERIFIKASI'] ||
 .toString()
 .trim()
 .toUpperCase();
+
+
+// =======================
+// CEK TERVERIFIKASI
+// =======================
 
 if(status.includes('TERVERIFIKASI')){
 
@@ -1036,16 +784,10 @@ totalVerifikasi;
 document.getElementById('totalBelum').innerText =
 totalBelum;
 
-/* STATISTIK */
-
 buatStatistikDesa(gabungan);
 buatStatistikKecamatan(gabungan);
 
 }
-
-/* =======================================================
-STATISTIK DESA
-======================================================= */
 
 function buatStatistikDesa(data){
 
@@ -1076,9 +818,7 @@ if(unik.has(key)) return;
 unik.add(key);
 
 if(!map[desa]){
-
 map[desa]=0;
-
 }
 
 map[desa]++;
@@ -1088,10 +828,6 @@ map[desa]++;
 renderStatistik(map,'desaContainer');
 
 }
-
-/* =======================================================
-STATISTIK KECAMATAN
-======================================================= */
 
 function buatStatistikKecamatan(data){
 
@@ -1122,9 +858,7 @@ if(unik.has(key)) return;
 unik.add(key);
 
 if(!map[kecamatan]){
-
 map[kecamatan]=0;
-
 }
 
 map[kecamatan]++;
@@ -1134,10 +868,6 @@ map[kecamatan]++;
 renderStatistik(map,'kecamatanContainer');
 
 }
-
-/* =======================================================
-RENDER STATISTIK
-======================================================= */
 
 function renderStatistik(data,id){
 
@@ -1159,13 +889,11 @@ const persen =
 (jumlah/max)*100;
 
 container.innerHTML += `
-
 <div class="bar-item">
 
 <div class="bar-title">
 
 <span>${nama}</span>
-
 <span>${jumlah} Kapal</span>
 
 </div>
@@ -1180,16 +908,11 @@ style="width:${persen}%"
 </div>
 
 </div>
-
 `;
 
 });
 
 }
-
-/* =======================================================
-CARI DATA FINAL
-======================================================= */
 
 function cariData(){
 
@@ -1198,7 +921,7 @@ document
 .getElementById('searchInput')
 .value
 .trim()
-.toUpperCase();
+.toLowerCase();
 
 if(!keyword){
 
@@ -1207,15 +930,13 @@ return;
 
 }
 
-document
-.getElementById('loading')
-.style.display='flex';
+let adaV1 = false;
+let adaV2 = false;
 
-/* =======================================================
-CARI V1
-======================================================= */
+let urlV1 = '';
+let urlV2 = '';
 
-const foundV1 = dataV1.find(item=>{
+dataV1.forEach(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -1229,23 +950,34 @@ const nik =
 (item['Nomor Induk Kependudukan (NIK)']||'')
 .trim();
 
-return (
+const input =
+keyword
+.trim()
+.toUpperCase();
 
-keyword === last4 ||
+if(
 
-keyword === nik ||
+input === last4 ||
 
-keyword === fullId
+input === nik ||
 
+input === fullId
+
+){
+
+adaV1 = true;
+
+urlV1 =
+'v1/kapal.html?id='+
+encodeURIComponent(
+item['ID SIMPAN']
 );
 
+}
+
 });
-
-/* =======================================================
-CARI V2
-======================================================= */
-
-const foundV2 = dataV2.find(item=>{
+  
+dataV2.forEach(item=>{
 
 const fullId =
 (item['ID SIMPAN']||'')
@@ -1259,72 +991,65 @@ const nik =
 (item['NOMOR INDUK KEPENDUDUKAN (NIK)']||'')
 .trim();
 
-return (
+const input =
+keyword
+.trim()
+.toUpperCase();
 
-keyword === last4 ||
+if(
 
-keyword === nik ||
+input === last4 ||
 
-keyword === fullId
+input === nik ||
 
+input === fullId
+
+){
+
+adaV2 = true;
+
+urlV2 =
+'kapal.html?id='+
+encodeURIComponent(
+item['ID SIMPAN']
 );
 
+}
+
 });
-
-/* =======================================================
-LOADING OFF
-======================================================= */
-
-document
-.getElementById('loading')
-.style.display='none';
-
-/* =======================================================
-NOT FOUND
-======================================================= */
-
-if(!foundV1 && !foundV2){
+  
+if(!adaV1 && !adaV2){
 
 alert('Data tidak ditemukan');
 return;
 
 }
 
-/* =======================================================
-URL
-======================================================= */
-
-const urlV1 = foundV1
-? 'v1/kapal.html?id=' +
-encodeURIComponent(foundV1['ID SIMPAN'])
-: '';
-
-const urlV2 = foundV2
-? 'kapal.html?id=' +
-encodeURIComponent(foundV2['ID SIMPAN'])
-: '';
-
-/* =======================================================
-DOUBLE DATA
-======================================================= */
-
-if(foundV1 && foundV2){
+if(adaV1 && adaV2){
 
 const pilihan =
 prompt(
-'Data ditemukan di 2 sistem.\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
+'Pilih Sistem:\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
 );
 
 if(pilihan === '1'){
 
-window.open(urlV1,'_blank');
+window.open(
+urlV1,
+'_blank'
+);
+
 return;
 
 }
 
 if(pilihan === '2'){
 
-window.open(urlV2,'_blank');
+window.open(
+urlV2,
+'_blank'
+);
+
 return;
 
 }
@@ -1333,33 +1058,29 @@ return;
 
 }
 
-/* =======================================================
-ONLY V1
-======================================================= */
+if(adaV1){
 
-if(foundV1){
+window.open(
+urlV1,
+'_blank'
+);
 
-window.open(urlV1,'_blank');
 return;
 
 }
 
-/* =======================================================
-ONLY V2
-======================================================= */
+if(adaV2){
 
-if(foundV2){
+window.open(
+urlV2,
+'_blank'
+);
 
-window.open(urlV2,'_blank');
 return;
 
 }
 
 }
-
-/* =======================================================
-ENTER SEARCH
-======================================================= */
 
 document
 .getElementById('searchInput')
@@ -1373,9 +1094,37 @@ cariData();
 
 });
 
-/* =======================================================
-SERVICE WORKER
-======================================================= */
+function openExcelModal(){
+
+document
+.getElementById('excelModal')
+.style.display='flex';
+
+}
+
+function closeExcelModal(){
+
+document
+.getElementById('excelModal')
+.style.display='none';
+
+}
+
+function openPdfModal(){
+
+document
+.getElementById('pdfModal')
+.style.display='flex';
+
+}
+
+function closePdfModal(){
+
+document
+.getElementById('pdfModal')
+.style.display='none';
+
+}
 
 if('serviceWorker' in navigator){
 
@@ -1384,10 +1133,6 @@ navigator
 .register('sw.js');
 
 }
-
-/* =======================================================
-INIT
-======================================================= */
 
 loadData();
 
