@@ -1,205 +1,968 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<title>Data Kapal SIMPAN</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>SIMPAN V1 - Data Kapal</title>
+
+<!-- PAPAPARSE -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
 <style>
-/* ===============================
-   SIMPAN FINAL OFFICIAL
-================================ */
+
+/* ======================================
+RESET
+====================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ======================================
+BODY
+====================================== */
+
 body{
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(120deg, #e2ebf7, #f8fafc);
-  padding:20px;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.10),
+            rgba(0,40,90,0.35)
+        ),
+        url('background_simpan.png');
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    min-height:100vh;
+
+    padding:20px;
+
+    position:relative;
+
 }
 
-/* ===============================
-   CONTAINER
-================================ */
-.box{
-  max-width:900px;
-  margin:auto;
-  background:#fff;
-  padding:32px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  position:relative;
-  overflow:hidden;
+/* ======================================
+WATERMARK
+====================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:url('logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:240px;
+
+    opacity:0.025;
+
+    z-index:-1;
+
 }
 
-/* ===============================
-   WATERMARK PATTERN (LOCKED)
-================================ */
-.box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("logo-simpan.png") repeat;
-  background-size:130px 130px;
-  opacity:0.03;
-  pointer-events:none;
-  z-index:0;
+/* ======================================
+CARD
+====================================== */
+
+.card{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,0.96);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.28);
+
+    border:4px solid rgba(255,255,255,0.35);
+
 }
 
-/* ===============================
-   CONTENT LAYER
-================================ */
-.box > *{
-  position:relative;
-  z-index:1;
-}
+/* ======================================
+HEADER
+====================================== */
 
-/* ===============================
-   HEADER (LOCKED SYMMETRY)
-================================ */
 .header{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  margin-bottom:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.98),
+            rgba(225,240,255,0.96)
+        );
+
+    padding:35px;
+
+    position:relative;
+
+    overflow:hidden;
+
 }
 
-.logo-left,
-.logo-right{
-  display:flex;
-  align-items:center;
-}
-.logo-left{justify-content:flex-start}
-.logo-right{justify-content:flex-end}
+/* ======================================
+HEADER WATERMARK
+====================================== */
 
-.logo-left img,
-.logo-right img{
-  height:70px;
-  width:auto;
-}
+.header::before{
 
-/* ===============================
-   TITLE
-================================ */
-.title{
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
-  margin:8px 0 4px;
-  color:#0f172a;
-}
-.subtitle{
-  text-align:center;
-  font-size:14px;
-  color:#475569;
-  margin-bottom:24px;
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url('logo-simpan.png');
+
+    background-repeat:repeat;
+
+    background-size:180px;
+
+    opacity:0.04;
+
+    z-index:1;
+
 }
 
-/* ===============================
-   TABLE
-================================ */
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:10px;border-bottom:1px solid #e5e7eb}
-th{width:35%;background:#f1f5f9;font-weight:600}
+/* ======================================
+HEADER FLEX
+====================================== */
 
-/* ===============================
-   FOOTER
-================================ */
+.header-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* ======================================
+TITLE
+====================================== */
+
+.title-area{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.title-area h1{
+
+    font-size:58px;
+
+    color:#002b70;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+
+    text-shadow:0 2px 4px rgba(0,0,0,0.08);
+
+}
+
+.title-area p{
+
+    font-size:22px;
+
+    color:#223;
+
+}
+
+/* ======================================
+LOGO
+====================================== */
+
+.logo-kabupaten{
+
+    width:110px;
+
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+
+}
+
+.logo-simpan{
+
+    width:145px;
+
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+
+}
+
+/* ======================================
+CONTENT
+====================================== */
+
+.content{
+
+    padding:30px;
+
+}
+
+/* ======================================
+ITEM
+====================================== */
+
+.item{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f5faff
+        );
+
+    border-radius:24px;
+
+    padding:24px;
+
+    margin-bottom:20px;
+
+    border-left:8px solid #0066cc;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+
+}
+
+.item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 22px rgba(0,0,0,0.12);
+
+}
+
+/* ======================================
+LABEL
+====================================== */
+
+.label{
+
+    color:#0056b3;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    margin-bottom:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.5px;
+
+}
+
+/* ======================================
+VALUE
+====================================== */
+
+.value{
+
+    font-size:22px;
+
+    color:#222;
+
+    line-height:1.7;
+
+    word-break:break-word;
+
+}
+
+/* ======================================
+PHOTO
+====================================== */
+
+.foto{
+
+    width:100%;
+
+    border-radius:24px;
+
+    border:5px solid #fff;
+
+    margin-top:10px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+    transition:0.3s;
+
+    cursor:pointer;
+
+    object-fit:cover;
+
+}
+
+.foto:hover{
+
+    transform:scale(1.02);
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
+
+}
+
+/* ======================================
+BUTTON
+====================================== */
+
+.btn-link{
+
+    display:inline-block;
+
+    padding:13px 24px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0056b3,
+            #00a2ff
+        );
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    transition:0.3s;
+
+    box-shadow:0 5px 15px rgba(0,102,204,0.2);
+
+}
+
+.btn-link:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ======================================
+BADGE STATUS
+====================================== */
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00aa55,
+            #00cc66
+        );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,170,85,0.25);
+
+}
+
+/* ======================================
+LOADING
+====================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:90px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#0066cc;
+
+}
+
+/* ======================================
+ERROR
+====================================== */
+
+.notfound{
+
+    text-align:center;
+
+    padding:90px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:red;
+
+}
+
+/* ======================================
+FOOTER
+====================================== */
+
 .footer{
-  margin-top:28px;
-  padding-top:10px;
-  border-top:1px dashed #cbd5f5;
-  font-size:12px;
-  color:#475569;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #003b8f,
+            #005ecb
+        );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
 }
 
-/* ===============================
-   PRINT MODE
-================================ */
-@media print{
-  body{background:#fff;padding:0}
-  .box{box-shadow:none;border-radius:0}
+/* ======================================
+LIGHTBOX
+====================================== */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.93);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+    padding:20px;
+
+    backdrop-filter:blur(5px);
+
 }
+
+.lightbox.active{
+
+    display:flex;
+
+}
+
+.lightbox img{
+
+    max-width:95%;
+
+    max-height:95%;
+
+    border-radius:24px;
+
+    animation:zoomIn .25s ease;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ======================================
+RESPONSIVE
+====================================== */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:10px;
+
+    }
+
+    .header-top{
+
+        flex-direction:column;
+
+    }
+
+    .title-area h1{
+
+        font-size:34px;
+
+    }
+
+    .title-area p{
+
+        font-size:15px;
+
+    }
+
+    .logo-kabupaten{
+
+        width:80px;
+
+    }
+
+    .logo-simpan{
+
+        width:105px;
+
+    }
+
+    .value{
+
+        font-size:18px;
+
+    }
+
+    .content{
+
+        padding:18px;
+
+    }
+
+}
+
+/* ======================================
+PRINT
+====================================== */
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+        padding:0;
+
+    }
+
+    .card{
+
+        box-shadow:none;
+
+        border:none;
+
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
+<div class="card">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="logo-left">
-      <img src="logo-bateng.png" alt="Logo Kabupaten Bangka Tengah">
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-top">
+
+            <img
+                src="logo-bateng.png"
+                class="logo-kabupaten"
+            >
+
+            <div class="title-area">
+
+                <h1>DATA KAPAL SIMPAN</h1>
+
+                <p>
+                    Sistem Informasi Manajemen Pendataan Armada Nelayan
+                </p>
+
+            </div>
+
+            <img
+                src="logo-simpan.png"
+                class="logo-simpan"
+            >
+
+        </div>
+
     </div>
 
-    <div></div>
+    <!-- CONTENT -->
 
-    <div class="logo-right">
-      <img src="logo-simpan.png" alt="Logo SIMPAN">
+    <div class="content" id="data">
+
+        <div class="loading">
+
+            Memuat data kapal...
+
+        </div>
+
     </div>
-  </div>
 
-  <div class="title">DATA KAPAL SIMPAN</div>
-  <div class="subtitle">Sistem Informasi Manajemen Pendataan Armada Nelayan</div>
+    <!-- FOOTER -->
 
-  <div id="hasil">Memuat data...</div>
+    <div class="footer">
 
-  <div class="footer">
-    <div id="doc"></div>
-    <div id="printTime"></div>
-  </div>
+        © Dinas Perikanan Kabupaten Bangka Tengah
+
+    </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+    <img id="lightbox-img">
 
 </div>
 
 <script>
+
+/* ======================================
+GOOGLE SHEET JSON
+====================================== */
+
 const SHEET_JSON =
 "https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/gviz/tq?tqx=out:json";
 
+/* ======================================
+HIDE COLUMN
+====================================== */
+
 const HIDDEN_COLS = [
-  "Nomor Induk Kependudukan (NIK)",
-  "Upload Foto KTP Elektronik",
-  "Nomor KUSUKA"
+
+    "Nomor Induk Kependudukan (NIK)",
+
+    "Upload Foto KTP Elektronik",
+
+    "Nomor KUSUKA"
+
 ];
 
-const hasil = document.getElementById("hasil");
-const idCari = new URLSearchParams(location.search).get("id");
+/* ======================================
+GET PARAM
+====================================== */
 
-function formatValue(label, val){
-  if(!val) return "-";
-  if(typeof val==="string" && val.startsWith("Date")){
-    const m=val.match(/\d+/g).map(Number);
-    return new Date(m[0],m[1],m[2]).toLocaleDateString("id-ID");
-  }
-  if(typeof val==="string" && val.startsWith("http")){
-    return `<a href="${val}" target="_blank">Buka</a>`;
-  }
-  return val;
+const container =
+document.getElementById("data");
+
+const kapalId =
+new URLSearchParams(location.search)
+.get("id");
+
+/* ======================================
+GOOGLE DRIVE IMAGE
+====================================== */
+
+function convertDriveImage(url){
+
+    if(!url) return url;
+
+    if(url.includes("drive.google.com")){
+
+        const match =
+        url.match(/[-\\w]{25,}/);
+
+        if(match){
+
+            return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1200`;
+
+        }
+
+    }
+
+    return url;
+
 }
 
-fetch(SHEET_JSON)
-.then(r=>r.text())
-.then(t=>{
-  const j=JSON.parse(t.substring(47,t.length-2));
-  const h=j.table.cols.map(c=>c.label);
-  const rows=j.table.rows.map(r=>r.c.map(c=>c?.v??""));
+/* ======================================
+LIGHTBOX
+====================================== */
 
-  const idx=h.indexOf("ID SIMPAN");
-  const row=rows.find(r=>r[idx]?.toString().trim()===idCari);
+function openLightbox(src){
 
-  if(!row){hasil.innerHTML="Data tidak ditemukan";return;}
+    document
+    .getElementById("lightbox-img")
+    .src = src;
 
-  let html="<table>";
-  h.forEach((k,i)=>{
-    if(HIDDEN_COLS.includes(k)) return;
-    html+=`<tr><th>${k}</th><td>${formatValue(k,row[i])}</td></tr>`;
-  });
-  html+="</table>";
-  hasil.innerHTML=html;
+    document
+    .getElementById("lightbox")
+    .classList.add("active");
 
-  document.getElementById("doc").innerHTML="No Dokumen: SIMPAN-"+idCari;
-  document.getElementById("printTime").innerHTML="Dicetak: "+new Date().toLocaleString("id-ID");
+}
+
+document
+.getElementById("lightbox")
+.addEventListener("click", function(){
+
+    this.classList.remove("active");
+
 });
+
+/* ======================================
+FORMAT VALUE
+====================================== */
+
+function formatValue(label, value){
+
+    if(!value || value === ""){
+
+        return "-";
+
+    }
+
+    /* FOTO */
+
+    if(
+
+        label.toUpperCase().includes("FOTO") ||
+
+        label.toUpperCase().includes("GAMBAR")
+
+    ){
+
+        const imageUrl =
+        convertDriveImage(value);
+
+        return `
+
+            <img
+                src="${imageUrl}"
+                class="foto"
+                onclick="openLightbox('${imageUrl}')"
+                loading="lazy"
+            >
+
+        `;
+
+    }
+
+    /* LINK */
+
+    if(
+
+        value.startsWith("http://") ||
+
+        value.startsWith("https://")
+
+    ){
+
+        return `
+
+            <a
+                href="${value}"
+                target="_blank"
+                class="btn-link"
+            >
+
+                Buka Dokumen
+
+            </a>
+
+        `;
+
+    }
+
+    /* STATUS */
+
+    if(
+
+        label.toUpperCase().includes("STATUS")
+
+    ){
+
+        return `
+
+            <div class="badge">
+
+                ${value}
+
+            </div>
+
+        `;
+
+    }
+
+    return value;
+
+}
+
+/* ======================================
+LOAD DATA
+====================================== */
+
+fetch(SHEET_JSON)
+
+.then(r => r.text())
+
+.then(t => {
+
+    const json =
+    JSON.parse(
+        t.substring(47, t.length - 2)
+    );
+
+    const headers =
+    json.table.cols.map(c => c.label);
+
+    const rows =
+    json.table.rows.map(r =>
+        r.c.map(c => c?.v ?? "")
+    );
+
+    const idx =
+    headers.indexOf("ID SIMPAN");
+
+    const row =
+    rows.find(r => {
+
+        const sheetId =
+        String(r[idx] || "")
+        .replace(/\s+/g,"")
+        .trim()
+        .toUpperCase();
+
+        const urlId =
+        String(kapalId || "")
+        .replace(/\s+/g,"")
+        .trim()
+        .toUpperCase();
+
+        return sheetId === urlId;
+
+    });
+
+    /* DATA NOT FOUND */
+
+    if(!row){
+
+        container.innerHTML = `
+
+            <div class="notfound">
+
+                Data kapal tidak ditemukan
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    /* BUILD */
+
+    container.innerHTML = "";
+
+    headers.forEach((label, i) => {
+
+        if(
+            HIDDEN_COLS.includes(label)
+        ) return;
+
+        const item =
+        document.createElement("div");
+
+        item.className = "item";
+
+        item.innerHTML = `
+
+            <div class="label">
+
+                ${label}
+
+            </div>
+
+            <div class="value">
+
+                ${formatValue(label, row[i])}
+
+            </div>
+
+        `;
+
+        container.appendChild(item);
+
+    });
+
+})
+
+.catch(error => {
+
+    console.log(error);
+
+    container.innerHTML = `
+
+        <div class="notfound">
+
+            Gagal memuat data spreadsheet
+
+        </div>
+
+    `;
+
+});
+
 </script>
 
 </body>
