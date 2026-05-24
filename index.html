@@ -921,7 +921,8 @@ document
 .getElementById('searchInput')
 .value
 .trim()
-.toLowerCase();
+.replace(/\s+/g,'')
+.toUpperCase();
 
 if(!keyword){
 
@@ -930,11 +931,24 @@ return;
 
 }
 
-let adaV1 = false;
-let adaV2 = false;
+/* =========================
+LOADING ON
+========================= */
 
-let urlV1 = '';
-let urlV2 = '';
+document
+.getElementById('loading')
+.style.display='flex';
+
+/* =========================
+HASIL
+========================= */
+
+let hasilV1 = null;
+let hasilV2 = null;
+
+/* =========================
+SCAN SIMPAN V1
+========================= */
 
 dataV1.forEach(item=>{
 
@@ -964,12 +978,16 @@ keyword === nik
 
 ){
 
-hasilV1.push(item);
+hasilV1 = item;
 
 }
 
 });
-  
+
+/* =========================
+SCAN SIMPAN V2
+========================= */
+
 dataV2.forEach(item=>{
 
 const fullId =
@@ -998,44 +1016,71 @@ keyword === nik
 
 ){
 
-hasilV2.push(item);
+hasilV2 = item;
 
 }
 
 });
-  
-if(!adaV1 && !adaV2){
+
+/* =========================
+LOADING OFF
+========================= */
+
+document
+.getElementById('loading')
+.style.display='none';
+
+/* =========================
+DATA TIDAK ADA
+========================= */
+
+if(!hasilV1 && !hasilV2){
 
 alert('Data tidak ditemukan');
 return;
 
 }
 
-if(adaV1 && adaV2){
+/* =========================
+URL
+========================= */
 
-const pilihan =
-prompt(
-'Pilih Sistem:\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
+const urlV1 = hasilV1
+? 'v1/kapal.html?id=' +
+encodeURIComponent(
+hasilV1['ID SIMPAN']
+)
+: '';
+
+const urlV2 = hasilV2
+? 'kapal.html?id=' +
+encodeURIComponent(
+hasilV2['ID SIMPAN']
+)
+: '';
+
+/* =========================
+JIKA ADA DI KEDUA SISTEM
+========================= */
+
+if(hasilV1 && hasilV2){
+
+const pilihan = prompt(
+
+'Data ditemukan di 2 sistem.\n\n1 = SIMPAN V1\n2 = SIMPAN V2'
+
 );
 
 if(pilihan === '1'){
 
-window.open(
-urlV1,
-'_blank'
-);
-
+window.open(urlV1,'_blank');
 return;
 
 }
 
 if(pilihan === '2'){
 
-window.open(
-urlV2,
-'_blank'
-);
-
+window.open(urlV2,'_blank');
 return;
 
 }
@@ -1044,30 +1089,31 @@ return;
 
 }
 
-if(adaV1){
+/* =========================
+HANYA V1
+========================= */
 
-window.open(
-urlV1,
-'_blank'
-);
+if(hasilV1){
 
+window.open(urlV1,'_blank');
 return;
 
 }
 
-if(adaV2){
+/* =========================
+HANYA V2
+========================= */
 
-window.open(
-urlV2,
-'_blank'
-);
+if(hasilV2){
 
+window.open(urlV2,'_blank');
 return;
 
 }
 
 }
 
+  
 document
 .getElementById('searchInput')
 .addEventListener('keypress',function(e){
