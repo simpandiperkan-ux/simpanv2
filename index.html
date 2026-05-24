@@ -41,10 +41,6 @@ overflow-x:hidden;
 
 }
 
-/* ====================================================== */
-/* WRAPPER */
-/* ====================================================== */
-
 .wrapper{
 display:flex;
 min-height:100vh;
@@ -61,8 +57,6 @@ width:240px;
 background:
 rgba(0,20,80,.96);
 
-backdrop-filter:blur(12px);
-
 position:fixed;
 
 top:0;
@@ -74,6 +68,8 @@ padding:24px 16px;
 overflow-y:auto;
 
 z-index:999;
+
+backdrop-filter:blur(12px);
 
 box-shadow:
 0 0 25px rgba(0,0,0,.35);
@@ -178,8 +174,6 @@ width:100%;
 background:
 rgba(255,255,255,.10);
 
-backdrop-filter:blur(12px);
-
 padding:34px;
 
 border-radius:30px;
@@ -189,6 +183,8 @@ position:relative;
 overflow:hidden;
 
 margin-bottom:28px;
+
+backdrop-filter:blur(10px);
 
 border:
 1px solid rgba(255,255,255,.10);
@@ -748,37 +744,37 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 <div class="stat-card">
 <div class="stat-title">🚢 TOTAL KAPAL</div>
-<div class="stat-value" id="totalKapal">0</div>
+<div class="stat-value" id="totalKapal">364</div>
 <div class="stat-sub">Gabungan SIMPAN V1 & V2</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">📁 SIMPAN V1</div>
-<div class="stat-value" id="totalV1">0</div>
+<div class="stat-value" id="totalV1">361</div>
 <div class="stat-sub">Total Sistem Lama</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">🚀 SIMPAN V2</div>
-<div class="stat-value" id="totalV2">0</div>
+<div class="stat-value" id="totalV2">3</div>
 <div class="stat-sub">Total Sistem Baru</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">🧑‍🌾 TOTAL NELAYAN</div>
-<div class="stat-value" id="totalNelayan">0</div>
+<div class="stat-value" id="totalNelayan">336</div>
 <div class="stat-sub">Berdasarkan NIK unik</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">✅ TERVERIFIKASI</div>
-<div class="stat-value" id="totalVerifikasi">0</div>
+<div class="stat-value">361</div>
 <div class="stat-sub">Status verifikasi</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">❌ BELUM VERIFIKASI</div>
-<div class="stat-value" id="belumVerifikasi">0</div>
+<div class="stat-value">3</div>
 <div class="stat-sub">Status belum verifikasi</div>
 </div>
 
@@ -871,7 +867,7 @@ Download PDF gabungan V1 & V2.
 </div>
 
 <!-- ====================================================== -->
-<!-- DESA -->
+<!-- STATISTIK DESA -->
 <!-- ====================================================== -->
 
 <div class="section">
@@ -880,12 +876,60 @@ Download PDF gabungan V1 & V2.
 🏘️ STATISTIK PER DESA
 </h2>
 
-<div id="desaContainer"></div>
+<div class="bar-item">
+<div class="bar-label">
+<span>SUNGAI SELAN</span>
+<span>133 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:100%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>KURAU</span>
+<span>66 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:66%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>BATU BELUBANG</span>
+<span>55 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:55%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>KURAU BARAT</span>
+<span>50 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:50%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>TANJUNG GUNUNG</span>
+<span>40 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:40%"></div>
+</div>
+</div>
 
 </div>
 
 <!-- ====================================================== -->
-<!-- KECAMATAN -->
+<!-- STATISTIK KECAMATAN -->
 <!-- ====================================================== -->
 
 <div class="section">
@@ -894,7 +938,35 @@ Download PDF gabungan V1 & V2.
 🏙️ STATISTIK PER KECAMATAN
 </h2>
 
-<div id="kecamatanContainer"></div>
+<div class="bar-item">
+<div class="bar-label">
+<span>SUNGAI SELAN</span>
+<span>188 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:100%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>KOBA</span>
+<span>120 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:64%"></div>
+</div>
+</div>
+
+<div class="bar-item">
+<div class="bar-label">
+<span>PANGKALAN BARU</span>
+<span>40 Kapal</span>
+</div>
+<div class="bar">
+<div class="bar-fill" style="width:21%"></div>
+</div>
+</div>
 
 </div>
 
@@ -916,18 +988,12 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 <h2>DOWNLOAD EXCEL</h2>
 
-<button onclick="window.open(
-'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx',
-'_blank'
-)">
-DOWNLOAD EXCEL V2
+<button onclick="downloadExcelV1()">
+DOWNLOAD EXCEL V1
 </button>
 
-<button onclick="window.open(
-'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
-'_blank'
-)">
-DOWNLOAD EXCEL V1
+<button onclick="downloadExcelV2()">
+DOWNLOAD EXCEL V2
 </button>
 
 <button onclick="closeExcelModal()">
@@ -948,18 +1014,12 @@ TUTUP
 
 <h2>DOWNLOAD PDF</h2>
 
-<button onclick="window.open(
-'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf',
-'_blank'
-)">
-DOWNLOAD PDF V2
+<button onclick="downloadPdfV1()">
+DOWNLOAD PDF V1
 </button>
 
-<button onclick="window.open(
-'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
-'_blank'
-)">
-DOWNLOAD PDF V1
+<button onclick="downloadPdfV2()">
+DOWNLOAD PDF V2
 </button>
 
 <button onclick="closePdfModal()">
@@ -971,24 +1031,6 @@ TUTUP
 </div>
 
 <script>
-
-/* ====================================================== */
-/* DATABASE CSV */
-/* ====================================================== */
-
-const csvV1 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
-
-const csvV2 =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
-
-/* ====================================================== */
-/* GLOBAL */
-/* ====================================================== */
-
-let dataV1 = [];
-let dataV2 = [];
-let allData = [];
 
 /* ====================================================== */
 /* SEARCH */
@@ -1012,38 +1054,28 @@ return;
 }
 
 /* ====================================================== */
-/* CARI BERDASARKAN ID */
+/* ID 4 DIGIT */
 /* ====================================================== */
 
 if(/^\d{4}$/.test(keyword)){
 
 const id = "BT-SMP-" + keyword;
 
-const v1 =
-dataV1.find(item=>
+/* ====================================================== */
+/* CEK V2 */
+/* ====================================================== */
 
-JSON.stringify(item)
-.toUpperCase()
-.includes(id)
+fetch("kapal.html?id=" + id)
 
-);
+.then(()=>{
 
-const v2 =
-dataV2.find(item=>
-
-JSON.stringify(item)
-.toUpperCase()
-.includes(id)
-
-);
-
-/* ADA DI KEDUANYA */
-
-if(v1 && v2){
+/* ====================================================== */
+/* CEK V1 */
+/* ====================================================== */
 
 const pilih =
 confirm(
-"Data ditemukan di SIMPAN V1 dan V2.\n\nOK = buka V2\nCancel = buka V1"
+"Data ditemukan.\n\nOK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
 );
 
 if(pilih){
@@ -1062,159 +1094,36 @@ window.open(
 
 }
 
-return;
-
-}
-
-/* HANYA V2 */
-
-if(v2){
-
-window.open(
-"kapal.html?id=" + id,
-"_blank"
-);
+});
 
 return;
-
-}
-
-/* HANYA V1 */
-
-if(v1){
-
-window.open(
-"v1/kapal.html?id=" + id,
-"_blank"
-);
-
-return;
-
-}
 
 }
 
 /* ====================================================== */
-/* CARI BERDASARKAN NIK */
+/* NIK */
 /* ====================================================== */
-
-const hasilV1 = dataV1.filter(item=>{
-
-const nik =
-String(
-item["Nomor Induk Kependudukan (NIK)"] || ""
-);
-
-return nik.includes(keyword);
-
-});
-
-const hasilV2 = dataV2.filter(item=>{
-
-const nik =
-String(
-item["NOMOR INDUK KEPENDUDUKAN (NIK)"] || ""
-);
-
-return nik.includes(keyword);
-
-});
-
-/* ADA DI KEDUANYA */
-
-if(hasilV1.length > 0 && hasilV2.length > 0){
 
 const pilih =
 confirm(
-"NIK ditemukan di SIMPAN V1 dan V2.\n\nOK = buka V2\nCancel = buka V1"
-);
-
-const data =
-pilih ? hasilV2[0] : hasilV1[0];
-
-const semua =
-Object.values(data);
-
-const id =
-semua.find(v=>
-
-String(v)
-.toUpperCase()
-.includes("BT-SMP-")
-
+"NIK ditemukan.\n\nOK = buka SIMPAN V2\nCancel = buka SIMPAN V1"
 );
 
 if(pilih){
 
 window.open(
-"kapal.html?id=" + id,
+"kapal.html?nik=" + keyword,
 "_blank"
 );
 
 }else{
 
 window.open(
-"v1/kapal.html?id=" + id,
+"v1/kapal.html?nik=" + keyword,
 "_blank"
 );
 
 }
-
-return;
-
-}
-
-/* HANYA V2 */
-
-if(hasilV2.length > 0){
-
-const semua =
-Object.values(hasilV2[0]);
-
-const id =
-semua.find(v=>
-
-String(v)
-.toUpperCase()
-.includes("BT-SMP-")
-
-);
-
-window.open(
-"kapal.html?id=" + id,
-"_blank"
-);
-
-return;
-
-}
-
-/* HANYA V1 */
-
-if(hasilV1.length > 0){
-
-const semua =
-Object.values(hasilV1[0]);
-
-const id =
-semua.find(v=>
-
-String(v)
-.toUpperCase()
-.includes("BT-SMP-")
-
-);
-
-window.open(
-"v1/kapal.html?id=" + id,
-"_blank"
-);
-
-return;
-
-}
-
-alert("Data tidak ditemukan");
 
 }
 
@@ -1274,213 +1183,48 @@ document
 }
 
 /* ====================================================== */
-/* LOAD DATA */
+/* DOWNLOAD EXCEL */
 /* ====================================================== */
 
-Promise.all([
+function downloadExcelV1(){
 
-fetch(csvV1).then(r=>r.text()),
-fetch(csvV2).then(r=>r.text())
-
-])
-
-.then(([v1,v2])=>{
-
-dataV1 =
-Papa.parse(v1,{
-header:true
-}).data;
-
-dataV2 =
-Papa.parse(v2,{
-header:true
-}).data;
-
-allData = [
-...dataV1,
-...dataV2
-];
-
-/* ====================================================== */
-/* TOTAL */
-/* ====================================================== */
-
-document.getElementById("totalV1")
-.innerHTML = dataV1.length;
-
-document.getElementById("totalV2")
-.innerHTML = dataV2.length;
-
-document.getElementById("totalKapal")
-.innerHTML =
-dataV1.length + dataV2.length;
-
-/* ====================================================== */
-/* TOTAL NELAYAN */
-/* ====================================================== */
-
-const nikSet = new Set();
-
-allData.forEach(item => {
-
-const nik =
-
-item["Nomor Induk Kependudukan (NIK)"] ||
-
-item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
-
-"";
-
-const cleanNik =
-
-String(nik)
-.replace(/\D/g,'')
-.trim();
-
-if(cleanNik.length >= 16){
-
-nikSet.add(cleanNik);
+window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
+'_blank'
+);
 
 }
 
-});
+function downloadExcelV2(){
 
-document.getElementById("totalNelayan")
-.innerHTML = nikSet.size;
-
-/* ====================================================== */
-/* VERIFIKASI */
-/* ====================================================== */
-
-let verifikasi = 0;
-let belum = 0;
-
-allData.forEach(item=>{
-
-const text =
-JSON.stringify(item)
-.toUpperCase();
-
-if(text.includes("TERVERIFIKASI")){
-
-verifikasi++;
-
-}else{
-
-belum++;
+window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx',
+'_blank'
+);
 
 }
 
-});
-
-document.getElementById("totalVerifikasi")
-.innerHTML = verifikasi;
-
-document.getElementById("belumVerifikasi")
-.innerHTML = belum;
-
 /* ====================================================== */
-/* STATISTIK DESA */
+/* DOWNLOAD PDF */
 /* ====================================================== */
 
-const desaData = {
+function downloadPdfV1(){
 
-"SUNGAI SELAN":133,
-"KURAU":66,
-"BATU BELUBANG":55,
-"KURAU BARAT":50,
-"TANJUNG GUNUNG":40,
-"KEBINTIK":10,
-"PADANG BARU":3,
-"BENTENG":3,
-"SUNGAI SELAN ATAS":1,
-"KAMPUNG MELINTANG":1
+window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
+'_blank'
+);
 
-};
+}
 
-const desaContainer =
-document.getElementById("desaContainer");
+function downloadPdfV2(){
 
-Object.entries(desaData)
+window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf',
+'_blank'
+);
 
-.forEach(([nama,total])=>{
-
-desaContainer.innerHTML += `
-
-<div class="bar-item">
-
-<div class="bar-label">
-
-<span>${nama}</span>
-
-<span>${total} Kapal</span>
-
-</div>
-
-<div class="bar">
-
-<div
-class="bar-fill"
-style="width:${Math.min(total,100)}%">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-/* ====================================================== */
-/* STATISTIK KECAMATAN */
-/* ====================================================== */
-
-const kecamatanData = {
-
-"SUNGAI SELAN":188,
-"KOBA":120,
-"PANGKALAN BARU":40,
-"NAMANG":8,
-"LUBUK BESAR":8
-
-};
-
-const kecContainer =
-document.getElementById("kecamatanContainer");
-
-Object.entries(kecamatanData)
-
-.forEach(([nama,total])=>{
-
-kecContainer.innerHTML += `
-
-<div class="bar-item">
-
-<div class="bar-label">
-
-<span>${nama}</span>
-
-<span>${total} Kapal</span>
-
-</div>
-
-<div class="bar">
-
-<div
-class="bar-fill"
-style="width:${Math.min(total,100)}%">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-});
+}
 
 /* ====================================================== */
 /* PWA */
