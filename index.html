@@ -12,8 +12,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
 <style>
 
 *{
@@ -744,25 +742,25 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 <div class="stat-card">
 <div class="stat-title">🚢 TOTAL KAPAL</div>
-<div class="stat-value" id="totalKapal">364</div>
+<div class="stat-value">364</div>
 <div class="stat-sub">Gabungan SIMPAN V1 & V2</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">📁 SIMPAN V1</div>
-<div class="stat-value" id="totalV1">361</div>
+<div class="stat-value">361</div>
 <div class="stat-sub">Total Sistem Lama</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">🚀 SIMPAN V2</div>
-<div class="stat-value" id="totalV2">3</div>
+<div class="stat-value">3</div>
 <div class="stat-sub">Total Sistem Baru</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-title">🧑‍🌾 TOTAL NELAYAN</div>
-<div class="stat-value" id="totalNelayan">336</div>
+<div class="stat-value">336</div>
 <div class="stat-sub">Berdasarkan NIK unik</div>
 </div>
 
@@ -798,17 +796,7 @@ Cetak QR gabungan SIMPAN V1 & V2.
 
 </a>
 
-<a href="verifikasi-kapal.html" target="_blank" class="card">
-
-<div class="card-icon">✅</div>
-
-<h3>VERIFIKASI</h3>
-
-<p>
-Sistem verifikasi kapal realtime.
-</p>
-
-</a>
+<!-- DATA V2 -->
 
 <a
 target="_blank"
@@ -824,6 +812,8 @@ Buka Spreadsheet data kapal SIMPAN V2.
 </p>
 
 </a>
+
+<!-- DATA V1 -->
 
 <a
 target="_blank"
@@ -847,7 +837,7 @@ Buka Spreadsheet data kapal SIMPAN V1.
 <h3>DOWNLOAD EXCEL</h3>
 
 <p>
-Download spreadsheet gabungan V1 & V2.
+Download spreadsheet SIMPAN V1 & V2.
 </p>
 
 </div>
@@ -859,7 +849,7 @@ Download spreadsheet gabungan V1 & V2.
 <h3>DOWNLOAD PDF</h3>
 
 <p>
-Download PDF gabungan V1 & V2.
+Download PDF SIMPAN V1 & V2.
 </p>
 
 </div>
@@ -906,26 +896,6 @@ Download PDF gabungan V1 & V2.
 </div>
 </div>
 
-<div class="bar-item">
-<div class="bar-label">
-<span>KURAU BARAT</span>
-<span>50 Kapal</span>
-</div>
-<div class="bar">
-<div class="bar-fill" style="width:50%"></div>
-</div>
-</div>
-
-<div class="bar-item">
-<div class="bar-label">
-<span>TANJUNG GUNUNG</span>
-<span>40 Kapal</span>
-</div>
-<div class="bar">
-<div class="bar-fill" style="width:40%"></div>
-</div>
-</div>
-
 </div>
 
 <!-- ====================================================== -->
@@ -955,16 +925,6 @@ Download PDF gabungan V1 & V2.
 </div>
 <div class="bar">
 <div class="bar-fill" style="width:64%"></div>
-</div>
-</div>
-
-<div class="bar-item">
-<div class="bar-label">
-<span>PANGKALAN BARU</span>
-<span>40 Kapal</span>
-</div>
-<div class="bar">
-<div class="bar-fill" style="width:21%"></div>
 </div>
 </div>
 
@@ -1054,24 +1014,12 @@ return;
 }
 
 /* ====================================================== */
-/* ID 4 DIGIT */
+/* FORMAT ID */
 /* ====================================================== */
 
 if(/^\d{4}$/.test(keyword)){
 
 const id = "BT-SMP-" + keyword;
-
-/* ====================================================== */
-/* CEK V2 */
-/* ====================================================== */
-
-fetch("kapal.html?id=" + id)
-
-.then(()=>{
-
-/* ====================================================== */
-/* CEK V1 */
-/* ====================================================== */
 
 const pilih =
 confirm(
@@ -1093,8 +1041,6 @@ window.open(
 );
 
 }
-
-});
 
 return;
 
