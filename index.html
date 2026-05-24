@@ -721,6 +721,69 @@ nikUnik.add(nik);
 document.getElementById('totalNelayan').innerText =
 nikUnik.size;
 
+// =======================
+// HITUNG STATUS VERIFIKASI
+// =======================
+
+let totalVerifikasi = 0;
+let totalBelum = 0;
+
+const kapalVerifikasi = new Set();
+
+gabungan.forEach(item=>{
+
+const id =
+(item['ID SIMPAN'] || '')
+.trim();
+
+if(!id) return;
+
+if(kapalVerifikasi.has(id)) return;
+
+kapalVerifikasi.add(id);
+
+
+// =======================
+// AMBIL STATUS
+// =======================
+
+const status = (
+
+item['STATUS'] ||
+item['Status'] ||
+item['VERIFIKASI'] ||
+item['Verifikasi'] ||
+item['STATUS VERIFIKASI'] ||
+''
+
+)
+.toString()
+.trim()
+.toUpperCase();
+
+
+// =======================
+// CEK TERVERIFIKASI
+// =======================
+
+if(status.includes('TERVERIFIKASI')){
+
+totalVerifikasi++;
+
+}else{
+
+totalBelum++;
+
+}
+
+});
+
+document.getElementById('totalVerifikasi').innerText =
+totalVerifikasi;
+
+document.getElementById('totalBelum').innerText =
+totalBelum;
+
 buatStatistikDesa(gabungan);
 buatStatistikKecamatan(gabungan);
 
