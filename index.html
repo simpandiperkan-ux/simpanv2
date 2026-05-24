@@ -23,7 +23,7 @@ name="viewport"
 content="width=device-width, initial-scale=1.0"
 >
 
-<title>SIMPAN SUPER APP V3 ULTRA PREMIUM</title>
+<title>SIMPAN SUPER APP V3 FINAL</title>
 
 <!-- ======================================================
 FONT
@@ -53,7 +53,7 @@ box-sizing:border-box;
 }
 
 /* ======================================================
-BODY ULTRA PREMIUM
+BODY
 ====================================================== */
 
 body{
@@ -83,7 +83,7 @@ position:relative;
 }
 
 /* ======================================================
-ANIMATED OVERLAY
+OVERLAY
 ====================================================== */
 
 body::before{
@@ -149,10 +149,6 @@ z-index:-1;
 
 }
 
-/* ======================================================
-ANIMATION
-====================================================== */
-
 @keyframes glowMove{
 
 0%{
@@ -215,7 +211,7 @@ position:fixed;
 left:0;
 top:0;
 
-width:290px;
+width:250px;
 height:100vh;
 
 background:
@@ -229,12 +225,9 @@ rgba(0,85,200,.96)
 border-right:
 1px solid rgba(255,255,255,.08);
 
-padding:28px 20px;
+padding:25px 15px;
 
 overflow-y:auto;
-
-box-shadow:
-5px 0 40px rgba(0,0,0,.30);
 
 z-index:999;
 
@@ -248,23 +241,23 @@ LOGO
 
 text-align:center;
 
-margin-bottom:35px;
+margin-bottom:30px;
 
 }
 
 .logo-bateng{
 
-width:78px;
+width:70px;
 
-margin-bottom:12px;
+margin-bottom:10px;
 
 }
 
 .logo-simpan{
 
-width:118px;
+width:100px;
 
-margin-bottom:16px;
+margin-bottom:14px;
 
 }
 
@@ -272,11 +265,11 @@ margin-bottom:16px;
 
 color:white;
 
-font-size:36px;
+font-size:26px;
 
 font-weight:900;
 
-margin-bottom:10px;
+margin-bottom:8px;
 
 }
 
@@ -284,7 +277,7 @@ margin-bottom:10px;
 
 color:rgba(255,255,255,.90);
 
-font-size:13px;
+font-size:12px;
 
 line-height:1.8;
 
@@ -300,7 +293,7 @@ display:flex;
 
 flex-direction:column;
 
-gap:14px;
+gap:12px;
 
 }
 
@@ -313,26 +306,21 @@ color:white;
 background:
 rgba(255,255,255,.08);
 
-border:
-1px solid rgba(255,255,255,.05);
-
-backdrop-filter:blur(12px);
-
-padding:16px 18px;
+padding:15px 18px;
 
 border-radius:18px;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:600;
 
-transition:.35s;
+transition:.3s;
 
 display:flex;
 
 align-items:center;
 
-gap:12px;
+gap:10px;
 
 }
 
@@ -342,9 +330,7 @@ background:white;
 
 color:#0057d8;
 
-transform:
-translateX(8px)
-scale(1.02);
+transform:translateX(6px);
 
 }
 
@@ -354,9 +340,9 @@ MAIN
 
 .main{
 
-margin-left:290px;
+margin-left:250px;
 
-padding:30px;
+padding:25px;
 
 }
 
@@ -378,9 +364,9 @@ border:1px solid rgba(255,255,255,.12);
 
 backdrop-filter:blur(18px);
 
-border-radius:34px;
+border-radius:30px;
 
-padding:38px;
+padding:35px;
 
 display:flex;
 
@@ -388,10 +374,10 @@ justify-content:space-between;
 
 align-items:center;
 
-gap:25px;
+gap:20px;
 
 box-shadow:
-0 15px 45px rgba(0,0,0,.22);
+0 10px 40px rgba(0,0,0,.20);
 
 }
 
@@ -403,7 +389,7 @@ font-size:50px;
 
 font-weight:900;
 
-margin-bottom:14px;
+margin-bottom:12px;
 
 }
 
@@ -411,7 +397,7 @@ margin-bottom:14px;
 
 color:rgba(255,255,255,.92);
 
-font-size:16px;
+font-size:15px;
 
 line-height:1.8;
 
@@ -419,7 +405,7 @@ line-height:1.8;
 
 .topbar-right img{
 
-width:120px;
+width:100px;
 
 }
 
@@ -429,11 +415,11 @@ SEARCH
 
 .search-box{
 
-margin-top:24px;
+margin-top:22px;
 
 display:flex;
 
-gap:14px;
+gap:12px;
 
 }
 
@@ -441,15 +427,15 @@ gap:14px;
 
 flex:1;
 
-height:62px;
+height:58px;
 
 border:none;
 
-border-radius:22px;
+border-radius:18px;
 
-padding:0 24px;
+padding:0 20px;
 
-font-size:18px;
+font-size:16px;
 
 font-weight:600;
 
@@ -462,11 +448,11 @@ rgba(255,255,255,.92);
 
 .search-box button{
 
-width:200px;
+width:180px;
 
 border:none;
 
-border-radius:22px;
+border-radius:18px;
 
 background:
 
@@ -478,21 +464,19 @@ linear-gradient(
 
 color:white;
 
-font-size:18px;
+font-size:16px;
 
 font-weight:800;
 
 cursor:pointer;
 
-transition:.35s;
+transition:.3s;
 
 }
 
 .search-box button:hover{
 
-transform:
-translateY(-3px)
-scale(1.03);
+transform:translateY(-2px);
 
 }
 
@@ -502,14 +486,14 @@ GRID
 
 .grid{
 
-margin-top:30px;
+margin-top:25px;
 
 display:grid;
 
 grid-template-columns:
 repeat(auto-fit,minmax(220px,1fr));
 
-gap:24px;
+gap:20px;
 
 }
 
@@ -531,26 +515,16 @@ border:1px solid rgba(255,255,255,.14);
 
 backdrop-filter:blur(18px);
 
-border-radius:32px;
+border-radius:30px;
 
-padding:30px;
+padding:28px;
 
 position:relative;
 
 overflow:hidden;
 
 box-shadow:
-0 10px 35px rgba(0,0,0,.22);
-
-transition:.35s ease;
-
-}
-
-.card:hover{
-
-transform:
-translateY(-10px)
-scale(1.015);
+0 10px 35px rgba(0,0,0,.18);
 
 }
 
@@ -560,15 +534,15 @@ content:"";
 
 position:absolute;
 
-width:260px;
-height:260px;
+width:220px;
+height:220px;
 
 border-radius:50%;
 
 background:
 
 radial-gradient(
-rgba(255,255,255,.12),
+rgba(255,255,255,.10),
 transparent 70%
 );
 
@@ -581,9 +555,9 @@ right:-100px;
 
 color:white;
 
-font-size:18px;
+font-size:16px;
 
-margin-bottom:18px;
+margin-bottom:15px;
 
 position:relative;
 z-index:2;
@@ -594,7 +568,7 @@ z-index:2;
 
 color:white;
 
-font-size:56px;
+font-size:54px;
 
 font-weight:900;
 
@@ -607,11 +581,9 @@ z-index:2;
 
 color:rgba(255,255,255,.88);
 
-margin-top:10px;
+margin-top:8px;
 
-font-size:14px;
-
-line-height:1.7;
+font-size:13px;
 
 position:relative;
 z-index:2;
@@ -624,14 +596,14 @@ QUICK MENU
 
 .quick{
 
-margin-top:35px;
+margin-top:30px;
 
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
+repeat(auto-fit,minmax(240px,1fr));
 
-gap:24px;
+gap:20px;
 
 }
 
@@ -645,9 +617,9 @@ rgba(255,255,255,.96),
 rgba(255,255,255,.92)
 );
 
-border-radius:32px;
+border-radius:28px;
 
-padding:32px;
+padding:28px;
 
 text-decoration:none;
 
@@ -660,24 +632,24 @@ transition:.35s;
 .quick-card:hover{
 
 transform:
-translateY(-10px)
+translateY(-8px)
 scale(1.02);
 
 }
 
 .quick-card .icon{
 
-font-size:54px;
+font-size:50px;
 
-margin-bottom:18px;
+margin-bottom:16px;
 
 }
 
 .quick-card h4{
 
-font-size:24px;
+font-size:22px;
 
-margin-bottom:12px;
+margin-bottom:10px;
 
 font-weight:800;
 
@@ -689,17 +661,17 @@ color:#444;
 
 font-size:14px;
 
-line-height:1.8;
+line-height:1.7;
 
 }
 
 /* ======================================================
-STATISTIK
+STAT CARD
 ====================================================== */
 
 .stat-card{
 
-margin-top:35px;
+margin-top:30px;
 
 }
 
@@ -721,7 +693,7 @@ color:white;
 
 margin-bottom:8px;
 
-font-size:15px;
+font-size:14px;
 
 }
 
@@ -735,7 +707,7 @@ font-weight:800;
 
 width:100%;
 
-height:18px;
+height:16px;
 
 background:
 rgba(255,255,255,.10);
@@ -774,17 +746,17 @@ border:1px solid rgba(255,255,255,.08);
 
 backdrop-filter:blur(14px);
 
-border-radius:28px;
+border-radius:25px;
 
-padding:24px;
+padding:20px;
 
 text-align:center;
 
 color:white;
 
-font-size:14px;
+font-size:13px;
 
-line-height:1.9;
+line-height:1.8;
 
 }
 
@@ -806,8 +778,6 @@ height:auto;
 .main{
 
 margin-left:0;
-
-padding:20px;
 
 }
 
@@ -871,9 +841,7 @@ Kabupaten Bangka Tengah
 
 <div class="menu">
 
-<a href="index.html">
-🏠 Dashboard
-</a>
+<a href="index.html">🏠 Dashboard</a>
 
 <a href="kapal.html?id=BT-SMP-0337" target="_blank">
 🚀 SIMPAN V2
@@ -881,6 +849,14 @@ Kabupaten Bangka Tengah
 
 <a href="v1/kapal.html?id=BT-SMP-0001" target="_blank">
 🗂 SIMPAN V1
+</a>
+
+<a href="qr.html?id=BT-SMP-0337" target="_blank">
+📱 QR V2
+</a>
+
+<a href="v1/qr.html?id=BT-SMP-0001" target="_blank">
+🧾 QR V1
 </a>
 
 <a href="verifikasi-kapal.html" target="_blank">
@@ -961,6 +937,10 @@ Gabungan SIMPAN V1 & V2
 
 <div class="value" id="totalV1">0</div>
 
+<div class="sub">
+Total Sistem Lama
+</div>
+
 </div>
 
 <div class="card">
@@ -968,6 +948,10 @@ Gabungan SIMPAN V1 & V2
 <h3>🚀 SIMPAN V2</h3>
 
 <div class="value" id="totalV2">0</div>
+
+<div class="sub">
+Total Sistem Baru
+</div>
 
 </div>
 
@@ -977,6 +961,10 @@ Gabungan SIMPAN V1 & V2
 
 <div class="value" id="totalNelayan">0</div>
 
+<div class="sub">
+Berdasarkan NIK Unik
+</div>
+
 </div>
 
 <div class="card">
@@ -985,6 +973,10 @@ Gabungan SIMPAN V1 & V2
 
 <div class="value" id="totalVerifikasi">0</div>
 
+<div class="sub">
+Status = TERVERIFIKASI
+</div>
+
 </div>
 
 <div class="card">
@@ -992,6 +984,10 @@ Gabungan SIMPAN V1 & V2
 <h3>❌ BELUM TERVERIFIKASI</h3>
 
 <div class="value" id="totalBelumVerifikasi">0</div>
+
+<div class="sub">
+Selain status TERVERIFIKASI
+</div>
 
 </div>
 
@@ -1003,30 +999,100 @@ QUICK MENU
 
 <div class="quick">
 
-<a href="data-kapal.html" class="quick-card" target="_blank">
+<a href="kapal.html?id=BT-SMP-0337"
+class="quick-card"
+target="_blank">
+
+<div class="icon">🚀</div>
+
+<h4>SIMPAN V2</h4>
+
+<p>
+Sistem pendataan kapal generasi terbaru.
+</p>
+
+</a>
+
+<a href="v1/kapal.html?id=BT-SMP-0001"
+class="quick-card"
+target="_blank">
+
+<div class="icon">🗂</div>
+
+<h4>SIMPAN V1</h4>
+
+<p>
+Sistem pendataan kapal generasi pertama.
+</p>
+
+</a>
+
+<a href="qr.html?id=BT-SMP-0337"
+class="quick-card"
+target="_blank">
+
+<div class="icon">📱</div>
+
+<h4>CETAK QR V2</h4>
+
+<p>
+Cetak QR premium SIMPAN V2.
+</p>
+
+</a>
+
+<a href="v1/qr.html?id=BT-SMP-0001"
+class="quick-card"
+target="_blank">
+
+<div class="icon">🧾</div>
+
+<h4>CETAK QR V1</h4>
+
+<p>
+Cetak QR premium SIMPAN V1.
+</p>
+
+</a>
+
+<a href="verifikasi-kapal.html"
+class="quick-card"
+target="_blank">
+
+<div class="icon">✅</div>
+
+<h4>VERIFIKASI</h4>
+
+<p>
+Sistem verifikasi kapal realtime.
+</p>
+
+</a>
+
+<a href="data-kapal.html"
+class="quick-card"
+target="_blank">
 
 <div class="icon">📊</div>
 
 <h4>DATA SIMPAN V2</h4>
 
 <p>
-
-Buka Spreadsheet Data Kapal SIMPAN V2
-
+Buka Spreadsheet Data Kapal SIMPAN V2.
 </p>
 
 </a>
 
-<a href="v1/data-kapal-v1.html" class="quick-card" target="_blank">
+<a href="v1/data-kapal-v1.html"
+class="quick-card"
+target="_blank">
 
 <div class="icon">🗃</div>
 
 <h4>DATA SIMPAN V1</h4>
 
 <p>
-
-Buka Spreadsheet Data Kapal SIMPAN V1
-
+Buka Spreadsheet Data Kapal SIMPAN V1.
 </p>
 
 </a>
@@ -1034,17 +1100,14 @@ Buka Spreadsheet Data Kapal SIMPAN V1
 <a
 href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx"
 class="quick-card"
-target="_blank"
->
+target="_blank">
 
 <div class="icon">⬇️</div>
 
 <h4>DOWNLOAD EXCEL V2</h4>
 
 <p>
-
-Download data SIMPAN V2 format Excel
-
+Unduh data SIMPAN V2 format Excel.
 </p>
 
 </a>
@@ -1052,17 +1115,14 @@ Download data SIMPAN V2 format Excel
 <a
 href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx"
 class="quick-card"
-target="_blank"
->
+target="_blank">
 
 <div class="icon">⬇️</div>
 
 <h4>DOWNLOAD EXCEL V1</h4>
 
 <p>
-
-Download data SIMPAN V1 format Excel
-
+Unduh data SIMPAN V1 format Excel.
 </p>
 
 </a>
@@ -1070,17 +1130,14 @@ Download data SIMPAN V1 format Excel
 <a
 href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf"
 class="quick-card"
-target="_blank"
->
+target="_blank">
 
 <div class="icon">📄</div>
 
 <h4>DOWNLOAD PDF V2</h4>
 
 <p>
-
-Download data SIMPAN V2 format PDF
-
+Unduh data SIMPAN V2 format PDF.
 </p>
 
 </a>
@@ -1088,17 +1145,14 @@ Download data SIMPAN V2 format PDF
 <a
 href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf"
 class="quick-card"
-target="_blank"
->
+target="_blank">
 
 <div class="icon">📑</div>
 
 <h4>DOWNLOAD PDF V1</h4>
 
 <p>
-
-Download data SIMPAN V1 format PDF
-
+Unduh data SIMPAN V1 format PDF.
 </p>
 
 </a>
@@ -1137,7 +1191,7 @@ FOOTER
 
 © 2026 Dinas Perikanan Kabupaten Bangka Tengah
 <br>
-SIMPAN SUPER APP V3 ULTRA PREMIUM
+SIMPAN SUPER APP V3 FINAL
 
 </div>
 
@@ -1146,16 +1200,12 @@ SIMPAN SUPER APP V3 ULTRA PREMIUM
 <script>
 
 /* ======================================================
-CSV V1
+CSV
 ====================================================== */
 
 const csvV1 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv&t=" +
 new Date().getTime();
-
-/* ======================================================
-CSV V2
-====================================================== */
 
 const csvV2 =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv&t=" +
@@ -1190,6 +1240,10 @@ semuaData = [
 ...dataV2
 ];
 
+/* ======================================================
+TOTAL
+====================================================== */
+
 document.getElementById(
 "totalKapal"
 ).innerHTML =
@@ -1206,7 +1260,7 @@ document.getElementById(
 dataV2.length;
 
 /* ======================================================
-TOTAL NELAYAN
+NIK UNIK
 ====================================================== */
 
 const nelayan = new Set();
@@ -1224,7 +1278,7 @@ item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
 .trim()
 .replace(/[^0-9]/g,"");
 
-if(nik && nik.length >= 16){
+if(nik.length >= 16){
 
 nelayan.add(nik);
 
@@ -1241,8 +1295,8 @@ nelayan.size;
 VERIFIKASI
 ====================================================== */
 
-let totalVerifikasi = 0;
-let totalBelumVerifikasi = 0;
+let verifikasi = 0;
+let belum = 0;
 
 semuaData.forEach(item=>{
 
@@ -1254,11 +1308,11 @@ let status =
 
 if(status === "TERVERIFIKASI"){
 
-totalVerifikasi++;
+verifikasi++;
 
 }else{
 
-totalBelumVerifikasi++;
+belum++;
 
 }
 
@@ -1267,12 +1321,182 @@ totalBelumVerifikasi++;
 document.getElementById(
 "totalVerifikasi"
 ).innerHTML =
-totalVerifikasi;
+verifikasi;
 
 document.getElementById(
 "totalBelumVerifikasi"
 ).innerHTML =
-totalBelumVerifikasi;
+belum;
+
+/* ======================================================
+STATISTIK DESA
+====================================================== */
+
+const desaMap = {};
+
+semuaData.forEach(item=>{
+
+const desa =
+
+(
+item["Desa/ Kelurahan"] ||
+item["DESA/KELURAHAN"] ||
+"-"
+)
+.toString()
+.trim()
+.toUpperCase();
+
+if(!desaMap[desa]){
+
+desaMap[desa] = 0;
+
+}
+
+desaMap[desa]++;
+
+});
+
+const desaContainer =
+document.getElementById(
+"desaContainer"
+);
+
+desaContainer.innerHTML = "";
+
+const desaSorted =
+Object.entries(desaMap)
+.sort((a,b)=>b[1]-a[1]);
+
+const maxDesa =
+desaSorted[0][1];
+
+desaSorted.forEach(([nama,jumlah])=>{
+
+const persen =
+(jumlah/maxDesa)*100;
+
+desaContainer.innerHTML += `
+
+<div class="progress-item">
+
+<div class="progress-head">
+
+<span>🏘 ${nama}</span>
+
+<span class="count">
+${jumlah} Kapal
+</span>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+style="
+width:${persen}%;
+background:
+linear-gradient(
+90deg,
+#00c6ff,
+#0072ff
+);
+"
+></div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* ======================================================
+STATISTIK KECAMATAN
+====================================================== */
+
+const kecMap = {};
+
+semuaData.forEach(item=>{
+
+const kec =
+
+(
+item["Kecamatan"] ||
+item["KECAMATAN"] ||
+"-"
+)
+.toString()
+.trim()
+.toUpperCase();
+
+if(!kecMap[kec]){
+
+kecMap[kec] = 0;
+
+}
+
+kecMap[kec]++;
+
+});
+
+const kecContainer =
+document.getElementById(
+"kecamatanContainer"
+);
+
+kecContainer.innerHTML = "";
+
+const kecSorted =
+Object.entries(kecMap)
+.sort((a,b)=>b[1]-a[1]);
+
+const maxKec =
+kecSorted[0][1];
+
+kecSorted.forEach(([nama,jumlah])=>{
+
+const persen =
+(jumlah/maxKec)*100;
+
+kecContainer.innerHTML += `
+
+<div class="progress-item">
+
+<div class="progress-head">
+
+<span>🗺 ${nama}</span>
+
+<span class="count">
+${jumlah} Kapal
+</span>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+style="
+width:${persen}%;
+background:
+linear-gradient(
+90deg,
+#00ff95,
+#00c853
+);
+"
+></div>
+
+</div>
+
+</div>
+
+`;
+
+});
 
 }
 
