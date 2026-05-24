@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>SIMPAN V1 - Data Kapal</title>
+
+<!-- ======================================================
+AUTO REDIRECT
+====================================================== -->
+
+<meta
+http-equiv="refresh"
+content="2; url=https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
+>
+
+<!-- ======================================================
+ICON
+====================================================== -->
+
+<link rel="icon" href="../logo-simpan.png">
+
+<!-- ======================================================
+GOOGLE FONT
+====================================================== -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+/* ======================================================
+RESET
+====================================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* ======================================================
+BODY ULTRA PREMIUM
+====================================================== */
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+overflow:hidden;
+
+font-family:'Poppins',sans-serif;
+
+color:white;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+rgba(0,20,60,.82),
+rgba(0,45,120,.88)
+),
+
+url('../background_simpan.png');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+position:relative;
+
+}
+
+/* ======================================================
+ANIMATED GLOW
+====================================================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(
+circle at top left,
+rgba(255,255,255,.10),
+transparent 30%
+),
+
+radial-gradient(
+circle at bottom right,
+rgba(0,180,255,.18),
+transparent 35%
+),
+
+radial-gradient(
+circle at center,
+rgba(255,255,255,.04),
+transparent 45%
+);
+
+pointer-events:none;
+
+z-index:-2;
+
+animation:
+glowMove 18s linear infinite alternate;
+
+}
+
+/* ======================================================
+WATERMARK
+====================================================== */
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background-image:url('../logo-simpan.png');
+
+background-repeat:repeat;
+
+background-size:220px;
+
+opacity:.03;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+/* ======================================================
+CONTAINER
+====================================================== */
+
+.container{
+
+padding:38px;
+
+width:90%;
+max-width:440px;
+
+border-radius:32px;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(255,255,255,.14),
+rgba(255,255,255,.08)
+);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.14);
+
+box-shadow:
+
+0 15px 45px rgba(0,0,0,.30),
+
+inset 0 1px 0 rgba(255,255,255,.08);
+
+position:relative;
+
+z-index:2;
+
+overflow:hidden;
+
+}
+
+/* ======================================================
+LIGHT EFFECT
+====================================================== */
+
+.container::before{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+height:260px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+rgba(255,255,255,.14),
+transparent 70%
+);
+
+top:-120px;
+right:-120px;
+
+}
+
+/* ======================================================
+LOGO
+====================================================== */
+
+.logo{
+
+width:125px;
+
+margin-bottom:18px;
+
+animation:float 3s ease-in-out infinite;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.logo-daerah{
+
+width:78px;
+
+margin-bottom:18px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ======================================================
+TITLE
+====================================================== */
+
+h1{
+
+font-size:36px;
+
+margin-bottom:10px;
+
+font-weight:900;
+
+letter-spacing:1px;
+
+position:relative;
+
+z-index:2;
+
+text-shadow:
+0 3px 12px rgba(0,0,0,.25);
+
+}
+
+.subtitle{
+
+font-size:14px;
+
+opacity:.94;
+
+line-height:1.8;
+
+margin-bottom:30px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ======================================================
+LOADER
+====================================================== */
+
+.loader{
+
+width:60px;
+height:60px;
+
+margin:auto;
+
+border-radius:50%;
+
+border:5px solid rgba(255,255,255,.15);
+
+border-top:5px solid #ffffff;
+
+animation:spin 1s linear infinite;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ======================================================
+TEXT
+====================================================== */
+
+.loading-text{
+
+margin-top:22px;
+
+font-size:14px;
+
+opacity:.92;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ======================================================
+FOOTER
+====================================================== */
+
+.footer{
+
+position:absolute;
+
+bottom:18px;
+
+font-size:12px;
+
+opacity:.78;
+
+width:100%;
+
+text-align:center;
+
+padding:0 10px;
+
+}
+
+/* ======================================================
+ANIMATION
+====================================================== */
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+@keyframes glowMove{
+
+0%{
+
+transform:
+translate(0px,0px)
+scale(1);
+
+}
+
+100%{
+
+transform:
+translate(-20px,-20px)
+scale(1.05);
+
+}
+
+}
+
+/* ======================================================
+RESPONSIVE
+====================================================== */
+
+@media(max-width:480px){
+
+h1{
+font-size:30px;
+}
+
+.subtitle{
+font-size:13px;
+}
+
+.container{
+padding:30px 22px;
+}
+
+.logo{
+width:105px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ======================================================
+CONTAINER
+====================================================== -->
+
+<div class="container">
+
+<!-- LOGO DAERAH -->
+
+<img
+src="../logo-bateng.png"
+class="logo-daerah"
+alt="Logo Bangka Tengah"
+>
+
+<!-- LOGO SIMPAN -->
+
+<img
+src="../logo-simpan.png"
+class="logo"
+alt="Logo SIMPAN"
+>
+
+<!-- TITLE -->
+
+<h1>SIMPAN V1</h1>
+
+<!-- SUBTITLE -->
+
+<div class="subtitle">
+
+Sistem Informasi Manajemen
+Pendataan Armada Nelayan
+Generasi Pertama
+
+</div>
+
+<!-- LOADER -->
+
+<div class="loader"></div>
+
+<!-- LOADING TEXT -->
+
+<div class="loading-text">
+
+Membuka Data Kapal SIMPAN V1...
+
+</div>
+
+</div>
+
+<!-- ======================================================
+FOOTER
+====================================================== -->
+
+<div class="footer">
+
+© 2026 Dinas Perikanan Kabupaten Bangka Tengah
+
+</div>
+
+<!-- ======================================================
+AUTO REDIRECT SCRIPT
+====================================================== -->
+
+<script>
+
+setTimeout(function(){
+
+window.location.href =
+"https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342";
+
+},2000);
+
+</script>
+
+</body>
+</html>
