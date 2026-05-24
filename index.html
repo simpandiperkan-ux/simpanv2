@@ -1,351 +1,713 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SIMPAN SUPER APP V3 FINAL</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-app.png">
+<link rel="manifest" href="manifest.json">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
 
+/* ====================================================== */
+/* RESET */
+/* ====================================================== */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
+/* ====================================================== */
+/* BODY */
+/* ====================================================== */
+
 body{
-font-family:'Poppins',sans-serif;
+
 background:
-linear-gradient(rgba(0,40,120,.83),rgba(0,85,180,.88)),
+linear-gradient(
+rgba(4,25,80,.86),
+rgba(0,65,180,.88)
+),
 url('background_simpan.png');
+
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
-min-height:100vh;
+
 color:white;
-display:flex;
+
 overflow-x:hidden;
+
 }
 
+/* ====================================================== */
+/* WRAPPER */
+/* ====================================================== */
+
+.wrapper{
+display:flex;
+min-height:100vh;
+}
+
+/* ====================================================== */
 /* SIDEBAR */
+/* ====================================================== */
 
 .sidebar{
-width:230px;
-background:rgba(0,28,95,.97);
-backdrop-filter:blur(12px);
-padding:22px 14px;
+
+width:240px;
+
+background:
+rgba(0,32,105,.96);
+
+backdrop-filter:blur(10px);
+
+padding:24px 16px;
+
 position:fixed;
+
 top:0;
 left:0;
 bottom:0;
+
 overflow-y:auto;
+
+box-shadow:
+0 0 30px rgba(0,0,0,.35);
+
 z-index:999;
+
 }
 
 .logo-area{
+
 text-align:center;
-margin-bottom:26px;
+
+margin-bottom:28px;
+
 }
 
 .logo-area img{
-width:82px;
-margin-bottom:12px;
+
+width:72px;
+
+margin:5px;
+
 }
 
-.logo-area h1{
-font-size:22px;
+.logo-title{
+
+font-size:24px;
 font-weight:900;
-margin-bottom:10px;
+
+margin-top:10px;
+
 }
 
-.logo-area p{
+.logo-sub{
+
 font-size:12px;
-line-height:1.7;
-opacity:.95;
+
+line-height:1.6;
+
+margin-top:10px;
+
+opacity:.9;
+
 }
 
-.menu-btn{
-width:100%;
+.menu{
+
+margin-top:24px;
+
+}
+
+.menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
 padding:15px 16px;
-border:none;
-border-radius:14px;
+
 margin-bottom:12px;
-background:rgba(255,255,255,.08);
+
+border-radius:16px;
+
+background:
+rgba(255,255,255,.08);
+
+text-decoration:none;
+
 color:white;
+
 font-size:15px;
+
 font-weight:700;
-cursor:pointer;
-text-align:left;
+
 transition:.3s;
+
 }
 
-.menu-btn:hover{
-background:#0d6efd;
-transform:translateX(3px);
+.menu a:hover{
+
+background:
+linear-gradient(
+90deg,
+#00c6ff,
+#0072ff
+);
+
+transform:translateX(4px);
+
 }
 
-/* MAIN */
+/* ====================================================== */
+/* CONTENT */
+/* ====================================================== */
 
-.main{
-margin-left:230px;
-width:calc(100% - 230px);
-padding:24px;
+.content{
+
+margin-left:240px;
+
+padding:28px;
+
+width:100%;
+
 }
 
+/* ====================================================== */
 /* HERO */
+/* ====================================================== */
 
 .hero{
-background:rgba(255,255,255,.10);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
-border-radius:30px;
+
+background:
+rgba(255,255,255,.12);
+
+backdrop-filter:blur(10px);
+
 padding:34px;
-margin-bottom:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+border-radius:30px;
+
+border:
+1px solid rgba(255,255,255,.12);
+
+box-shadow:
+0 10px 35px rgba(0,0,0,.22);
+
+margin-bottom:28px;
+
 position:relative;
+
 overflow:hidden;
+
 }
 
 .hero::before{
+
 content:'';
+
 position:absolute;
+
+width:340px;
+height:340px;
+
+background:
+rgba(255,255,255,.05);
+
+border-radius:50%;
+
 top:-120px;
 right:-100px;
-width:320px;
-height:320px;
-background:rgba(255,255,255,.05);
-border-radius:50%;
+
 }
 
 .hero h1{
-font-size:58px;
+
+font-size:56px;
+
 font-weight:900;
-margin-bottom:10px;
+
+line-height:1.1;
+
 position:relative;
 z-index:2;
+
 }
 
 .hero p{
+
+margin-top:12px;
+
 font-size:16px;
-margin-bottom:26px;
-opacity:.95;
+
+opacity:.92;
+
 position:relative;
 z-index:2;
+
 }
 
+/* ====================================================== */
+/* SEARCH */
+/* ====================================================== */
+
 .search-box{
+
+margin-top:28px;
+
 display:flex;
+
 gap:14px;
-max-width:760px;
+
+flex-wrap:wrap;
+
 position:relative;
 z-index:2;
+
 }
 
 .search-box input{
+
 flex:1;
-height:64px;
+
+min-width:260px;
+
+padding:18px 22px;
+
 border:none;
-border-radius:18px;
-padding:0 24px;
+
+border-radius:20px;
+
 font-size:18px;
-font-weight:700;
+
 outline:none;
+
+font-weight:700;
+
 }
 
 .search-box button{
-width:220px;
+
+padding:18px 34px;
+
 border:none;
-border-radius:18px;
-background:linear-gradient(135deg,#00a2ff,#005eff);
+
+border-radius:20px;
+
+background:
+linear-gradient(
+90deg,
+#00c6ff,
+#0072ff
+);
+
 color:white;
+
 font-size:18px;
-font-weight:900;
+
+font-weight:800;
+
 cursor:pointer;
+
 transition:.3s;
+
 }
 
 .search-box button:hover{
-transform:scale(1.02);
+
+transform:scale(1.03);
+
 }
 
-/* STATS */
+/* ====================================================== */
+/* STAT */
+/* ====================================================== */
 
 .stats{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-margin-bottom:24px;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+margin-bottom:28px;
+
 }
 
 .stat-card{
-background:rgba(255,255,255,.11);
-border:1px solid rgba(255,255,255,.10);
-backdrop-filter:blur(10px);
-border-radius:24px;
-padding:22px;
+
+background:
+rgba(255,255,255,.12);
+
+padding:26px;
+
+border-radius:28px;
+
+backdrop-filter:blur(8px);
+
+border:
+1px solid rgba(255,255,255,.10);
+
 position:relative;
+
 overflow:hidden;
+
 }
 
-.stat-card::before{
+.stat-card::after{
+
 content:'';
+
 position:absolute;
-top:-40px;
-right:-30px;
+
 width:140px;
 height:140px;
-background:rgba(255,255,255,.05);
+
+background:
+rgba(255,255,255,.05);
+
 border-radius:50%;
+
+top:-45px;
+right:-45px;
+
 }
 
-.stat-card h3{
+.stat-title{
+
 font-size:15px;
-margin-bottom:12px;
-position:relative;
-z-index:2;
-}
 
-.stat-card h1{
-font-size:54px;
-font-weight:900;
-position:relative;
-z-index:2;
-}
+font-weight:600;
 
-.stat-card p{
-font-size:13px;
 opacity:.9;
-margin-top:10px;
+
 position:relative;
 z-index:2;
+
 }
 
-/* MENU */
+.stat-value{
 
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-margin-bottom:26px;
-}
+font-size:58px;
 
-.menu-card{
-background:white;
-color:#0b44b5;
-border-radius:28px;
-padding:28px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 12px 30px rgba(0,0,0,.18);
-}
-
-.menu-card:hover{
-transform:translateY(-5px);
-}
-
-.menu-icon{
-font-size:44px;
-margin-bottom:18px;
-}
-
-.menu-card h3{
-font-size:22px;
 font-weight:900;
-margin-bottom:10px;
+
+margin-top:10px;
+
+position:relative;
+z-index:2;
+
 }
 
-.menu-card p{
-font-size:15px;
+.stat-sub{
+
+margin-top:10px;
+
+font-size:14px;
+
+opacity:.85;
+
+position:relative;
+z-index:2;
+
+}
+
+/* ====================================================== */
+/* CARD MENU */
+/* ====================================================== */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(240px,1fr));
+
+gap:24px;
+
+margin-bottom:28px;
+
+}
+
+.card{
+
+background:white;
+
+color:#0a3d9a;
+
+padding:28px;
+
+border-radius:28px;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.18);
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card-icon{
+
+font-size:44px;
+
+margin-bottom:18px;
+
+}
+
+.card h3{
+
+font-size:22px;
+
+font-weight:900;
+
+margin-bottom:12px;
+
+}
+
+.card p{
+
+font-size:14px;
+
 line-height:1.7;
-color:#555;
+
+color:#444;
+
 }
 
+/* ====================================================== */
 /* SECTION */
+/* ====================================================== */
 
 .section{
-background:rgba(255,255,255,.10);
-border-radius:24px;
-padding:24px;
+
+background:
+rgba(255,255,255,.12);
+
+padding:26px;
+
+border-radius:28px;
+
 backdrop-filter:blur(10px);
-margin-bottom:24px;
+
+margin-bottom:28px;
+
 }
 
 .section h2{
-font-size:24px;
+
+font-size:28px;
+
 font-weight:900;
-margin-bottom:20px;
+
+margin-bottom:24px;
+
 }
 
-.progress-item{
+/* ====================================================== */
+/* BAR */
+/* ====================================================== */
+
+.bar-item{
+
 margin-bottom:18px;
+
 }
 
-.progress-top{
+.bar-label{
+
 display:flex;
+
 justify-content:space-between;
+
 margin-bottom:8px;
+
+font-size:15px;
+
 font-weight:700;
-font-size:14px;
+
 }
 
-.progress-bar{
-height:16px;
-background:rgba(255,255,255,.12);
-border-radius:20px;
+.bar{
+
+height:18px;
+
+background:
+rgba(255,255,255,.14);
+
+border-radius:30px;
+
 overflow:hidden;
+
 }
 
-.progress-fill{
+.bar-fill{
+
 height:100%;
-background:linear-gradient(90deg,#00c6ff,#0066ff);
-border-radius:20px;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+90deg,
+#00d2ff,
+#1f6fff
+);
+
 }
 
+/* ====================================================== */
+/* MODAL */
+/* ====================================================== */
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:
+rgba(0,0,0,.65);
+
+justify-content:center;
+
+align-items:center;
+
+z-index:9999;
+
+}
+
+.modal-content{
+
+background:white;
+
+color:#0b3d91;
+
+padding:30px;
+
+border-radius:28px;
+
+width:90%;
+max-width:420px;
+
+}
+
+.modal-content h2{
+
+margin-bottom:20px;
+
+font-size:24px;
+
+font-weight:900;
+
+}
+
+.modal-content button{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+margin-top:12px;
+
+background:
+linear-gradient(
+90deg,
+#00c6ff,
+#0072ff
+);
+
+color:white;
+
+font-size:16px;
+
+font-weight:800;
+
+cursor:pointer;
+
+}
+
+/* ====================================================== */
 /* FOOTER */
+/* ====================================================== */
 
 .footer{
+
 text-align:center;
+
 padding:24px;
+
 font-size:14px;
-opacity:.92;
+
+opacity:.9;
+
 }
 
+/* ====================================================== */
 /* MOBILE */
+/* ====================================================== */
 
-@media(max-width:900px){
+@media(max-width:980px){
 
-body{
+.wrapper{
 flex-direction:column;
 }
 
 .sidebar{
+
 position:relative;
+
 width:100%;
+
 height:auto;
+
 }
 
-.main{
+.content{
+
 margin-left:0;
-width:100%;
-padding:18px;
+
 }
 
 .hero h1{
-font-size:42px;
-}
 
-.search-box{
-flex-direction:column;
-}
+font-size:40px;
 
-.search-box button{
-width:100%;
-height:60px;
 }
 
 }
@@ -355,51 +717,58 @@ height:60px;
 
 <body>
 
+<div class="wrapper">
+
+<!-- ====================================================== -->
 <!-- SIDEBAR -->
+<!-- ====================================================== -->
 
 <div class="sidebar">
 
 <div class="logo-area">
-<img src="logo-app.png">
-<h1>SIMPAN</h1>
-<p>
+
+<img src="logo-bateng.png">
+<img src="logo-simpan.png">
+
+<div class="logo-title">
+SIMPAN
+</div>
+
+<div class="logo-sub">
 Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
-</p>
 </div>
-
-<button class="menu-btn">🏠 Dashboard</button>
-
-<button class="menu-btn"
-onclick="window.open('https://docs.google.com/forms','_blank')">
-🚀 SIMPAN V2
-</button>
-
-<button class="menu-btn"
-onclick="window.open('https://docs.google.com/forms','_blank')">
-🛥️ SIMPAN V1
-</button>
-
-<button class="menu-btn"
-onclick="window.open('qr.html','_blank')">
-🧾 CETAK QR
-</button>
-
-<button class="menu-btn"
-onclick="window.open('verifikasi-kapal.html','_blank')">
-✅ Verifikasi
-</button>
 
 </div>
 
-<!-- MAIN -->
+<div class="menu">
 
-<div class="main">
+<a href="#">🏠 Dashboard</a>
+
+<a href="input.html">🚀 SIMPAN V2</a>
+
+<a href="kapal.html">🛥️ SIMPAN V1</a>
+
+<a href="qr.html">🧾 CETAK QR</a>
+
+<a href="verifikasi-kapal.html">✅ Verifikasi</a>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- CONTENT -->
+<!-- ====================================================== -->
+
+<div class="content">
 
 <!-- HERO -->
 
 <div class="hero">
 
-<h1>DASHBOARD SIMPAN V3</h1>
+<h1>
+DASHBOARD SIMPAN V3
+</h1>
 
 <p>
 Portal Monitoring Armada Nelayan Kabupaten Bangka Tengah
@@ -414,7 +783,7 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 >
 
 <button onclick="searchData()">
-🔎 CARI DATA
+🔍 CARI DATA
 </button>
 
 </div>
@@ -426,103 +795,77 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 <div class="stats">
 
 <div class="stat-card">
-<h3>🚢 TOTAL KAPAL</h3>
-<h1>364</h1>
-<p>Gabungan SIMPAN V1 & V2</p>
+<div class="stat-title">🚢 TOTAL KAPAL</div>
+<div class="stat-value" id="totalKapal">0</div>
+<div class="stat-sub">Gabungan SIMPAN V1 & V2</div>
 </div>
 
 <div class="stat-card">
-<h3>📂 SIMPAN V1</h3>
-<h1>361</h1>
-<p>Total Sistem Lama</p>
+<div class="stat-title">📁 SIMPAN V1</div>
+<div class="stat-value" id="totalV1">0</div>
+<div class="stat-sub">Total Sistem Lama</div>
 </div>
 
 <div class="stat-card">
-<h3>🚀 SIMPAN V2</h3>
-<h1>3</h1>
-<p>Total Sistem Baru</p>
+<div class="stat-title">🚀 SIMPAN V2</div>
+<div class="stat-value" id="totalV2">0</div>
+<div class="stat-sub">Total Sistem Baru</div>
 </div>
 
 <div class="stat-card">
-<h3>🧑‍🌾 TOTAL NELAYAN</h3>
-<h1>336</h1>
-<p>Berdasarkan NIK unik</p>
+<div class="stat-title">🧑‍🌾 TOTAL NELAYAN</div>
+<div class="stat-value" id="totalNelayan">0</div>
+<div class="stat-sub">Berdasarkan NIK unik</div>
 </div>
 
 <div class="stat-card">
-<h3>✅ TERVERIFIKASI</h3>
-<h1>361</h1>
-<p>Status terverifikasi</p>
+<div class="stat-title">✅ TERVERIFIKASI</div>
+<div class="stat-value" id="totalVerifikasi">0</div>
+<div class="stat-sub">Status verifikasi</div>
 </div>
 
 <div class="stat-card">
-<h3>❌ BELUM TERVERIFIKASI</h3>
-<h1>3</h1>
-<p>Status belum verifikasi</p>
+<div class="stat-title">❌ BELUM VERIFIKASI</div>
+<div class="stat-value" id="belumVerifikasi">0</div>
+<div class="stat-sub">Status belum verifikasi</div>
 </div>
 
 </div>
 
 <!-- MENU -->
 
-<div class="menu-grid">
+<div class="cards">
 
-<div class="menu-card"
-onclick="window.open('https://docs.google.com/forms','_blank')">
-
-<div class="menu-icon">🚀</div>
-
+<a href="input.html" class="card">
+<div class="card-icon">🚀</div>
 <h3>SIMPAN V2</h3>
+<p>Sistem pendataan kapal generasi terbaru.</p>
+</a>
 
-<p>
-Sistem pendataan kapal generasi terbaru.
-</p>
-
-</div>
-
-<div class="menu-card"
-onclick="window.open('https://docs.google.com/forms','_blank')">
-
-<div class="menu-icon">🛥️</div>
-
+<a href="kapal.html" class="card">
+<div class="card-icon">🛥️</div>
 <h3>SIMPAN V1</h3>
+<p>Sistem pendataan kapal generasi pertama.</p>
+</a>
 
-<p>
-Sistem pendataan kapal generasi pertama.
-</p>
-
-</div>
-
-<div class="menu-card"
-onclick="window.open('qr.html','_blank')">
-
-<div class="menu-icon">🧾</div>
-
+<a href="qr.html" class="card">
+<div class="card-icon">🧾</div>
 <h3>CETAK QR</h3>
+<p>Cetak QR gabungan SIMPAN V1 & V2.</p>
+</a>
 
-<p>
-Cetak QR gabungan SIMPAN V1 & SIMPAN V2.
-</p>
-
-</div>
-
-<div class="menu-card"
-onclick="window.open('verifikasi-kapal.html','_blank')">
-
-<div class="menu-icon">✅</div>
-
+<a href="verifikasi-kapal.html" class="card">
+<div class="card-icon">✅</div>
 <h3>VERIFIKASI</h3>
+<p>Sistem verifikasi kapal realtime.</p>
+</a>
 
-<p>
-Sistem verifikasi kapal realtime.
-</p>
+<a
+href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
+target="_blank"
+class="card">
 
-</div>
-
-<div class="menu-card"
-onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')">
-
-<div class="menu-icon">📊</div>
+<div class="card-icon">📊</div>
 
 <h3>DATA SIMPAN V2</h3>
 
@@ -530,12 +873,14 @@ onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85u
 Buka Spreadsheet data kapal SIMPAN V2.
 </p>
 
-</div>
+</a>
 
-<div class="menu-card"
-onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')">
+<a
+href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126"
+target="_blank"
+class="card">
 
-<div class="menu-icon">📘</div>
+<div class="card-icon">📘</div>
 
 <h3>DATA SIMPAN V1</h3>
 
@@ -543,111 +888,59 @@ onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej
 Buka Spreadsheet data kapal SIMPAN V1.
 </p>
 
-</div>
+</a>
+
+<!-- DOWNLOAD EXCEL -->
+
+<div class="card" onclick="openExcelModal()">
+
+<div class="card-icon">⬇️</div>
+
+<h3>DOWNLOAD EXCEL</h3>
+
+<p>
+Download data spreadsheet gabungan V1 & V2.
+</p>
 
 </div>
 
-<!-- DESA -->
+<!-- DOWNLOAD PDF -->
 
-<div class="section">
+<div class="card" onclick="openPdfModal()">
 
-<h2>🏘️ STATISTIK PER DESA</h2>
+<div class="card-icon">📄</div>
 
-<div class="progress-item">
-<div class="progress-top">
-<span>SUNGAI SELAN</span>
-<span>133 Kapal</span>
-</div>
+<h3>DOWNLOAD PDF</h3>
 
-<div class="progress-bar">
-<div class="progress-fill" style="width:92%"></div>
-</div>
-</div>
+<p>
+Download PDF gabungan V1 & V2.
+</p>
 
-<div class="progress-item">
-<div class="progress-top">
-<span>KURAU</span>
-<span>66 Kapal</span>
-</div>
-
-<div class="progress-bar">
-<div class="progress-fill" style="width:66%"></div>
-</div>
-</div>
-
-<div class="progress-item">
-<div class="progress-top">
-<span>BATU BELUBANG</span>
-<span>55 Kapal</span>
-</div>
-
-<div class="progress-bar">
-<div class="progress-fill" style="width:55%"></div>
-</div>
-</div>
-
-<div class="progress-item">
-<div class="progress-top">
-<span>KURAU BARAT</span>
-<span>50 Kapal</span>
-</div>
-
-<div class="progress-bar">
-<div class="progress-fill" style="width:50%"></div>
-</div>
-</div>
-
-<div class="progress-item">
-<div class="progress-top">
-<span>TANJUNG GUNUNG</span>
-<span>40 Kapal</span>
-</div>
-
-<div class="progress-bar">
-<div class="progress-fill" style="width:40%"></div>
-</div>
 </div>
 
 </div>
 
-<!-- KECAMATAN -->
+<!-- STATISTIK DESA -->
 
 <div class="section">
 
-<h2>🗺️ STATISTIK PER KECAMATAN</h2>
+<h2>
+🏘️ STATISTIK PER DESA
+</h2>
 
-<div class="progress-item">
-<div class="progress-top">
-<span>SUNGAI SELAN</span>
-<span>188 Kapal</span>
-</div>
+<div id="desaContainer"></div>
 
-<div class="progress-bar">
-<div class="progress-fill" style="width:88%"></div>
-</div>
 </div>
 
-<div class="progress-item">
-<div class="progress-top">
-<span>KOBA</span>
-<span>92 Kapal</span>
-</div>
+<!-- STATISTIK KECAMATAN -->
 
-<div class="progress-bar">
-<div class="progress-fill" style="width:62%"></div>
-</div>
-</div>
+<div class="section">
 
-<div class="progress-item">
-<div class="progress-top">
-<span>LUBUK BESAR</span>
-<span>84 Kapal</span>
-</div>
+<h2>
+🏙️ STATISTIK PER KECAMATAN
+</h2>
 
-<div class="progress-bar">
-<div class="progress-fill" style="width:55%"></div>
-</div>
-</div>
+<div id="kecamatanContainer"></div>
 
 </div>
 
@@ -659,27 +952,365 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
+</div>
+
+<!-- ====================================================== -->
+<!-- MODAL EXCEL -->
+<!-- ====================================================== -->
+
+<div class="modal" id="excelModal">
+
+<div class="modal-content">
+
+<h2>DOWNLOAD EXCEL</h2>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
+DOWNLOAD EXCEL V2
+</button>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
+DOWNLOAD EXCEL V1
+</button>
+
+<button onclick="closeExcelModal()">
+TUTUP
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- MODAL PDF -->
+<!-- ====================================================== -->
+
+<div class="modal" id="pdfModal">
+
+<div class="modal-content">
+
+<h2>DOWNLOAD PDF</h2>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
+DOWNLOAD PDF V2
+</button>
+
+<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
+DOWNLOAD PDF V1
+</button>
+
+<button onclick="closePdfModal()">
+TUTUP
+</button>
+
+</div>
+
+</div>
+
 <script>
+
+/* ====================================================== */
+/* CSV */
+/* ====================================================== */
+
+const csvV1 =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI5O8DJD_-VoI2Bf3NDHY_x1eFO8vQgrmpw7L1VW_HczX9avlE5HVX2yN16nRQ8gq_UD0xp_wWfvk/pub?output=csv";
+
+const csvV2 =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRQKrQgc5pIrlfZgrKjwJxntCp-gkfT6tHzCcmW0XH6SWCbxPW5hn5LJ-584QJ1rE_4tuSuorJorFn-/pub?output=csv";
+
+/* ====================================================== */
+/* GLOBAL */
+/* ====================================================== */
+
+let allData = [];
+
+/* ====================================================== */
+/* SEARCH */
+/* ====================================================== */
 
 function searchData(){
 
 const keyword =
-document.getElementById('searchInput')
+document.getElementById("searchInput")
 .value
 .trim();
 
 if(!keyword){
 
-alert('Masukkan ID SIMPAN atau NIK');
+alert("Masukkan ID atau NIK");
 
 return;
 
 }
 
 window.open(
-'kapal.html?id=' + keyword,
-'_blank'
+"qr.html?id=" + keyword,
+"_blank"
 );
+
+}
+
+/* ====================================================== */
+/* MODAL */
+/* ====================================================== */
+
+function openExcelModal(){
+
+document.getElementById("excelModal")
+.style.display = "flex";
+
+}
+
+function closeExcelModal(){
+
+document.getElementById("excelModal")
+.style.display = "none";
+
+}
+
+function openPdfModal(){
+
+document.getElementById("pdfModal")
+.style.display = "flex";
+
+}
+
+function closePdfModal(){
+
+document.getElementById("pdfModal")
+.style.display = "none";
+
+}
+
+/* ====================================================== */
+/* LOAD CSV */
+/* ====================================================== */
+
+Promise.all([
+
+fetch(csvV1).then(res => res.text()),
+fetch(csvV2).then(res => res.text())
+
+])
+
+.then(([v1,v2]) => {
+
+const dataV1 =
+Papa.parse(v1,{
+header:true
+}).data;
+
+const dataV2 =
+Papa.parse(v2,{
+header:true
+}).data;
+
+/* TOTAL */
+
+document.getElementById("totalV1")
+.innerHTML = dataV1.length;
+
+document.getElementById("totalV2")
+.innerHTML = dataV2.length;
+
+document.getElementById("totalKapal")
+.innerHTML =
+dataV1.length + dataV2.length;
+
+/* GABUNG */
+
+allData = [
+...dataV1,
+...dataV2
+];
+
+/* NELAYAN UNIK */
+
+const nikSet = new Set();
+
+allData.forEach(item => {
+
+const nik =
+item["Nomor Induk Kependudukan (NIK)"] ||
+item["NOMOR INDUK KEPENDUDUKAN (NIK)"];
+
+if(nik){
+
+nikSet.add(nik);
+
+}
+
+});
+
+document.getElementById("totalNelayan")
+.innerHTML = nikSet.size;
+
+/* VERIFIKASI */
+
+let verifikasi = 0;
+let belum = 0;
+
+allData.forEach(item => {
+
+const status =
+item["STATUS"] ||
+item["Status"] ||
+"";
+
+if(
+status.toUpperCase()
+.includes("TERVERIFIKASI")
+){
+
+verifikasi++;
+
+}else{
+
+belum++;
+
+}
+
+});
+
+document.getElementById("totalVerifikasi")
+.innerHTML = verifikasi;
+
+document.getElementById("belumVerifikasi")
+.innerHTML = belum;
+
+/* ====================================================== */
+/* DESA */
+/* ====================================================== */
+
+const desaMap = {};
+
+allData.forEach(item => {
+
+const desa =
+item["Desa"] ||
+item["DESA"] ||
+"-";
+
+desaMap[desa] =
+(desaMap[desa] || 0) + 1;
+
+});
+
+const desaContainer =
+document.getElementById("desaContainer");
+
+Object.entries(desaMap)
+
+.sort((a,b)=>b[1]-a[1])
+
+.forEach(([nama,total]) => {
+
+desaContainer.innerHTML += `
+
+<div class="bar-item">
+
+<div class="bar-label">
+
+<span>${nama}</span>
+
+<span>${total} Kapal</span>
+
+</div>
+
+<div class="bar">
+
+<div
+class="bar-fill"
+style="width:${Math.min(total,100)}%">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* ====================================================== */
+/* KECAMATAN */
+/* ====================================================== */
+
+const kecMap = {};
+
+allData.forEach(item => {
+
+const kec =
+item["Kecamatan"] ||
+item["KECAMATAN"] ||
+"-";
+
+kecMap[kec] =
+(kecMap[kec] || 0) + 1;
+
+});
+
+const kecContainer =
+document.getElementById("kecamatanContainer");
+
+Object.entries(kecMap)
+
+.sort((a,b)=>b[1]-a[1])
+
+.forEach(([nama,total]) => {
+
+kecContainer.innerHTML += `
+
+<div class="bar-item">
+
+<div class="bar-label">
+
+<span>${nama}</span>
+
+<span>${total} Kapal</span>
+
+</div>
+
+<div class="bar">
+
+<div
+class="bar-fill"
+style="width:${Math.min(total,100)}%">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+/* ====================================================== */
+/* PWA */
+/* ====================================================== */
+
+if ('serviceWorker' in navigator) {
+
+window.addEventListener('load', () => {
+
+navigator.serviceWorker.register('./sw.js')
+
+.then(() => {
+
+console.log('PWA aktif');
+
+})
+
+.catch((err) => {
+
+console.log(err);
+
+});
+
+});
 
 }
 
