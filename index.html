@@ -932,14 +932,6 @@ return;
 }
 
 /* =========================
-LOADING ON
-========================= */
-
-document
-.getElementById('loading')
-.style.display='flex';
-
-/* =========================
 HASIL
 ========================= */
 
@@ -947,7 +939,7 @@ let hasilV1 = null;
 let hasilV2 = null;
 
 /* =========================
-SCAN SIMPAN V1
+SCAN V1
 ========================= */
 
 dataV1.forEach(item=>{
@@ -985,7 +977,7 @@ hasilV1 = item;
 });
 
 /* =========================
-SCAN SIMPAN V2
+SCAN V2
 ========================= */
 
 dataV2.forEach(item=>{
@@ -1023,15 +1015,7 @@ hasilV2 = item;
 });
 
 /* =========================
-LOADING OFF
-========================= */
-
-document
-.getElementById('loading')
-.style.display='none';
-
-/* =========================
-DATA TIDAK ADA
+NOT FOUND
 ========================= */
 
 if(!hasilV1 && !hasilV2){
@@ -1060,7 +1044,7 @@ hasilV2['ID SIMPAN']
 : '';
 
 /* =========================
-JIKA ADA DI KEDUA SISTEM
+DOUBLE DATA
 ========================= */
 
 if(hasilV1 && hasilV2){
@@ -1090,7 +1074,7 @@ return;
 }
 
 /* =========================
-HANYA V1
+ONLY V1
 ========================= */
 
 if(hasilV1){
@@ -1101,7 +1085,7 @@ return;
 }
 
 /* =========================
-HANYA V2
+ONLY V2
 ========================= */
 
 if(hasilV2){
@@ -1112,7 +1096,6 @@ return;
 }
 
 }
-
   
 document
 .getElementById('searchInput')
