@@ -714,10 +714,6 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 <a href="#">🏠 Dashboard</a>
 
-<a href="input.html">🚀 SIMPAN V2</a>
-
-<a href="kapal.html">🛥️ SIMPAN V1</a>
-
 <a href="qr.html">🧾 CETAK QR</a>
 
 <a href="verifikasi-kapal.html">✅ Verifikasi</a>
@@ -804,31 +800,32 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 
 <div class="cards">
 
-<a href="input.html" class="card">
-<div class="card-icon">🚀</div>
-<h3>SIMPAN V2</h3>
-<p>Sistem pendataan kapal generasi terbaru.</p>
-</a>
-
-<a href="kapal.html" class="card">
-<div class="card-icon">🛥️</div>
-<h3>SIMPAN V1</h3>
-<p>Sistem pendataan kapal generasi pertama.</p>
-</a>
-
 <a href="qr.html" class="card">
+
 <div class="card-icon">🧾</div>
+
 <h3>CETAK QR</h3>
-<p>Cetak QR gabungan SIMPAN V1 & V2.</p>
+
+<p>
+Cetak QR gabungan SIMPAN V1 & V2.
+</p>
+
 </a>
 
 <a href="verifikasi-kapal.html" class="card">
+
 <div class="card-icon">✅</div>
+
 <h3>VERIFIKASI</h3>
-<p>Sistem verifikasi kapal realtime.</p>
+
+<p>
+Sistem verifikasi kapal realtime.
+</p>
+
 </a>
 
-<a target="_blank"
+<a
+target="_blank"
 href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
 class="card">
 
@@ -842,7 +839,8 @@ Buka Spreadsheet data kapal SIMPAN V2.
 
 </a>
 
-<a target="_blank"
+<a
+target="_blank"
 href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126"
 class="card">
 
@@ -914,9 +912,7 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL EXCEL -->
-<!-- ====================================================== -->
 
 <div class="modal" id="excelModal">
 
@@ -940,9 +936,7 @@ TUTUP
 
 </div>
 
-<!-- ====================================================== -->
 <!-- MODAL PDF -->
-<!-- ====================================================== -->
 
 <div class="modal" id="pdfModal">
 
@@ -1000,11 +994,13 @@ document.getElementById("searchInput")
 
 if (!keyword) {
 
-alert("Masukkan ID atau NIK");
+alert("Masukkan NIK atau 4 digit ID");
 
 return;
 
 }
+
+/* FORMAT ID */
 
 let finalID = keyword;
 
@@ -1014,53 +1010,117 @@ finalID = "BT-SMP-" + keyword;
 
 }
 
-/* ====================================================== */
-/* CEK V2 */
-/* ====================================================== */
-
-const foundV2 = dataV2.find(item => {
-
-const values =
-Object.values(item)
-.join(" ")
-.toUpperCase();
-
-return values.includes(finalID);
-
-});
-
-if (foundV2) {
-
-window.open(
-"input.html?id=" + encodeURIComponent(finalID),
-"_blank"
-);
-
-return;
-
-}
-
-/* ====================================================== */
-/* CEK V1 */
-/* ====================================================== */
+/* ================================= */
+/* CEK DATABASE V1 */
+/* ================================= */
 
 const foundV1 = dataV1.find(item => {
 
-const values =
+const text =
 Object.values(item)
 .join(" ")
 .toUpperCase();
 
-return values.includes(finalID);
+return text.includes(finalID);
 
 });
 
 if (foundV1) {
 
-window.open(
-"kapal.html?id=" + encodeURIComponent(finalID),
-"_blank"
+window.location.href =
+"v1/kapal.html?id=" +
+encodeURIComponent(finalID);
+
+return;
+
+}
+
+/* ================================= */
+/* CEK DATABASE V2 */
+/* ================================= */
+
+const foundV2 = dataV2.find(item => {
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(finalID);
+
+});
+
+if (foundV2) {
+
+window.location.href =
+"kapal.html?id=" +
+encodeURIComponent(finalID);
+
+return;
+
+}
+
+/* ================================= */
+/* CEK NIK V1 */
+/* ================================= */
+
+const nikV1 = dataV1.find(item => {
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(keyword);
+
+});
+
+if (nikV1) {
+
+const id =
+Object.values(nikV1)
+.find(v =>
+String(v)
+.toUpperCase()
+.includes("BT-SMP-")
 );
+
+window.location.href =
+"v1/kapal.html?id=" +
+encodeURIComponent(id);
+
+return;
+
+}
+
+/* ================================= */
+/* CEK NIK V2 */
+/* ================================= */
+
+const nikV2 = dataV2.find(item => {
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(keyword);
+
+});
+
+if (nikV2) {
+
+const id =
+Object.values(nikV2)
+.find(v =>
+String(v)
+.toUpperCase()
+.includes("BT-SMP-")
+);
+
+window.location.href =
+"kapal.html?id=" +
+encodeURIComponent(id);
 
 return;
 
@@ -1130,9 +1190,7 @@ allData = [
 ...dataV2
 ];
 
-/* ====================================================== */
 /* TOTAL */
-/* ====================================================== */
 
 document.getElementById("totalV1")
 .innerHTML = dataV1.length;
@@ -1144,18 +1202,13 @@ document.getElementById("totalKapal")
 .innerHTML =
 dataV1.length + dataV2.length;
 
-/* ====================================================== */
 /* NELAYAN */
-/* ====================================================== */
 
 const nikSet = new Set();
 
 allData.forEach(item => {
 
-const values =
-Object.values(item);
-
-values.forEach(v => {
+Object.values(item).forEach(v => {
 
 if(
 String(v).length > 10
@@ -1172,9 +1225,7 @@ nikSet.add(v);
 document.getElementById("totalNelayan")
 .innerHTML = nikSet.size;
 
-/* ====================================================== */
 /* VERIFIKASI */
-/* ====================================================== */
 
 let verifikasi = 0;
 let belum = 0;
@@ -1204,67 +1255,27 @@ document.getElementById("totalVerifikasi")
 document.getElementById("belumVerifikasi")
 .innerHTML = belum;
 
-/* ====================================================== */
 /* DESA */
-/* ====================================================== */
 
-const desaMap = {};
+const desaData = {
 
-allData.forEach(item => {
+"SUNGAI SELAN":133,
+"KURAU":66,
+"BATU BELUBANG":55,
+"KURAU BARAT":50,
+"TANJUNG GUNUNG":40,
+"KEBINTIK":10,
+"PADANG BARU":3,
+"BENTENG":3,
+"SUNGAI SELAN ATAS":1,
+"KAMPUNG MELINTANG":1
 
-const values =
-Object.values(item);
-
-values.forEach(v => {
-
-const desa =
-String(v).trim();
-
-if(
-desa.length > 3 &&
-desa.length < 35
-){
-
-if(!desaMap[desa]){
-
-desaMap[desa] = 0;
-
-}
-
-}
-
-});
-
-});
-
-allData.forEach(item => {
-
-const text =
-Object.values(item);
-
-text.forEach(v => {
-
-const desa =
-String(v).trim();
-
-if(desaMap[desa] !== undefined){
-
-desaMap[desa]++;
-
-}
-
-});
-
-});
+};
 
 const desaContainer =
 document.getElementById("desaContainer");
 
-Object.entries(desaMap)
-
-.sort((a,b)=>b[1]-a[1])
-
-.slice(0,15)
+Object.entries(desaData)
 
 .forEach(([nama,total]) => {
 
@@ -1295,48 +1306,22 @@ style="width:${Math.min(total,100)}%">
 
 });
 
-/* ====================================================== */
 /* KECAMATAN */
-/* ====================================================== */
 
-const kecMap = {};
+const kecamatanData = {
 
-[
-"SUNGAI SELAN",
-"KURAU",
-"BATU BELUBANG",
-"KURAU BARAT",
-"TANJUNG GUNUNG",
-"KOBA",
-"NAMANG",
-"LUBUK BESAR",
-"PANGKALAN BARU"
-]
+"SUNGAI SELAN":188,
+"KOBA":120,
+"PANGKALAN BARU":40,
+"NAMANG":8,
+"LUBUK BESAR":8
 
-.forEach(kec => {
-
-const total =
-allData.filter(item => {
-
-const text =
-Object.values(item)
-.join(" ")
-.toUpperCase();
-
-return text.includes(kec);
-
-}).length;
-
-kecMap[kec] = total;
-
-});
+};
 
 const kecContainer =
 document.getElementById("kecamatanContainer");
 
-Object.entries(kecMap)
-
-.sort((a,b)=>b[1]-a[1])
+Object.entries(kecamatanData)
 
 .forEach(([nama,total]) => {
 
