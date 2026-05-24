@@ -10,18 +10,11 @@
 <link rel="icon" href="logo-app.png">
 <link rel="manifest" href="manifest.json">
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
-
-/* ====================================================== */
-/* RESET */
-/* ====================================================== */
 
 *{
 margin:0;
@@ -30,15 +23,11 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-/* ====================================================== */
-/* BODY */
-/* ====================================================== */
-
 body{
 
 background:
 linear-gradient(
-rgba(4,25,80,.86),
+rgba(4,25,80,.88),
 rgba(0,65,180,.88)
 ),
 url('background_simpan.png');
@@ -52,10 +41,6 @@ color:white;
 overflow-x:hidden;
 
 }
-
-/* ====================================================== */
-/* WRAPPER */
-/* ====================================================== */
 
 .wrapper{
 display:flex;
@@ -71,9 +56,9 @@ min-height:100vh;
 width:240px;
 
 background:
-rgba(0,32,105,.96);
+rgba(0,32,105,.97);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 padding:24px 16px;
 
@@ -120,12 +105,9 @@ margin-top:10px;
 .logo-sub{
 
 font-size:12px;
-
-line-height:1.6;
-
+line-height:1.7;
 margin-top:10px;
-
-opacity:.9;
+opacity:.92;
 
 }
 
@@ -138,9 +120,7 @@ margin-top:24px;
 .menu a{
 
 display:flex;
-
 align-items:center;
-
 gap:12px;
 
 padding:15px 16px;
@@ -433,7 +413,7 @@ z-index:2;
 }
 
 /* ====================================================== */
-/* CARD MENU */
+/* CARD */
 /* ====================================================== */
 
 .cards{
@@ -689,25 +669,17 @@ flex-direction:column;
 }
 
 .sidebar{
-
 position:relative;
-
 width:100%;
-
 height:auto;
-
 }
 
 .content{
-
 margin-left:0;
-
 }
 
 .hero h1{
-
 font-size:40px;
-
 }
 
 }
@@ -719,9 +691,7 @@ font-size:40px;
 
 <div class="wrapper">
 
-<!-- ====================================================== -->
 <!-- SIDEBAR -->
-<!-- ====================================================== -->
 
 <div class="sidebar">
 
@@ -756,9 +726,7 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 </div>
 
-<!-- ====================================================== -->
 <!-- CONTENT -->
-<!-- ====================================================== -->
 
 <div class="content">
 
@@ -860,9 +828,8 @@ placeholder="Cari 4 digit ID SIMPAN atau NIK..."
 <p>Sistem verifikasi kapal realtime.</p>
 </a>
 
-<a
+<a target="_blank"
 href="https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342"
-target="_blank"
 class="card">
 
 <div class="card-icon">📊</div>
@@ -875,9 +842,8 @@ Buka Spreadsheet data kapal SIMPAN V2.
 
 </a>
 
-<a
+<a target="_blank"
 href="https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126"
-target="_blank"
 class="card">
 
 <div class="card-icon">📘</div>
@@ -890,8 +856,6 @@ Buka Spreadsheet data kapal SIMPAN V1.
 
 </a>
 
-<!-- DOWNLOAD EXCEL -->
-
 <div class="card" onclick="openExcelModal()">
 
 <div class="card-icon">⬇️</div>
@@ -899,12 +863,10 @@ Buka Spreadsheet data kapal SIMPAN V1.
 <h3>DOWNLOAD EXCEL</h3>
 
 <p>
-Download data spreadsheet gabungan V1 & V2.
+Download spreadsheet gabungan V1 & V2.
 </p>
 
 </div>
-
-<!-- DOWNLOAD PDF -->
 
 <div class="card" onclick="openPdfModal()">
 
@@ -920,7 +882,7 @@ Download PDF gabungan V1 & V2.
 
 </div>
 
-<!-- STATISTIK DESA -->
+<!-- DESA -->
 
 <div class="section">
 
@@ -932,7 +894,7 @@ Download PDF gabungan V1 & V2.
 
 </div>
 
-<!-- STATISTIK KECAMATAN -->
+<!-- KECAMATAN -->
 
 <div class="section">
 
@@ -943,8 +905,6 @@ Download PDF gabungan V1 & V2.
 <div id="kecamatanContainer"></div>
 
 </div>
-
-<!-- FOOTER -->
 
 <div class="footer">
 SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
@@ -1022,6 +982,8 @@ const csvV2 =
 /* GLOBAL */
 /* ====================================================== */
 
+let dataV1 = [];
+let dataV2 = [];
 let allData = [];
 
 /* ====================================================== */
@@ -1044,8 +1006,6 @@ return;
 
 }
 
-// otomatis ubah 4 digit jadi BT-SMP
-
 let finalID = keyword;
 
 if (/^\d{4}$/.test(keyword)) {
@@ -1054,20 +1014,18 @@ finalID = "BT-SMP-" + keyword;
 
 }
 
-// ===============================
-// CEK DATA V2
-// ===============================
+/* ====================================================== */
+/* CEK V2 */
+/* ====================================================== */
 
-const foundV2 = allData.find(item => {
+const foundV2 = dataV2.find(item => {
 
-const id =
-(item["ID SIMPAN"] ||
-item["Id SIMPAN"] ||
-item["id"] ||
-"")
+const values =
+Object.values(item)
+.join(" ")
 .toUpperCase();
 
-return id === finalID;
+return values.includes(finalID);
 
 });
 
@@ -1082,20 +1040,18 @@ return;
 
 }
 
-// ===============================
-// CEK DATA V1
-// ===============================
+/* ====================================================== */
+/* CEK V1 */
+/* ====================================================== */
 
-const foundV1 = allData.find(item => {
+const foundV1 = dataV1.find(item => {
 
-const id =
-(item["ID SIMPAN"] ||
-item["Id SIMPAN"] ||
-item["id"] ||
-"")
+const values =
+Object.values(item)
+.join(" ")
 .toUpperCase();
 
-return id === finalID;
+return values.includes(finalID);
 
 });
 
@@ -1113,6 +1069,7 @@ return;
 alert("Data tidak ditemukan");
 
 }
+
 /* ====================================================== */
 /* MODAL */
 /* ====================================================== */
@@ -1158,17 +1115,24 @@ fetch(csvV2).then(res => res.text())
 
 .then(([v1,v2]) => {
 
-const dataV1 =
+dataV1 =
 Papa.parse(v1,{
 header:true
 }).data;
 
-const dataV2 =
+dataV2 =
 Papa.parse(v2,{
 header:true
 }).data;
 
+allData = [
+...dataV1,
+...dataV2
+];
+
+/* ====================================================== */
 /* TOTAL */
+/* ====================================================== */
 
 document.getElementById("totalV1")
 .innerHTML = dataV1.length;
@@ -1180,50 +1144,49 @@ document.getElementById("totalKapal")
 .innerHTML =
 dataV1.length + dataV2.length;
 
-/* GABUNG */
-
-allData = [
-...dataV1,
-...dataV2
-];
-
-/* NELAYAN UNIK */
+/* ====================================================== */
+/* NELAYAN */
+/* ====================================================== */
 
 const nikSet = new Set();
 
 allData.forEach(item => {
 
-const nik =
-item["Nomor Induk Kependudukan (NIK)"] ||
-item["NOMOR INDUK KEPENDUDUKAN (NIK)"];
+const values =
+Object.values(item);
 
-if(nik){
+values.forEach(v => {
 
-nikSet.add(nik);
+if(
+String(v).length > 10
+){
+
+nikSet.add(v);
 
 }
+
+});
 
 });
 
 document.getElementById("totalNelayan")
 .innerHTML = nikSet.size;
 
+/* ====================================================== */
 /* VERIFIKASI */
+/* ====================================================== */
 
 let verifikasi = 0;
 let belum = 0;
 
 allData.forEach(item => {
 
-const status =
-item["STATUS"] ||
-item["Status"] ||
-"";
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
 
-if(
-status.toUpperCase()
-.includes("TERVERIFIKASI")
-){
+if(text.includes("TERVERIFIKASI")){
 
 verifikasi++;
 
@@ -1249,13 +1212,48 @@ const desaMap = {};
 
 allData.forEach(item => {
 
-const desa =
-item["Desa"] ||
-item["DESA"] ||
-"-";
+const values =
+Object.values(item);
 
-desaMap[desa] =
-(desaMap[desa] || 0) + 1;
+values.forEach(v => {
+
+const desa =
+String(v).trim();
+
+if(
+desa.length > 3 &&
+desa.length < 35
+){
+
+if(!desaMap[desa]){
+
+desaMap[desa] = 0;
+
+}
+
+}
+
+});
+
+});
+
+allData.forEach(item => {
+
+const text =
+Object.values(item);
+
+text.forEach(v => {
+
+const desa =
+String(v).trim();
+
+if(desaMap[desa] !== undefined){
+
+desaMap[desa]++;
+
+}
+
+});
 
 });
 
@@ -1265,6 +1263,8 @@ document.getElementById("desaContainer");
 Object.entries(desaMap)
 
 .sort((a,b)=>b[1]-a[1])
+
+.slice(0,15)
 
 .forEach(([nama,total]) => {
 
@@ -1301,15 +1301,33 @@ style="width:${Math.min(total,100)}%">
 
 const kecMap = {};
 
-allData.forEach(item => {
+[
+"SUNGAI SELAN",
+"KURAU",
+"BATU BELUBANG",
+"KURAU BARAT",
+"TANJUNG GUNUNG",
+"KOBA",
+"NAMANG",
+"LUBUK BESAR",
+"PANGKALAN BARU"
+]
 
-const kec =
-item["Kecamatan"] ||
-item["KECAMATAN"] ||
-"-";
+.forEach(kec => {
 
-kecMap[kec] =
-(kecMap[kec] || 0) + 1;
+const total =
+allData.filter(item => {
+
+const text =
+Object.values(item)
+.join(" ")
+.toUpperCase();
+
+return text.includes(kec);
+
+}).length;
+
+kecMap[kec] = total;
 
 });
 
@@ -1364,12 +1382,6 @@ navigator.serviceWorker.register('./sw.js')
 .then(() => {
 
 console.log('PWA aktif');
-
-})
-
-.catch((err) => {
-
-console.log(err);
 
 });
 
