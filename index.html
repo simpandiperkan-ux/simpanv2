@@ -714,8 +714,6 @@ Sistem Informasi Manajemen Pendataan Armada Nelayan Kabupaten Bangka Tengah
 
 <div class="content">
 
-<!-- HERO -->
-
 <div class="hero">
 
 <h1>
@@ -873,7 +871,7 @@ Download PDF gabungan V1 & V2.
 </div>
 
 <!-- ====================================================== -->
-<!-- STATISTIK DESA -->
+<!-- DESA -->
 <!-- ====================================================== -->
 
 <div class="section">
@@ -887,7 +885,7 @@ Download PDF gabungan V1 & V2.
 </div>
 
 <!-- ====================================================== -->
-<!-- STATISTIK KECAMATAN -->
+<!-- KECAMATAN -->
 <!-- ====================================================== -->
 
 <div class="section">
@@ -918,11 +916,17 @@ SIMPAN SUPER APP V3 • DINAS PERIKANAN KABUPATEN BANGKA TENGAH
 
 <h2>DOWNLOAD EXCEL</h2>
 
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx','_blank')">
+<button onclick="window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=xlsx',
+'_blank'
+)">
 DOWNLOAD EXCEL V2
 </button>
 
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx','_blank')">
+<button onclick="window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=xlsx',
+'_blank'
+)">
 DOWNLOAD EXCEL V1
 </button>
 
@@ -944,11 +948,17 @@ TUTUP
 
 <h2>DOWNLOAD PDF</h2>
 
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf','_blank')">
+<button onclick="window.open(
+'https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/export?format=pdf',
+'_blank'
+)">
 DOWNLOAD PDF V2
 </button>
 
-<button onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf','_blank')">
+<button onclick="window.open(
+'https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/export?format=pdf',
+'_blank'
+)">
 DOWNLOAD PDF V1
 </button>
 
@@ -963,7 +973,7 @@ TUTUP
 <script>
 
 /* ====================================================== */
-/* CSV DATABASE */
+/* DATABASE CSV */
 /* ====================================================== */
 
 const csvV1 =
@@ -1002,18 +1012,15 @@ return;
 }
 
 /* ====================================================== */
-/* ID */
+/* CARI BERDASARKAN ID */
 /* ====================================================== */
 
 if(/^\d{4}$/.test(keyword)){
 
 const id = "BT-SMP-" + keyword;
 
-/* ====================================================== */
-/* CEK V2 */
-/* ====================================================== */
-
-const v2 = dataV2.find(item=>
+const v1 =
+dataV1.find(item=>
 
 JSON.stringify(item)
 .toUpperCase()
@@ -1021,11 +1028,8 @@ JSON.stringify(item)
 
 );
 
-/* ====================================================== */
-/* CEK V1 */
-/* ====================================================== */
-
-const v1 = dataV1.find(item=>
+const v2 =
+dataV2.find(item=>
 
 JSON.stringify(item)
 .toUpperCase()
@@ -1033,9 +1037,7 @@ JSON.stringify(item)
 
 );
 
-/* ====================================================== */
 /* ADA DI KEDUANYA */
-/* ====================================================== */
 
 if(v1 && v2){
 
@@ -1064,9 +1066,7 @@ return;
 
 }
 
-/* ====================================================== */
 /* HANYA V2 */
-/* ====================================================== */
 
 if(v2){
 
@@ -1079,9 +1079,7 @@ return;
 
 }
 
-/* ====================================================== */
 /* HANYA V1 */
-/* ====================================================== */
 
 if(v1){
 
@@ -1097,7 +1095,7 @@ return;
 }
 
 /* ====================================================== */
-/* PENCARIAN NIK */
+/* CARI BERDASARKAN NIK */
 /* ====================================================== */
 
 const hasilV1 = dataV1.filter(item=>{
@@ -1122,9 +1120,7 @@ return nik.includes(keyword);
 
 });
 
-/* ====================================================== */
 /* ADA DI KEDUANYA */
-/* ====================================================== */
 
 if(hasilV1.length > 0 && hasilV2.length > 0){
 
@@ -1168,9 +1164,7 @@ return;
 
 }
 
-/* ====================================================== */
 /* HANYA V2 */
-/* ====================================================== */
 
 if(hasilV2.length > 0){
 
@@ -1195,9 +1189,7 @@ return;
 
 }
 
-/* ====================================================== */
 /* HANYA V1 */
-/* ====================================================== */
 
 if(hasilV1.length > 0){
 
@@ -1324,16 +1316,12 @@ document.getElementById("totalKapal")
 dataV1.length + dataV2.length;
 
 /* ====================================================== */
-/* TOTAL NELAYAN BERDASARKAN NIK UNIK */
+/* TOTAL NELAYAN */
 /* ====================================================== */
 
 const nikSet = new Set();
 
 allData.forEach(item => {
-
-/* ====================================================== */
-/* AMBIL NIK V1 DAN V2 */
-/* ====================================================== */
 
 const nik =
 
@@ -1343,19 +1331,11 @@ item["NOMOR INDUK KEPENDUDUKAN (NIK)"] ||
 
 "";
 
-/* ====================================================== */
-/* BERSIHKAN */
-/* ====================================================== */
-
 const cleanNik =
 
 String(nik)
 .replace(/\D/g,'')
 .trim();
-
-/* ====================================================== */
-/* VALIDASI */
-/* ====================================================== */
 
 if(cleanNik.length >= 16){
 
@@ -1364,10 +1344,6 @@ nikSet.add(cleanNik);
 }
 
 });
-
-/* ====================================================== */
-/* TOTAL */
-/* ====================================================== */
 
 document.getElementById("totalNelayan")
 .innerHTML = nikSet.size;
@@ -1404,7 +1380,7 @@ document.getElementById("belumVerifikasi")
 .innerHTML = belum;
 
 /* ====================================================== */
-/* DESA */
+/* STATISTIK DESA */
 /* ====================================================== */
 
 const desaData = {
@@ -1457,7 +1433,7 @@ style="width:${Math.min(total,100)}%">
 });
 
 /* ====================================================== */
-/* KECAMATAN */
+/* STATISTIK KECAMATAN */
 /* ====================================================== */
 
 const kecamatanData = {
