@@ -598,7 +598,7 @@ Papa.parse(csvUrl, {
         const kapal = data.find(item => {
 
             const sheetId =
-            String(item["ID SAMPAN"] || "")
+            String(item["ID SIMPAN"] || "")
             .replace(/\s+/g,"")
             .trim()
             .toUpperCase();
