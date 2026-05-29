@@ -1,9 +1,9 @@
 // ================================
-// SIMPAN SUPER APP V3 FINAL SW
+// SAMPAN SUPER APP V3 FINAL SW
 // NO OLD CACHE VERSION
 // ================================
 
-const CACHE_NAME = "simpan-v3-final-" + Date.now();
+const CACHE_NAME = "sampan-v3-final-" + Date.now();
 
 const urlsToCache = [
   "./",
@@ -14,7 +14,7 @@ const urlsToCache = [
   "./background_simpan.png",
   "./logo-app.png",
   "./logo-bateng.png",
-  "./logo-simpan.png"
+  "./logo-sampan.png"
 ];
 
 // ================================
