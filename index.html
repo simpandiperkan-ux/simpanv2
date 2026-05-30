@@ -504,7 +504,7 @@ Cetak QR gabungan SAMPAN V1 & V2.
 
 <div
 class="menu-card"
-onclick="window.open('https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342','_blank')"
+onclick="bukaDataV1()"
 >
 
 <div class="icon">📘</div>
@@ -519,7 +519,7 @@ Buka Spreadsheet data kapal SAMPAN V1.
 
 <div
 class="menu-card"
-onclick="window.open('https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126','_blank')"
+onclick="bukaDataV2()"
 >
 
 <div class="icon">📊</div>
@@ -1273,6 +1273,108 @@ navigator
 }
 
 loadData();
+
+
+/* ==========================================
+ROLE MANAGEMENT SAMPAN V3
+========================================== */
+
+const currentRole =
+localStorage.getItem("role") || "admin";
+
+const currentUser =
+localStorage.getItem("user") || "";
+
+function bukaDataV1(){
+
+const ROLE =
+localStorage.getItem("role");
+
+if(ROLE === "superadmin"){
+
+window.open(
+"https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/edit?gid=972225342#gid=972225342",
+"_blank"
+);
+
+}else{
+
+window.open(
+"https://docs.google.com/spreadsheets/d/1G8fNMGPKo3QX8rm85ux8u8SC0m3SpwKMtzXWShOscZQ/preview",
+"_blank"
+);
+
+}
+
+}
+
+function bukaDataV2(){
+
+const ROLE =
+localStorage.getItem("role");
+
+if(ROLE === "superadmin"){
+
+window.open(
+"https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/edit?gid=482048126#gid=482048126",
+"_blank"
+);
+
+}else{
+
+window.open(
+"https://docs.google.com/spreadsheets/d/1iUpuHAwF0M8V3VUJej10GSaMl_eflNfvXCOm1I6u-jU/preview",
+"_blank"
+);
+
+}
+
+}
+
+function logout(){
+
+localStorage.clear();
+
+window.location.href =
+"login.html";
+
+}
+
+window.addEventListener(
+"DOMContentLoaded",
+function(){
+
+const info =
+document.createElement("div");
+
+info.innerHTML = `
+<div style="
+position:fixed;
+top:15px;
+right:20px;
+background:rgba(255,255,255,.15);
+padding:10px 15px;
+border-radius:12px;
+font-size:13px;
+font-weight:bold;
+z-index:9999;
+">
+👤 ${localStorage.getItem("user") || "-"}
+|
+🔑 ${(localStorage.getItem("role") || "-").toUpperCase()}
+|
+<a href="#"
+onclick="logout()"
+style="color:white">
+Logout
+</a>
+</div>
+`;
+
+document.body.appendChild(info);
+
+});
+
 
 </script>
 
