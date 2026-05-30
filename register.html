@@ -1,0 +1,363 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pendaftaran Admin SAMPAN</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(rgba(7,24,66,.85),rgba(7,24,66,.85)),
+url('background_simpan.png');
+background-size:cover;
+background-position:center;
+color:white;
+}
+
+.container{
+width:500px;
+background:rgba(255,255,255,.10);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 0 30px rgba(0,0,0,.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.input-group{
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:15px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#10a4ff;
+color:white;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0c8ae0;
+}
+
+.info{
+margin-top:15px;
+font-size:13px;
+text-align:center;
+color:#ddd;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:15px;
+color:white;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DAFTAR ADMIN SAMPAN</h1>
+
+<div class="input-group">
+<input
+type="text"
+id="nama"
+placeholder="Nama Lengkap">
+</div>
+
+<div class="input-group">
+<input
+type="email"
+id="email"
+placeholder="Email">
+</div>
+
+<div class="input-group">
+<input
+type="text"
+id="nohp"
+placeholder="Nomor HP">
+</div>
+
+<div class="input-group">
+<input
+type="password"
+id="password"
+placeholder="Password">
+</div>
+
+<div class="input-group">
+<input
+type="password"
+id="konfirmasi"
+placeholder="Konfirmasi Password">
+</div>
+
+<button onclick="registerAdmin()">
+DAFTAR ADMIN
+</button>
+
+<div class="info">
+Akun akan diverifikasi oleh Super Admin sebelum dapat digunakan.
+</div>
+
+<a
+href="login.html"
+class="back">
+Kembali ke Login
+</a>
+
+</div>
+
+<script type="module">
+
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyC0keS7m61O00Mdy56ysVneDj1y-4wETXE",
+
+authDomain:
+"sampan-2c37b.firebaseapp.com",
+
+projectId:
+"sampan-2c37b",
+
+storageBucket:
+"sampan-2c37b.firebasestorage.app",
+
+messagingSenderId:
+"498237273172",
+
+appId:
+"1:498237273172:web:baefb8ea7a0a4e4e9d69c1"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+window.registerAdmin =
+async function(){
+
+const nama =
+document
+.getElementById("nama")
+.value.trim();
+
+const email =
+document
+.getElementById("email")
+.value.trim();
+
+const nohp =
+document
+.getElementById("nohp")
+.value.trim();
+
+const password =
+document
+.getElementById("password")
+.value.trim();
+
+const konfirmasi =
+document
+.getElementById("konfirmasi")
+.value.trim();
+
+if(
+!nama ||
+!email ||
+!nohp ||
+!password ||
+!konfirmasi
+){
+
+alert(
+"Semua data wajib diisi"
+);
+
+return;
+
+}
+
+if(
+password !== konfirmasi
+){
+
+alert(
+"Konfirmasi password tidak cocok"
+);
+
+return;
+
+}
+
+try{
+
+const snapshot =
+await getDocs(
+collection(
+db,
+"users"
+)
+);
+
+let adminCount = 0;
+
+snapshot.forEach(doc=>{
+
+const data =
+doc.data();
+
+if(
+data.role ===
+"admin"
+){
+
+adminCount++;
+
+}
+
+});
+
+const nomor =
+String(
+adminCount + 1
+).padStart(
+3,
+"0"
+);
+
+const username =
+"admin_sampan" +
+nomor;
+
+await
+createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+await addDoc(
+collection(
+db,
+"users"
+),
+{
+
+nama:nama,
+
+email:email,
+
+nohp:nohp,
+
+username:username,
+
+role:"admin",
+
+status:"pending",
+
+createdAt:
+new Date()
+
+}
+
+);
+
+alert(
+
+"Pendaftaran berhasil\n\n" +
+
+"Username Anda : " +
+
+username +
+
+"\n\nMenunggu persetujuan Super Admin."
+
+);
+
+window.location.href =
+"login.html";
+
+}
+catch(error){
+
+alert(
+error.message
+);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
