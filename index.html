@@ -362,9 +362,12 @@ font-size:38px;
 
 <script>
 
-if(!localStorage.getItem("role")){
+if(
+ !localStorage.getItem("role") ||
+ localStorage.getItem("status") !== "active"
+){
 
-    window.location.href="login.html";
+    window.location.href = "login.html";
 
 }
 
@@ -1297,9 +1300,6 @@ ROLE MANAGEMENT SAMPAN V3
 const currentRole =
 localStorage.getItem("role") || "admin";
 
-const currentUser =
-localStorage.getItem("username") || "";
-
 function bukaDataV1(){
 
 const ROLE =
@@ -1352,7 +1352,10 @@ if(
 confirm("Yakin ingin logout?")
 ){
 
-localStorage.clear();
+localStorage.removeItem("username");
+localStorage.removeItem("role");
+localStorage.removeItem("status");
+localStorage.removeItem("email");
 
 window.location.href =
 "login.html";
