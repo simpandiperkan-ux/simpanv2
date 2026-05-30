@@ -445,6 +445,10 @@ Kabupaten Bangka Tengah
 ✅ Verifikasi
 </button>
 
+<button id="installBtn" style="display:none;">
+📲 INSTALL APK
+</button>
+
 </div>
 
 </div>
@@ -1329,10 +1333,60 @@ if('serviceWorker' in navigator){
 
 navigator
 .serviceWorker
-.register('sw.js');
+.register('./sw.js');
 
 }
 
+let deferredPrompt;
+
+window.addEventListener(
+'beforeinstallprompt',
+(e)=>{
+
+e.preventDefault();
+
+deferredPrompt = e;
+
+const installBtn =
+document.getElementById('installBtn');
+
+if(installBtn){
+
+installBtn.style.display='block';
+
+}
+
+});
+
+document
+.getElementById('installBtn')
+?.addEventListener('click',async()=>{
+
+if(!deferredPrompt){
+
+alert('Aplikasi sudah terinstall atau belum memenuhi syarat instalasi');
+
+return;
+
+}
+
+deferredPrompt.prompt();
+
+const choice =
+await deferredPrompt.userChoice;
+
+if(choice.outcome === 'accepted'){
+
+console.log('Install diterima');
+
+}
+
+deferredPrompt = null;
+
+document.getElementById('installBtn').style.display='none';
+
+}); 
+ 
 loadData();
 
 
