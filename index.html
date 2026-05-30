@@ -1283,7 +1283,7 @@ const currentRole =
 localStorage.getItem("role") || "admin";
 
 const currentUser =
-localStorage.getItem("user") || "";
+localStorage.getItem("username") || "";
 
 function bukaDataV1(){
 
@@ -1333,10 +1333,16 @@ window.open(
 
 function logout(){
 
+if(
+confirm("Yakin ingin logout?")
+){
+
 localStorage.clear();
 
 window.location.href =
 "login.html";
+
+}
 
 }
 
@@ -1359,7 +1365,7 @@ font-size:13px;
 font-weight:bold;
 z-index:9999;
 ">
-👤 ${localStorage.getItem("user") || "-"}
+👤 ${localStorage.getItem("username") || "-"}
 |
 🔑 ${(localStorage.getItem("role") || "-").toUpperCase()}
 |
