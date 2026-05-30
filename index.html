@@ -100,7 +100,7 @@ background:#1e6cff;
 .main{
 margin-left:230px;
 padding:25px;
-width:100%;
+width:calc(100% - 230px);
 }
 
 .header{
@@ -112,7 +112,7 @@ margin-bottom:25px;
 }
 
 .header h1{
-font-size:56px;
+font-size:42px;
 font-weight:900;
 color:white;
 margin-bottom:10px;
@@ -244,7 +244,7 @@ margin-bottom:15px;
 }
 
 .menu-card h3{
-font-size:34px;
+font-size:24px;
 margin-bottom:10px;
 font-weight:900;
 }
@@ -276,6 +276,11 @@ margin-top:35px;
 align-items:start;
 }
 
+.section{
+min-width:0;
+overflow:hidden;
+} 
+
 @media(max-width:1200px){
 .stats-wrapper{
 grid-template-columns:1fr;
@@ -284,7 +289,7 @@ grid-template-columns:1fr;
  
 .section h2{
 margin-bottom:25px;
-font-size:40px;
+font-size:26px;
 font-weight:900;
 color:white;
 }
