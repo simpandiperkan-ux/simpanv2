@@ -357,19 +357,31 @@ if(
 return;
 }
 
+const docRef =
+doc(db,"users",docId);
+
+const snap =
+await getDoc(docRef);
+
+const data =
+snap.data();
+
 await updateDoc(
-doc(
-db,
-"users",
-docId
-),
+docRef,
 {
 status:"active"
 }
 );
 
+await kirimEmail(
+data.nama,
+data.email,
+data.username,
+"DISETUJUI"
+);
+
 alert(
-"Akun berhasil disetujui"
+"Akun berhasil disetujui dan email telah dikirim"
 );
 
 loadPending();
@@ -391,16 +403,26 @@ if(
 return;
 }
 
-await deleteDoc(
-doc(
-db,
-"users",
-docId
-)
+const docRef =
+doc(db,"users",docId);
+
+const snap =
+await getDoc(docRef);
+
+const data =
+snap.data();
+
+await kirimEmail(
+data.nama,
+data.email,
+data.username,
+"DITOLAK"
 );
 
+await deleteDoc(docRef);
+
 alert(
-"Akun berhasil ditolak"
+"Akun berhasil ditolak dan email telah dikirim"
 );
 
 loadPending();
