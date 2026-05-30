@@ -173,6 +173,10 @@ initializeApp(firebaseConfig);
 const db =
 getFirestore(app);
 
+emailjs.init(
+"7G6uk6nNrflRw6PcA"
+);
+
 /* ==========================
 EMAILJS
 ========================== */
@@ -186,18 +190,21 @@ status
 
 try{
 
+const response =
 await emailjs.send(
 "service_ytswh42",
 "template_6wp27aj",
 {
-
-nama:nama,
-email:email,
-username:username,
-status:status
-
+nama: nama,
+email: email,
+username: username,
+status: status
 }
+);
 
+console.log(
+"Email berhasil:",
+response
 );
 
 }
@@ -206,6 +213,10 @@ catch(error){
 console.error(
 "Email gagal:",
 error
+);
+
+alert(
+"Gagal mengirim email notifikasi"
 );
 
 }
