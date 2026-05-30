@@ -191,12 +191,6 @@ initializeApp
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getAuth,
-createUserWithEmailAndPassword
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
 getFirestore,
 collection,
 getDocs,
@@ -228,9 +222,6 @@ appId:
 
 const app =
 initializeApp(firebaseConfig);
-
-const auth =
-getAuth(app);
 
 const db =
 getFirestore(app);
@@ -330,13 +321,6 @@ adminCount + 1
 const username =
 "admin_sampan" +
 nomor;
-
-await
-createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
 
 await addDoc(
 collection(
