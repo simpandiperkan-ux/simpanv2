@@ -139,6 +139,7 @@ getDocs,
 query,
 where,
 doc,
+getDoc,
 updateDoc,
 deleteDoc
 }
@@ -171,6 +172,45 @@ initializeApp(firebaseConfig);
 
 const db =
 getFirestore(app);
+
+/* ==========================
+EMAILJS
+========================== */
+
+async function kirimEmail(
+nama,
+email,
+username,
+status
+){
+
+try{
+
+await emailjs.send(
+"service_ytswh42",
+"template_6wp27aj",
+{
+
+nama:nama,
+email:email,
+username:username,
+status:status
+
+}
+
+);
+
+}
+catch(error){
+
+console.error(
+"Email gagal:",
+error
+);
+
+}
+
+}
 
 /* ==========================
 CEK SUPER ADMIN
@@ -374,6 +414,12 @@ LOAD
 loadPending();
 
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("7G6uk6nNrflRw6PcA");
+</script>  
 
 </body>
 </html>
