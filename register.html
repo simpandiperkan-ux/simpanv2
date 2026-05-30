@@ -88,6 +88,25 @@ color:white;
 text-decoration:none;
 }
 
+.password-group{
+position:relative;
+}
+
+.password-group input{
+padding-right:50px;
+}
+
+.toggle-password{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:18px;
+user-select:none;
+color:#666;
+}
+
 </style>
 
 </head>
@@ -119,18 +138,34 @@ id="nohp"
 placeholder="Nomor HP">
 </div>
 
-<div class="input-group">
+<div class="input-group password-group">
+
 <input
 type="password"
 id="password"
 placeholder="Password">
+
+<span
+class="toggle-password"
+onclick="togglePassword('password',this)">
+👁️
+</span>
+
 </div>
 
-<div class="input-group">
+<div class="input-group password-group">
+
 <input
 type="password"
 id="konfirmasi"
 placeholder="Konfirmasi Password">
+
+<span
+class="toggle-password"
+onclick="togglePassword('konfirmasi',this)">
+👁️
+</span>
+
 </div>
 
 <button onclick="registerAdmin()">
@@ -356,6 +391,25 @@ error.message
 
 }
 
+window.togglePassword = function(id,icon){
+
+const input =
+document.getElementById(id);
+
+if(input.type === "password"){
+
+input.type = "text";
+icon.innerHTML = "🙈";
+
+}else{
+
+input.type = "password";
+icon.innerHTML = "👁️";
+
+}
+
+}
+  
 </script>
 
 </body>
