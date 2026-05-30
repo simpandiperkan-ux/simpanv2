@@ -562,6 +562,21 @@ Download PDF SAMPAN V1 & V2.
 
 </div>
 
+<div
+id="approvalMenu"
+class="menu-card"
+onclick="window.open('approval-admin.html','_blank')"
+style="display:none;"
+>
+
+<div class="icon">👥</div>
+
+<h3>PERSETUJUAN ADMIN</h3>
+
+<p>
+Persetujuan akun admin baru SAMPAN.
+</p>
+
 </div>
 
 <!-- ========================= -->
@@ -1376,6 +1391,21 @@ Logout
 </a>
 </div>
 `;
+
+if(
+localStorage.getItem("role") === "superadmin"
+){
+
+const menu =
+document.getElementById("approvalMenu");
+
+if(menu){
+
+menu.style.display = "block";
+
+}
+
+}
 
 document.body.appendChild(info);
 
