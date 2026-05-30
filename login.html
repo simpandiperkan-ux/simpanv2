@@ -198,16 +198,6 @@ class="register-btn">
 DAFTAR AKUN ADMIN
 </a>
 
-<div class="divider">
-──────── ATAU ────────
-</div>
-
-<button
-class="google-btn"
-onclick="loginGoogle()">
-🔵 LOGIN DENGAN GOOGLE
-</button>
-
 <div class="footer">
 SAMPAN SUPER APP V3
 </div>
@@ -222,12 +212,10 @@ initializeApp
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getAuth,
-signInWithEmailAndPassword,
-GoogleAuthProvider,
-signInWithPopup
+initializeApp
 }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
 getFirestore,
@@ -262,9 +250,6 @@ appId:
 
 const app =
 initializeApp(firebaseConfig);
-
-const auth =
-getAuth(app);
 
 const db =
 getFirestore(app);
@@ -332,8 +317,7 @@ const userData =
 snapshot.docs[0].data();
 
 if(
-userData.status !==
-"active"
+userData.status !== "active"
 ){
 
 alert(
@@ -344,22 +328,17 @@ return;
 
 }
 
-console.log(
-"EMAIL LOGIN:",
-userData.email
+if(
+userData.password !== password
+){
+
+alert(
+"Password salah"
 );
 
-console.log(
-"PASSWORD:",
-password
-);
-  
-await
-signInWithEmailAndPassword(
-auth,
-userData.email,
-password
-);
+return;
+
+}
 
 localStorage.setItem(
 "role",
@@ -390,102 +369,6 @@ catch(error){
 alert(
 "Gagal Login : "
 +
-error.message
-);
-
-}
-
-}
-
-/* ==========================
-LOGIN GOOGLE
-========================== */
-
-window.loginGoogle =
-async function(){
-
-try{
-
-const provider =
-new GoogleAuthProvider();
-
-const result =
-await signInWithPopup(
-auth,
-provider
-);
-
-const email =
-result.user.email;
-
-const q =
-query(
-collection(db,"users"),
-where(
-"email",
-"==",
-email
-)
-);
-
-const snapshot =
-await getDocs(q);
-
-if(
-snapshot.empty
-){
-
-alert(
-"Akun Google belum terdaftar"
-);
-
-return;
-
-}
-
-const userData =
-snapshot.docs[0].data();
-
-if(
-userData.status !==
-"active"
-){
-
-alert(
-"Akun belum disetujui"
-);
-
-return;
-
-}
-
-localStorage.setItem(
-"role",
-userData.role
-);
-
-localStorage.setItem(
-"username",
-userData.username
-);
-
-localStorage.setItem(
-"email",
-userData.email
-);
-
-localStorage.setItem(
-"status",
-userData.status
-);
-
-window.location.href =
-"index.html";
-
-}
-catch(error){
-
-alert(
 error.message
 );
 
