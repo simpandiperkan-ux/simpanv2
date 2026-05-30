@@ -180,6 +180,7 @@ async function kirimEmail(
 nama,
 email,
 username,
+password,
 status
 ){
 
@@ -193,6 +194,7 @@ await emailjs.send(
 nama: nama,
 email: email,
 username: username,
+password: password,
 status: status
 }
 );
@@ -217,7 +219,7 @@ alert(
 }
 
 }
-
+  
 /* ==========================
 CEK SUPER ADMIN
 ========================== */
@@ -383,6 +385,7 @@ await kirimEmail(
 data.nama,
 data.email,
 data.username,
+data.password,
 "DISETUJUI"
 );
 
@@ -422,6 +425,7 @@ await kirimEmail(
 data.nama,
 data.email,
 data.username,
+data.password,
 "DITOLAK"
 );
 
