@@ -1494,7 +1494,6 @@ box-shadow:0 4px 12px rgba(0,0,0,.15);
 z-index:100;
 white-space:nowrap;
 ">
-`;
 
 👤 ${localStorage.getItem("username") || "-"}
 
@@ -1530,11 +1529,15 @@ if(window.innerWidth < 768){
 const panel =
 document.getElementById("userInfoPanel");
 
+if(panel){
+
 panel.style.position = "relative";
 panel.style.top = "0";
 panel.style.right = "0";
 panel.style.marginTop = "15px";
 panel.style.display = "inline-block";
+
+}
 
 }
 
