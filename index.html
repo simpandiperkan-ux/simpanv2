@@ -1480,7 +1480,7 @@ document.createElement("div");
 
 info.innerHTML = `
 <div style="
-position:fixed;
+position:absolute;
 top:15px;
 right:20px;
 background:rgba(255,255,255,.15);
@@ -1493,12 +1493,6 @@ z-index:9999;
 👤 ${localStorage.getItem("username") || "-"}
 |
 🔑 ${(localStorage.getItem("role") || "-").toUpperCase()}
-|
-<a href="#"
-onclick="logout()"
-style="color:white">
-Logout
-</a>
 </div>
 `;
 
