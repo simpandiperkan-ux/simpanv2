@@ -228,7 +228,6 @@ padding:25px;
 border-radius:24px;
 cursor:pointer;
 transition:.2s;
-position:relative;
 }
 
 #approvalMenu{
@@ -256,35 +255,6 @@ line-height:1.6;
 font-weight:bold;
 color:#444;
 }
-
-.notif-badge{
-
-display:none;
-
-position:absolute;
-
-top:15px;
-
-right:15px;
-
-background:#ef4444;
-
-color:white;
-
-padding:6px 12px;
-
-border-radius:20px;
-
-font-size:12px;
-
-font-weight:bold;
-
-box-shadow:
-0 2px 8px rgba(0,0,0,.25);
-
-z-index:10;
-
-} 
 
 /* ========================= */
 /* STATISTIK */
@@ -644,11 +614,6 @@ class="menu-card"
 onclick="window.open('approval-admin.html','_blank')"
 style="display:none;"
 >
-
-<span
-id="pendingAdminBadge"
-class="notif-badge">
-</span>
 
 <div class="icon">👥</div>
 
@@ -1546,94 +1511,6 @@ document.body.appendChild(info);
 
 });
 
-
-<script type="module">
-
-import {
-initializeApp
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getFirestore,
-collection,
-query,
-where,
-getDocs
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-
-apiKey:
-"AIzaSyC0keS7m61O00Mdy56ysVneDj1y-4wETXE",
-
-authDomain:
-"sampan-2c37b.firebaseapp.com",
-
-projectId:
-"sampan-2c37b",
-
-storageBucket:
-"sampan-2c37b.firebasestorage.app",
-
-messagingSenderId:
-"498237273172",
-
-appId:
-"1:498237273172:web:baefb8ea7a0a4e4e9d69c1"
-
-};
-
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
-
-async function loadPendingAdmin(){
-
-const role =
-localStorage.getItem("role");
-
-if(role !== "superadmin"){
-return;
-}
-
-const q =
-query(
-collection(db,"users"),
-where("role","==","admin"),
-where("status","==","pending")
-);
-
-const snapshot =
-await getDocs(q);
-
-const total =
-snapshot.size;
-
-const badge =
-document.getElementById(
-"pendingAdminBadge"
-);
-
-if(
-badge &&
-total > 0
-){
-
-badge.style.display =
-"inline-block";
-
-badge.innerHTML =
-"🔔 " + total;
-
-}
-
-}
-
-loadPendingAdmin();
 
 </script>
 
