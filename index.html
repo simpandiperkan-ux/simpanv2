@@ -228,6 +228,7 @@ padding:25px;
 border-radius:24px;
 cursor:pointer;
 transition:.2s;
+position:relative;
 }
 
 #approvalMenu{
@@ -255,6 +256,35 @@ line-height:1.6;
 font-weight:bold;
 color:#444;
 }
+
+.notif-badge{
+
+display:none;
+
+position:absolute;
+
+top:15px;
+
+right:15px;
+
+background:#ef4444;
+
+color:white;
+
+padding:6px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+box-shadow:
+0 2px 8px rgba(0,0,0,.25);
+
+z-index:10;
+
+} 
 
 /* ========================= */
 /* STATISTIK */
@@ -614,6 +644,11 @@ class="menu-card"
 onclick="window.open('approval-admin.html','_blank')"
 style="display:none;"
 >
+
+<span
+id="pendingAdminBadge"
+class="notif-badge">
+</span>
 
 <div class="icon">👥</div>
 
