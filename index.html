@@ -1479,7 +1479,7 @@ const info =
 document.createElement("div");
 
 info.innerHTML = `
-<div style="
+<div id="userInfoPanel" style="
 position:absolute;
 top:20px;
 right:25px;
@@ -1492,7 +1492,9 @@ color:white;
 backdrop-filter:blur(8px);
 box-shadow:0 4px 12px rgba(0,0,0,.15);
 z-index:100;
+white-space:nowrap;
 ">
+`;
 
 👤 ${localStorage.getItem("username") || "-"}
 
@@ -1520,6 +1522,19 @@ menu.style.flexDirection = "column";
 }
 
 document.querySelector(".header").appendChild(info);
+
+if(window.innerWidth < 768){
+
+const panel =
+document.getElementById("userInfoPanel");
+
+panel.style.position = "relative";
+panel.style.top = "0";
+panel.style.right = "0";
+panel.style.marginTop = "15px";
+panel.style.display = "inline-block";
+
+}
 
 });
 
