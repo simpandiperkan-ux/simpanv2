@@ -1480,9 +1480,11 @@ document.createElement("div");
 
 info.innerHTML = `
 <div id="userInfoPanel" style="
-position:absolute;
-top:20px;
-right:25px;
+display:flex;
+justify-content:flex-end;
+margin-bottom:15px;
+">
+<div style="
 background:rgba(255,255,255,.12);
 padding:12px 20px;
 border-radius:14px;
@@ -1491,16 +1493,12 @@ font-weight:700;
 color:white;
 backdrop-filter:blur(8px);
 box-shadow:0 4px 12px rgba(0,0,0,.15);
-z-index:100;
 white-space:nowrap;
 ">
-
 👤 ${localStorage.getItem("username") || "-"}
-
 &nbsp;&nbsp;|&nbsp;&nbsp;
-
 🔑 ${(localStorage.getItem("role") || "-").toUpperCase()}
-
+</div>
 </div>
 `;
 
@@ -1520,25 +1518,7 @@ menu.style.flexDirection = "column";
 
 }
 
-document.querySelector(".header").appendChild(info);
-
-/* MOBILE */
-if(window.innerWidth < 768){
-
-const panel =
-document.getElementById("userInfoPanel");
-
-if(panel){
-
-panel.style.position = "relative";
-panel.style.top = "0";
-panel.style.right = "0";
-panel.style.display = "inline-block";
-panel.style.marginBottom = "15px";
-
-}
-
-}
+document.querySelector(".main").prepend(info);
 
 });
 
