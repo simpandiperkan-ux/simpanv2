@@ -802,6 +802,7 @@ const csvV2 =
 /* ====================================================== */
 
 let semuaData = [];
+let dataAktif = null;
 
 const params =
 new URLSearchParams(window.location.search);
@@ -911,6 +912,8 @@ loadCard(hasil[0]);
 /* ====================================================== */
 
 function loadCard(data){
+
+dataAktif = data;
 
 /* ID */
 
@@ -1061,29 +1064,55 @@ cariQR();
 });
 
 /* ====================================================== */
+/* NAMA FILE DOWNLOAD */
+/* ====================================================== */
+
+function buatNamaFile(){
+
+    if(!dataAktif){
+        return "QR-SAMPAN";
+    }
+
+    const idSimpan =
+    (dataAktif.id || "")
+    .trim();
+
+    const pemilik =
+    (dataAktif.pemilik || "")
+    .trim()
+    .replace(/[\\/:*?"<>|]/g,'');
+
+    const kapal =
+    (dataAktif.kapal || "")
+    .trim()
+    .replace(/[\\/:*?"<>|]/g,'');
+
+    return `${idSimpan}-${pemilik}-${kapal}`;
+
+}
+
+/* ====================================================== */
 /* DOWNLOAD PNG */
 /* ====================================================== */
 
 function downloadPNG(){
 
-html2canvas(document.querySelector("#card"),{
+    html2canvas(document.querySelector("#card"),{
+        scale:4
+    }).then(canvas => {
 
-scale:4
+        const link =
+        document.createElement("a");
 
-}).then(canvas => {
+        link.download =
+        buatNamaFile() + ".png";
 
-const link =
-document.createElement("a");
+        link.href =
+        canvas.toDataURL("image/png");
 
-link.download =
-"QR-SAMPAN.png";
+        link.click();
 
-link.href =
-canvas.toDataURL("image/png");
-
-link.click();
-
-});
+    });
 
 }
 
@@ -1093,24 +1122,22 @@ link.click();
 
 function downloadJPG(){
 
-html2canvas(document.querySelector("#card"),{
+    html2canvas(document.querySelector("#card"),{
+        scale:4
+    }).then(canvas => {
 
-scale:4
+        const link =
+        document.createElement("a");
 
-}).then(canvas => {
+        link.download =
+        buatNamaFile() + ".jpg";
 
-const link =
-document.createElement("a");
+        link.href =
+        canvas.toDataURL("image/jpeg");
 
-link.download =
-"QR-SAMPAN.jpg";
+        link.click();
 
-link.href =
-canvas.toDataURL("image/jpeg");
-
-link.click();
-
-});
+    });
 
 }
 
