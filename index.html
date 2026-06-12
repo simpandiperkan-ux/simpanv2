@@ -2166,6 +2166,43 @@ initialBounds = L.latLngBounds(bounds);
 
 }
 
+function filterPetaKecamatan(){
+
+const kecamatan =
+document
+.getElementById('filterKecamatan')
+.value;
+
+const dataGabungan = [
+...dataV1,
+...dataV2
+];
+
+if(kecamatan === 'SEMUA'){
+
+buatMarkerArmada(dataGabungan);
+return;
+
+}
+
+const hasil = dataGabungan.filter(item=>{
+
+const namaKecamatan = (
+item['Kecamatan'] ||
+item['KECAMATAN'] ||
+''
+)
+.trim()
+.toUpperCase();
+
+return namaKecamatan === kecamatan;
+
+});
+
+buatMarkerArmada(hasil);
+
+}
+ 
 function cariData(){
 
 const keyword =
@@ -2566,6 +2603,12 @@ document.getElementById('installBtn').style.display='none';
  
 loadData();
 
+document
+.getElementById('filterKecamatan')
+.addEventListener(
+'change',
+filterPetaKecamatan
+);
 
 /* ==========================================
 ROLE MANAGEMENT SAMPAN V3
