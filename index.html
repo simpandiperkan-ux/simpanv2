@@ -1787,6 +1787,40 @@ attribution:'© OpenStreetMap'
 }
 ).addTo(mapArmada);
 
+/* LEGENDA */
+const legenda = L.control({position:'bottomright'});
+
+legenda.onAdd = function(){
+
+const div = L.DomUtil.create('div');
+
+div.innerHTML = `
+<div style="
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+font-size:12px;
+line-height:22px;
+">
+
+<b>Jumlah Kapal</b><br>
+
+<span style="color:#4CAF50;">●</span> 1 - 10<br>
+<span style="color:#FFC107;">●</span> 11 - 25<br>
+<span style="color:#FF9800;">●</span> 26 - 50<br>
+<span style="color:#F44336;">●</span> 51 - 100<br>
+<span style="color:#7B1FA2;">●</span> > 100
+
+</div>
+`;
+
+return div;
+
+};
+
+legenda.addTo(mapArmada);
+
 }
 
 /* ==========================================
