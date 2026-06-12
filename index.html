@@ -446,6 +446,28 @@ border-radius:15px;
 backdrop-filter:blur(6px);
 }
 
+/* ========================= */
+/* GRAND TOTAL */
+/* ========================= */
+
+.grand-total-row{
+background:#0b2e7a !important;
+color:white !important;
+font-weight:900;
+}
+
+.grand-total-row td{
+background:#0b2e7a !important;
+color:white !important;
+font-weight:900;
+border-top:2px solid #fff;
+}
+
+.grand-total-row td:last-child{
+background:#ffb300 !important;
+color:#082a75 !important;
+} 
+
 </style>
 
 </head>
@@ -1273,6 +1295,36 @@ html += `
 
 });
 
+let totalLt1 = 0;
+let totalG15 = 0;
+let totalG510 = 0;
+let totalG1030 = 0;
+let totalG30 = 0;
+let grandTotal = 0;
+
+Object.values(data).forEach(row=>{
+
+totalLt1 += row.lt1;
+totalG15 += row.g1_5;
+totalG510 += row.g5_10;
+totalG1030 += row.g10_30;
+totalG30 += row.g30;
+grandTotal += row.total;
+
+});
+
+html += `
+<tr class="grand-total-row">
+<td>GRAND TOTAL</td>
+<td>${totalLt1}</td>
+<td>${totalG15}</td>
+<td>${totalG510}</td>
+<td>${totalG1030}</td>
+<td>${totalG30}</td>
+<td>${grandTotal}</td>
+</tr>
+`; 
+ 
 table.innerHTML = html;
 
 }
