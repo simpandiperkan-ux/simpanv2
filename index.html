@@ -566,8 +566,30 @@ color:#082a75;
 #alatTangkapKecamatanTable td:nth-child(2){
 font-weight:700;
 }
+
+/* ========================= */
+/* PETA ARMADA */
+/* ========================= */
+
+#mapArmada{
+width:100%;
+height:700px;
+border-radius:15px;
+overflow:hidden;
+}
  
 </style>
+
+<!-- LEAFLET MAP -->
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script
+src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
 
 </head>
 
@@ -895,6 +917,18 @@ Persetujuan akun admin baru SAMPAN.
 </div>
 
 </div>
+
+<!-- ========================= -->
+<!-- PETA SEBARAN ARMADA -->
+<!-- ========================= -->
+
+<div class="section gt-section" style="margin-top:15px;">
+
+<h2>🗺️ PETA SEBARAN ARMADA PER DESA</h2>
+
+<div id="mapArmada"></div>
+
+</div>
  
 <!-- ========================= -->
 <!-- MODAL EXCEL -->
@@ -1109,6 +1143,8 @@ buatDistribusiGTPerKecamatan(gabungan);
 buatRekapAlatTangkap(gabungan);
 buatTopAlatTangkapDesa(gabungan);
 buatTopAlatTangkapKecamatan(gabungan);
+
+initMapArmada();
  
 }
 
@@ -1720,6 +1756,32 @@ html += `
 });
 
 table.innerHTML = html;
+
+}
+
+/* ==========================================
+PETA SEBARAN ARMADA
+========================================== */
+
+let mapArmada = null;
+
+function initMapArmada(){
+
+if(mapArmada){
+return;
+}
+
+mapArmada = L.map('mapArmada').setView(
+[-2.33,106.18],
+10
+);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+attribution:'© OpenStreetMap'
+}
+).addTo(mapArmada);
 
 }
  
