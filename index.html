@@ -1769,6 +1769,8 @@ PETA SEBARAN ARMADA
 let mapArmada = null;
 let markerArmadaLayer = null;
 
+let initialBounds = null;
+
 function initMapArmada(){
 
 if(mapArmada){
@@ -2087,6 +2089,22 @@ duration:1.5
 );
 
 });
+
+marker.on('popupclose',function(){
+
+if(initialBounds){
+
+mapArmada.flyToBounds(
+initialBounds,
+{
+padding:[50,50],
+duration:1.5
+}
+);
+
+}
+
+});
  
 });
 
@@ -2095,6 +2113,8 @@ if(bounds.length){
 mapArmada.fitBounds(bounds,{
 padding:[50,50]
 });
+
+initialBounds = L.latLngBounds(bounds);
 
 }
 
