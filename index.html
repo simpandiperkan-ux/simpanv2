@@ -1793,7 +1793,29 @@ attribution:'© OpenStreetMap'
 MARKER ARMADA
 ========================================== */
 
-function buatMarkerArmada(data){
+function getWarnaArmada(jumlah){
+
+if(jumlah <= 10){
+return '#4CAF50';
+}
+
+if(jumlah <= 25){
+return '#FFC107';
+}
+
+if(jumlah <= 50){
+return '#FF9800';
+}
+
+if(jumlah <= 100){
+return '#F44336';
+}
+
+return '#7B1FA2';
+
+}
+ 
+ function buatMarkerArmada(data){
 
 if(markerArmadaLayer){
 markerArmadaLayer.clearLayers();
@@ -1838,9 +1860,9 @@ L.circleMarker(
 koordinat,
 {
 radius:radius,
-fillColor:'#ff6b00',
-color:'#ffffff',
-weight:2,
+fillColor:getWarnaArmada(jumlah),
+color:getWarnaArmada(jumlah),
+weight:3,
 fillOpacity:0.85
 }
 )
