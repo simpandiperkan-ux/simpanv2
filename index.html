@@ -770,6 +770,40 @@ Persetujuan akun admin baru SAMPAN.
 </div>
 
 <!-- ========================= -->
+<!-- REKAP ALAT TANGKAP -->
+<!-- ========================= -->
+
+<div class="section gt-section" style="margin-top:15px;">
+
+<h2>🎣 REKAP ALAT TANGKAP KABUPATEN</h2>
+
+<div style="overflow-x:auto;">
+<table class="gt-table" id="alatTangkapTable"></table>
+</div>
+
+</div>
+
+<div class="section gt-section" style="margin-top:15px;">
+
+<h2>🎣 TOP ALAT TANGKAP PER DESA</h2>
+
+<div style="overflow-x:auto;">
+<table class="gt-table" id="alatTangkapDesaTable"></table>
+</div>
+
+</div>
+
+<div class="section gt-section" style="margin-top:15px;">
+
+<h2>🎣 TOP ALAT TANGKAP PER KECAMATAN</h2>
+
+<div style="overflow-x:auto;">
+<table class="gt-table" id="alatTangkapKecamatanTable"></table>
+</div>
+
+</div>
+ 
+<!-- ========================= -->
 <!-- MODAL EXCEL -->
 <!-- ========================= -->
 
@@ -978,6 +1012,10 @@ buatStatistikKecamatan(gabungan);
 
 buatDistribusiGTPerDesa(gabungan);
 buatDistribusiGTPerKecamatan(gabungan);
+
+buatRekapAlatTangkap(gabungan);
+buatTopAlatTangkapDesa(gabungan);
+buatTopAlatTangkapKecamatan(gabungan);
  
 }
 
@@ -1331,6 +1369,258 @@ html += `
 </tr>
 `; 
  
+table.innerHTML = html;
+
+}
+
+/* ==========================================
+DAFTAR ALAT TANGKAP
+========================================== */
+
+const DAFTAR_ALAT_TANGKAP = [
+
+'PANCING/ HOOKS & LINES',
+'BUBU',
+'PUKAT HELA DASAR BERPALANG',
+'PUKAT HELA DASAR UDANG',
+'PUKAT HELA PERTENGAHAN',
+'PUKAT TARIK (DOGOL)',
+'PUKAT TARIK (PAYANG)',
+'PUKAT TARIK (PUKAT PANTAI)',
+'PUKAT TARIK (LAMPARA DASAR)',
+'PUKAT CINCIN (PURSE SEINE)',
+'BAGAN TANCAP',
+'BAGAN APUNG',
+'BAGAN PERAHU',
+'JALA TEBAR',
+'JARING IKAN/ INSANG',
+'JARING UDANG',
+'JARING KEPITING',
+'KAPAL PENGANGKUT HASIL PERIKANAN'
+
+];
+
+/* ==========================================
+REKAP KABUPATEN
+========================================== */
+
+function buatRekapAlatTangkap(data){
+
+const map = {};
+
+DAFTAR_ALAT_TANGKAP.forEach(alat=>{
+map[alat]=0;
+});
+
+data.forEach(item=>{
+
+const isi = (
+item['Alat Tangkap Utama'] ||
+item['ALAT TANGKAP YANG DIPAKAI'] ||
+''
+).toUpperCase();
+
+DAFTAR_ALAT_TANGKAP.forEach(alat=>{
+
+if(isi.includes(alat)){
+map[alat]++;
+}
+
+});
+
+});
+
+renderRekapAlatTangkap(map);
+
+}
+
+function renderRekapAlatTangkap(data){
+
+const table =
+document.getElementById('alatTangkapTable');
+
+let html = `
+<tr>
+<th>RANK</th>
+<th>ALAT TANGKAP</th>
+<th>JUMLAH</th>
+</tr>
+`;
+
+const sorted =
+Object.entries(data)
+.filter(item=>item[1]>0)
+.sort((a,b)=>b[1]-a[1]);
+
+let rank = 1;
+
+sorted.forEach(([nama,jumlah])=>{
+
+html += `
+<tr>
+<td>${rank}</td>
+<td>${nama}</td>
+<td>${jumlah}</td>
+</tr>
+`;
+
+rank++;
+
+});
+
+table.innerHTML = html;
+
+}
+
+/* ==========================================
+TOP ALAT TANGKAP PER DESA
+========================================== */
+
+function buatTopAlatTangkapDesa(data){
+
+const map = {};
+
+data.forEach(item=>{
+
+const desa = (
+item['Desa/ Kelurahan'] ||
+item['DESA / KELURAHAN'] ||
+''
+).trim().toUpperCase();
+
+if(!desa) return;
+
+const isi = (
+item['Alat Tangkap Utama'] ||
+item['ALAT TANGKAP YANG DIPAKAI'] ||
+''
+).toUpperCase();
+
+if(!map[desa]){
+map[desa]={};
+}
+
+DAFTAR_ALAT_TANGKAP.forEach(alat=>{
+
+if(isi.includes(alat)){
+
+if(!map[desa][alat]){
+map[desa][alat]=0;
+}
+
+map[desa][alat]++;
+
+}
+
+});
+
+});
+
+renderTopAlatTangkap(
+map,
+'alatTangkapDesaTable',
+'DESA'
+);
+
+}
+
+/* ==========================================
+TOP ALAT TANGKAP PER KECAMATAN
+========================================== */
+
+function buatTopAlatTangkapKecamatan(data){
+
+const map = {};
+
+data.forEach(item=>{
+
+const kecamatan = (
+item['Kecamatan'] ||
+item['KECAMATAN'] ||
+''
+).trim().toUpperCase();
+
+if(!kecamatan) return;
+
+const isi = (
+item['Alat Tangkap Utama'] ||
+item['ALAT TANGKAP YANG DIPAKAI'] ||
+''
+).toUpperCase();
+
+if(!map[kecamatan]){
+map[kecamatan]={};
+}
+
+DAFTAR_ALAT_TANGKAP.forEach(alat=>{
+
+if(isi.includes(alat)){
+
+if(!map[kecamatan][alat]){
+map[kecamatan][alat]=0;
+}
+
+map[kecamatan][alat]++;
+
+}
+
+});
+
+});
+
+renderTopAlatTangkap(
+map,
+'alatTangkapKecamatanTable',
+'KECAMATAN'
+);
+
+}
+
+/* ==========================================
+RENDER TOP
+========================================== */
+
+function renderTopAlatTangkap(data,id,label){
+
+const table =
+document.getElementById(id);
+
+let html = `
+<tr>
+<th>${label}</th>
+<th>ALAT TANGKAP DOMINAN</th>
+<th>JUMLAH</th>
+</tr>
+`;
+
+Object.entries(data)
+.sort((a,b)=>a[0].localeCompare(b[0]))
+.forEach(([wilayah,alatMap])=>{
+
+let topNama = '-';
+let topJumlah = 0;
+
+Object.entries(alatMap).forEach(([alat,jumlah])=>{
+
+if(jumlah > topJumlah){
+
+topNama = alat;
+topJumlah = jumlah;
+
+}
+
+});
+
+html += `
+<tr>
+<td>${wilayah}</td>
+<td>${topNama}</td>
+<td>${topJumlah}</td>
+</tr>
+`;
+
+});
+
 table.innerHTML = html;
 
 }
