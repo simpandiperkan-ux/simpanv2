@@ -1924,6 +1924,85 @@ const map = {
 return map[namaDesa] || '-';
 
 }
+
+function getInfoDesa(desa,data){
+
+let info = {
+total:0,
+lt1:0,
+g1_5:0,
+g5_10:0,
+g10_30:0,
+g30:0,
+alatDominan:'-'
+};
+
+const alatMap = {};
+
+data.forEach(item=>{
+
+const namaDesa = (
+item['Desa/ Kelurahan'] ||
+item['DESA / KELURAHAN'] ||
+''
+).trim().toUpperCase();
+
+if(namaDesa !== desa) return;
+
+info.total++;
+
+const gt = getGT(item);
+
+if(gt < 1){
+info.lt1++;
+}else if(gt <= 5){
+info.g1_5++;
+}else if(gt <= 10){
+info.g5_10++;
+}else if(gt <= 30){
+info.g10_30++;
+}else{
+info.g30++;
+}
+
+const isi = (
+item['Alat Tangkap Utama'] ||
+item['ALAT TANGKAP YANG DIPAKAI'] ||
+''
+).toUpperCase();
+
+DAFTAR_ALAT_TANGKAP.forEach(alat=>{
+
+if(isi.includes(alat)){
+
+if(!alatMap[alat]){
+alatMap[alat]=0;
+}
+
+alatMap[alat]++;
+
+}
+
+});
+
+});
+
+let max = 0;
+
+Object.entries(alatMap).forEach(([alat,jumlah])=>{
+
+if(jumlah > max){
+
+max = jumlah;
+info.alatDominan = alat;
+
+}
+
+});
+
+return info;
+
+}
  
  function buatMarkerArmada(data){
 
@@ -1958,7 +2037,8 @@ const bounds = [];
 Object.entries(mapDesa).forEach(([desa,jumlah])=>{
 
 const koordinat = KOORDINAT_DESA[desa];
-
+const info = getInfoDesa(desa,data);
+ 
 if(!koordinat) return;
 
 bounds.push(koordinat);
@@ -1978,9 +2058,22 @@ fillOpacity:0.85
 )
 .addTo(markerArmadaLayer)
 .bindPopup(`
-<b>${desa}</b><br>
-🚤 Jumlah Kapal : <b>${jumlah}</b><br>
-📍 Kecamatan : <b>${getKecamatanDesa(desa)}</b>
+📍 <b>${desa}</b><br><br>
+
+🚤 <b>Total Armada :</b> ${info.total} Unit<br><br>
+
+⚓ <b>Distribusi GT</b><br>
+• <1 GT : ${info.lt1}<br>
+• 1–5 GT : ${info.g1_5}<br>
+• 5–10 GT : ${info.g5_10}<br>
+• 10–30 GT : ${info.g10_30}<br>
+• >30 GT : ${info.g30}<br><br>
+
+🎣 <b>Alat Tangkap Dominan</b><br>
+${info.alatDominan}<br><br>
+
+🏘️ <b>Kecamatan</b><br>
+${getKecamatanDesa(desa)}
 `);
 
 });
