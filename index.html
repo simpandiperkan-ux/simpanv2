@@ -2046,7 +2046,7 @@ bounds.push(koordinat);
 const radius =
 Math.max(8, Math.min(35, jumlah/4));
 
-L.circleMarker(
+const marker = L.circleMarker(
 koordinat,
 {
 radius:radius,
@@ -2076,6 +2076,18 @@ ${info.alatDominan}<br><br>
 ${getKecamatanDesa(desa)}
 `);
 
+marker.on('click',function(){
+
+mapArmada.flyTo(
+koordinat,
+13,
+{
+duration:1.5
+}
+);
+
+});
+ 
 });
 
 if(bounds.length){
