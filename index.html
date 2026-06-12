@@ -474,6 +474,99 @@ background:#ffb300 !important;
 color:#082a75 !important;
 } 
 
+/* ========================= */
+/* REKAP ALAT TANGKAP */
+/* ========================= */
+
+#alatTangkapTable th:first-child,
+#alatTangkapTable td:first-child{
+text-align:center !important;
+width:70px;
+font-weight:900;
+}
+
+#alatTangkapTable th:nth-child(2),
+#alatTangkapTable td:nth-child(2){
+text-align:left;
+padding-left:20px;
+}
+
+#alatTangkapTable th:last-child,
+#alatTangkapTable td:last-child{
+text-align:center;
+width:120px;
+font-weight:900;
+color:#082a75;
+}
+
+/* ========================= */
+/* TOP 3 RANK */
+/* ========================= */
+
+#alatTangkapTable tr:nth-child(2) td:first-child{
+background:#FFD700;
+color:#000;
+font-size:16px;
+font-weight:900;
+}
+
+#alatTangkapTable tr:nth-child(3) td:first-child{
+background:#C0C0C0;
+color:#000;
+font-size:16px;
+font-weight:900;
+}
+
+#alatTangkapTable tr:nth-child(4) td:first-child{
+background:#CD7F32;
+color:white;
+font-size:16px;
+font-weight:900;
+}
+
+/* ========================= */
+/* HOVER */
+/* ========================= */
+
+#alatTangkapTable tr:hover td{
+background:#eef5ff;
+}
+
+/* ========================= */
+/* JUMLAH */
+/* ========================= */
+
+#alatTangkapTable td:last-child{
+font-size:15px;
+font-weight:900;
+}
+
+/* ========================= */
+/* TOP ALAT TANGKAP DESA */
+/* ========================= */
+
+#alatTangkapDesaTable td:last-child{
+font-weight:900;
+color:#082a75;
+}
+
+#alatTangkapDesaTable td:nth-child(2){
+font-weight:700;
+}
+
+/* ========================= */
+/* TOP ALAT TANGKAP KECAMATAN */
+/* ========================= */
+
+#alatTangkapKecamatanTable td:last-child{
+font-weight:900;
+color:#082a75;
+}
+
+#alatTangkapKecamatanTable td:nth-child(2){
+font-weight:700;
+}
+ 
 </style>
 
 </head>
@@ -1458,7 +1551,12 @@ sorted.forEach(([nama,jumlah])=>{
 
 html += `
 <tr>
-<td>${rank}</td>
+<td>
+${rank===1?'🥇':
+ rank===2?'🥈':
+ rank===3?'🥉':
+ rank}
+</td>
 <td>${nama}</td>
 <td>${jumlah}</td>
 </tr>
