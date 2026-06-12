@@ -393,6 +393,43 @@ font-size:38px;
 
 }
 
+/* ========================= */
+/* TABEL DISTRIBUSI GT */
+/* ========================= */
+
+.gt-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+color:#082a75;
+border-radius:12px;
+overflow:hidden;
+font-size:13px;
+}
+
+.gt-table th{
+background:#0f49ba;
+color:white;
+padding:12px;
+text-align:center;
+}
+
+.gt-table td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:center;
+font-weight:bold;
+}
+
+.gt-table tr:hover{
+background:#f5f8ff;
+}
+
+.gt-table td:first-child{
+text-align:left;
+font-weight:700;
+}
+
 </style>
 
 </head>
@@ -667,6 +704,30 @@ Persetujuan akun admin baru SAMPAN.
 </div>
 
 <!-- ========================= -->
+<!-- DISTRIBUSI GT -->
+<!-- ========================= -->
+
+<div class="section" style="margin-top:25px;">
+
+<h2>📊 DISTRIBUSI UKURAN KAPAL PER DESA</h2>
+
+<div style="overflow-x:auto;">
+<table class="gt-table" id="gtDesaTable"></table>
+</div>
+
+</div>
+
+<div class="section" style="margin-top:25px;">
+
+<h2>📊 DISTRIBUSI UKURAN KAPAL PER KECAMATAN</h2>
+
+<div style="overflow-x:auto;">
+<table class="gt-table" id="gtKecamatanTable"></table>
+</div>
+
+</div>
+
+<!-- ========================= -->
 <!-- MODAL EXCEL -->
 <!-- ========================= -->
 
@@ -873,6 +934,25 @@ totalBelum;
 buatStatistikDesa(gabungan);
 buatStatistikKecamatan(gabungan);
 
+buatDistribusiGTPerDesa(gabungan);
+buatDistribusiGTPerKecamatan(gabungan);
+ 
+}
+
+function getGT(item){
+
+return parseFloat(
+
+String(
+
+item['Ukuran Kapal (GT) Contoh : 4'] ||
+item['UKURAN KAPAL (GT) CONTOH : 4'] ||
+0
+
+).replace(',','.')
+
+) || 0;
+
 }
 
 function buatStatistikDesa(data){
@@ -1000,6 +1080,189 @@ style="width:${persen}%"
 
 }
 
+/* ==========================================
+DISTRIBUSI GT PER DESA
+========================================== */
+
+function buatDistribusiGTPerDesa(data){
+
+const map = {};
+
+data.forEach(item=>{
+
+const desa =
+(
+item['Desa/ Kelurahan'] ||
+item['DESA / KELURAHAN'] ||
+''
+)
+.trim()
+.toUpperCase();
+
+if(!desa) return;
+
+const gt = getGT(item);
+
+if(!map[desa]){
+
+map[desa]={
+lt1:0,
+g1_5:0,
+g5_10:0,
+g10_30:0,
+g30:0,
+total:0
+};
+
+}
+
+if(gt < 1){
+
+map[desa].lt1++;
+
+}else if(gt <= 5){
+
+map[desa].g1_5++;
+
+}else if(gt <= 10){
+
+map[desa].g5_10++;
+
+}else if(gt <= 30){
+
+map[desa].g10_30++;
+
+}else{
+
+map[desa].g30++;
+
+}
+
+map[desa].total++;
+
+});
+
+renderDistribusiTable(
+map,
+'gtDesaTable',
+'DESA'
+);
+
+}
+
+/* ==========================================
+DISTRIBUSI GT PER KECAMATAN
+========================================== */
+
+function buatDistribusiGTPerKecamatan(data){
+
+const map = {};
+
+data.forEach(item=>{
+
+const kecamatan =
+(
+item['Kecamatan'] ||
+item['KECAMATAN'] ||
+''
+)
+.trim()
+.toUpperCase();
+
+if(!kecamatan) return;
+
+const gt = getGT(item);
+
+if(!map[kecamatan]){
+
+map[kecamatan]={
+lt1:0,
+g1_5:0,
+g5_10:0,
+g10_30:0,
+g30:0,
+total:0
+};
+
+}
+
+if(gt < 1){
+
+map[kecamatan].lt1++;
+
+}else if(gt <= 5){
+
+map[kecamatan].g1_5++;
+
+}else if(gt <= 10){
+
+map[kecamatan].g5_10++;
+
+}else if(gt <= 30){
+
+map[kecamatan].g10_30++;
+
+}else{
+
+map[kecamatan].g30++;
+
+}
+
+map[kecamatan].total++;
+
+});
+
+renderDistribusiTable(
+map,
+'gtKecamatanTable',
+'KECAMATAN'
+);
+
+}
+
+/* ==========================================
+RENDER TABEL
+========================================== */
+
+function renderDistribusiTable(data,id,label){
+
+const table =
+document.getElementById(id);
+
+let html = `
+<tr>
+<th>${label}</th>
+<th>< 1 GT</th>
+<th>1 - 5 GT</th>
+<th>5 - 10 GT</th>
+<th>10 - 30 GT</th>
+<th>> 30 GT</th>
+<th>TOTAL</th>
+</tr>
+`;
+
+Object.entries(data)
+.sort((a,b)=>b[1].total-a[1].total)
+.forEach(([nama,row])=>{
+
+html += `
+<tr>
+<td>${nama}</td>
+<td>${row.lt1}</td>
+<td>${row.g1_5}</td>
+<td>${row.g5_10}</td>
+<td>${row.g10_30}</td>
+<td>${row.g30}</td>
+<td>${row.total}</td>
+</tr>
+`;
+
+});
+
+table.innerHTML = html;
+
+}
+ 
 function cariData(){
 
 const keyword =
