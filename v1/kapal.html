@@ -817,22 +817,21 @@ function formatValue(label, value){
 
     }
 
-    /* STATUS */
+                   /* =========================
+                STATUS
+                ========================= */
 
-    if (label.toUpperCase().includes("STATUS")) {
+                if (key.toUpperCase().includes("STATUS")) {
 
-    const status = (value || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .toUpperCase();
+    const status = (kapal[key] || "").trim().toUpperCase();
 
     const isGreen =
-        status.includes("Aktif") ||
-        status.includes("TERVERIFIKASI");
+        status === "Aktif" ||
+        status === "TERVERIFIKASI";
 
-    return `
-        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">
-            ${value}
+    valueContent = `
+        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">    
+            ${kapal[key]}
         </div>
     `;
 
