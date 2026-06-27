@@ -821,21 +821,31 @@ function formatValue(label, value){
                 STATUS
                 ========================= */
 
-                if (key.toUpperCase().includes("STATUS")) {
-
-    const status = (kapal[key] || "").trim().toUpperCase();
+               if (label === "Status Kapal") {
 
     const isGreen =
-        status === "Aktif" ||
-        status === "TERVERIFIKASI";
+        (value || "").trim().toUpperCase() === "AKTIF";
 
-    valueContent = `
-        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">    
-            ${kapal[key]}
+    return `
+        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">
+            ${value}
         </div>
     `;
-
 }
+
+if (label === "STATUS VERIFIKASI") {
+
+    const isGreen =
+        (value || "").trim().toUpperCase() === "TERVERIFIKASI";
+
+    return `
+        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">
+            ${value}
+        </div>
+    `;
+}
+
+return value;
     
 /* =========================================
 LOAD CSV
