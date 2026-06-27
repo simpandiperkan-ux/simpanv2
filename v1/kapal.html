@@ -821,7 +821,9 @@ function formatValue(label, value){
                 STATUS
                 ========================= */
 
-               if (label === "Status Kapal") {
+             /* STATUS */
+
+if (label === "Status Kapal") {
 
     const isGreen =
         (value || "").trim().toUpperCase() === "AKTIF";
@@ -846,6 +848,8 @@ if (label === "STATUS VERIFIKASI") {
 }
 
 return value;
+
+}
     
 /* =========================================
 LOAD CSV
