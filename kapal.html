@@ -335,28 +335,22 @@ body::before{
 /* BADGE */
 
 .badge{
-
     display:inline-block;
-
     padding:10px 18px;
-
     border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00aa55,
-            #00cc66
-        );
-
-    color:white;
-
+    color:#fff;
     font-size:14px;
-
     font-weight:bold;
+}
 
-    box-shadow:0 4px 10px rgba(0,170,85,0.25);
+.badge-green{
+    background:linear-gradient(135deg,#00aa55,#00cc66);
+    box-shadow:0 4px 10px rgba(0,170,85,.25);
+}
 
+.badge-red{
+    background:linear-gradient(135deg,#d32f2f,#ff5252);
+    box-shadow:0 4px 10px rgba(211,47,47,.25);
 }
 
 /* LOADING */
@@ -719,21 +713,21 @@ Papa.parse(csvUrl, {
                 STATUS
                 ========================= */
 
-                if(
-                    key.toUpperCase().includes("STATUS")
-                ){
+                if (key.toUpperCase().includes("STATUS")) {
 
-                    valueContent = `
+    const status = (kapal[key] || "").trim().toUpperCase();
 
-                        <div class="badge">
+    const isGreen =
+        status === "AKTIF" ||
+        status === "TERVERIFIKASI";
 
-                            ${kapal[key]}
+    valueContent = `
+        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">    
+            ${kapal[key]}
+        </div>
+    `;
 
-                        </div>
-
-                    `;
-
-                }
+}
 
                 /* =========================
                 CREATE ITEM
