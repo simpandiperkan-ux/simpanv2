@@ -377,28 +377,22 @@ BADGE STATUS
 ========================================= */
 
 .badge{
-
     display:inline-block;
-
     padding:10px 18px;
-
     border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00aa55,
-            #00cc66
-        );
-
-    color:white;
-
+    color:#fff;
     font-size:14px;
-
     font-weight:bold;
+}
 
-    box-shadow:0 4px 10px rgba(0,170,85,0.25);
+.badge-green{
+    background:linear-gradient(135deg,#00aa55,#00cc66);
+    box-shadow:0 4px 10px rgba(0,170,85,.25);
+}
 
+.badge-red{
+    background:linear-gradient(135deg,#d32f2f,#ff5252);
+    box-shadow:0 4px 10px rgba(211,47,47,.25);
 }
 
 /* =========================================
@@ -825,23 +819,21 @@ function formatValue(label, value){
 
     /* STATUS */
 
-    if(
+    if(label.toUpperCase().includes("STATUS")){
 
-        label.toUpperCase().includes("STATUS")
+    const status = (value || "").trim().toLowerCase();
 
-    ){
+    const isGreen =
+        status === "Aktif" ||
+        status === "TERVERIFIKASI";
 
-        return `
+    return `
+        <div class="badge ${isGreen ? "badge-green" : "badge-red"}">
+            ${value}
+        </div>
+    `;
 
-            <div class="badge">
-
-                ${value}
-
-            </div>
-
-        `;
-
-    }
+}
 
     return value;
 
