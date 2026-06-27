@@ -819,13 +819,16 @@ function formatValue(label, value){
 
     /* STATUS */
 
-    if(label.toUpperCase().includes("STATUS")){
+    if (label.toUpperCase().includes("STATUS")) {
 
-    const status = (value || "").trim().toLowerCase();
+    const status = (value || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toUpperCase();
 
     const isGreen =
-        status === "Aktif" ||
-        status === "TERVERIFIKASI";
+        status.includes("Aktif") ||
+        status.includes("TERVERIFIKASI");
 
     return `
         <div class="badge ${isGreen ? "badge-green" : "badge-red"}">
@@ -834,11 +837,7 @@ function formatValue(label, value){
     `;
 
 }
-
-    return value;
-
-}
-
+    
 /* =========================================
 LOAD CSV
 ========================================= */
